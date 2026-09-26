@@ -18,3 +18,16 @@
   actually remove it. Stated rules in a context file are not
   self-enforcing. This is why claim-auditor exists as a separate
   agent rather than as a line in the prompt.
+- Logo red mismatch: logo_red.svg and logomark_red.svg use #F25A5A,
+  while the press kit swatch card states #F2545B (the red that
+  logomark_red-background.svg and app_icon.svg use). Kept --rc-red
+  at #F2545B for UI and left the logo files untouched, since the
+  mark is never recolored. Caught by reading the fill colors in the
+  SVG source.
+- Design tokens initially stated red as the only CTA color, taken
+  from the press kit swatch card without checking the live site.
+  Screenshot sections showed every primary CTA is blue. Blue also
+  passes WCAG AA on white text at 4.59:1 where red fails at 3.39:1,
+  which is likely why RevenueCat made the same call. Corrected.
+  Second time a brand assumption from a static asset was wrong
+  against the live product.

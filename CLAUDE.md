@@ -27,25 +27,37 @@ Sources: RevenueCat press kit and revenuecat.com, inspected September 2026.
 ### Colors
 | Token | Hex | Use |
 |---|---|---|
-| `--rc-red` | #F2545B | Primary accent. CTAs, emphasis. Sparingly |
-| `--rc-blue` | #576CDB | Secondary accent only. Never a section background |
+| `--rc-red` | #F2545B | Accent and emphasis. Not for primary buttons. Sparingly |
+| `--rc-blue` | #576CDB | Primary CTAs. Never a section background |
 | `--rc-green` | #11D483 | Positive states, winners, gains |
 | `--rc-ink` | #1F1F47 | Headings and dark section backgrounds |
 | `--rc-body` | #3D3D5C | Body copy |
 | `--rc-white` | #FFFFFF | Default page background |
+| Logo files only | #F25A5A | logo_red.svg and logomark_red.svg use this red; the press kit swatch card states #F2545B. Use --rc-red for UI. Never recolor the logo files |
 
 Rules:
 - Light page by default. Dark sections use --rc-ink, never pure black.
-- Red is the only CTA color. One primary CTA per viewport.
+- Primary CTAs use --rc-blue. White on blue passes WCAG AA at
+  4.59:1. This matches the live site, where "Sign up", "Start for
+  free" and "Request a demo" are all blue.
+- Red is for emphasis and accent, not for primary buttons.
+- One primary CTA per viewport still holds.
 - Green means "this won" or "this went up". Never decorative.
-- Blue is the least-used color. More than twice on the page means cut it.
+- Apart from primary CTAs, blue is the least-used color. More than
+  twice on the page means cut it.
 - No gradients between any two of these. Flat fills only.
 
 ### Contrast rules
 Verified September 2026. WCAG AA needs 4.5:1 for normal text, 3:1 for
 large text and non-text marks.
-- White on --rc-red is 3.39:1. FAILS at normal size. Red CTAs must use
-  a label of 19px bold or larger, or use --rc-ink text on red (4.60:1).
+- White on --rc-blue is 4.59:1. PASSES at normal size, which is why
+  primary CTAs are blue. The margin is thin, so check hover and
+  pressed states too.
+- White on --rc-red is 3.39:1. FAILS at normal size, which is why red
+  is not used for primary buttons. Red text on white is the same
+  3.39:1, so red emphasis text must be 24px or larger (19px if bold),
+  as on the live site's highlighted numbers. Text on a red fill uses
+  --rc-ink (4.60:1).
 - --rc-green on white is 1.95:1. FAILS even the 3:1 bar. Never use
   green as text or a line on white. Use green as a FILL with --rc-ink
   text on top, or green on --rc-ink (8.01:1).
@@ -88,10 +100,22 @@ Official SVGs from the press kit (wordmarks 852x180, marks 512x512).
 Never recolor, stretch or redraw the mark.
 
 ### Reference screenshots
-Full-page captures for brand-guard to compare against:
-- docs/reference/www.revenuecat.com.png: revenuecat.com homepage
-- docs/reference/www.revenuecat.com-for-product.png: the current
-  /for-product page
+Full-page captures for brand-guard to compare against. Each original
+is too tall to read as one image, so open the sections instead. They
+are screen-height slices, 1568px wide, numbered top to bottom, in
+docs/reference/sections/.
+
+revenuecat.com homepage (docs/reference/www.revenuecat.com.png).
+Cut off partway down the page (exactly 16,384px tall), so there is
+no footer:
+home-01.png, home-02.png, home-03.png, home-04.png, home-05.png,
+home-06.png, home-07.png, home-08.png, home-09.png
+
+Current /for-product page
+(docs/reference/www.revenuecat.com-for-product.png), top to footer:
+for-product-01.png, for-product-02.png, for-product-03.png,
+for-product-04.png, for-product-05.png, for-product-06.png,
+for-product-07.png, for-product-08.png
 
 ## Reference
 - docs/brief.md
