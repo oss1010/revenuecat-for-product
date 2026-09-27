@@ -1482,3 +1482,157 @@ phase4-full-page-1440.png (the 3B full-page shots are kept).
 - Section 4 now says "template" twice ("Visual editor and pre-built
   templates", then "Start from a template..."). Left as specified.
 - The simulator's mobile height is 56% of before, not 50%.
+
+## 2026-09-27: Build phase 5, red team and owner review (final)
+
+No more design changes after this phase.
+
+### What changed
+- Hero (B): three cards of one size (184 x 156px), each with a header
+  row. Test: "Weekly vs monthly", a larger two-line chart (A red, B
+  green), a "B leads" chip; "Judged on" removed. Roll out: a progress
+  bar fills green from "B · 50%" to "B · 100%", then "No app release."
+  The cursor fades after each click.
+- Section 3 (C): mobile tabs are three equal segments ("Change",
+  "Learn", "Fit"); the full label stays as the accessible name. Change:
+  owners on every stop (blue only on "You"); a dot runs both tracks at
+  once, 4.8s Before and 1.2s with RevenueCat, which lands first and
+  pulses "Live. No app release." Learn: paying-customer dots from the
+  simulator's model (22 A and 15 B in week one; 1 and 3 at month 12).
+  New Fit captions. CSS defaults are the end states.
+- Section 4 (D): tighter body, three bullets, small print kept.
+- Section 5 (E): "What you can test" chips; the four-variant line
+  removed; caption in RevenueCat's forecast wording. Charts: color
+  roles (green-line leader, ink second series, red ring on the key
+  point), mobile tabs "Paywalls", "LTV", "Benchmarks", churn at the
+  38th percentile tagged "Where to focus", markers green above the
+  median and red below, a median tick. Simulator unchanged, verified.
+- Section 6 (F): four steps (Ad, Quiz, Checkout, Unlocked in the app);
+  targeting chips removed; the UTM line added. Journey 411 to 212px
+  (1440), 615 to 311px (390).
+- Section 7 (G): "The foundation", "Subscribe once. Unlocked
+  everywhere.", the audited body and bullets, the diagram trimmed.
+- Accessibility (H): the H1 variant not shown now carries the hidden
+  attribute (the closing band too); variant.js swaps it for ?v=b2.
+  Checked in Chrome's accessibility tree: one H1 in each variant.
+
+### Claim audit, Part A (2026-09-27)
+| # | Claim | Verdict | Outcome |
+|---|---|---|---|
+| 1 | Customer Center "with a win-back offer before they go" | FAIL on "win-back" | RevenueCat uses win-back for users who already churned; Customer Center shows "promotional offers" before cancel. Now "...and can show an offer to stay right before they cancel". Pro and Enterprise; in the app via RevenueCatUI |
+| 2a | "store and API changes handled for you" | PASS conditional | /for-product: "we handle changes to Apple and Google's APIs". Now "Apple and Google API changes handled for you" |
+| 2b | "the infrastructure 146K+ apps run on" | FAIL on "run on" | Now "infrastructure trusted by over 146,000 apps" (/feature/experiments) |
+| 3 | "See which campaign drove each web subscription" | FAIL on "each" | Now "See which campaigns drive paying customers on the web" (/feature/web) |
+| 4a | Price, Trial length, Paywall design | PASS | Preset types "Price point", "Free trial offer", "Paywall design" |
+| 4b | Up to 4 variants | PASS | "test up to four variants simultaneously" |
+| 4c | Forecast condition for 3+ variants | No published condition | Caption names no variant count: "In experiments with revenue as the primary metric, RevenueCat predicts each variant's 12-month LTV once there's enough data." The simulator stays at two variants |
+| 5 | Demo dashboard (demo.revenuecat.com/overview, "Try the demo" on /for-product) | FAIL | 307 to app.revenuecat.com, which lands on the login page (checked in a browser). "Explore the demo dashboard" not added |
+| 6a | Refund Control | PASS conditional | Covers the App Store and Google Play. Named both |
+| 6b | "Version history, audit logs, and SSO on Enterprise" | FAIL as worded | Only SSO is documented as Enterprise. Now "Paywall version history and audit logs, plus SSO on Enterprise" |
+
+### Final review, Part I
+- pm-critic: clear win overall; clear for the solo and growth PM,
+  partial for the enterprise PM (no data-destination line, no security
+  link, no draft state in the editor). Its four "fix now" items were
+  checked and are not factual or layout errors: the store-prices line
+  would be new copy; the hero frames and the chart tooltip were capture
+  timing (the tooltip was reworked anyway, below); the LTV unit is
+  labelled illustrative and was settled in phase 3B. Listed below.
+- brand-guard: reads as a RevenueCat page. No contrast failures, green
+  never text or a line on white, red text always large, one filled
+  primary per viewport. Six layout fixes, all applied:
+  1. Chart tooltip covered the lines and the key marker: the hovered
+     month's values now sit in a readout above the plot (desktop one
+     line, mobile stacked).
+  2. Section 6 header columns bottom-aligned: now top-aligned.
+  3. Hero Test card: "B leads" sat on the card edge (1px): chart 2.75rem
+     and tighter gaps, 12px clear.
+  4. Simulator caption touched the canvas: 1rem above it.
+  5. Section 3 at 390: "App update" wrapped and its owner dropped a
+     line: Before labels keep two lines on mobile.
+  6. Desktop section 3 tabs used the decorative border token: now the
+     control outline.
+- claim-auditor full sweep: 48 strings, 4 FAILs, all fixed:
+  1. "B wins the year" stated a forecast as fact: now "B predicted to
+     win the year".
+  2. "changes paywalls and plans": prices, durations and trials live in
+     the stores, and new products go through the store's review: now
+     "changes paywalls and which plans they show".
+  3. The section 4 editor mock had no Illustrative tag: added.
+  4. "Watch every paywall's performance" revived a claim settled as
+     FAIL on 2026-09-26: now "each RevenueCat paywall's".
+
+### Not fixed, for the owner, ranked
+1. Pixelcut's case study says weekly beat monthly (16% more paying
+   customers), next to a simulator arguing weekly is the wrong winner.
+2. The page never says prices live in App Store Connect and Play
+   Console; "What you can test: Price" (RevenueCat's term: "Price
+   point") could read as RevenueCat setting prices.
+3. Hero Test card names no metric on desktop (removed on request); an
+   unlabeled rising B can read as observed. Early in each loop two
+   cards look empty.
+4. Enterprise: no line on where subscription data goes, no Security
+   and compliance route.
+5. Section 4 editor goes prompt to "Published" with no draft or preview.
+6. Section 6 dropped the download step before the link tap, and never
+   says the app must handle Redemption Links.
+7. Refund Control bullet lost "and your preference; the store decides".
+8. Customer Center limits unstated (Pro and Enterprise, iOS-only
+   refunds and plan changes, store promotional offers).
+9. "One release, then none" and "API changes handled for you" are
+   absolute; newer features and store APIs can need an SDK update.
+   Section 3's With RevenueCat track shows no one-time integration.
+10. Selected tabs and the simulator toggle are blue pills shaped like
+    primary buttons.
+11. Section 8 plan icon tiles read as generic SaaS.
+12. Mobile hero chip leads the phone by 0.8s.
+13. The 390 simulator thumbnail is too small to read.
+14. "What you can test" chips look like filters.
+15. Pricing appears only in section 8; no link from the caption to how
+    the forecast works or how long low-traffic apps wait; no range.
+16. Section 5 at 390 is about 3,000px.
+17. "Where to focus" sits at the 38th percentile; RevenueCat's
+    scorecard points focus at 0 to 20th.
+18. --rc-glow is a blue-tinted shadow not in the token table.
+19. Section 3's With RevenueCat track fills half its card at 1440.
+20. Refund Control sits inside "Store side" beside Web, though it
+    covers the App Store and Google Play only.
+21. Logo rows: orphans at 390, Stocktwits 4px low, "Photoroom"
+    capitalization.
+22. Stats are red (color roles); the homepage shows them in blue.
+23. OpenAI quote: comma to period before the attribution (settled).
+24. "Open Paywalls in your dashboard" goes to /login.
+25. Floga sold lifetime memberships, beside "Pre-sell subscriptions".
+26. Tidelark trademark check still open.
+
+### Verification (Part J)
+- Headless Chrome at 390 and 1440 (plus 768 and 1024 for overflow):
+  no console errors, no horizontal overflow, no missing images. The
+  preview pane showed the page throughout.
+- Keyboard: tab order unchanged in shape; section 3 and Charts tabs by
+  arrows; the rollout by Enter, Escape disarms, focus to "Reset demo"
+  and back; chart plots announce each month.
+- Reduced motion: hero on Roll out done at "B · 100%"; section 3 race
+  finished, live pill not pulsing, Learn at month 12 with the verdict;
+  simulator on the LTV view; journey fully lit.
+- Simulator final pass: two-step rollout, inline toast (beside the
+  button at 1440, below at 390), full-sequence demo, reset.
+- Links: every outbound link 200.
+- One full-page capture at 390 came out unstyled (visuals.css dropped
+  by the single-threaded local server); retaken and checked.
+
+Section heights, phase 4 to phase 5, px:
+| Section | 390 | 1440 |
+|---|---|---|
+| 1 Hero | 1,157 to 1,157 | 744 to 744 |
+| 3 The shift | 766 to 828 | 711 to 740 |
+| 4 Change | 1,543 to 1,536 | 968 to 968 |
+| 5 Learn | 2,916 to 3,011 | 2,451 to 2,519 |
+| 6 Fit | 1,705 to 1,465 | 1,338 to 1,186 |
+| 7 Foundation | 1,503 to 1,528 | 1,004 to 1,076 |
+| Page | 11,609 to 11,543 | 9,034 to 9,051 |
+Visuals at 1440: none over 1.2 screens (1,080px); tallest the
+simulator, 989.
+
+Screenshots: docs/process-shots/phase5-full-page-390.png and
+phase5-full-page-1440.png.

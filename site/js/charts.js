@@ -2,10 +2,11 @@
    1. A vertical WAI-ARIA tablist (automatic activation): click, arrow
       keys, Home and End.
    2. Line charts in the style of RevenueCat Charts, drawn from data
-      attributes in index.html. A hover marker (vertical rule, a dot per
-      line and a tooltip) follows the pointer or a touch drag, and the
-      left and right arrow keys when the plot has focus. The marker rests
-      on the latest complete month. Illustrative data. */
+      attributes in index.html. A hover marker (vertical rule and a dot
+      per line) follows the pointer or a touch drag, and the left and
+      right arrow keys when the plot has focus; a readout above the plot
+      shows that month's values, so nothing covers the lines. The marker
+      rests on the latest complete month. Illustrative data. */
 (function () {
   var root = document.querySelector('[data-charts]');
   if (!root) return;
@@ -63,6 +64,7 @@
     var decimals = +(chart.getAttribute('data-decimals') || 0);
     var labels = chart.getAttribute('data-labels').split(',');
     var incomplete = chart.hasAttribute('data-incomplete') ? +chart.getAttribute('data-incomplete') : null;
+    var key = chart.hasAttribute('data-key') ? chart.getAttribute('data-key').split(',').map(Number) : null; /* series, index */
     var last = labels.length - 1;
     var series = Array.prototype.map.call(chart.querySelectorAll('[data-series]'), function (s) {
       return { name: s.getAttribute('data-series'), tone: s.getAttribute('data-tone'), values: s.getAttribute('data-values').split(',').map(Number) };
@@ -120,6 +122,14 @@
       if (solidTo < last) line(s.values, solidTo, last, 'tone-' + s.tone + ' is-dashed');
     });
 
+    /* The key point: a red emphasis ring with an ink label */
+    if (key) {
+      var mark = el('span', 'lc-key' + (chart.hasAttribute('data-key-below') ? ' is-below' : ''), plot);
+      mark.style.left = X(key[1]) + '%';
+      mark.style.top = Y(series[key[0]].values[key[1]]) + '%';
+      el('span', 'lc-key-label', mark).textContent = chart.getAttribute('data-key-label');
+    }
+
     /* Hover marker: rule, dots, tooltip, and a live region for keys */
     var rule = el('span', 'lc-rule', plot);
     var dots = series.map(function (s) { return el('span', 'lc-dot tone-' + s.tone, plot); });
@@ -152,10 +162,6 @@
           el('span', '', row).textContent = s.name;
           el('b', '', row).textContent = fmt(s.values[i]);
         });
-        /* Desktop: the tooltip floats beside the rule, flipping sides
-           past the middle. Mobile: it sits above the plot (CSS). */
-        tip.style.setProperty('--x', (plot.offsetLeft + X(i) / 100 * plot.clientWidth) + 'px');
-        tip.classList.toggle('is-flipped', i > last / 2);
       }
       if (announce) live.textContent = describe(i);
     }
@@ -165,12 +171,7 @@
     }
     plot.addEventListener('pointermove', fromPointer);
     plot.addEventListener('pointerdown', fromPointer);
-    plot.addEventListener('pointerenter', function () { chart.classList.add('is-active'); });
-    plot.addEventListener('pointerleave', function (e) {
-      if (e.pointerType === 'mouse') show(rest, false);
-      if (document.activeElement !== plot) chart.classList.remove('is-active');
-    });
-    plot.addEventListener('blur', function () { chart.classList.remove('is-active'); });
+    plot.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') show(rest, false); });
     plot.addEventListener('keydown', function (e) {
       var next = null;
       if (e.key === 'ArrowRight') next = current + 1;
@@ -181,16 +182,8 @@
       e.preventDefault();
       show(next, true);
     });
-    plot.addEventListener('focus', function () { chart.classList.add('is-active'); live.textContent = describe(current); });
-    window.addEventListener('resize', function () { var i = current; current = -1; show(i, false); });
+    plot.addEventListener('focus', function () { live.textContent = describe(current); });
 
     show(rest, false);
-    /* Panels start hidden, so place the tooltip again when shown */
-    var panel = chart.closest('[role="tabpanel"]');
-    if (panel && 'MutationObserver' in window) {
-      new MutationObserver(function () {
-        if (!panel.hidden) { var i = current; current = -1; show(i, false); }
-      }).observe(panel, { attributes: true, attributeFilter: ['hidden'] });
-    }
   });
 })();

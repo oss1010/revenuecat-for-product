@@ -1,7 +1,8 @@
 # Page architecture: /for-product refresh
 
-Status: v1.6, design frozen (phase 4). Built on docs/positioning.md
-v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
+Status: v1.7, final (phase 5: red team and owner review). No more
+design changes. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.7 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -41,6 +42,13 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
    clicks "Roll out B", the card shows "Published. No app release."
    with a green check and the phone locks to B. Reduced motion: the
    Roll out state, done.
+   Phase 5: the three cards are one size (184 x 156px) with a header
+   row, so the Test chart spans the card. Test: "Weekly vs monthly", the
+   two labeled lines, a "B leads" chip. Roll out: a progress bar fills
+   green (green-line, a graphic at 3.78:1) from "B · 50%" to "B ·
+   100%", then "No app release." The cursor fades after each click so
+   the change stays readable. The H1 variant not shown carries the
+   hidden attribute, so screen readers get one H1.
    Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    The closing band swaps with the hero: each variant closes with the
@@ -80,6 +88,16 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
    12-month bars, week one only against the whole year, predicted.
    Fit: one paywall on one phone for three users against iPhone,
    Android and web, each with a different offer.
+   Phase 5: mobile tabs are three equal segments with short labels
+   ("Change", "Learn", "Fit"); the full label stays as the accessible
+   name. Change: every stop names its owner (blue only on "You"), and
+   when the tab opens a dot runs both tracks at once, 4.8 seconds
+   Before, 1.2 seconds with RevenueCat, which lands first and pulses
+   "Live. No app release." Learn: paying-customer dots computed from
+   the simulator's model (one dot per 50): 22 A and 15 B in week one,
+   A wins; stepping months 1 to 12, A falls to 1 and B to 3, B wins
+   the year. CSS defaults are the end states, so reduced motion and
+   no-JS show them.
    Rule: "before" is the PM's status quo, never an older RevenueCat.
    Rule: web appears as a channel, never as a forecasted experiment.
    Predicted 12-month LTV is not claimed for web (positioning v0.3).
@@ -166,6 +184,16 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
    is sticky beside the panel. Mobile: a "What users see" strip with a
    small paywall thumbnail and the live chip. Mobile height 2,167px to
    about 1,210px.
+   Phase 5: a "What you can test" chip row above the simulator (Price,
+   Trial length, Paywall design, Up to 4 variants); the caption uses
+   RevenueCat's forecast wording and names no variant count (none is
+   published). Charts follow the color roles: the leading paywall in
+   green-line, the second in ink, a red ring with an ink label on the
+   key point; Benchmarks markers green above the median and red below,
+   churn below the median and tagged "Where to focus"; mobile tabs are
+   three equal segments ("Paywalls", "LTV", "Benchmarks"). The demo
+   dashboard link was not added: demo.revenuecat.com redirects to the
+   login page.
    Phase 4, Charts module: headline "The test ends. The learning
    doesn't." The tables are replaced by line charts in the style of
    RevenueCat Charts, with a hover marker (pointer, touch drag, or
@@ -201,6 +229,11 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
    the app", on a shared four-column grid with chevrons; on mobile a
    tight timeline. Visual height: 739px to 411px on desktop, 727px to
    615px on mobile.
+   Phase 5: four steps only, Ad, Quiz, Checkout, Unlocked in the app
+   (with one link); the targeting chips are gone (the body names
+   targeting). Visual height 411px to 212px on desktop, 615px to 311px
+   on mobile. A fourth web line: "See which campaigns drive paying
+   customers on the web".
    Customer story block, static: Floga, $120K+ in one day of
    pre-launch lifetime memberships through RevenueCat Web Billing. The
    case study covers Web Billing only, so the block sits apart from
@@ -218,8 +251,19 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
      region." in the small print. No percentages, never "eliminate",
      "bypass" or "commission-free".
 
-7. TEAMS AND FOUNDATION. Static. Text left; visual right (badges,
-   then the diagram).
+7. THE FOUNDATION (phase 5; was Teams and foundation). Static. Text
+   left, diagram right.
+   Eyebrow "The foundation", headline "Subscribe once. Unlocked
+   everywhere." Body: infrastructure trusted by over 146,000 apps, one
+   set of entitlements across the App Store, Google Play and the web,
+   Apple and Google API changes handled. Bullets: Customer Center (an
+   offer to stay before they cancel; never "win-back"), Refund Control
+   (App Store and Google Play), paywall version history and audit logs
+   plus SSO on Enterprise. The diagram keeps the store side, the
+   entitlement key and Pro on three devices, with its text trimmed so
+   it doesn't repeat the bullets. Collaborator roles now live in
+   section 4's bullets.
+   Before phase 5:
    Job: answer the enterprise PM's first question, who can change a
    live paywall, with verified capabilities only.
    Visual, top: the governance badges lead. Collaborator roles
@@ -263,7 +307,8 @@ v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual g
 | Web-to-app Funnels | 3, 6 |
 | RevenueCat Billing (formerly Web Billing) | 3, 6 |
 | Targeting | 1, 6 |
-| Refund Control, cross-platform entitlements | 7 |
+| Refund Control, cross-platform entitlements, Customer Center | 7 |
+| Funnels campaign (UTM) breakdown | 6 |
 
 ## Motion rules
 - Subtle. Loops under 10 seconds (the hero is about 8). Pause when

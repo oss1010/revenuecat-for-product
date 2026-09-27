@@ -40,10 +40,12 @@ a { color: inherit; }
   border-radius: 4px;
 }
 
-/* ?v=b2 switch. variant.js sets data-variant before first paint. */
-.v-b2 { display: none; }
-html[data-variant="b2"] .v-b1 { display: none; }
-html[data-variant="b2"] .v-b2 { display: inline; }
+/* ?v=b2 switch. The markup hides B2 with the hidden attribute, so the
+   line not shown is hidden from screen readers too, with or without
+   CSS. variant.js marks <html> before first paint (these rules cover
+   that moment) and swaps the hidden attributes once the DOM is parsed. */
+html[data-variant="b2"] .v-b1 { display: none !important; }
+html[data-variant="b2"] .v-b2 { display: inline !important; }
 
 /* Type */
 .h1, .h2, .h3 {
@@ -407,6 +409,18 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .editor-placeholder { min-height: 20rem; }
 
 /* 5. Learn: layout around the simulator (simulator.css) */
+.testables { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-bottom: 1.25rem; }
+.testables-label { color: var(--rc-ink); font-size: var(--fs-small); font-weight: 700; }
+.testables-list { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.testables-list li {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--rc-outline);
+  border-radius: var(--radius-pill);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
 .learn-row { display: grid; gap: 1.5rem; margin-top: 1.5rem; align-items: stretch; }
 .chart-card { display: grid; gap: 0.75rem; align-content: start; padding: 1.25rem; }
 .chart-card .tag { justify-self: start; }
@@ -417,7 +431,6 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .chart-spark figcaption { font-size: var(--fs-small); }
 .learn-row .checks { align-content: center; font-size: var(--fs-small); }
 .proof-row { display: block; }
-.sim-more { margin-top: 1rem; font-size: var(--fs-small); }
 .variants-card { display: grid; gap: 1rem; align-content: start; padding: 1.25rem; }
 .variants-card p { color: var(--rc-ink); font-weight: 600; }
 .split4 {
@@ -448,6 +461,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .bench-row .bench-track { grid-column: 1 / -1; }
 .bench-track { position: relative; height: 0.75rem; border-radius: var(--radius-pill); background: var(--rc-offwhite); box-shadow: inset 0 0 0 1px var(--rc-line); }
 .bench-band { position: absolute; top: 0; bottom: 0; left: var(--from); right: calc(100% - var(--to)); border-radius: var(--radius-pill); background: var(--rc-dot); }
+.bench-mid { position: absolute; top: -0.1875rem; bottom: -0.1875rem; left: 50%; width: 2px; background: var(--rc-outline); } /* the median */
 .bench-you {
   position: absolute;
   top: 50%;
@@ -460,9 +474,25 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   box-shadow: 0 0 0 1px var(--rc-ink);
   transform: translate(-50%, -50%);
 }
+/* Above the median: green-line (3.59:1 on off-white). Below: red (3.22:1) */
+.bench-you.is-up { background: var(--rc-green-line); box-shadow: 0 0 0 1px var(--rc-green-line); }
+.bench-you.is-down { background: var(--rc-red); box-shadow: 0 0 0 1px var(--rc-red); }
+.bench-focus {
+  display: inline-block;
+  margin-left: 0.375rem;
+  padding: 0 0.4375rem;
+  border: 1px solid var(--rc-red);
+  border-radius: var(--radius-pill);
+  color: var(--rc-ink);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  vertical-align: 0.0625rem;
+}
 .bench-legend { display: flex; flex-wrap: wrap; gap: 0.375rem 1rem; color: var(--rc-body); font-size: 0.75rem; }
 .bench-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
 .bench-legend .k-you { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: var(--rc-ink); }
+.bench-legend .k-you.is-up { background: var(--rc-green-line); }
+.bench-legend .k-you.is-down { background: var(--rc-red); }
 .bench-legend .k-band { width: 1rem; height: 0.5rem; border-radius: var(--radius-pill); background: var(--rc-dot); }
 
 /* 6. Fit */

@@ -51,7 +51,7 @@
         <p class="eyebrow">For product teams</p>
         <h1 class="h1" id="hero-title">
           <span class="v-b1">Build a subscription experience worth renewing.</span>
-          <span class="v-b2">Build the reason they renew.</span>
+          <span class="v-b2" hidden>Build the reason they renew.</span>
         </h1>
         <p class="lead">Design paywalls and test pricing and offers without waiting on an app release. Keep what wins on predicted 12-month value, not just early conversion.</p>
         <div class="cta-row">
@@ -73,39 +73,30 @@
           <span class="tag">Illustrative</span>
 
           <div class="hl-card" data-card="design">
-            <span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
-            <span class="hl-card-body">
-              <span class="hl-card-kicker">Design</span>
-              <span class="hl-field"><span class="hl-field-label">Featured plan</span><span class="hl-field-value" data-design-value data-before="Weekly" data-after="Monthly">Monthly</span></span>
-            </span>
+            <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Design</span></span>
+            <span class="hl-field"><span class="hl-field-label">Featured plan</span><span class="hl-field-value" data-design-value data-before="Weekly" data-after="Monthly">Monthly</span></span>
           </div>
           <div class="hl-card" data-card="test">
-            <span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 19h16M7 16l4-6 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="hl-card-body">
-              <span class="hl-card-kicker">Test</span>
-              <span class="hl-card-text">Testing: weekly vs monthly featured</span>
-              <span class="hl-card-text">Judged on: predicted <span class="nowrap">12-month</span> LTV</span>
-              <span class="hl-mini" data-hl-chart>
-                <svg class="hl-spark" viewBox="0 0 120 40" preserveAspectRatio="none" focusable="false">
-                  <defs><clipPath id="hl-spark-reveal"><rect class="hl-spark-clip" x="0" y="0" width="120" height="40"/></clipPath></defs>
-                  <g clip-path="url(#hl-spark-reveal)">
-                    <path class="a" d="M2 34 L20 19 L40 15 L70 13 L104 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path class="b" d="M2 37 L20 29 L40 21 L70 11 L104 5" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </g>
-                </svg>
-                <span class="hl-line-lbl a">A</span>
-                <span class="hl-line-lbl b">B</span>
-              </span>
-              <span class="hl-leads"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>B leads</span>
+            <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 19h16M7 16l4-6 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Test</span></span>
+            <span class="hl-card-text">Weekly vs monthly</span>
+            <span class="hl-mini" data-hl-chart>
+              <svg class="hl-spark" viewBox="0 0 120 48" preserveAspectRatio="none" focusable="false">
+                <defs><clipPath id="hl-spark-reveal"><rect class="hl-spark-clip" x="0" y="0" width="120" height="48"/></clipPath></defs>
+                <line class="hl-base" x1="0" y1="46" x2="120" y2="46"/>
+                <g clip-path="url(#hl-spark-reveal)">
+                  <path class="a" d="M2 42 L22 24 L44 19 L72 16 L106 15" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path class="b" d="M2 45 L22 35 L44 26 L72 14 L106 6" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </svg>
+              <span class="hl-line-lbl a">A</span>
+              <span class="hl-line-lbl b">B</span>
             </span>
+            <span class="hl-leads"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>B leads</span>
           </div>
           <div class="hl-card is-active is-done" data-card="rollout">
-            <span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span class="hl-card-body">
-              <span class="hl-card-kicker">Roll out</span>
-              <span class="hl-mini-btn" data-hl-roll>Roll out B</span>
-              <span class="hl-published"><span class="hl-win"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Published. No app release.</span>
-            </span>
+            <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Roll out</span></span>
+            <span class="hl-bar" data-hl-bar><span class="hl-bar-track"><span class="hl-bar-fill" style="width: 100%"></span></span><span class="hl-bar-label">B · <span data-hl-pct>100</span>%</span></span>
+            <span class="hl-published"><span class="hl-win"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>No app release.</span>
           </div>
 
           <div class="hl-center">
@@ -156,50 +147,65 @@
 
       <div class="shift" data-shift>
         <div class="shift-tabs" role="tablist" aria-labelledby="shift-title">
-          <button type="button" class="shift-tab" role="tab" id="tab-change" aria-controls="panel-change" aria-selected="true"><span class="tab-num" aria-hidden="true">1</span>Change it without a release</button>
-          <button type="button" class="shift-tab" role="tab" id="tab-learn" aria-controls="panel-learn" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">2</span>Learn what users value</button>
-          <button type="button" class="shift-tab" role="tab" id="tab-fit" aria-controls="panel-fit" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">3</span>Fit the offer to every user</button>
+          <button type="button" class="shift-tab" role="tab" id="tab-change" aria-controls="panel-change" aria-selected="true"><span class="tab-num" aria-hidden="true">1</span><span class="tab-long">Change it without a release</span><span class="tab-short" aria-hidden="true">Change</span></button>
+          <button type="button" class="shift-tab" role="tab" id="tab-learn" aria-controls="panel-learn" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">2</span><span class="tab-long">Learn what users value</span><span class="tab-short" aria-hidden="true">Learn</span></button>
+          <button type="button" class="shift-tab" role="tab" id="tab-fit" aria-controls="panel-fit" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">3</span><span class="tab-long">Fit the offer to every user</span><span class="tab-short" aria-hidden="true">Fit</span></button>
         </div>
 
         <div class="shift-panel" role="tabpanel" id="panel-change" aria-labelledby="tab-change">
-          <div class="pair">
+          <div class="pair" data-race>
             <div class="pair-card is-before">
               <p class="compare-label">Before</p>
-              <ol class="track is-long">
-                <li>Ticket</li>
-                <li>Sprint</li>
-                <li>App update</li>
-                <li>Review</li>
-              </ol>
-              <p class="pair-caption">Live after the next release</p>
+              <div class="track is-long" style="--n: 4; --travel: 4.8s">
+                <span class="track-rail" aria-hidden="true"><span class="track-dot"></span></span>
+                <ol>
+                  <li style="--i: 0"><b>Ticket</b><span class="owner is-you">You</span></li>
+                  <li style="--i: 1"><b>Sprint</b><span class="owner">Engineering</span></li>
+                  <li style="--i: 2"><b>App update</b><span class="owner">Engineering</span></li>
+                  <li style="--i: 3"><b>Review</b><span class="owner">App Store</span></li>
+                </ol>
+              </div>
+              <p class="pair-caption track-end">Live after the next release</p>
             </div>
             <div class="pair-card is-now">
               <p class="compare-label">With RevenueCat</p>
-              <ol class="track is-short">
-                <li>Start from a template, a Figma design or a prompt</li>
-                <li>Publish</li>
-              </ol>
-              <p class="pair-caption is-live"><span class="live-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Live. No app release.</p>
+              <div class="track is-short" style="--n: 2; --travel: 1.2s">
+                <span class="track-rail" aria-hidden="true"><span class="track-dot"></span></span>
+                <ol>
+                  <li style="--i: 0"><b>Design</b><span class="owner is-you">You</span><span class="track-sub">Template, Figma or prompt</span></li>
+                  <li style="--i: 1"><b>Publish</b><span class="owner is-you">You</span></li>
+                </ol>
+              </div>
+              <p class="pair-caption track-end"><span class="live-pill"><span class="live-dot" aria-hidden="true"></span>Live. No app release.</span></p>
             </div>
           </div>
           <a class="link-chevron" href="#change">See how<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
         <div class="shift-panel" role="tabpanel" id="panel-learn" aria-labelledby="tab-learn" hidden>
-          <div class="pair">
+          <div class="pair" data-year>
             <div class="pair-card is-before">
               <p class="compare-label">Before</p>
-              <div class="bar12" aria-hidden="true"><i class="seg-m is-week"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i><i class="seg-m"></i></div>
-              <div class="bar-scale" aria-hidden="true"><span>Week 1</span><span>Month 12</span></div>
-              <p class="pair-caption">You judge on week one.</p>
+              <p class="pair-sub">Judged on week one</p>
+              <div class="dot-field" aria-hidden="true">
+                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a"></span></div>
+                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b"></span></div>
+                <span class="dot-month">Week 1</span>
+              </div>
+              <p class="pair-caption"><span class="verdict">A wins</span></p>
             </div>
             <div class="pair-card is-now">
               <p class="compare-label">With RevenueCat</p>
-              <div class="bar12" aria-hidden="true"><i class="seg-m is-week"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i><i class="seg-m is-pred"></i></div>
-              <div class="bar-scale" aria-hidden="true"><span>Week 1</span><span>Month 12</span></div>
-              <p class="pair-caption">You see the year, predicted.</p>
+              <p class="pair-sub">Judged on the year, predicted</p>
+              <div class="dot-field" aria-hidden="true">
+                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a" data-over-year></span></div>
+                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b" data-over-year></span></div>
+                <span class="dot-month">Month <span data-dot-month>12</span></span>
+              </div>
+              <p class="pair-caption"><span class="verdict is-win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>B predicted to win the year</span></p>
             </div>
           </div>
+          <p class="pair-note">Each dot is 50 paying customers, from the illustrative model in the simulator below. A features weekly, B monthly.</p>
           <a class="link-chevron" href="#learn">See how<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
@@ -212,7 +218,7 @@
                 <svg class="ux-arrow" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span class="ux-device is-iphone"><span class="ux-pw "><i class="sun"></i><b></b><i class="is-feat"></i><i class=""></i><i class=""></i><i class="cta"></i></span></span>
               </div>
-              <p class="pair-caption">One paywall for everyone</p>
+              <p class="pair-caption">One paywall for everyone, in the app only.</p>
             </div>
             <div class="pair-card is-now">
               <p class="compare-label">With RevenueCat</p>
@@ -221,7 +227,7 @@
                 <span class="ux-col"><span class="ux-user" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.6" fill="currentColor"/><path d="M3.3 13.8c.8-2.5 2.6-3.7 4.7-3.7s3.9 1.2 4.7 3.7" fill="currentColor"/></svg></span><span class="ux-device is-android"><span class="ux-pw is-light"><i class="sun"></i><b></b><i class=""></i><i class="is-feat"></i><i class=""></i><i class="cta"></i></span></span><span class="ux-name">Android</span></span>
                 <span class="ux-col"><span class="ux-user" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.6" fill="currentColor"/><path d="M3.3 13.8c.8-2.5 2.6-3.7 4.7-3.7s3.9 1.2 4.7 3.7" fill="currentColor"/></svg></span><span class="ux-device is-web"><i class="dots"></i><span class="ux-pw is-warm"><i class="sun"></i><b></b><i class="is-feat"></i><i class=""></i><i class=""></i><i class="cta"></i></span></span><span class="ux-name">Web</span></span>
               </div>
-              <p class="pair-caption">Different paywalls by audience. Offer it on the web, too.</p>
+              <p class="pair-caption">The right offer for each audience, in the app and on the web.</p>
             </div>
           </div>
           <a class="link-chevron" href="#fit">See how<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -236,11 +242,10 @@
       <div>
         <p class="eyebrow">Change it without a release</p>
         <h2 class="h2" id="change-title">Your paywall shouldn't wait for a release.</h2>
-        <p class="body">Integrate once. From then on, your product team changes paywalls and the plans you offer from the dashboard, without waiting on an engineering sprint or App Review. One release, then none.</p>
+        <p class="body">Integrate once. Then your product team changes paywalls and which plans they show from the dashboard, with no engineering sprint and no App Review. One release, then none.</p>
         <ul class="checks">
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Visual editor and pre-built templates</span></li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start from a template, import a Figma design, or let the AI Editor draft it from a prompt or a screenshot</span></li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One paywall for your iOS, Android, React Native and Flutter apps, and the web</span></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start from a template, a Figma import, or an AI Editor draft from a prompt or a screenshot</span></li>
+          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One paywall for iOS, Android, React Native, Flutter and the web</span></li>
           <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles decide who can change paywalls and offerings</span></li>
         </ul>
         <p class="fine-print">On supported SDK versions. On the web through a Web Purchase Link or the Web SDK.</p>
@@ -252,6 +257,7 @@
       <div class="editor ui-card" aria-hidden="true">
         <div class="ed-bar">
           <span class="ed-title">Tidelark paywall</span>
+          <span class="tag">Illustrative</span>
           <span class="ed-chip"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Saved by Maya, 2 min ago</span>
           <span class="ed-chip ed-live"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published. No app release.</span>
         </div>
@@ -289,6 +295,16 @@
         <p class="eyebrow">Learn what users value</p>
         <h2 class="h2" id="learn-title">Win the year, not just the week.</h2>
         <p class="body">Early conversion can crown the wrong winner. RevenueCat Experiments forecast each variant's 12-month value while the test runs. Roll out the one predicted to earn more.</p>
+      </div>
+
+      <div class="testables">
+        <p class="testables-label" id="testables-label">What you can test:</p>
+        <ul class="testables-list" aria-labelledby="testables-label">
+          <li>Price</li>
+          <li>Trial length</li>
+          <li>Paywall design</li>
+          <li>Up to 4 variants</li>
+        </ul>
       </div>
 
       <div class="sim dot-canvas" data-sim data-judge="conversion">
@@ -410,23 +426,20 @@
         </div>
       </div>
 
-      <p class="sim-caption">Illustrative data and model. The 12-month forecast appears once an experiment with revenue as its primary metric has enough data. It's a signal, not a guarantee.</p>
-      <ul class="checks sim-more">
-        <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Test up to four variants at once.</span></li>
-      </ul>
+      <p class="sim-caption">Illustrative data and model. In experiments with revenue as the primary metric, RevenueCat predicts each variant's 12-month LTV once there's enough data. It's a forward-looking signal, not a guarantee.</p>
 
       <div class="charts-intro">
         <h3 class="h3">The test ends. The learning doesn't.</h3>
-        <p class="body">Watch every paywall's performance, your cohorts' realized LTV, and how you compare with similar apps.</p>
+        <p class="body">Watch each RevenueCat paywall's performance, your cohorts' realized LTV, and how you compare with similar apps.</p>
       </div>
 
       <div class="charts" data-charts>
         <div class="charts-side ui-card">
           <p class="charts-side-title" id="charts-list-title">Charts</p>
           <div class="charts-list" role="tablist" aria-orientation="vertical" aria-labelledby="charts-list-title">
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-conv" aria-controls="ch-conv" aria-selected="true">Paywall Conversion</button>
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-ltv" aria-controls="ch-ltv" aria-selected="false" tabindex="-1">Realized LTV per Customer</button>
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-bench" aria-controls="ch-bench" aria-selected="false" tabindex="-1">Benchmarks</button>
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-conv" aria-controls="ch-conv" aria-selected="true"><span class="tab-long">Paywall Conversion</span><span class="tab-short" aria-hidden="true">Paywalls</span></button>
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-ltv" aria-controls="ch-ltv" aria-selected="false" tabindex="-1"><span class="tab-long">Realized LTV per Customer</span><span class="tab-short" aria-hidden="true">LTV</span></button>
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-bench" aria-controls="ch-bench" aria-selected="false" tabindex="-1"><span class="tab-long">Benchmarks</span><span class="tab-short" aria-hidden="true">Benchmarks</span></button>
           </div>
         </div>
 
@@ -438,9 +451,9 @@
               <span class="filter-chip" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5v-5.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Apple Search Ads Keyword: morning routine<svg viewBox="0 0 16 16" focusable="false"><path d="M4.5 6.5 8 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
             <div class="lc" data-linechart data-max="12" data-step="3" data-unit="%" data-decimals="1"
-                 data-labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug">
-              <span hidden data-series="Onboarding paywall" data-tone="ink" data-values="8.6,8.9,9.1,8.8,9.4,9.2,9.6,9.3"></span>
-              <span hidden data-series="Streak reminder paywall" data-tone="red" data-values="5.8,6.1,5.9,6.4,6.2,6.6,6.3,6.5"></span>
+                 data-labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-key="0,6" data-key-label="Best month">
+              <span hidden data-series="Onboarding paywall" data-tone="green" data-values="8.6,8.9,9.1,8.8,9.4,9.2,9.6,9.3"></span>
+              <span hidden data-series="Streak reminder paywall" data-tone="ink" data-values="5.8,6.1,5.9,6.4,6.2,6.6,6.3,6.5"></span>
               <ul class="lc-legend"></ul>
               <div class="lc-plot" tabindex="0" role="group" aria-label="Paywall Conversion by month of first paywall impression. Use the left and right arrow keys to read each month."></div>
               <p class="lc-axis">Month of first paywall impression</p>
@@ -454,7 +467,7 @@
               <span class="filter-chip" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5v-5.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Apple Search Ads Keyword: morning routine<svg viewBox="0 0 16 16" focusable="false"><path d="M4.5 6.5 8 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </div>
             <div class="lc" data-linechart data-max="6" data-step="2" data-prefix="$" data-decimals="2"
-                 data-labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-incomplete="6">
+                 data-labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug" data-incomplete="6" data-key="0,4" data-key-label="Best cohort" data-key-below>
               <span hidden data-series="Realized LTV per customer" data-tone="ink" data-values="4.10,4.25,4.40,4.30,4.60,4.20,3.10,1.60"></span>
               <ul class="lc-legend"></ul>
               <div class="lc-plot" tabindex="0" role="group" aria-label="Realized LTV per Customer by cohort month. The latest cohorts are incomplete. Use the left and right arrow keys to read each month."></div>
@@ -468,11 +481,11 @@
               <span class="tag">Illustrative</span>
             </div>
             <div class="bench">
-              <div class="bench-row"><span class="bench-label">Conversion to Paying (7 days)</span><span class="bench-value">72nd percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-you" style="--at: 72%"></span></span></div>
-              <div class="bench-row"><span class="bench-label">Monthly Churn Rate</span><span class="bench-value">64th percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-you" style="--at: 64%"></span></span></div>
-              <div class="bench-row"><span class="bench-label">Realized LTV per Paying Customer (30 days)</span><span class="bench-value">81st percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-you" style="--at: 81%"></span></span></div>
+              <div class="bench-row"><span class="bench-label">Conversion to Paying (7 days)</span><span class="bench-value">72nd percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-up" style="--at: 72%"></span></span></div>
+              <div class="bench-row is-focus"><span class="bench-label">Monthly Churn Rate <span class="bench-focus">Where to focus</span></span><span class="bench-value">38th percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-down" style="--at: 38%"></span></span></div>
+              <div class="bench-row"><span class="bench-label">Realized LTV per Paying Customer (30 days)</span><span class="bench-value">81st percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-up" style="--at: 81%"></span></span></div>
             </div>
-            <p class="bench-legend"><span><i class="k-you"></i>Your app</span><span><i class="k-band"></i>Similar apps, 20th to 80th percentile</span></p>
+            <p class="bench-legend"><span><i class="k-you is-up"></i>Your app, above the median</span><span><i class="k-you is-down"></i>Below the median</span><span><i class="k-band"></i>Similar apps, 20th to 80th percentile</span></p>
             <p class="charts-note">Against similar apps in the same store and category. A higher percentile is better, including for churn.</p>
           </div>
         </div>
@@ -511,6 +524,7 @@
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lower platform fees on web purchases</span></li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Flexible pricing and promos on the web</span></li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Pre-sell subscriptions on the web before launch</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>See which campaigns drive paying customers on the web</span></li>
           </ul>
           <div class="link-row">
             <a class="link-chevron" href="https://www.revenuecat.com/feature/funnels">Learn more about Funnels<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -521,32 +535,12 @@
 
       <div class="flow ui-card" data-flow>
         <span class="tag">Illustrative</span>
-        <div class="flow-lane">
-          <p class="flow-lane-label">On the web</p>
-          <ol class="flow-steps">
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ad click</p><div class="flow-ad" aria-hidden="true"><span class="flow-ad-icon"></span><span class="flow-ad-text"><b>Tidelark</b><small>Sponsored</small></span><span class="flow-ad-cta">Get</span></div></div></li>
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Web funnel</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div><span class="flow-tag">Localized to the visitor's country</span></div></li>
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>The answer routes to an offer</p><div class="flow-row"><span class="flow-pill is-offer">Annual offer</span><span class="flow-pill is-dim">Monthly offer</span></div></div></li>
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Checkout</p><span class="flow-label">RevenueCat Billing</span><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Apple Pay or Google Pay, where supported</p></div></li>
-          </ol>
-        </div>
-        <div class="flow-lane">
-          <p class="flow-lane-label">In the app</p>
-          <ol class="flow-steps" start="5">
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Get a Redemption Link</p></div></li>
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download the app</p></div></li>
-            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tap the link, subscription active</p></div></li>
-          </ol>
-        </div>
-        <div class="flow-targets">
-          <p>Targeting</p>
-          <ul>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c1.7 1.7 2.4 3.8 2.4 6S9.7 12.3 8 14c-1.7-1.7-2.4-3.8-2.4-6S6.3 3.7 8 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Country</li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="4.5" y="1.5" width="7" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Platform</li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 5.5 8 3l5 2.5v5L8 13l-5-2.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>App version</li>
-            <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 4h10M3 8h10M3 12h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Custom attributes</li>
-          </ul>
-        </div>
+        <ol class="flow-steps">
+          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ad</p><div class="flow-ad" aria-hidden="true"><span class="flow-ad-icon"></span><span class="flow-ad-text"><b>Tidelark</b><small>Sponsored</small></span><span class="flow-ad-cta">Get</span></div></div></li>
+          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quiz</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div></div></li>
+          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Checkout</p><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Where supported</p></div></li>
+          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlocked in the app</p><p class="flow-sub">With one link</p></div></li>
+        </ol>
       </div>
 
       <figure class="testimonial">
@@ -567,19 +561,19 @@
     <div class="container">
       <div class="split">
         <div class="teams-body">
-          <h2 class="h2" id="teams-title">Decide who can change a live paywall.</h2>
-          <p class="body">Give product managers, growth leads and engineers the right collaborator role, including a Growth role that can edit paywalls and offerings. Version history and audit logs show who changed what.</p>
+          <p class="eyebrow">The foundation</p>
+          <h2 class="h2" id="teams-title">Subscribe once. Unlocked everywhere.</h2>
+          <p class="body">Underneath every paywall is infrastructure trusted by over 146,000 apps: one set of entitlements across the App Store, Google Play and the web, with Apple and Google API changes handled for you.</p>
           <ul class="checks">
-            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles, including a Growth role for paywalls and offerings</span></li>
-            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paywall version history</span></li>
-            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Audit logs</span></li>
-            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SSO with SAML or OIDC, on Enterprise</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Customer Center lets subscribers manage or cancel on their own in your app, and can show an offer to stay right before they cancel</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Refund Control answers App Store and Google Play refund requests with usage data</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paywall version history and audit logs, plus SSO on Enterprise</span></li>
           </ul>
           <a class="link-chevron" href="https://www.revenuecat.com/feature/infrastructure">Learn more about infrastructure<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <div class="teams-visual">
           <div class="unlock ui-card dot-canvas">
-            <div class="unlock-head"><p class="unlock-title">Subscribe once, unlocked everywhere</p><span class="tag">Illustrative</span></div>
+            <div class="unlock-head"><span class="tag">Illustrative</span></div>
 
             <div class="unlock-storeside">
               <p class="unlock-kicker">Store side</p>
@@ -588,10 +582,7 @@
                 <span class="unlock-store">Google Play</span>
                 <span class="unlock-store">Web</span>
               </div>
-              <div class="unlock-refund">
-                <b>Refund Control</b>
-                <small>Answers store refund requests with usage data and your preference. The store makes the final call.</small>
-              </div>
+              <span class="unlock-refund">Refund Control</span>
             </div>
 
             <div class="unlock-key">
@@ -604,7 +595,7 @@
               <li><span class="ux-device is-android"><span class="ux-pw is-unlocked"><i class="sun"></i><b></b><i class="is-feat"></i><i></i><span class="ud-pro"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Pro</span></span></span><span class="ux-name">Android</span></li>
               <li><span class="ux-device is-web"><span class="dots"></span><span class="ux-pw is-unlocked"><i class="sun"></i><b></b><i class="is-feat"></i><i></i><span class="ud-pro"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Pro</span></span></span><span class="ux-name">Web</span></li>
             </ul>
-            <p class="unlock-note">Pro unlocked on every device signed in to the same Tidelark account.</p>
+            <p class="unlock-note">Same account, every device.</p>
           </div>
         </div>
       </div>
@@ -674,7 +665,7 @@
     <div class="container">
       <h2 class="h2" id="final-title">
         <span class="v-b1">Build the reason they renew.</span>
-        <span class="v-b2">Build a subscription experience worth renewing.</span>
+        <span class="v-b2" hidden>Build a subscription experience worth renewing.</span>
       </h2>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://app.revenuecat.com/signup">Start for free</a>

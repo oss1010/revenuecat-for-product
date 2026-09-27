@@ -453,7 +453,7 @@
 .sim-cursor.is-clicking svg { transform: scale(0.85); transition: transform 120ms var(--ease); }
 /* .you-pill lives in base.css, shared with the hero loop */
 
-.sim-caption { font-size: var(--fs-small); }
+.sim-caption { margin-top: 1rem; font-size: var(--fs-small); }
 
 @media (min-width: 48rem) {
   .sim { gap: 1.25rem; }

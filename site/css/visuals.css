@@ -90,8 +90,8 @@
 }
 
 /* ---------- Section 7: subscribe once, unlocked everywhere ----------
-   Store side on top (where the subscription is bought, with Refund
-   Control beside the stores), the entitlement as the shared key in the
+   Store side on top (where the subscription is bought, with a small
+   Refund Control node), the entitlement as the shared key in the
    middle, and the same Pro state on iPhone, Android and web below.
    Device frames and mini screens come from shift.css (.ux-*).
    "Pro" unlocked: green fill, ink text 8.01:1. */
@@ -125,15 +125,15 @@
 .unlock-store.is-bought { border: 2px solid var(--rc-ink); background: var(--rc-white); color: var(--rc-ink); }
 .unlock-store b { font-weight: 700; }
 .unlock-store small { color: var(--rc-body); font-size: 0.6875rem; font-weight: 500; }
-.unlock-refund {
-  display: grid;
-  gap: 0.125rem;
-  padding: 0.5rem 0.625rem;
+.unlock-refund { /* a small node on the store side; the bullets carry the detail */
+  justify-self: start;
+  padding: 0.25rem 0.625rem;
   border: 1px dashed var(--rc-outline);
   border-radius: var(--radius-sm);
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
 }
-.unlock-refund b { color: var(--rc-ink); font-size: 0.8125rem; }
-.unlock-refund small { color: var(--rc-body); font-size: 0.75rem; line-height: 1.35; }
 
 /* The key, joined to the store side above and the devices below */
 .unlock-key {

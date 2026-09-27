@@ -4,8 +4,9 @@
       updates.
    2. Test: the cursor starts the test; two labeled lines draw in (A
       red, B green), the phone alternates A and B, then "B leads".
-   3. Roll out: the cursor clicks "Roll out B"; the card shows
-      "Published. No app release." and the phone locks to B.
+   3. Roll out: the cursor clicks the rollout bar; it fills green from
+      "B · 50%" to "B · 100%", then "No app release." and the phone
+      locks to B.
    Pauses off-screen, on hover and in background tabs. Under
    prefers-reduced-motion the markup's static Roll out state stays. */
 (function () {
@@ -19,7 +20,9 @@
   stage.querySelectorAll('.hl-card').forEach(function (c) { cards[c.getAttribute('data-card')] = c; });
   var designValue = stage.querySelector('[data-design-value]');
   var chart = stage.querySelector('[data-hl-chart]');
-  var rollBtn = stage.querySelector('[data-hl-roll]');
+  var bar = stage.querySelector('[data-hl-bar]');
+  var barFill = stage.querySelector('.hl-bar-fill');
+  var barPct = stage.querySelector('[data-hl-pct]');
   var sparkClip = stage.querySelector('.hl-spark-clip');
   var lineLabels = stage.querySelectorAll('.hl-line-lbl');
   var chips = stage.querySelectorAll('.hl-chip [data-step]');
@@ -32,12 +35,14 @@
   var visible = true; /* start immediately; the observer corrects this */
   var hovered = false;
   var sparkFrame = null;
+  var barFrame = null;
 
   function later(fn, ms) { timers.push(window.setTimeout(fn, ms)); }
   function clear() {
     timers.forEach(window.clearTimeout);
     timers = [];
     if (sparkFrame) window.cancelAnimationFrame(sparkFrame);
+    if (barFrame) window.cancelAnimationFrame(barFrame);
   }
   function setPaywall(v) { if (window.Tidelark) window.Tidelark.set(screen, v); }
 
@@ -56,6 +61,21 @@
       if (p < 1) sparkFrame = window.requestAnimationFrame(frame);
     }
     sparkFrame = window.requestAnimationFrame(frame);
+  }
+  function setBar(pct) {
+    barFill.style.width = pct + '%';
+    barPct.textContent = String(Math.round(pct));
+  }
+  function fillBar(ms, done) {
+    var start = null;
+    function frame(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / ms);
+      setBar(50 + 50 * (1 - Math.pow(1 - p, 2)));
+      if (p < 1) barFrame = window.requestAnimationFrame(frame);
+      else done();
+    }
+    barFrame = window.requestAnimationFrame(frame);
   }
   function showLineLabels(on) { lineLabels.forEach(function (l) { l.style.opacity = on ? '1' : '0'; }); }
 
@@ -76,6 +96,8 @@
       if (withCursor) { cursor.classList.remove('is-clicking'); el.classList.remove('is-pressed'); }
       fn();
     }, at);
+    /* Step aside so the change it made stays readable */
+    if (withCursor) later(function () { cursor.classList.remove('is-on'); }, at + 450);
   }
 
   function reset() {
@@ -85,6 +107,7 @@
     showLineLabels(false);
     cards.test.classList.remove('is-leading');
     cards.rollout.classList.remove('is-done');
+    setBar(50);
   }
 
   function cycle() {
@@ -108,9 +131,9 @@
     later(function () { setPaywall('b'); cards.test.classList.add('is-leading'); }, BEAT + 2050);
     /* 3. Roll out, 5.2 to 7.8s */
     later(function () { activate('rollout'); }, BEAT * 2);
-    click(rollBtn, BEAT * 2 + 800, function () {
-      cards.rollout.classList.add('is-done');
+    click(bar, BEAT * 2 + 700, function () {
       setPaywall('b');
+      fillBar(900, function () { cards.rollout.classList.add('is-done'); });
     });
     later(cycle, LOOP_MS);
   }

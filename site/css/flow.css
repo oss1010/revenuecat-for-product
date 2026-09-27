@@ -1,13 +1,12 @@
-/* Section 6: the web-to-app journey in two lanes, "On the web" and "In
-   the app". Desktop: two compact rows of cards joined by chevrons, on a
-   shared four-column grid. Mobile: a tight vertical list. Steps light
-   up in order, once, when the journey scrolls into view; completed
-   steps get a green check (ink on --rc-green, 8.01:1). Reduced motion:
-   final state. */
+/* Section 6: the web-to-app journey in four steps: Ad, Quiz, Checkout,
+   Unlocked in the app. Desktop: one row of cards joined by chevrons.
+   Mobile: a tight timeline. Steps light up in order, once, when the
+   journey scrolls into view; completed steps get a green check (ink on
+   --rc-green, 8.01:1). Reduced motion: final state. */
 
 .fit-head { display: grid; gap: 1.5rem; }
 .fit-intro { display: grid; gap: 1rem; justify-items: start; }
-.fit-web { display: grid; gap: 1rem; align-content: end; justify-items: start; }
+.fit-web { display: grid; gap: 1rem; align-content: start; justify-items: start; }
 
 .flow {
   display: grid;
@@ -16,14 +15,6 @@
   padding: clamp(1rem, 0.75rem + 1vw, 1.5rem);
 }
 .flow > .tag { justify-self: start; }
-.flow-lane { display: grid; gap: 0.5rem; }
-.flow-lane-label {
-  color: var(--rc-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 .flow-steps { display: grid; gap: 0.625rem; }
 .flow-step { position: relative; display: grid; }
 /* Mobile connector: the rail from one check to the next */
@@ -92,18 +83,6 @@
   font-size: 0.75rem;
   font-weight: 700;
 }
-.flow-tag { justify-self: start; color: var(--rc-body); font-size: 0.75rem; font-style: italic; }
-.flow-label {
-  justify-self: start;
-  padding: 0.0625rem 0.5rem;
-  border-radius: 0.375rem;
-  background: var(--rc-offwhite);
-  color: var(--rc-ink);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
 
 /* Lit (completed) steps */
 .flow-step.is-lit .flow-check { border-color: var(--rc-green); background: var(--rc-green); color: var(--rc-ink); } /* green fill, ink check 8.01:1 */
@@ -117,27 +96,9 @@
 .flow-ad-text small { color: var(--rc-body); font-size: 0.6875rem; }
 .flow-ad-cta { margin-left: auto; padding: 0.125rem 0.625rem; border-radius: var(--radius-pill); background: var(--rc-offwhite); color: var(--rc-ink); font-size: 0.75rem; font-weight: 700; }
 
-/* Targeting chips */
-.flow-targets { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; padding-top: 0.25rem; }
-.flow-targets p { color: var(--rc-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.flow-targets ul { display: flex; flex-wrap: wrap; gap: 0.375rem; }
-.flow-targets li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.1875rem 0.625rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius-pill);
-  background: var(--rc-white);
-  color: var(--rc-ink);
-  font-size: 0.8125rem;
-  font-weight: 600;
-}
-.flow-targets li svg { width: 0.875rem; height: 0.875rem; color: var(--rc-body); }
 
 @media (min-width: 48rem) {
-  .fit-head { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: end; }
-  /* Both lanes share one four-column grid, so the cards line up */
+  .fit-head { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
   .flow-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
   .flow-card {
     height: 100%;
