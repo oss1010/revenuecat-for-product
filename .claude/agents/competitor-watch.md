@@ -20,3 +20,19 @@ For anything you are given:
 
 Never soften. If our positioning is someone else's positioning,
 say it in the first line.
+
+## Weighting evidence
+Classify every finding by where it appears:
+- OWNED: dedicated solutions or persona page, or homepage headline. The
+  competitor owns this message to this audience. Flag as a positioning
+  conflict.
+- CLAIMED: homepage section or feature page. Strong but contestable.
+  Flag it and say whether RevenueCat can prove it more completely.
+- PARITY: docs, changelogs, help center. The capability exists but is
+  not a position. This does NOT block RevenueCat from claiming the
+  value. Note as parity only.
+
+RevenueCat is the category leader; the competitors are challengers
+positioning against it. Never recommend retreating into a niche to
+avoid overlap. A leader can claim the central category promise if it
+can prove it more completely than any single challenger.

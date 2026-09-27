@@ -168,3 +168,9 @@ Headlines tested:
   it, because every competitor's pitch requires a switch and
   RevenueCat's doesn't. Same lesson as the brand palette: surface
   material was wrong, the real product was right.
+- competitor-watch found capability parity in competitor docs. It was
+  initially over-weighted as positional ownership, which drove a
+  retreat to a narrow "already installed" direction. Rejected: a
+  category leader should not position like a challenger. Added a
+  source-tier weighting rule (owned / claimed / parity) to
+  competitor-watch.
