@@ -1030,3 +1030,47 @@ the proof points.
   analytics", to match the cut copy line.
 - Positioning: two product gaps added from the copy v1 review, the
   forecast's confidence range and time to enough data at low traffic.
+
+## 2026-09-27: Build phase 1, scaffold and simulator
+
+### Stack
+- Static site in /site: plain HTML, CSS and vanilla JavaScript. No
+  framework, no build step. Deploys on Vercel with /site as the root.
+- Why: the page is one route with four small interactive modules. A
+  framework adds a toolchain and a bundle without adding anything the
+  reader sees. Plain files keep every line reviewable, load fast, and
+  leave nothing to break between build and deploy.
+- One CSS and one JS file per dynamic module (simulator.css,
+  simulator.js), plus tokens.css from CLAUDE.md and base.css.
+- Copy lives only in index.html, verbatim from docs/copy.md v1.1. The
+  simulator script reads its text from data attributes and labels, so
+  it holds no copy of its own.
+- ?v=b2 is applied by a tiny script in <head> before first paint. Both
+  lines sit in the markup and CSS shows one, so the hero never flashes
+  the wrong variant.
+- The nav CTA stays outlined while any in-page primary CTA is on
+  screen, to keep one primary CTA per viewport.
+- The in-app preview could not read ~/Documents, so the site is served
+  from the shell: python3 -m http.server 4173 --directory site.
+
+### Simulator outcome: first attempt, no fallback needed
+- Two bugs caught in the 390px check and fixed within the first
+  attempt:
+  - Both paywall states showed at once. `.pw-plans { display: grid }`
+    overrode the `hidden` attribute, so the rollout would not have
+    visibly changed the phone. Fixed with a global `[hidden]` rule.
+  - "Predicted 12-month LTV" and "3-day trial" broke at the hyphen in
+    narrow cards. Fixed with no-wrap spans; the copy is unchanged.
+- Verified in the browser at 390px: arrow keys switch the toggle; the
+  winner flips A to B with the green fill; values, labels and the
+  aria-live status update; Enter opens the modal confirm with focus on
+  Confirm; Confirm updates the Tidelark paywall and shows the toast
+  with the cat hop; focus returns to the button; Escape cancels with
+  no rollout; the toast clears after 5 seconds; ?v=b2 swaps the hero
+  and closing band both ways; no horizontal overflow at 390px or
+  1440px.
+- Not verified by emulation: prefers-reduced-motion. It is handled in
+  CSS (transitions and animations off) and in the script (instant text
+  swaps, no pop), but the preview pane could not emulate the setting.
+- Headless screenshots and the brand-guard pass were skipped at the
+  user's request. Screenshots to be taken by hand.

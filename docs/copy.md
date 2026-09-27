@@ -131,6 +131,10 @@ and taxes.
 Card 2, "Enterprise": Custom pricing and SSO.
 CTA: Talk to sales
 Final band headline: Build the reason they renew.
+Final band headline with ?v=b2: Build a subscription experience worth
+renewing.
+(Each variant closes with the other's line: the hero and the final
+band swap together.)
 Primary CTA: Start for free. Secondary: Talk to sales.
 Link: Already on RevenueCat? Open Paywalls in your dashboard
 

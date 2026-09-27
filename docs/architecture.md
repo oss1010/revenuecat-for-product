@@ -27,6 +27,8 @@ docs/copy.md v1.1 (locked).
    Mobile: phone only, with a caption chip cycling the three decisions.
    Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
+   The closing band swaps with the hero: each variant closes with the
+   other's line (B1 closes with B2, B2 closes with B1).
    CTAs: Start for free (primary, blue). Talk to sales (secondary,
    outlined). Small link: "Already on RevenueCat? Open Paywalls".
 
@@ -116,7 +118,7 @@ docs/copy.md v1.1 (locked).
    $2,500 in monthly tracked revenue, then 1% of all tracked revenue,
    with Experiments and Targeting included." Keep "all".
    Card "Enterprise": custom pricing and SSO, talk to sales.
-   Closing CTA.
+   Closing band: the other hero line (see section 1), then the CTAs.
 
 ## Coverage: what's new, and where it shows
 | Capability | Sections |
