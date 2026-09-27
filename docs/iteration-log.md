@@ -661,3 +661,95 @@ Half of this is Superwall's positioning. The supporting frame, where the PM owns
 - Prove "make it like one" with one system: predicted LTV winner, one-action rollout, Benchmarks, and no new vendor for existing customers. If the proof is "without engineering" instead, it is the promise every vendor makes, and Superwall makes it best.
 
 Source: docs/competitive-scan.md (only file read, no web access used).
+
+## 2026-09-26: Positioning v0.3 (locked)
+
+- v0.2 reviewed. Structure held: each archetype described one of the
+  three jobs unprompted. The umbrella phrase failed as customer copy.
+  Unowned is not the same as resonant. Kept as an internal principle;
+  hero line deferred to copy.
+- Governance added as a proof line for enterprise, not as the lead.
+  Consistent with rejecting "defend": proof for one audience is not
+  the promise for all.
+- Product name corrected to Refund Control, its public name.
+- Archetype sentences saved as copy inputs, labeled synthetic.
+
+### Conditional edits, resolved by the audit below
+- Realized-LTV check in Job 2: not added. Item 1 failed on checking a
+  forecast; seeing realized and predicted side by side is not a check.
+  Stays under product gaps.
+- SSO: added to the governance proof line, Enterprise only.
+- Proactive alerts: partly passed. Revenue anomaly email alerts exist
+  in beta, so the product gap was narrowed to alerts beyond revenue.
+  Not added as a Job 2 proof.
+- Pricing: one-line statement added to notes for architecture.
+
+### Also changed in v0.3
+- "owns" removed from The tension as well as Who it's for. It was the
+  word competitor-watch flagged as Superwall's.
+- Who it's for: "They're responsible for" became "They lead", to avoid
+  repeating "responsible for" in one sentence.
+- Job 3: "(Pro and Enterprise)" moved next to Targeting, since it
+  applies to all of Targeting, not only custom attributes.
+- Open risks: the pricing line now reflects the pricing statement
+  instead of saying the page can't answer pricing at all.
+
+### claim-auditor (targeted audit behind v0.3)
+
+#### Targeted claim audit: positioning v0.3, checked 2026-09-26
+
+docs/brief.md is not a source. Rows reuse earlier claim-auditor results where they apply: the Experiments and Targeting tiers, and the Prediction Explorer accuracy condition. The fetch tool summarises pages, so check quoted wording against the live page before publishing.
+
+| # | Claim | Source URL | Verdict | Safe wording |
+|---|---|---|---|---|
+| 1a | A PM can see predicted and realized LTV for the same cohort | https://www.revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer. It lists Realized LTV, Predicted LTV, Realized Revenue and Predicted Revenue. Predicted LTV is realized revenue "plus the additional revenue that we predict will be generated". Predicted cells sit "on the right side of the diagonal divider in the table" | PASS, conditional. This is realized revenue to date plus a forecast of the rest, in one table. It does not check an earlier forecast | See realized and predicted LTV for each cohort in one chart |
+| 1b | A PM can check a past LTV prediction against what the cohort later realized | Same Prediction Explorer page. Accuracy comes only from RevenueCat's own testing: "In testing our prediction model, we've observed that" ">75% of Products with at least 2,000 paid subscriptions". https://www.revenuecat.com/docs/dashboard-and-metrics/charts/cohort-explorer has realized metrics only (Realized LTV, Realized LTV / Customer, Proceeds and others) and never mentions predictions. Neither page links to the other | FAIL. No page describes storing a past prediction or comparing it to the realized outcome | none |
+| 1c | A PM can compare an experiment's predicted 12-month LTV with what happened after the test or after rollout | https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12 calls it "a forward-looking signal while the experiment is still running". It does not say whether the prediction stays visible after the test stops. https://www.revenuecat.com/docs/tools/experiments-v1/experiments-results-v1 describes no holdout, no post-rollout measurement and no check of a prediction | FAIL | none |
+| 1d | Experiment results keep maturing after the test stops | Experiments results docs (above): "results continue to update for the next 400 days so Realized LTV can mature". The metrics are Realized LTV per customer and per paying customer | PASS, conditional. Only customers enrolled during the test are covered. The docs say "stop". That this also applies after "Roll out winner" is inferred from the 2026-02-06 changelog, where rollout stops the test | Realized LTV per variant keeps updating for 400 days after a test stops |
+| 2a | Pro is free up to $2,500 MTR, then 1% | https://www.revenuecat.com/pricing/: "Pay nothing for up to $2,500 in monthly tracked revenue." "Then pay 1% of what you track". https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management: "1% of your MTR tracked (before store commission and taxes)". Worked example: $2,600 MTR, "a charge of $26" | PASS. Above $2,500, the 1% applies to all MTR, not just the amount over $2,500 | Free up to $2,500 in monthly tracked revenue, then 1% of all tracked revenue |
+| 2b | Experiments and Targeting are on the Pro plan | Pricing page lists "A/B testing with remote configuration" and "Segmentation tools to target paywalls" under "All of RevenueCat's features". Docs (earlier audit): Experiments "available to Pro & Enterprise customers", and Targeting "available on Pro and Enterprise plans". The pricing page shows only two plans | PASS. The pricing page uses generic names, not "Experiments" or "Targeting" | Experiments and Targeting are included on the Pro plan |
+| 2c | Enterprise pricing | Pricing page: "Custom Pricing & Usage", CTA "Talk to us" | PASS | Enterprise: custom pricing |
+| 3a | RevenueCat alerts on revenue anomalies | https://www.revenuecat.com/docs/dashboard-and-metrics/anomaly-detection-notifications: "Anomaly Detection Notifications are currently in beta". It offers Custom Threshold Alerts and Auto Detection Alerts. Alerts are "delivered to your registered email address", and "Anomaly checks are performed twice daily". https://www.revenuecat.com/feature/alerts-app-health: "Receive email alerts about potential revenue anomalies for your projects." | PASS, conditional. Beta, revenue only, email only, checked twice a day. No tier stated. The feature page has no beta label but the docs do, so follow the docs | Email alerts on revenue anomalies, by custom threshold or auto-detection (beta) |
+| 3b | Alerts on other metrics (conversion, churn, trials, paywall conversion), or anomaly alerts sent to Slack | Same two pages. Only revenue is named, and anomaly alerts go by email only | FAIL | none |
+| 3c | Slack, Discord and webhook "alerts" on renewals, cancellations and billing issues | Feature page: "Get alerts when renewals fail, subscribers cancel, billing issues arise". "Connect RevenueCat to Slack, Discord, or any custom endpoint via webhooks." Pricing page: "Real-time event notifications via webhooks" | FAIL as monitoring of monetization issues. These forward single events, with no threshold or trend detection. PASS as an event feed | Send subscription events, like failed renewals, to Slack or webhooks |
+| 4 | Dashboard SSO | https://www.revenuecat.com/docs/projects/sso: "SSO is currently available for customers on an Enterprise plan." Protocols: "SAML or OpenID Connect (OIDC)". Configured through WorkOS and enabled by your account manager. "Users with your organization's email domain will be required to sign in through SSO." Identity provider groups map to RevenueCat roles | PASS. Enterprise only. SSO is not on the pricing page. No beta label | SAML or OIDC single sign-on on the Enterprise plan |
+
+#### Pricing sentence for near a CTA
+
+"Free up to $2,500 in monthly tracked revenue, then 1% of all tracked revenue, with Experiments and Targeting included."
+
+- Keep "all". Once past $2,500, the 1% applies to the whole amount, not only the excess. For example, $2,600 is billed $26.
+- If there is room for a footnote, add: "Monthly tracked revenue is measured before store commission and taxes."
+- Do not turn a persona's MRR into a dollar fee on the page. MTR counts purchases and renewals in the month, including non-subscription products. That is not MRR.
+- I did not check legacy plans for existing customers. https://www.revenuecat.com/blog/company/navigating-revenuecats-new-pricing-for-existing-users exists but was not fetched. So the page cannot yet say whether an existing customer's current plan includes these tools.
+
+#### Note: item 1, forecast against realized
+
+- **First half, cohorts:**
+  - Prediction Explorer shows a cohort's realized revenue to date next to the predicted remainder, in one table.
+  - That is a comparison for the same cohort at one point in time. It is not a way to check a past forecast. No page says old predictions are kept so they can be compared with the realized outcome.
+  - The only accuracy evidence is RevenueCat's own test result, which comes with conditions.
+  - Cohort Explorer shows realized metrics only, and no page connects it to Prediction Explorer.
+- **Second half, experiments:** nothing documents a check of the forecast.
+  - The predicted 12-month LTV is described only while a test runs.
+  - Realized LTV per variant keeps updating for 400 days after the test stops. That is longer than 12 months, so a PM could write down the forecast at rollout and compare it by hand a year later. No page describes this, and it is a workaround, not a feature.
+  - There is no holdout after rollout. Only customers enrolled during the test keep maturing.
+  - Do not claim forecast verification anywhere on the page. This answers the Growth PM's "Nothing compares predicted against realized 12-month revenue", and the answer is that the gap is real.
+
+#### Note: item 3, alerts
+
+- The Growth PM asked whether there is an alert. Yes, but only for revenue.
+- Anomaly detection emails on revenue changes, by a custom threshold or by auto-detection. It is in beta and checks twice a day.
+- Nothing is documented for paywall conversion, trial conversion or churn alerts.
+- Slack, Discord and webhooks forward single subscription events, such as a failed renewal. They are an event feed, not detection of monetization issues.
+- If the page pairs "late detection of monetization issues" with alerts, keep it to revenue anomaly emails and include "(beta)".
+
+#### Note: item 4, SSO
+
+- SSO supports SAML or OIDC, on the Enterprise plan only, enabled through the account manager.
+- It adds to the governance proof from the v0.2 audit: collaborator roles on every plan, plus audit logs.
+- Minor difference: the SSO page lists five roles for group mapping and leaves out Operations, which the collaborators page includes. Both lists came from fetch summaries, so check before listing role names.
+
+#### Pages that did not load
+
+- None. The pricing page FAQ answers ("What is MTR?", "what happens when I reach $2.5k MTR?") did not render in the fetch. https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management was used instead.
