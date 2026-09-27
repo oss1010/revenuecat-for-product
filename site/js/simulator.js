@@ -14,6 +14,7 @@
   var status = root.querySelector('[data-status]');
   var stateText = root.querySelector('[data-state-text]');
   var rolloutBtn = root.querySelector('[data-rollout]');
+  var resetBtn = root.querySelector('[data-reset]');
   var dialog = root.querySelector('[data-dialog]');
   var dialogVariant = root.querySelector('[data-dialog-variant]');
   var toast = root.querySelector('[data-toast]');
@@ -114,7 +115,26 @@
     setPhone(variant);
     stateText.textContent = stateText.getAttribute('data-done');
     showToast();
+    rolloutBtn.disabled = true;
+    rolloutBtn.textContent = rolloutBtn.getAttribute('data-done-label');
+    resetBtn.hidden = false;
   }
+
+  /* "Reset demo": back to the state the page loaded in. */
+  var initialJudge = 'conversion';
+  function reset() {
+    window.clearTimeout(toastTimer);
+    toast.classList.remove('is-visible');
+    toastText.textContent = '';
+    select(initialJudge);
+    setPhone('A');
+    stateText.textContent = stateText.getAttribute('data-running');
+    rolloutBtn.disabled = false;
+    rolloutBtn.textContent = rolloutBtn.getAttribute('data-label');
+    resetBtn.hidden = true;
+    rolloutBtn.focus();
+  }
+  resetBtn.addEventListener('click', reset);
 
   radios.forEach(function (radio) {
     radio.addEventListener('change', function () {
@@ -130,13 +150,18 @@
       dialog.showModal();
     } else if (window.confirm(root.querySelector('[data-dialog-title]').textContent)) {
       rollOut(lead);
+      resetBtn.focus();
     }
   });
 
   if (dialog) {
     dialog.addEventListener('close', function () {
-      if (dialog.returnValue === 'confirm') rollOut(winner());
-      rolloutBtn.focus();
+      if (dialog.returnValue === 'confirm') {
+        rollOut(winner());
+        resetBtn.focus(); /* the rollout button is now disabled */
+      } else {
+        rolloutBtn.focus();
+      }
     });
   }
 
@@ -147,6 +172,7 @@
   function demo() {
     if (reduced()) {
       select('ltv');
+      initialJudge = 'ltv';
       return;
     }
     if (!cursor || !('IntersectionObserver' in window)) return;

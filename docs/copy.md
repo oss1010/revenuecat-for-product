@@ -1,8 +1,29 @@
 # Copy: /for-product refresh
 
-Status: v1.2 LOCKED. Hero B1 by default, B2 as the hero test variant.
+Status: v1.3 LOCKED. Hero B1 by default, B2 as the hero test variant.
 Voice: short, direct, a little playful. The headlines carry the
 argument on their own. All mock data is illustrative and labeled.
+
+v1.3 changes (build phase 2, 2026-09-27), each marked [v1.3] below:
+- The page now speaks to product managers by name: hero eyebrow,
+  section 3 sub, section 4 body, section 7 opening, section 8 sub and
+  card labels, and the meta description.
+- Section 3 becomes one module: three tabs, each with a before/after
+  slider and a "See how" link.
+- Section 5: toast in its own slot; "Rolled out" button state and a
+  "Reset demo" link; Pixelcut moves beside "Test up to four variants
+  at once".
+- Section 8: audited plan bullets, and a "Trusted by" logo row below
+  both cards.
+- Customer logos added, from RevenueCat's own product-page logo strips.
+- Approved by the user 2026-09-27: the "Rolled out" state, the
+  sparkline labels, and the funnel-step details.
+
+Page meta [v1.3]:
+- Title (from the live page): For Product Managers | RevenueCat
+- Meta description: RevenueCat for product managers: design paywalls,
+  test pricing and offers, and roll out winners judged on predicted
+  12-month value, without waiting on an app release.
 
 v1.2 changes (build phase 1.5, 2026-09-27), each marked [v1.2] below:
 - Secondary CTAs are chevron text links everywhere. The closing band
@@ -15,6 +36,8 @@ v1.2 changes (build phase 1.5, 2026-09-27), each marked [v1.2] below:
 - Proof wording is exact, from the claim audit logged 2026-09-27.
 
 ## 1. Hero
+
+Eyebrow pill [v1.3]: For product teams
 
 H1 (default, B1):
 Build a subscription experience worth renewing.
@@ -39,30 +62,47 @@ Hero visual, decision cards (tagged Illustrative):
 Mobile caption chip cycles: "Changed: annual plan featured" /
 "Learning: B leads on predicted 12-month value" / "Fitted: different
 paywall in Germany"
+Hero loop, built [v1.3]: card headers Change, Learn, Fit. The Tidelark
+phone from section 5 changes with each card: annual plan featured
+(with the toast), then variant B's 7-day trial, then a different
+(dark) paywall with a "Germany" chip. Static state under reduced
+motion: Learn.
 
 ## 2. Scale strip
 146K+ apps supported
 $17B+ in revenue processed
-[customer logos from revenuecat.com only]
+Logos [v1.3], grayscale: Notion, OpenAI, VSCO, Runna, Ladder, PhotoRoom.
+Files downloaded from RevenueCat's own product-page logo strips
+(cdn.sanity.io), 2026-09-27. Each is shown on revenuecat.com: Notion,
+OpenAI, VSCO, Runna and Ladder on /feature/infrastructure; PhotoRoom
+on /feature/experiments, /feature/paywalls and /feature/charts.
 (Not used: the Refund Control page's trust line. It says "annual
 revenue", which the homepage labels don't. Audit 2026-09-27.)
 
 ## 3. The shift
 Headline: From ticket to test.
-Left label: Before
-Before steps: File a ticket > Wait for a sprint > Ship an app update >
-Wait for review > Judge it on trial starts
-Right label: With RevenueCat
-Now steps: Edit it in the dashboard > Test it in your app > See
-predicted 12-month value > Roll out the winner
-Separate beat, visually distinct: Offer it on the web, too.
-Rows, anchor-linked: Change it without a release / Learn what users
-value / Fit the offer to every user
+Sub [v1.3]: What changes for a product manager, one job at a time.
+Module [v1.3]: three tabs, each with a before/after slider. Slider
+labels: Before | With RevenueCat. Each tab ends with "See how >",
+linking to its section.
+- Tab 1, Change it without a release.
+  Before: File a ticket > Wait for a sprint > Ship an app update >
+  Wait for review
+  Now: Edit it in the dashboard > Publish
+- Tab 2, Learn what users value.
+  Before: Judge it on trial starts
+  Now: See predicted 12-month value > Roll out the winner
+- Tab 3, Fit the offer to every user.
+  Before: One paywall for everyone
+  Now: Different paywalls by audience > Offer it on the web, too.
+  (Web is a channel here, never a forecasted experiment.)
+Replaced: the v1.2 before/now lists and the three arrow rows.
 
 ## 4. Change it without a release
 Headline: Your paywall shouldn't wait for a release.
-Body: Integrate once, then change paywalls and the plans you offer
-from the dashboard. One release, then none.
+Body [v1.3]: Integrate once. From then on, your product team changes
+paywalls and the plans you offer from the dashboard. One release, then
+none.
 Proof points:
 - Visual editor and pre-built templates
 - AI Editor for first drafts, from a prompt or a screenshot
@@ -92,7 +132,10 @@ Simulator [v1.2]:
   - Button: Roll out winner
   - Confirm dialog: "Roll out variant [current winner] to all users?"
     Buttons: Confirm, Cancel.
-  - Toast, after Confirm: Rolled out. No app release.
+  - Toast, after Confirm: Rolled out. No app release. It has its own
+    slot below the status line and never overlaps anything [v1.3].
+  - After rollout [v1.3]: the button becomes a disabled "Rolled out",
+    and a small "Reset demo" link restores the starting state.
 - The user's phone, right, showing only the paywall:
   - App: Tidelark (a morning-routine app)
   - Headline: Mornings that stick.
@@ -103,17 +146,17 @@ Simulator [v1.2]:
 - Caption: Illustrative data. The 12-month forecast appears once an
   experiment with revenue as its primary metric has enough data. It's
   a signal, not a guarantee.
-Below the simulator, one compact row [v1.2]:
-- Chart card, static, tagged Illustrative: Paywall performance:
+Below the simulator, two rows [v1.3]:
+- Row 1: chart card, static, tagged Illustrative: Paywall performance:
   conversion, LTV and abandonment for each RevenueCat paywall.
-  Sparkline labels: Conversion, LTV, Abandonment.
+  Sparkline labels (approved): Conversion, LTV, Abandonment.
   (Production note: this card shows realized LTV. No forecast and no
-  "predicted" on it.)
-- Supporting lines:
-  - Test up to four variants at once.
-  - Compare your conversion, churn and LTV with similar apps in
-    Benchmarks.
-Proof block [v1.2]:
+  "predicted" on it.) Beside it: Compare your conversion, churn and
+  LTV with similar apps in Benchmarks.
+- Row 2: "Test up to four variants at once." on a small card with
+  A/B/C/D chips, and beside it the Pixelcut proof block. No copy near
+  Pixelcut mentions 12-month value.
+Proof block [v1.2, moved v1.3]:
 - Quote: "Being able to find a variant that produces a 16% increase in
   subscribers definitely makes RevenueCat worth it." Key number in red:
   16% increase.
@@ -133,9 +176,11 @@ and take payment. One link unlocks their subscription in the app.
 Flow labels (flow tagged Illustrative) [v1.2]: Ad click > Web funnel >
 Checkout > Get a Redemption Link > Download the app > Tap the link,
 subscription active
-Step details, kept from v1.1 for the visual: the funnel step asks
+Step details, kept from v1.1 for the visual (approved 2026-09-27): the funnel step asks
 "What's your goal?" and is tagged "Localized to the visitor's
 country"; checkout shows "Apple Pay or Google Pay, where supported".
+Layout [v1.3]: visual left, text right on desktop; text first on
+mobile.
 Customer story block [v1.2]:
 - Label: Customer story
 - Text: Floga made $120K+ in one day selling lifetime memberships
@@ -149,8 +194,10 @@ Small print: Targeting is included on Pro and Enterprise.
 
 ## 7. Teams and foundation
 Headline: Decide who can change a live paywall.
-Body: Give each teammate a collaborator role, including a Growth role
-that can edit paywalls and offerings. Paywall version history shows
+Layout [v1.3]: text left, visual (badges, then diagram) right.
+Body: Give product managers, growth leads and engineers the right
+collaborator role, including a Growth role that can edit paywalls and
+offerings [v1.3]. Paywall version history shows
 who saved each version, and when. Audit logs show who changed what in
 the project. On Enterprise, sign in with SSO over SAML or OIDC.
 Underneath, one set of entitlements covers the App Store, Google Play
@@ -177,13 +224,31 @@ section. None is documented.)
 
 ## 8. Two ways to start
 Headline: Two ways to start.
-Card 1, "Pro": Free up to $2,500 in monthly tracked revenue, then 1%
-of all tracked revenue, with Experiments and Targeting included.
+Sub [v1.3]: From a product team of one to a whole product org.
+Card 1, "Pro", label "For product teams getting started" [v1.3]:
+Free up to $2,500 in monthly tracked revenue, then 1% of all tracked
+revenue, with Experiments and Targeting included.
+Bullets [v1.3, claim audit 2026-09-27]:
+- Paywall editor with pre-built templates
+- Dashboard for 40+ key metrics
+- Web-to-app Funnels included
 Footnote: Monthly tracked revenue is measured before store commission
 and taxes.
 CTA, card 1: Start for free, as a chevron text link [v1.2]
-Card 2, "Enterprise": Custom pricing and SSO.
+Card 2, "Enterprise", label "For product orgs at scale" [v1.3]: Custom
+pricing and SSO.
+Bullets [v1.3, claim audit 2026-09-27]:
+- Dedicated support
+- Custom SLAs for high-volume apps
+- Volume discounts
 CTA, card 2: Talk to sales, as a chevron text link [v1.2]
+Each card has an icon tile [v1.3].
+"Trusted by" row [v1.3], full width below both cards, never inside
+one: no public page ties any customer to a plan. Logos, grayscale:
+Buffer, Zero, GoodNotes, StockTwits (Buffer, Zero and GoodNotes on
+/for-product; StockTwits on /feature/experiments, /feature/paywalls,
+/feature/charts and /feature/refund-control). No overlap with the
+scale strip.
 Final band headline: Build the reason they renew.
 Final band headline with ?v=b2: Build a subscription experience worth
 renewing.

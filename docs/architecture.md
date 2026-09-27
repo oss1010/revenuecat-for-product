@@ -1,7 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1.2. Built on docs/positioning.md v0.3. Words live in
-docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
+Status: v1.3. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.3 (locked). Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -25,6 +25,13 @@ docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
    offer for an audience or on web). Cards activate in sequence, about 3
    seconds each, and each visibly changes what the phone shows.
    Mobile: phone only, with a caption chip cycling the three decisions.
+   Built (phase 2): the same Tidelark phone as the simulator. Change
+   features the annual plan and shows "Published. No app release.";
+   Learn shows variant B's 7-day trial; Fit switches to a dark paywall
+   with a "Germany" chip. A 9-second loop; the "You" cursor clicks each
+   card on desktop. Pauses off-screen, on hover and in background
+   tabs. Reduced motion: the Learn state, static. Eyebrow pill above
+   the H1: "For product teams".
    Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    The closing band swaps with the hero: each variant closes with the
@@ -36,24 +43,25 @@ docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
 
 2. SCALE STRIP. Static.
    146K+ apps supported. $17B+ revenue processed. Customer logos
-   taken from revenuecat.com only. Shares the hero's off-white.
+   taken from revenuecat.com only: six grayscale logos from RevenueCat's
+   own product-page strips. Shares the hero's off-white.
    Not used: the Refund Control page's trust line, which says "annual
    revenue".
 
-3. THE SHIFT. Dynamic, drag-to-reveal before/after slider.
-   Job: the whole argument in one glance, for skimmers.
-   Left, before: a paywall change as a ticket, a sprint, App Review,
-   judged on trial starts.
-   Right, now: edited in the dashboard, tested in the app, predicted
-   12-month value shown, rolled out in one action. Then a separate
-   beat: a web checkout for people who arrive on the web.
-   Below: three rows (Change, Learn, Fit) that anchor-link to sections
-   4, 5 and 6.
+3. THE SHIFT. Dynamic: one module, three tabs, one before/after
+   slider per tab.
+   Job: the whole argument in one glance, for skimmers, one job at a
+   time.
+   Tabs: Change it without a release, Learn what users value, Fit the
+   offer to every user. Before sits left, Now right; dragging the
+   handle moves the split (pointer, touch, keyboard: arrows, Page
+   Up/Down, Home, End). Each tab ends with "See how >" to its section.
+   Fallback, not needed: tabs with side-by-side Before and Now columns.
    Rule: "before" is the PM's status quo, never an older RevenueCat.
    Rule: web appears as a channel, never as a forecasted experiment.
    Predicted 12-month LTV is not claimed for web (positioning v0.3).
 
-4. JOB 1: CHANGE IT WITHOUT A RELEASE. Static.
+4. JOB 1: CHANGE IT WITHOUT A RELEASE. Static. Text left, visual right.
    Visual: the paywall editor with the AI Editor prompt bar and a
    published state.
    Proof: visual editor, templates, AI Editor as a drafting tool
@@ -80,19 +88,23 @@ docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
    the LTV option, the winner flips, a 2-second pause, the cursor
    leaves. Never repeats. Any click, key press or focus in the
    simulator cancels it. Reduced motion: the LTV view, static.
+   The toast has its own slot below the winner line and never overlaps.
+   After rollout the button is a disabled "Rolled out", with a "Reset
+   demo" link that restores the starting state.
    Caption: the forecast appears once enough data is in, for
    experiments with a revenue primary metric. A forward-looking
    signal, not a guarantee.
-   Below it, one compact row: a paywall performance chart card,
+   Below it, two rows. First: a paywall performance chart card,
    illustrative (realized LTV for RevenueCat Paywalls only, so no
-   forecast on it), and the two supporting lines: multivariate testing
-   with no predicted LTV attached, and Benchmarks.
-   Then the proof block: Pixelcut (MOJO failed the audit).
+   forecast on it), beside the Benchmarks line. Second: "Test up to
+   four variants at once" (no predicted LTV attached) beside the
+   Pixelcut proof block. Nothing near Pixelcut mentions 12-month value.
    Fallback if over the timebox: a static two-panel comparison with the
    same numbers and the green winner.
 
 6. JOB 3: FIT THE OFFER TO EVERY USER, WHEREVER THEY BUY. Dynamic,
-   plays once on scroll.
+   plays once on scroll. Visual left, text right (text first on
+   mobile).
    Visual: an ad, then a web funnel with a branch by survey answer,
    tagged as localized to the visitor's country, then web checkout
    with Apple Pay and Google Pay labeled "where supported", then a
@@ -116,7 +128,8 @@ docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
      Floga proof, as the case study's own "RevenueCat Web Billing".
    - No store-fee or commission claims anywhere in this section.
 
-7. TEAMS AND FOUNDATION. Static.
+7. TEAMS AND FOUNDATION. Static. Text left; visual right (badges,
+   then the diagram).
    Job: answer the enterprise PM's first question, who can change a
    live paywall, with verified capabilities only.
    Visual, top: the governance badges lead. Collaborator roles
@@ -137,6 +150,10 @@ docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
    $2,500 in monthly tracked revenue, then 1% of all tracked revenue,
    with Experiments and Targeting included." Keep "all".
    Card "Enterprise": custom pricing and SSO, talk to sales.
+   Each card: an icon tile, a label ("For product teams getting
+   started", "For product orgs at scale") and three audited bullets.
+   "Trusted by" logos sit full width below both cards, never inside
+   one: no public page ties a customer to a plan.
    Closing band: the other hero line (see section 1), then the CTAs.
 
 ## Coverage: what's new, and where it shows

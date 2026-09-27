@@ -1,0 +1,157 @@
+/* Section 3: one interactive module. Three tabs, one per job, each with
+   its own before/after drag slider. Before sits on the left, Now on the
+   right; dragging the handle moves the split. */
+
+.shift { display: grid; gap: 1.25rem; }
+
+/* Tabs: stacked on mobile, a row on desktop */
+.shift-tabs {
+  display: grid;
+  gap: 0.5rem;
+}
+.shift-tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.125rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.shift-tab:hover { border-color: var(--rc-outline); }
+.shift-tab[aria-selected="true"] {
+  border-color: var(--rc-ink);
+  background: var(--rc-ink);
+  color: var(--rc-white);
+}
+.shift-tab .tab-num {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-size: 0.8125rem;
+}
+
+.shift-panel { display: grid; gap: 1rem; justify-items: start; }
+
+/* The compare slider */
+.compare {
+  --pos: 50%;
+  position: relative;
+  display: grid;
+  width: 100%;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--rc-shadow);
+  overflow: hidden;
+  touch-action: pan-y; /* vertical scroll stays native; horizontal drags move the split */
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: ew-resize;
+}
+.compare-layer {
+  grid-area: 1 / 1;
+  display: grid;
+  align-content: start;
+  padding: clamp(1rem, 0.75rem + 1.5vw, 2rem);
+}
+.compare-before { background: var(--rc-offwhite); }
+.compare-now {
+  background: var(--rc-white);
+  clip-path: inset(0 0 0 var(--pos));
+}
+.compare-before .compare-content { width: calc(50% - 1.5rem); }
+.compare-now .compare-content { width: calc(50% - 1.5rem); margin-left: auto; }
+
+.compare-label {
+  display: inline-block;
+  justify-self: start;
+  margin-bottom: 1rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+.compare-before .compare-label { border: 1px solid var(--rc-outline); color: var(--rc-body); background: var(--rc-white); }
+.compare-now .compare-label { background: var(--rc-ink); color: var(--rc-white); }
+
+/* Steps as a vertical flow */
+.flow { display: grid; gap: 0.5rem; }
+.flow li {
+  position: relative;
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  line-height: 1.35;
+}
+.flow svg { flex: none; width: 1.125rem; height: 1.125rem; margin-top: 0.05em; }
+.flow-before li { border: 1px dashed var(--rc-outline); color: var(--rc-body); background: var(--rc-white); }
+.flow-now li { border: 1px solid var(--rc-line); color: var(--rc-ink); background: var(--rc-white); box-shadow: var(--rc-shadow); font-weight: 600; }
+.flow-now li.is-channel { border: 2px solid var(--rc-ink); box-shadow: none; }
+
+/* Handle: a vertical line with a round grip. role="slider" */
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2.75rem; /* 44px touch target */
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  touch-action: none;
+  cursor: ew-resize;
+}
+.compare-handle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--rc-ink);
+  transform: translateX(-50%);
+}
+.compare-grip {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--rc-ink);
+  border-radius: 50%;
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+  color: var(--rc-ink);
+}
+.compare-grip svg { width: 1.25rem; height: 1.25rem; }
+.compare-handle:focus-visible { outline: none; }
+.compare-handle:focus-visible .compare-grip { outline: 3px solid var(--rc-ink); outline-offset: 3px; }
+.compare.is-stepping .compare-now { transition: clip-path var(--dur-fast) var(--ease); }
+.compare.is-stepping .compare-handle { transition: left var(--dur-fast) var(--ease); }
+
+@media (min-width: 48rem) {
+  .shift-tabs { grid-template-columns: repeat(3, 1fr); }
+  .shift-tab { justify-content: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shift-tab,
+  .compare.is-stepping .compare-now,
+  .compare.is-stepping .compare-handle { transition: none; }
+}

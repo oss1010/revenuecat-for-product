@@ -1140,3 +1140,72 @@ the proof points.
 - Section 8 card CTAs and every secondary CTA are chevron text links;
   the one-primary-per-viewport clash from phase 1 is gone.
 - Section 4 proof points have no trailing periods.
+
+## 2026-09-27: Build phase 2, copy for product managers, layout, section 3 module, hero loop
+
+### The page never said "product manager"
+- The page for product managers never said "product manager" once in
+  its visible copy. The only mention was the `<title>` tag, reused from
+  the live page.
+- None of the project's five agents caught it. Four had reviewed the
+  copy (claim-auditor, competitor-watch, pm-critic, web-copy);
+  brand-guard has not yet run on the build. None was asked to check who
+  the page speaks to. Caught on human review.
+- Lesson: agents check what they're told to check.
+- Fixed in copy v1.3: hero eyebrow "For product teams", section 3 sub,
+  section 4 body, section 7 opening, section 8 sub and card labels, and
+  the meta description.
+
+### Built
+- Section 3: one module with three tabs (WAI-ARIA tabs, automatic
+  activation), each with its own before/after slider (role="slider";
+  pointer, touch and keyboard). The slider worked on the first attempt;
+  the side-by-side fallback was not needed. The three arrow rows are
+  gone.
+- Hero loop: the Tidelark phone flanked by Change, Learn and Fit cards,
+  about 3 seconds each (a 9-second loop). The "You" cursor clicks each
+  card on desktop; mobile shows the phone and a cycling caption chip.
+  Pauses off-screen, on hover and in background tabs. Reduced motion
+  keeps a static Learn state.
+- The Tidelark phone is now one shared component (phone.css) used by
+  the hero and the simulator.
+- Zigzag: section 4 text left, section 5 full width, section 6 visual
+  left, section 7 text left. Mobile stacks with text first.
+- Simulator fixes: the toast has its own slot and never overlaps; after
+  rollout the button is a disabled "Rolled out" with a "Reset demo"
+  link; focus moves to "Reset demo" because a disabled button can't
+  hold focus. Pixelcut moved beside "Test up to four variants at once",
+  away from any 12-month copy.
+- Customer logos: ten SVGs downloaded from the logo strips on
+  RevenueCat's live product pages (cdn.sanity.io, 2 to 11 KB each,
+  checked for scripts). Shown grayscale. Scale strip: Notion, OpenAI,
+  VSCO, Runna, Ladder, PhotoRoom. Section 8: Buffer, Zero, GoodNotes,
+  StockTwits.
+
+### Claim audit, section 8 (2026-09-27)
+| # | Card | Bullet | Source | Verdict |
+|---|---|---|---|---|
+| P1 | Pro | Paywall editor with pre-built templates | https://www.revenuecat.com/pricing/ (listed under everything included) | PASS conditional (SDK minimums; never "no code") |
+| P2 | Pro | Dashboard for 40+ key metrics | https://www.revenuecat.com/pricing/ | PASS (the old page says 15+; never show both) |
+| P3 | Pro | Web-to-app Funnels included | https://www.revenuecat.com/docs/tools/funnels (included in Pro) | PASS conditional (needs Redemption Link handling; drop "no-code") |
+| E1 | Enterprise | Dedicated support | https://www.revenuecat.com/pricing/ (Enterprise card) | PASS |
+| E2 | Enterprise | Custom SLAs for high-volume apps | https://www.revenuecat.com/pricing/ (Enterprise card) | PASS conditional (keep "for high-volume apps") |
+| E3 | Enterprise | Volume discounts | https://www.revenuecat.com/pricing/ (Enterprise card) | PASS |
+| - | Enterprise | Collaborator roles, audit logs | Collaborators docs; audit logs docs | FAIL on this card: on every plan or no tier stated |
+| - | Enterprise | Account manager, onboarding, SOC 2 | none as an Enterprise benefit | FAIL: inferred or company-wide |
+| - | Pro | "Every feature included" | pricing page vs SSO docs | FAIL: SSO is Enterprise only |
+| - | Enterprise | "Trusted by" logos inside the card | pricing, /for-enterprise, /contact | FAIL: no page ties a customer to a plan |
+
+- Decision: the "Trusted by" row sits full width below both cards,
+  never inside one, and uses a different logo set from the scale strip.
+
+### Verification
+- 390px and 1440px: no horizontal overflow; zigzag order confirmed by
+  measured positions; stats visible in the first desktop viewport.
+- Keyboard: tabs (arrows, End), slider (arrows, Home, End), simulator
+  rollout and reset, focus handling. Mouse drag on the slider.
+- Hero loop timeline measured (Change 0.9s, Learn 3.9s, Fit 6.9s, back
+  to the start before 9s) and hover pause confirmed.
+- Not verified: real touch (the tools send mouse events), reduced
+  motion (not emulated), and visual screenshots of sections 3 and 8
+  (the preview pane was hidden and stopped rendering).

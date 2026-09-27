@@ -62,7 +62,8 @@ Rules:
   are a green pill with a check and ink text, on --rc-green-tint.
 - Blue is for action only: primary CTA fills (--rc-blue), chevron text
   links (--rc-blue-text) and the demo cursor's "You" pill. Never
-  decorative, never a section background.
+  decorative, never a section background. Confirmed by the user
+  2026-09-27; replaces the earlier "blue at most twice" rule.
 - No gradients between any two of these. Flat fills only. One
   exception: the hero wash, a faint radial lavender-to-peach gradient
   from --rc-wash-lavender and --rc-wash-peach, behind the hero visual.

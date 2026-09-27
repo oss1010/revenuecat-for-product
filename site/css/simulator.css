@@ -187,18 +187,15 @@
   line-height: 1.4;
 }
 
-/* Action and toast. The toast sits over the panel: no layout shift. */
-.sim-actions { position: relative; }
-.sim-actions .btn { width: 100%; }
+/* Toast: its own slot below the winner line. Reserved height, so it
+   never overlaps anything and never shifts the layout. */
+.sim-toast-slot { display: flex; align-items: center; min-height: 3rem; }
 .sim-toast {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 0.625rem);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   max-width: 100%;
-  padding: 0.625rem 0.875rem;
+  padding: 0.5rem 0.875rem;
   border: 1px solid var(--rc-line);
   border-radius: var(--radius);
   background: var(--rc-white);
@@ -208,7 +205,7 @@
   font-weight: 700;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(0.5rem);
+  transform: translateY(0.25rem);
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
 }
 .sim-toast.is-visible {
@@ -220,6 +217,30 @@
 .sim-cat { width: 1.5rem; height: 1.5rem; }
 .sim-toast.is-visible .sim-cat { animation: sim-cat-hop 560ms var(--ease) 200ms 1 both; }
 
+/* Action: "Roll out winner", then a disabled "Rolled out" with a small
+   "Reset demo" link. */
+.sim-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; }
+.sim-actions .btn { width: 100%; }
+.sim-actions .btn:disabled {
+  background: var(--rc-offwhite);
+  border-color: var(--rc-outline);
+  color: var(--rc-body); /* 9.88:1 */
+  cursor: default;
+}
+.link-reset {
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--rc-blue-text);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
 /* The one cat moment: a single small hop when the rollout lands */
 @keyframes sim-cat-hop {
   0%   { transform: translateY(0) rotate(0); }
@@ -228,104 +249,8 @@
   100% { transform: translateY(0) rotate(0); }
 }
 
-/* Right: the user's phone, showing only the paywall */
+/* Right: the user's phone, showing only the paywall (phone.css) */
 .sim-phone { display: grid; justify-items: center; }
-.phone {
-  width: 15rem;
-  padding: 0.625rem;
-  border: 1px solid var(--rc-line);
-  border-radius: 2.25rem;
-  background: var(--rc-white);
-  box-shadow: var(--rc-glow);
-}
-.phone-screen {
-  position: relative;
-  display: grid;
-  gap: 0.75rem;
-  align-content: start;
-  padding: 2.25rem 1rem 1.25rem;
-  border-radius: 1.75rem;
-  background: var(--rc-offwhite);
-  overflow: hidden;
-}
-.phone-screen::before { /* speaker slot */
-  content: "";
-  position: absolute;
-  top: 0.75rem;
-  left: 50%;
-  width: 3.5rem;
-  height: 0.375rem;
-  border-radius: var(--radius-pill);
-  background: var(--rc-line);
-  transform: translateX(-50%);
-}
-.pw-icon { justify-self: center; width: 3rem; height: 3rem; }
-.pw-app {
-  color: var(--rc-body);
-  font-size: 0.8125rem; /* inside the illustrative mock only */
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-align: center;
-  text-transform: uppercase;
-}
-.pw-head {
-  color: var(--rc-ink);
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 600;
-  line-height: 1.15;
-  text-align: center;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.25rem;
-}
-.pw-plans { display: flex; flex-direction: column; gap: 0.5rem; }
-.pw-plan {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 3rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius-sm);
-  background: var(--rc-white);
-  color: var(--rc-ink);
-  font-size: 0.9375rem;
-  font-weight: 600;
-}
-.pw-plan-name { display: inline-flex; align-items: center; gap: 0.5rem; }
-.pw-radio {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid var(--rc-outline);
-  border-radius: 50%;
-  background: var(--rc-white);
-}
-.pw-plan.is-featured { border: 2px solid var(--rc-ink); }
-.pw-plan.is-featured .pw-radio { border: 5px solid var(--rc-ink); }
-.pw-badge {
-  padding: 0.125rem 0.5rem;
-  border-radius: var(--radius-pill);
-  background: var(--rc-ink);
-  color: var(--rc-white);
-  font-size: 0.75rem; /* inside the illustrative mock only */
-  font-weight: 700;
-  white-space: nowrap;
-  visibility: hidden;
-}
-.pw-plan.is-featured .pw-badge { visibility: visible; }
-.pw-cta {
-  display: grid;
-  place-items: center;
-  min-height: 2.75rem;
-  margin-top: 0.25rem;
-  border-radius: var(--radius-pill);
-  background: var(--rc-ink);
-  color: var(--rc-white);
-  font-family: var(--font-display);
-  font-size: 0.9375rem;
-  font-weight: 600;
-}
 
 /* Cursor demo: a pointer with a blue "You" pill (white on blue 4.59:1) */
 .sim-cursor {
@@ -342,17 +267,7 @@
 .sim-cursor.is-on { opacity: 1; }
 .sim-cursor svg { color: var(--rc-blue); width: 1.5rem; height: 1.5rem; filter: drop-shadow(0 2px 3px rgba(31, 31, 71, 0.25)); }
 .sim-cursor.is-clicking svg { transform: scale(0.85); transition: transform 120ms var(--ease); }
-.you-pill {
-  margin: 1.125rem 0 0 -0.25rem;
-  padding: 0.125rem 0.625rem;
-  border-radius: var(--radius-pill);
-  background: var(--rc-blue);
-  color: var(--rc-white);
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.5;
-}
+/* .you-pill lives in base.css, shared with the hero loop */
 
 .sim-caption { font-size: var(--fs-small); }
 
@@ -389,7 +304,7 @@
 
 @media (min-width: 64rem) {
   .sim-surfaces { gap: 4rem; padding-right: 1.5rem; }
-  .phone { width: 16.5rem; }
+  .sim-phone .phone { width: 16.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

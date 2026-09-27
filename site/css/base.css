@@ -183,6 +183,36 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .checks li { display: flex; gap: 0.75rem; align-items: baseline; color: var(--rc-ink); }
 .checks svg { flex: none; width: 1.125rem; height: 1.125rem; transform: translateY(0.15em); }
 
+/* Cursor label, shared by the hero loop and the simulator.
+   White on blue 4.59:1. */
+.you-pill {
+  margin: 1.125rem 0 0 -0.25rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--radius-pill);
+  background: var(--rc-blue);
+  color: var(--rc-white);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* Customer logos: RevenueCat's own files from its product pages,
+   shown grayscale as on the live site. */
+.logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem 2.25rem;
+}
+.logo-row img {
+  width: auto;
+  height: 1.75rem;
+  filter: grayscale(1);
+  opacity: 0.7;
+}
+
 /* Placeholders for visuals not built yet */
 .placeholder {
   display: grid;
@@ -294,7 +324,6 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .hero-grid { display: grid; gap: clamp(2.5rem, 1rem + 5vw, 4rem); align-items: center; }
 .hero-copy { display: grid; gap: 1.5rem; justify-items: start; }
 .hero-stage { position: relative; display: grid; place-items: center; padding: clamp(1.5rem, 1rem + 3vw, 3rem) 0; }
-.hero-visual { position: relative; z-index: 1; width: 100%; max-width: 32rem; min-height: 20rem; box-shadow: var(--rc-glow); border-style: solid; border-width: 1px; border-color: var(--rc-line); }
 
 /* Dotted orbit rings with two small dots, around the hero visual */
 .orbit {
@@ -329,11 +358,10 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   color: var(--rc-red);
 }
 .stat-label { font-size: var(--fs-small); }
-.logo-placeholder { width: 100%; min-height: 4.5rem; }
+.scale .logo-row { max-width: 52rem; }
 
-/* 3. The shift */
-.shift-cols { display: grid; gap: 1.5rem; }
-.shift-label { color: var(--rc-ink); font-weight: 700; margin-bottom: 0.5rem; }
+/* 3. The shift: interactive module in shift.css.
+   Numbered steps below are used by the section 6 flow placeholder. */
 .steps { display: grid; gap: 0.5rem; counter-reset: step; }
 .steps li { counter-increment: step; display: flex; gap: 0.75rem; align-items: baseline; }
 .steps li::before {
@@ -350,34 +378,11 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   font-weight: 700;
 }
 .step-detail { display: block; font-size: var(--fs-small); }
-.shift-beat {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--rc-ink);
-  border-radius: var(--radius);
-  background: var(--rc-white);
-  color: var(--rc-ink);
-  font-weight: 600;
-}
-.job-rows { display: grid; margin-top: 2rem; border-top: 1px solid var(--rc-line); }
-.job-rows a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 0.25rem;
-  border-bottom: 1px solid var(--rc-line);
-  color: var(--rc-ink);
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-display);
-  text-decoration: none;
-}
-.job-rows a:hover span:first-child { text-decoration: underline; text-underline-offset: 0.2em; }
-.job-rows svg { flex: none; width: 1.5rem; height: 1.5rem; }
 
-/* 4. Change */
+/* Zigzag: text and visual side by side on desktop, text first on
+   mobile. .split--reverse puts the visual on the left. */
 .split { display: grid; gap: clamp(2rem, 1rem + 4vw, 4rem); align-items: center; }
+.split--top { align-items: start; }
 .split > div:first-child { display: grid; gap: 1rem; justify-items: start; }
 .split .checks { margin-top: 0.5rem; }
 .editor-placeholder { min-height: 20rem; }
@@ -392,6 +397,23 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .chart-spark svg { width: 100%; height: 2.75rem; }
 .chart-spark figcaption { font-size: var(--fs-small); }
 .learn-row .checks { align-content: center; font-size: var(--fs-small); }
+.proof-row { display: grid; gap: 1.5rem; margin-top: 1.5rem; align-items: center; }
+.proof-row .testimonial { margin-top: 0; }
+.variants-card { display: grid; gap: 1rem; align-content: start; padding: 1.25rem; }
+.variants-card p { color: var(--rc-ink); font-weight: 600; }
+.abcd { display: flex; gap: 0.5rem; }
+.abcd span {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--rc-outline);
+  border-radius: var(--radius-sm);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
 
 /* 6. Fit */
 .flow-placeholder { min-height: 16rem; }
@@ -410,7 +432,9 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   font-size: var(--fs-small);
 }
 .badges svg { flex: none; width: 1.25rem; height: 1.25rem; }
-.diagram-placeholder { min-height: 14rem; }
+.teams-visual { display: grid; gap: 1rem; }
+.teams-visual .badges { margin-bottom: 0; }
+.diagram-placeholder { min-height: 12rem; }
 .charts-line { margin-top: 1.5rem; color: var(--rc-ink); }
 
 /* 8. Two ways to start */
@@ -423,6 +447,21 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
 }
 .footnote { font-size: var(--fs-small); }
+.icon-tile {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--rc-line);
+  border-radius: 0.875rem;
+  background: var(--rc-offwhite);
+  color: var(--rc-ink);
+}
+.icon-tile svg { width: 1.5rem; height: 1.5rem; }
+.plan-label { color: var(--rc-body); font-size: var(--fs-small); font-weight: 600; margin-bottom: -0.5rem; }
+.plan-card .checks { font-size: var(--fs-small); }
+.trusted { display: grid; gap: 1rem; justify-items: center; margin-top: 2.5rem; }
+.trusted-label { color: var(--rc-body); font-size: var(--fs-small); font-weight: 600; }
 
 /* Closing band: dark section in ink, never black. The page's last
    filled primary. */
@@ -442,8 +481,9 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 
 /* Tablet and up */
 @media (min-width: 48rem) {
-  .shift-cols { grid-template-columns: 1fr 1fr; }
   .badges { grid-template-columns: 1fr 1fr; }
+  .proof-row { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .logo-row img { height: 2rem; }
   .plans { grid-template-columns: 1fr 1fr; }
   .learn-row { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
   .testimonial { grid-template-columns: auto minmax(0, 1fr); }
@@ -455,7 +495,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   .hero-grid { grid-template-columns: 1fr 1fr; }
   .hero-visual { min-height: 24rem; }
   .split { grid-template-columns: 1fr 1fr; }
-  .badges { grid-template-columns: repeat(4, 1fr); }
+  .split--reverse > :first-child { order: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
