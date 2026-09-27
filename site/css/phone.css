@@ -53,3 +53,5 @@
   border-radius: 50%;
   background: var(--rc-ink);
 }
+/* "Now live": green fill, ink text 8.01:1 */
+.phone-chip.is-live { border-color: var(--rc-green); background: var(--rc-green); }

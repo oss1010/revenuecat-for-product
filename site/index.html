@@ -16,12 +16,17 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/shift.css">
   <link rel="stylesheet" href="css/simulator.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <link rel="stylesheet" href="css/flow.css">
+  <link rel="stylesheet" href="css/visuals.css">
   <script src="js/variant.js"></script>
   <script src="js/nav.js" defer></script>
   <script src="js/paywall.js" defer></script>
   <script src="js/hero.js" defer></script>
   <script src="js/shift.js" defer></script>
   <script src="js/simulator.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/flow.js" defer></script>
 </head>
 <body>
 
@@ -157,19 +162,27 @@
           <div class="compare" data-compare>
             <div class="compare-layer compare-before"><div class="compare-content">
               <p class="compare-label" id="cmp-before-change">Before</p>
-              <ol class="flow flow-before">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>File a ticket</li>
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Wait for a sprint</li>
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ship an app update</li>
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Wait for review</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini-col">
+                  <p class="mini-col-title">Backlog</p>
+                  <div class="mini"><span class="mini-tag">Paywall</span><span class="mini-title">File a ticket</span></div>
+                </div>
+                <span class="mini-badge"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Wait for a sprint</span>
+                <div class="mini">
+                  <div class="mini-head"><span class="mini-title">Ship an app update</span><span class="mini-app"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="9" r="3" fill="#F2545B"/><path d="M3 10.5c1.5 0 1.5-1 3-1s1.5 1 3 1 1.5-1 3-1" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round"/></svg></span></div>
+                  <span class="mini-status"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Wait for review</span>
+                </div>
+              </div>
             </div></div>
             <div class="compare-layer compare-now"><div class="compare-content">
               <p class="compare-label" id="cmp-now-change">With RevenueCat</p>
-              <ol class="flow flow-now">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Edit it in the dashboard</li>
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Publish</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini">
+                  <span class="mini-title">Edit it in the dashboard</span>
+                  <div class="mini-row"><span class="mini-muted">Publish</span><span class="mini-switch is-on" aria-hidden="true"></span></div>
+                </div>
+                <div class="mini mini-toast"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="#197062" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published. No app release.</div>
+              </div>
             </div></div>
             <div class="compare-handle" role="slider" tabindex="0" aria-labelledby="cmp-before-change cmp-now-change" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="compare-grip"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7.5 5.5 3 10l4.5 4.5M12.5 5.5 17 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
           </div>
@@ -180,16 +193,24 @@
           <div class="compare" data-compare>
             <div class="compare-layer compare-before"><div class="compare-content">
               <p class="compare-label" id="cmp-before-learn">Before</p>
-              <ol class="flow flow-before">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Judge it on trial starts</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini">
+                  <div class="mini-head"><span class="mini-title">Trial starts</span><span class="mini-party" aria-hidden="true">&#10022;</span></div>
+                  <svg class="mini-spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="up" d="M2 36 L25 30 L50 24 L75 14 L118 4" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <p class="mini-caption">Judge it on trial starts</p>
+              </div>
             </div></div>
             <div class="compare-layer compare-now"><div class="compare-content">
               <p class="compare-label" id="cmp-now-learn">With RevenueCat</p>
-              <ol class="flow flow-now">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>See predicted <span class="nowrap">12-month</span> value</li>
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Roll out the winner</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini">
+                  <span class="mini-title">See predicted <span class="nowrap">12-month</span> value</span>
+                  <svg class="mini-spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="a" d="M2 34 L20 19 L40 15 L70 13 L118 12" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path class="b" d="M2 37 L20 29 L40 21 L70 11 L118 4" fill="none" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="mini-win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Predicted 12-month LTV winner: B</span>
+                </div>
+                <span class="mini-btn">Roll out the winner</span>
+              </div>
             </div></div>
             <div class="compare-handle" role="slider" tabindex="0" aria-labelledby="cmp-before-learn cmp-now-learn" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="compare-grip"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7.5 5.5 3 10l4.5 4.5M12.5 5.5 17 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
           </div>
@@ -200,16 +221,30 @@
           <div class="compare" data-compare>
             <div class="compare-layer compare-before"><div class="compare-content">
               <p class="compare-label" id="cmp-before-fit">Before</p>
-              <ol class="flow flow-before">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 6v4l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>One paywall for everyone</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini-one" aria-hidden="true">
+                  <div class="mini-users">
+                    <span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span>
+                    <span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span>
+                    <span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span>
+                  </div>
+                  <svg class="mini-arrow" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="mini-pw"><i class="sun"></i><i></i><i class="is-feat"></i><i></i></span>
+                </div>
+                <p class="mini-caption">One paywall for everyone</p>
+              </div>
             </div></div>
             <div class="compare-layer compare-now"><div class="compare-content">
               <p class="compare-label" id="cmp-now-fit">With RevenueCat</p>
-              <ol class="flow flow-now">
-                <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Different paywalls by audience</li>
-                <li class="is-channel"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h14M10 3c2 2 2.8 4.5 2.8 7S12 15 10 17c-2-2-2.8-4.5-2.8-7S8 5 10 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Offer it on the web, too.</li>
-              </ol>
+              <div class="mini-stack">
+                <div class="mini-users" aria-hidden="true">
+                  <span class="mini-user"><span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span><svg class="mini-arrow" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="mini-pw"><i class="sun"></i><i class="is-feat"></i><i></i><i></i></span></span>
+                  <span class="mini-user"><span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span><svg class="mini-arrow" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="mini-pw is-light"><i class="sun"></i><i></i><i class="is-feat"></i><i></i></span></span>
+                  <span class="mini-user"><span class="mini-avatar"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="6" r="2.5" fill="currentColor"/><path d="M3.5 13.5c.8-2.4 2.5-3.5 4.5-3.5s3.7 1.1 4.5 3.5" fill="currentColor"/></svg></span><svg class="mini-arrow" viewBox="0 0 16 16" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="mini-pw is-warm"><i class="sun"></i><i></i><i></i><i class="is-feat"></i></span></span>
+                </div>
+                <p class="mini-caption">Different paywalls by audience</p>
+                <div class="mini mini-web"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c1.7 1.7 2.4 3.8 2.4 6S9.7 12.3 8 14c-1.7-1.7-2.4-3.8-2.4-6S6.3 3.7 8 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span><span class="mini-tag">Web checkout</span><br>Offer it on the web, too.</span></div>
+              </div>
             </div></div>
             <div class="compare-handle" role="slider" tabindex="0" aria-labelledby="cmp-before-fit cmp-now-fit" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="compare-grip"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7.5 5.5 3 10l4.5 4.5M12.5 5.5 17 10l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
           </div>
@@ -232,9 +267,35 @@
           <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles decide who can change paywalls and offerings</span></li>
         </ul>
       </div>
-      <div class="placeholder editor-placeholder">
-        <p class="placeholder-label">Placeholder: paywall editor with the AI Editor prompt bar and a published state, as white product cards on a dotted-grid canvas (static, phase 3).</p>
-        <span class="tag">Illustrative</span>
+      <div class="editor ui-card" aria-hidden="true">
+        <div class="ed-bar">
+          <span class="ed-title">Tidelark paywall</span>
+          <span class="ed-chip"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Saved by Maya, 2 min ago</span>
+          <span class="ed-chip ed-live"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published. No app release.</span>
+        </div>
+        <div class="ed-body">
+          <div class="ed-layers">
+            <p class="ed-label">Layers</p>
+            <ul>
+              <li>Paywall</li>
+              <li class="is-child">Image</li>
+              <li class="is-child">Headline</li>
+              <li class="is-child">Benefits</li>
+              <li class="is-child is-selected">Plans</li>
+              <li class="is-child">Trial line</li>
+              <li class="is-child">Button</li>
+              <li class="is-child">Footer</li>
+            </ul>
+          </div>
+          <div class="ed-canvas dot-canvas">
+            <div class="phone ed-phone"><div class="phone-screen" data-paywall="c"></div></div>
+          </div>
+        </div>
+        <div class="ed-prompt">
+          <span class="ed-ai"><svg viewBox="0 0 16 16" focusable="false"><path d="M8 1.5l1.6 4.9 4.9 1.6-4.9 1.6L8 14.5l-1.6-4.9L1.5 8l4.9-1.6z" fill="currentColor"/></svg>AI Editor</span>
+          <span class="ed-input">Feature the annual plan and add a 7-day trial badge</span>
+          <span class="ed-send"><svg viewBox="0 0 16 16" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
       </div>
     </div>
   </section>
@@ -276,7 +337,7 @@
                 <span class="variant-desc">Weekly featured, <span class="nowrap">3-day</span> trial</span>
                 <dl class="variant-metrics">
                   <div class="metric" data-metric="conversion"><dt>Conversion to paying</dt><dd data-out="conversion" data-k="a">11.0%</dd></div>
-                  <div class="metric" data-metric="ltv"><dt>Predicted <span class="nowrap">12-month</span> LTV</dt><dd data-out="ltv" data-k="a">$6.55</dd></div>
+                  <div class="metric" data-metric="ltv"><dt>Predicted <span class="nowrap">12-month</span> LTV</dt><dd data-out="ltv" data-k="a">$59.52</dd></div>
                 </dl>
               </li>
               <li class="variant" data-variant="B">
@@ -285,16 +346,17 @@
                 <span class="variant-desc">Monthly featured, <span class="nowrap">7-day</span> trial</span>
                 <dl class="variant-metrics">
                   <div class="metric" data-metric="conversion"><dt>Conversion to paying</dt><dd data-out="conversion" data-k="b">7.4%</dd></div>
-                  <div class="metric" data-metric="ltv"><dt>Predicted <span class="nowrap">12-month</span> LTV</dt><dd data-out="ltv" data-k="b">$9.65</dd></div>
+                  <div class="metric" data-metric="ltv"><dt>Predicted <span class="nowrap">12-month</span> LTV</dt><dd data-out="ltv" data-k="b">$130.46</dd></div>
                 </dl>
               </li>
             </ul>
+            <p class="sim-unit">LTV per paying customer, illustrative model.</p>
 
             <div class="sim-insight">
-              <figure class="fc" data-forecast data-ltv-unit="customer">
-                <span hidden data-model="a" data-enrolled="10000" data-paying="1100" data-price="30.29" data-refund="6.0" data-retention="100,25,15,11,9,7.5,6.5,5.5,5,4.5,4,3.5"></span>
-                <span hidden data-model="b" data-enrolled="10000" data-paying="740" data-price="29.99" data-refund="5.0" data-retention="100,60,46,38,33,29,26,24,22,20,19,18"></span>
-                <figcaption class="fc-head"><span class="fc-title">Cumulative revenue, 12 months</span><span class="tag">Illustrative</span></figcaption>
+              <figure class="fc" data-forecast data-ltv-unit="paying">
+                <span hidden data-model="a" data-enrolled="10000" data-paying="1100" data-price="30.29" data-price-label="$30.29/mo ($6.99 weekly)" data-retention="100,25,15,11,9,7.5,6.5,5.5,5,4.5,4,3.5"></span>
+                <span hidden data-model="b" data-enrolled="10000" data-paying="740" data-price="29.99" data-price-label="$29.99/mo" data-retention="100,60,46,38,33,29,26,24,22,20,19,18"></span>
+                <figcaption class="fc-head"><span class="fc-title">Cumulative revenue per 10,000 customers in the test</span><span class="tag">Illustrative</span></figcaption>
                 <div class="fc-plot" aria-hidden="true">
                   <div class="fc-area">
                     <div class="fc-grid" data-grid="0"><span>$0</span></div>
@@ -312,10 +374,10 @@
                     </svg>
                     <span class="fc-region fc-region-obs">Observed</span>
                     <span class="fc-region fc-region-pred">Predicted</span>
-                    <span class="fc-lbl a fc-obs-a">A</span>
-                    <span class="fc-lbl b fc-obs-b">B</span>
-                    <span class="fc-lbl a fc-end-a">A <span data-out="end" data-k="a"></span></span>
-                    <span class="fc-lbl b fc-end-b">B <span data-out="end" data-k="b"></span></span>
+                    <span class="fc-lbl a fc-obs-a"><i class="fc-key"></i>A</span>
+                    <span class="fc-lbl b fc-obs-b"><i class="fc-key"></i>B</span>
+                    <span class="fc-lbl a fc-end-a"><i class="fc-key"></i>A <span data-out="end" data-k="a"></span></span>
+                    <span class="fc-lbl b fc-end-b"><i class="fc-key"></i>B <span data-out="end" data-k="b"></span></span>
                     <span class="fc-cross"><span class="fc-cross-label">B overtakes at month <span data-cross-month>4</span></span></span>
                     <span class="fc-xtick" data-xtick="0">0</span>
                     <span class="fc-xtick" data-xtick="3">3</span>
@@ -325,6 +387,7 @@
                     <span class="fc-xtitle">Months</span>
                   </div>
                 </div>
+                <p class="fc-math">10,000 customers per variant. A: 1,100 paying, <span data-out="end" data-k="a">$65.5K</span>. B: 740 paying, <span data-out="end" data-k="b">$96.5K</span>.</p>
               </figure>
 
               <div class="why">
@@ -334,8 +397,8 @@
                   <tbody>
                     <tr><th scope="row">Conversion to paying</th><td data-out="conversion" data-k="a"></td><td data-out="conversion" data-k="b"></td></tr>
                     <tr><th scope="row">Still subscribed at month 3</th><td data-out="m3" data-k="a"></td><td data-out="m3" data-k="b"></td></tr>
+                    <tr><th scope="row">Still subscribed at month 12</th><td data-out="m12" data-k="a"></td><td data-out="m12" data-k="b"></td></tr>
                     <tr><th scope="row">Price per month</th><td data-out="price" data-k="a"></td><td data-out="price" data-k="b"></td></tr>
-                    <tr><th scope="row">Refund rate</th><td data-out="refund" data-k="a"></td><td data-out="refund" data-k="b"></td></tr>
                   </tbody>
                 </table>
                 <p class="why-caption">Illustrative model of a hard-paywall app. RevenueCat uses each variant's observed conversion and retention data to model future revenue.</p>
@@ -346,15 +409,12 @@
                data-conversion="A leads on conversion to paying"
                data-ltv="B leads on predicted 12-month LTV, even though A converts more.">A leads on conversion to paying</p>
 
-            <div class="sim-toast-slot">
+            <div class="sim-actions">
+              <button type="button" class="btn btn-primary" data-rollout data-label="Roll out winner" data-done-label="Rolled out">Roll out winner</button>
               <div class="sim-toast" role="status" data-toast data-text="Rolled out. No app release.">
                 <img class="sim-cat" src="assets/brand/logomark_red.svg" alt="" width="512" height="512">
                 <span data-toast-text></span>
               </div>
-            </div>
-
-            <div class="sim-actions">
-              <button type="button" class="btn btn-ink" data-rollout data-label="Roll out winner" data-done-label="Rolled out">Roll out winner</button>
               <button type="button" class="link-reset" data-reset hidden>Reset demo</button>
             </div>
           </div>
@@ -377,51 +437,80 @@
           <form method="dialog">
             <p class="sim-dialog-title" id="sim-dialog-title" data-dialog-title>Roll out variant <span data-dialog-variant>B</span> to all users?</p>
             <div class="sim-dialog-actions">
-              <button class="btn btn-ink" value="confirm" autofocus>Confirm</button>
+              <button class="btn btn-primary" value="confirm" autofocus>Confirm</button>
               <button class="btn btn-secondary" value="cancel">Cancel</button>
             </div>
           </form>
         </dialog>
       </div>
 
-      <p class="sim-caption">Illustrative data and model. LTV is shown per enrolled customer. The 12-month forecast appears once an experiment with revenue as its primary metric has enough data. It's a signal, not a guarantee.</p>
+      <p class="sim-caption">Illustrative data and model. The 12-month forecast appears once an experiment with revenue as its primary metric has enough data. It's a signal, not a guarantee.</p>
+      <ul class="checks sim-more">
+        <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Test up to four variants at once.</span></li>
+      </ul>
 
-      <div class="learn-row">
-        <div class="chart-card ui-card">
-          <span class="tag">Illustrative</span>
-          <p>Paywall performance: conversion, LTV and abandonment for each RevenueCat paywall.</p>
-          <div class="chart-spark" aria-hidden="true">
-            <figure>
-              <svg viewBox="0 0 100 40" preserveAspectRatio="none" focusable="false"><polyline points="0,32 20,29 40,24 60,23 80,17 100,14" fill="none" stroke="#1F1F47" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
-              <figcaption>Conversion</figcaption>
-            </figure>
-            <figure>
-              <svg viewBox="0 0 100 40" preserveAspectRatio="none" focusable="false"><polyline points="0,34 20,30 40,27 60,20 80,15 100,8" fill="none" stroke="#1F1F47" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
-              <figcaption>LTV</figcaption>
-            </figure>
-            <figure>
-              <svg viewBox="0 0 100 40" preserveAspectRatio="none" focusable="false"><polyline points="0,10 20,14 40,13 60,20 80,24 100,27" fill="none" stroke="#1F1F47" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
-              <figcaption>Abandonment</figcaption>
-            </figure>
+      <div class="charts" data-charts>
+        <div class="charts-side ui-card">
+          <p class="charts-side-title" id="charts-list-title">Charts</p>
+          <div class="charts-list" role="tablist" aria-orientation="vertical" aria-labelledby="charts-list-title">
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-perf" aria-controls="ch-perf" aria-selected="true">Paywall performance</button>
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-cohort" aria-controls="ch-cohort" aria-selected="false" tabindex="-1">Cohort and prediction</button>
+            <button type="button" class="charts-tab" role="tab" id="ch-tab-bench" aria-controls="ch-bench" aria-selected="false" tabindex="-1">Benchmarks</button>
           </div>
         </div>
-        <div class="bench-card ui-card">
-          <span class="tag">Illustrative</span>
-          <p>Compare your conversion, churn and LTV with similar apps in Benchmarks.</p>
-          <div class="bench" aria-hidden="true">
-            <div class="bench-row"><span class="bench-label">Conversion</span><span class="bench-track"><span class="bench-band" style="--from: 28%; --to: 66%"></span><span class="bench-median" style="--at: 46%"></span><span class="bench-you" style="--at: 74%"></span></span></div>
-            <div class="bench-row"><span class="bench-label">Churn</span><span class="bench-track"><span class="bench-band" style="--from: 32%; --to: 70%"></span><span class="bench-median" style="--at: 50%"></span><span class="bench-you" style="--at: 38%"></span></span></div>
-            <div class="bench-row"><span class="bench-label">LTV</span><span class="bench-track"><span class="bench-band" style="--from: 24%; --to: 62%"></span><span class="bench-median" style="--at: 42%"></span><span class="bench-you" style="--at: 80%"></span></span></div>
+
+        <div class="charts-main ui-card">
+          <div class="charts-head">
+            <span class="tag">Illustrative</span>
           </div>
-          <p class="bench-legend" aria-hidden="true"><span><i class="k-you"></i>Your app</span><span><i class="k-band"></i>Similar apps, 25th to 75th percentile</span></p>
+
+          <div class="charts-panel" role="tabpanel" id="ch-perf" aria-labelledby="ch-tab-perf">
+            <div class="charts-panel-head"><p class="charts-title">Paywall performance</p><span class="filter-chip" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5v-5.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Apple Search Ads Keyword: morning routine<svg viewBox="0 0 16 16" focusable="false"><path d="M4.5 6.5 8 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="charts-table-wrap">
+              <table class="charts-table">
+                <thead><tr><th scope="col">Paywall</th><th scope="col">Encounter rate</th><th scope="col">Conversion</th><th scope="col">LTV (realized)</th><th scope="col">Abandonment</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Onboarding</th><td><span class="bar-cell"><i style="width: 3.2rem"></i>71%</span></td><td>9.2%</td><td>$41.30</td><td>58%</td></tr>
+                  <tr><th scope="row">Streak reminder</th><td><span class="bar-cell"><i style="width: 1.5rem"></i>34%</span></td><td>6.3%</td><td>$36.10</td><td>64%</td></tr>
+                  <tr><th scope="row">Settings</th><td><span class="bar-cell"><i style="width: 0.8rem"></i>18%</span></td><td>4.1%</td><td>$28.40</td><td>72%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="charts-note">Paywall Encounter, Paywall Conversion, Paywall LTV and Paywall Abandonment charts, for RevenueCat Paywalls. Paywall LTV is realized.</p>
+          </div>
+
+          <div class="charts-panel" role="tabpanel" id="ch-cohort" aria-labelledby="ch-tab-cohort" hidden>
+            <div class="charts-panel-head"><p class="charts-title">Prediction Explorer</p><span class="filter-chip" aria-hidden="true"><svg viewBox="0 0 16 16" focusable="false"><path d="M2.5 3.5h11L9.5 8.5v4l-3 1.5v-5.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Apple Search Ads Keyword: morning routine<svg viewBox="0 0 16 16" focusable="false"><path d="M4.5 6.5 8 10l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+            <div class="charts-table-wrap">
+              <table class="charts-table">
+                <thead><tr><th scope="col">Cohort</th><th scope="col">Month 1</th><th scope="col">Month 3</th><th scope="col">Month 6</th><th scope="col">Month 12</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">January</th><td>$29.80</td><td>$47.10</td><td>$63.40</td><td class="is-predicted">$84.90</td></tr>
+                  <tr><th scope="row">March</th><td>$30.40</td><td>$48.60</td><td>$64.80</td><td class="is-predicted">$87.20</td></tr>
+                  <tr><th scope="row">May</th><td>$30.10</td><td>$47.90</td><td class="is-predicted">$63.90</td><td class="is-predicted">$86.10</td></tr>
+                  <tr><th scope="row">July</th><td>$31.20</td><td class="is-predicted">$49.30</td><td class="is-predicted">$65.70</td><td class="is-predicted">$88.40</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="charts-legend"><span><i></i>Realized LTV</span><span><i class="is-predicted"></i>Predicted LTV</span></p>
+            <p class="charts-note">Predicted LTV is a forward-looking estimate, not a guarantee.</p>
+          </div>
+
+          <div class="charts-panel" role="tabpanel" id="ch-bench" aria-labelledby="ch-tab-bench" hidden>
+            <p class="charts-title">Benchmarks</p>
+            <div class="bench">
+              <div class="bench-row"><span class="bench-label">Conversion to Paying (7 days)</span><span class="bench-value">72nd percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 25%; --to: 75%"></span><span class="bench-median" style="--at: 50%"></span><span class="bench-you" style="--at: 72%"></span></span></div>
+              <div class="bench-row"><span class="bench-label">Monthly Churn Rate</span><span class="bench-value">64th percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 25%; --to: 75%"></span><span class="bench-median" style="--at: 50%"></span><span class="bench-you" style="--at: 64%"></span></span></div>
+              <div class="bench-row"><span class="bench-label">Realized LTV per Paying Customer (30 days)</span><span class="bench-value">81st percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 25%; --to: 75%"></span><span class="bench-median" style="--at: 50%"></span><span class="bench-you" style="--at: 81%"></span></span></div>
+            </div>
+            <p class="bench-legend"><span><i class="k-you"></i>Your app</span><span><i class="k-band"></i>Similar apps, 25th to 75th percentile</span></p>
+            <p class="charts-note">Against similar apps in the same store and category.</p>
+          </div>
         </div>
       </div>
+      <p class="charts-api">Pull chart data into your own dashboards with the Charts API.</p>
 
       <div class="proof-row">
-        <div class="variants-card ui-card">
-          <div class="split4" aria-hidden="true"><span>A 25%</span><span>B 25%</span><span>C 25%</span><span>D 25%</span></div>
-          <p>Test up to four variants at once.</p>
-        </div>
         <figure class="testimonial">
           <div class="logo-tile" aria-hidden="true">Pixelcut</div>
           <div class="testimonial-body">
@@ -445,17 +534,26 @@
           <h2 class="h2" id="fit-title">Different users. Different offers. App or web.</h2>
           <p class="body">Target paywalls by country, platform, app version or your own attributes. Build web funnels that route visitors by their answers and take payment. One link unlocks their subscription in the app.</p>
         </div>
-        <div class="placeholder flow-placeholder">
-          <p class="placeholder-label">Placeholder: web funnel flow that plays once on scroll, plus targeting chips (phase 3).</p>
+        <div class="flow" data-flow>
           <span class="tag">Illustrative</span>
-          <ol class="steps">
-            <li>Ad click</li>
-            <li><span>Web funnel<span class="step-detail">"What's your goal?" Localized to the visitor's country</span></span></li>
-            <li><span>Checkout<span class="step-detail">Apple Pay or Google Pay, where supported</span></span></li>
-            <li>Get a Redemption Link</li>
-            <li>Download the app</li>
-            <li>Tap the link, subscription active</li>
+          <ol class="flow-steps">
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">Ad click</p></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">Web funnel</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div><span class="flow-tag">Localized to the visitor's country</span></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">The answer routes to an offer</p><div class="flow-row"><span class="flow-pill is-offer">Annual offer</span><span class="flow-pill is-dim">Monthly offer</span></div></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><span class="flow-label">RevenueCat Billing</span><p class="flow-title">Checkout</p><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Apple Pay or Google Pay, where supported</p></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">Get a Redemption Link</p></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">Download the app</p></div></li>
+            <li class="flow-step is-lit"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="flow-card"><p class="flow-title">Tap the link, subscription active</p></div></li>
           </ol>
+          <div class="flow-targets">
+            <p>Targeting</p>
+            <ul>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 2c1.7 1.7 2.4 3.8 2.4 6S9.7 12.3 8 14c-1.7-1.7-2.4-3.8-2.4-6S6.3 3.7 8 2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Country</li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="4.5" y="1.5" width="7" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Platform</li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 5.5 8 3l5 2.5v5L8 13l-5-2.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>App version</li>
+              <li><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 4h10M3 8h10M3 12h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Custom attributes</li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -475,25 +573,42 @@
   <!-- 7. Teams and foundation: text left, visual right -->
   <section class="section" id="teams" aria-labelledby="teams-title">
     <div class="container">
-      <div class="split split--top">
+      <div class="split">
         <div class="teams-body">
           <h2 class="h2" id="teams-title">Decide who can change a live paywall.</h2>
-          <p class="body">Give product managers, growth leads and engineers the right collaborator role, including a Growth role that can edit paywalls and offerings. Paywall version history shows who saved each version, and when. Audit logs show who changed what in the project. On Enterprise, sign in with SSO over SAML or OIDC.</p>
-          <p class="body">Underneath, one set of entitlements covers the App Store, Google Play and the web. Refund Control answers store refund requests with usage data and your preference. The store makes the final call.</p>
+          <p class="body">Give product managers, growth leads and engineers the right collaborator role, including a Growth role that can edit paywalls and offerings. Version history and audit logs show who changed what.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles, including a Growth role for paywalls and offerings</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paywall version history</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Audit logs</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>SSO with SAML or OIDC, on Enterprise</span></li>
+          </ul>
         </div>
         <div class="teams-visual">
-          <ul class="badges">
-            <li class="ui-card"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Collaborator roles, including a Growth role for paywalls and offerings</span></li>
-            <li class="ui-card"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paywall version history</span></li>
-            <li class="ui-card"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 6h12M8 12h12M8 18h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="4" cy="6" r="1.25" fill="currentColor"/><circle cx="4" cy="12" r="1.25" fill="currentColor"/><circle cx="4" cy="18" r="1.25" fill="currentColor"/></svg><span>Audit logs</span></li>
-            <li class="ui-card"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>SSO with SAML or OIDC, on Enterprise</span></li>
-          </ul>
-          <div class="placeholder diagram-placeholder">
-            <p class="placeholder-label">Placeholder: layered foundation diagram (static, phase 3). App Store, Google Play and Web at the bottom; entitlements in the middle; your app on top. Refund Control sits with the foundation.</p>
+          <div class="stack ui-card dot-canvas">
+            <div class="stack-layer stack-app">
+              <span class="stack-name"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect width="48" height="48" rx="12" fill="#1F1F47"/><circle cx="24" cy="27" r="8" fill="#F2545B"/><rect x="8" y="27" width="32" height="13" fill="#1F1F47"/><path d="M10 31c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 4-2" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/></svg>Tidelark app</span>
+            </div>
+            <svg class="stack-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 13V3M4.5 6.5 8 3l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stack-layer stack-ent">
+              <span class="stack-name">One set of entitlements</span>
+              <span class="stack-desc">Covers the App Store, Google Play and the web</span>
+            </div>
+            <svg class="stack-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 13V3M4.5 6.5 8 3l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="stack-base">
+              <div class="stack-stores">
+                <span class="stack-store">App Store</span>
+                <span class="stack-store">Google Play</span>
+                <span class="stack-store">Web</span>
+              </div>
+              <div class="stack-refund">
+                <span class="stack-name">Refund Control</span>
+                <span class="stack-desc">Answers store refund requests with usage data and your preference. The store makes the final call.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
       <p class="charts-line">Pull your dashboard's chart data into your own tools with the Charts API.</p>
 
       <figure class="testimonial">
@@ -519,7 +634,7 @@
       <div class="plans">
         <article class="plan-card ui-card">
           <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3c3.5 2 5 5.5 5 9l-2.5 3h-5L7 12c0-3.5 1.5-7 5-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="1.75" fill="currentColor"/><path d="M9.5 18.5 8 21M14.5 18.5 16 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-          <p class="plan-label">Pay nothing for up to $2,500 in monthly tracked revenue</p>
+          <p class="plan-label">Self-serve</p>
           <h3 class="h3">Pro</h3>
           <p>Free up to $2,500 in monthly tracked revenue, then 1% of all tracked revenue, with Experiments and Targeting included.</p>
           <ul class="checks">
@@ -592,16 +707,16 @@
     <p class="tl-brand">Tidelark</p>
     <p class="tl-head">Mornings that stick.</p>
     <ul class="tl-benefits">
-      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>An AI coach for your first hour</li>
-      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Routines that adapt to your sleep</li>
-      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Gentle nudges, never guilt</li>
+      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Your AI morning coach</li>
+      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Routines that fit your sleep</li>
+      <li><svg viewBox="0 0 12 12" focusable="false"><path d="M2.5 6.5l2.3 2.3L9.5 3.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Nudges, never guilt</li>
     </ul>
     <ol class="tl-plans">
-      <li class="tl-plan" data-plan="weekly"><span class="tl-radio"></span><span>Weekly</span><span class="tl-price">$6.99<small>/week</small></span></li>
-      <li class="tl-plan" data-plan="monthly"><span class="tl-radio"></span><span>Monthly</span><span class="tl-price">$29.99<small>/month</small></span></li>
-      <li class="tl-plan" data-plan="annual"><span class="tl-badge">Best value</span><span class="tl-radio"></span><span>Annual</span><span class="tl-price">$179.99<small>/year</small></span></li>
+      <li class="tl-plan" data-plan="weekly"><span class="tl-badge">3-day trial</span><span class="tl-radio"></span><span>Weekly</span><span class="tl-price"><span>$6.99<small>/week</small></span></span></li>
+      <li class="tl-plan" data-plan="monthly"><span class="tl-badge">7-day trial</span><span class="tl-radio"></span><span>Monthly</span><span class="tl-price"><span>$29.99<small>/month</small></span></span></li>
+      <li class="tl-plan" data-plan="annual"><span class="tl-badge">7-day trial</span><span class="tl-radio"></span><span>Annual</span><span class="tl-price"><span>$179.99<small>/year</small></span><span class="tl-save">Save 50%</span></span></li>
     </ol>
-    <p class="tl-trial"><span data-trial="a">3-day free trial, then $6.99/week</span><span data-trial="b">7-day free trial, then $29.99/month</span></p>
+    <p class="tl-trial"><span data-trial="a">3-day free trial, then $6.99/week</span><span data-trial="b">7-day free trial, then $29.99/month</span><span data-trial="c">7-day free trial, then $179.99/year</span></p>
     <span class="tl-cta">Start free trial</span>
     <p class="tl-fine"><span>Cancel anytime</span><span>Restore purchases</span></p>
   </div>

@@ -26,6 +26,10 @@
 
   /* Winners: green pill (ink text 8.01:1) on a light green tint */
   --rc-green-tint: #E2FAF0;  /* Green 12% on white. Ink text 14.25:1 */
+  /* Brand green fails 3:1 as a line or dot (1.95:1 on white), so
+     graphics and text use darker shades of it. */
+  --rc-green-line: #16956E;  /* Green + 35% ink. Lines, dots: 3.78 white, 3.59 off-white, 3.45 green tint */
+  --rc-green-text: #197062;  /* Green + 55% ink. Text 5.94 on white; white icons on it 5.94 */
 
   /* Tints of ink on white. No new hues */
   --rc-line: #E4E4E9;     /* Ink 12%. Decorative borders only (1.27:1) */
@@ -51,9 +55,9 @@
   --fw-display: 500;
 
   /* Layout */
-  --container: 75rem;
+  --container: 62rem;    /* RevenueCat holds content to about 990px */
   --gutter: clamp(1rem, 4vw, 2rem);
-  --section-y: clamp(4rem, 3rem + 4vw, 7.5rem);
+  --section-y: clamp(4rem, 1.5rem + 7.5vw, 8.5rem); /* 132px at 1440, 64px at 390 */
   --radius-sm: 0.75rem;
   --radius: 1rem;
   --radius-lg: 1.5rem;

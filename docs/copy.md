@@ -1,8 +1,74 @@
 # Copy: /for-product refresh
 
-Status: v1.4 LOCKED. Hero B1 by default, B2 as the hero test variant.
+Status: v1.5 LOCKED. Hero B1 by default, B2 as the hero test variant.
 Voice: short, direct, a little playful. The headlines carry the
 argument on their own. All mock data is illustrative and labeled.
+
+v1.5 changes (build phase 3B, 2026-09-27). All new microcopy below is
+approved by the user and recorded here; lines marked [v1.5].
+- Shared paywall: shorter benefits, "Save 50%" under Annual, trial
+  badge follows the featured plan, "Best value" removed, variant C.
+- Section 3: before/after panels become mini product UI.
+- Section 4: the paywall editor visual.
+- Section 5: simulator fixes (LTV per paying customer, chart label and
+  math line, "Why B wins" rows, inline toast) and the Charts module.
+- Section 6: the funnel flow visual. Section 7: trimmed body and the
+  foundation diagram. Section 8: Pro eyebrow "Self-serve".
+- Not added: ElevenLabs (audit FAIL for a named speaker).
+
+v1.5 microcopy by section [v1.5]:
+- Section 3, Change: Before "Backlog", tag "Paywall", "File a ticket",
+  "Wait for a sprint", "Ship an app update", "Wait for review". Now
+  "Edit it in the dashboard", "Publish" (toggle on), "Published. No
+  app release."
+- Section 3, Learn: Before "Trial starts" dashboard, caption "Judge it
+  on trial starts". Now "See predicted 12-month value", chip
+  "Predicted 12-month LTV winner: B", button "Roll out the winner".
+- Section 3, Fit: Before three users, one paywall, caption "One paywall
+  for everyone". Now three users, three paywalls, caption "Different
+  paywalls by audience", web card tagged "Web checkout" with "Offer it
+  on the web, too."
+- Section 4 editor (static, illustrative): "Tidelark paywall"; chip
+  "Saved by Maya, 2 min ago" (no role: the audit found no page showing
+  a role in version history); green chip "Published. No app release.";
+  "Layers": Paywall, Image, Headline, Benefits, Plans (selected), Trial
+  line, Button, Footer; "AI Editor" prompt: "Feature the annual plan
+  and add a 7-day trial badge". The preview shows variant C.
+- Section 5 Charts module (illustrative): sidebar "Charts" with
+  "Paywall performance", "Cohort and prediction", "Benchmarks".
+  - Paywall performance: filter chip "Apple Search Ads Keyword: morning
+    routine"; columns Paywall, Encounter rate, Conversion, LTV
+    (realized), Abandonment; rows Onboarding, Streak reminder,
+    Settings; note "Paywall Encounter, Paywall Conversion, Paywall LTV
+    and Paywall Abandonment charts, for RevenueCat Paywalls. Paywall
+    LTV is realized."
+  - Cohort and prediction: title "Prediction Explorer"; the same chip;
+    cohorts January, March, May, July by Month 1, 3, 6, 12; legend
+    "Realized LTV", "Predicted LTV"; note "Predicted LTV is a
+    forward-looking estimate, not a guarantee."
+  - Benchmarks (no chip): "Conversion to Paying (7 days)" 72nd
+    percentile, "Monthly Churn Rate" 64th, "Realized LTV per Paying
+    Customer (30 days)" 81st; legend "Your app", "Similar apps, 25th
+    to 75th percentile"; note "Against similar apps in the same store
+    and category."
+  - Line below: "Pull chart data into your own dashboards with the
+    Charts API." (The requested "Pull any chart into your own tools"
+    failed the audit: the API covers a fixed list of charts.)
+  - "Test up to four variants at once." is now a checkmark line beside
+    the Pixelcut quote. The four-way bar, the separate Benchmarks card
+    and the paywall performance card are gone.
+- Section 6 flow (illustrative): "Ad click"; "Web funnel", "What's your
+  goal?", answers "Start earlier" (chosen) and "Sleep better", tag
+  "Localized to the visitor's country"; "The answer routes to an
+  offer": "Annual offer", "Monthly offer"; label "RevenueCat Billing",
+  "Checkout", "Apple Pay", "Google Pay", "Apple Pay or Google Pay,
+  where supported"; "Get a Redemption Link"; "Download the app"; "Tap
+  the link, subscription active". Targeting chips: Country, Platform,
+  App version, Custom attributes.
+- Section 7 diagram: "Tidelark app"; "One set of entitlements",
+  "Covers the App Store, Google Play and the web"; "App Store", "Google
+  Play", "Web"; "Refund Control", "Answers store refund requests with
+  usage data and your preference. The store makes the final call."
 
 v1.4 changes (build phase 3A, 2026-09-27), each marked [v1.4] below:
 - Nav: "Log in" text link.
@@ -55,12 +121,17 @@ Tidelark is a fictional premium AI morning-routine coach. Prices are
 illustrative. One component, used by the hero and the simulator.
 - Brand: Tidelark
 - Headline: Mornings that stick.
-- Benefits: An AI coach for your first hour / Routines that adapt to
-  your sleep / Gentle nudges, never guilt
-- Plans: Weekly $6.99/week, Monthly $29.99/month, Annual
-  $179.99/year with a "Best value" badge
+- Benefits [v1.5], one line each at phone width: Your AI morning coach
+  / Routines that fit your sleep / Nudges, never guilt
+- Plans: Weekly $6.99/week, Monthly $29.99/month, Annual $179.99/year
+  with "Save 50%" as muted text under its price [v1.5]. No "Best
+  value".
+- The featured plan carries the white border and a trial badge [v1.5]:
+  "3-day trial" (Weekly) or "7-day trial" (Monthly, Annual).
 - Variant A features Weekly: "3-day free trial, then $6.99/week"
 - Variant B features Monthly: "7-day free trial, then $29.99/month"
+- Variant C (the section 4 editor) features Annual: "7-day free trial,
+  then $179.99/year"
 - Button: Start free trial
 - Small print: Cancel anytime / Restore purchases
 
@@ -156,20 +227,26 @@ Simulator [v3, v1.4]:
     ("Conversion to paying" is RevenueCat Experiments' own metric
     name.)
   - Variant A: Weekly featured, 3-day trial. 11.0% conversion to
-    paying, $6.55 predicted 12-month LTV.
+    paying, $59.52 predicted 12-month LTV [v1.5].
   - Variant B: Monthly featured, 7-day trial. 7.4% conversion to
-    paying, $9.65 predicted 12-month LTV.
+    paying, $130.46 predicted 12-month LTV [v1.5].
+  - Under the cards [v1.5]: "LTV per paying customer, illustrative
+    model."
   - Both metrics on every card, always. The judged metric is large.
   - Winner pill: Leads.
-  - Chart, tagged Illustrative: "Cumulative revenue, 12 months". Axis
+  - Chart, tagged Illustrative: "Cumulative revenue per 10,000
+    customers in the test" [v1.5]. Under it: "10,000 customers per
+    variant. A: 1,100 paying, $65.5K. B: 740 paying, $96.5K." A's line
+    red, B's line green [v1.5]. Axis
     $0 / $50K / $100K; months 0, 3, 6, 9, 12 and "Months". Month 0 to
     1 solid, marked "Observed"; months 1 to 12 dashed, marked
     "Predicted". Crossover label: "B overtakes at month 4". End
     labels: A $65.5K, B $96.5K. The conversion view shows only the
     observed month.
-  - "Why B wins" (LTV view): Conversion to paying 11.0% / 7.4%; Still
-    subscribed at month 3 15% / 46%; Price per month $30.29 / $29.99;
-    Refund rate 6.0% / 5.0%. Caption: "Illustrative model of a
+  - "Why B wins" (LTV view) [v1.5]: Conversion to paying 11.0% / 7.4%;
+    Still subscribed at month 3 15% / 46%; Still subscribed at month 12
+    3.5% / 18%; Price per month "$30.29/mo ($6.99 weekly)" /
+    "$29.99/mo". Refund row cut. Caption: "Illustrative model of a
     hard-paywall app. RevenueCat uses each variant's observed
     conversion and retention data to model future revenue."
   - Status, conversion view: A leads on conversion to paying
@@ -177,7 +254,8 @@ Simulator [v3, v1.4]:
     converts more.
   - Button: Roll out winner. Confirm dialog: "Roll out variant [current
     winner] to all users?" Buttons: Confirm, Cancel.
-  - Toast, in its own slot: Rolled out. No app release.
+  - Toast [v1.5]: Rolled out. No app release. Inline, beside the
+    button on desktop and below it on mobile; no reserved slot.
   - After rollout: a disabled "Rolled out" button and a "Reset demo"
     link.
 - The user's phone, right: the shared Tidelark paywall.
@@ -187,8 +265,7 @@ Simulator [v3, v1.4]:
     shows "Now live: Variant B · 100%" (or A, if A was the winner) and
     that variant's featured plan.
 - Demo cursor label: You
-- Caption: Illustrative data and model. LTV is shown per enrolled
-  customer. The 12-month forecast appears once an experiment with
+- Caption [v1.5]: Illustrative data and model. The 12-month forecast appears once an experiment with
   revenue as its primary metric has enough data. It's a signal, not a
   guarantee.
 - Model, illustrative, fitted to RevenueCat's published ranges
@@ -246,9 +323,12 @@ Small print: Targeting is included on Pro and Enterprise.
 ## 7. Teams and foundation
 Headline: Decide who can change a live paywall.
 Layout [v1.3]: text left, visual (badges, then diagram) right.
-Body: Give product managers, growth leads and engineers the right
-collaborator role, including a Growth role that can edit paywalls and
-offerings [v1.3]. Paywall version history shows
+Body [v1.5], trimmed to two sentences: Give product managers, growth
+leads and engineers the right collaborator role, including a Growth
+role that can edit paywalls and offerings. Version history and audit
+logs show who changed what.
+(The foundation detail moved into the diagram labels, see v1.5
+microcopy. The rest of the earlier body below is superseded.) Paywall version history shows
 who saved each version, and when. Audit logs show who changed what in
 the project. On Enterprise, sign in with SSO over SAML or OIDC.
 Underneath, one set of entitlements covers the App Store, Google Play
@@ -276,9 +356,8 @@ section. None is documented.)
 ## 8. Two ways to start
 Headline: Two ways to start.
 Sub [v1.3]: From a product team of one to a whole product org.
-Card 1, "Pro", label "Pay nothing for up to $2,500 in monthly tracked
-revenue" [v1.4] (the pricing page's own description of Pro; it has no
-audience line):
+Card 1, "Pro", eyebrow "Self-serve" [v1.5] (was the price line in
+v1.4; RevenueCat's own blog calls Pro its self-serve plan):
 Free up to $2,500 in monthly tracked revenue, then 1% of all tracked
 revenue, with Experiments and Targeting included.
 Bullets [v1.3, claim audit 2026-09-27]:

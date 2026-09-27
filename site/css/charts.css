@@ -1,0 +1,94 @@
+/* Section 5: Charts module, styled like RevenueCat's Charts page. A
+   sidebar list (vertical tabs) and a chart panel. Illustrative data. */
+
+.charts {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.charts-side { padding: 0.75rem; align-self: start; }
+.charts-side-title {
+  padding: 0.25rem 0.625rem 0.625rem;
+  color: var(--rc-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.charts-list { display: grid; gap: 0.25rem; }
+.charts-tab {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--rc-ink);
+  font: inherit;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.charts-tab:hover { background: var(--rc-offwhite); }
+.charts-tab[aria-selected="true"] {
+  background: var(--rc-offwhite);
+  color: var(--rc-blue-text); /* selection: blue, 5.24:1 on off-white */
+  box-shadow: inset 3px 0 0 var(--rc-blue);
+}
+
+.charts-main { display: grid; gap: 1rem; align-content: start; padding: 1.25rem; min-width: 0; }
+.charts-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.charts-title { margin-right: auto; color: var(--rc-ink); font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 600; }
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--rc-outline);
+  border-radius: var(--radius-pill);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.filter-chip svg { width: 0.875rem; height: 0.875rem; flex: none; }
+
+.charts-panel { display: grid; gap: 0.75rem; min-width: 0; }
+.charts-note { color: var(--rc-body); font-size: 0.8125rem; }
+
+/* Data tables */
+.charts-table-wrap { overflow-x: auto; }
+.charts-table {
+  width: 100%;
+  min-width: 26rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+.charts-table th,
+.charts-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--rc-line); text-align: right; white-space: nowrap; }
+.charts-table thead th { color: var(--rc-body); font-weight: 600; }
+.charts-table tbody th { color: var(--rc-ink); font-weight: 600; text-align: left; }
+.charts-table td { color: var(--rc-ink); }
+.charts-table th:first-child,
+.charts-table td:first-child { padding-left: 0; text-align: left; }
+.charts-panel-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.bar-cell { display: inline-flex; align-items: center; gap: 0.5rem; }
+.bar-cell i { display: inline-block; height: 0.375rem; border-radius: var(--radius-pill); background: var(--rc-ink); opacity: 0.8; }
+
+/* Cohort table: predicted cells tinted, as RevenueCat styles them */
+.charts-table td.is-predicted { background: var(--rc-wash-lavender); font-style: italic; }
+.charts-legend { display: flex; flex-wrap: wrap; gap: 0.375rem 1rem; color: var(--rc-body); font-size: 0.75rem; }
+.charts-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
+.charts-legend i { width: 0.875rem; height: 0.625rem; border: 1px solid var(--rc-line); border-radius: 2px; background: var(--rc-white); }
+.charts-legend i.is-predicted { background: var(--rc-wash-lavender); }
+
+.charts-api { margin-top: 1rem; color: var(--rc-ink); font-size: var(--fs-small); }
+
+@media (min-width: 48rem) {
+  .charts { grid-template-columns: 14rem minmax(0, 1fr); }
+}

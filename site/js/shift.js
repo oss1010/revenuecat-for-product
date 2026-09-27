@@ -20,6 +20,7 @@
       p.hidden = p.id !== tab.getAttribute('aria-controls');
     });
     if (focus) tab.focus();
+    if (tab.scrollIntoView) tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
 
   tabs.forEach(function (tab, i) {

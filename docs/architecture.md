@@ -1,7 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1.4. Built on docs/positioning.md v0.3. Words live in
-docs/copy.md v1.4 (locked). Visual grammar: CLAUDE.md.
+Status: v1.5. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -59,13 +59,23 @@ docs/copy.md v1.4 (locked). Visual grammar: CLAUDE.md.
    handle moves the split (pointer, touch, keyboard: arrows, Page
    Up/Down, Home, End). Each tab ends with "See how >" to its section.
    Fallback, not needed: tabs with side-by-side Before and Now columns.
+   Phase 3B: each side is mini product UI. Change: a backlog ticket, a
+   sprint badge and an app update waiting for review, against a
+   dashboard Publish toggle and "Published. No app release." Learn: a
+   dashboard cheering trial starts, against a forecast sparkline with
+   a predicted 12-month LTV winner chip. Fit: one paywall for three
+   users, against three users with three paywalls plus a web checkout
+   card. No numbers that would need a source.
    Rule: "before" is the PM's status quo, never an older RevenueCat.
    Rule: web appears as a channel, never as a forecasted experiment.
    Predicted 12-month LTV is not claimed for web (positioning v0.3).
 
 4. JOB 1: CHANGE IT WITHOUT A RELEASE. Static. Text left, visual right.
-   Visual: the paywall editor with the AI Editor prompt bar and a
-   published state.
+   Visual (static, built phase 3B): the Tidelark paywall in a paywall
+   editor. Layers panel left, the shared paywall (variant C, annual
+   featured) center, the AI Editor prompt bar below, a green
+   "Published. No app release." chip and a version-history chip
+   ("Saved by Maya, 2 min ago"; no role, per the audit).
    Proof: visual editor, templates, AI Editor as a drafting tool
    (generally available July 2026), one-action rollout.
    Language rule: "one release, then none".
@@ -116,12 +126,25 @@ docs/copy.md v1.4 (locked). Visual grammar: CLAUDE.md.
    forecast on it), beside the Benchmarks line. Second: "Test up to
    four variants at once" (no predicted LTV attached) beside the
    Pixelcut proof block. Nothing near Pixelcut mentions 12-month value.
+   Phase 3B: the chart card, Benchmarks card and four-way bar are
+   replaced by one Charts module in the style of RevenueCat's Charts
+   page: a sidebar (Paywall performance, Cohort and prediction,
+   Benchmarks; vertical tabs, keyboard operable) and a chart panel.
+   RevenueCat's own names inside: the four Paywall charts, Prediction
+   Explorer, Benchmarks metrics with percentiles, an "Apple Search Ads
+   Keyword" filter chip (not on Benchmarks). Below: the Charts API line
+   in the audited wording. "Test up to four variants at once" is a
+   checkmark line beside Pixelcut.
    Fallback if over the timebox: a static two-panel comparison with the
    same numbers and the green winner.
 
 6. JOB 3: FIT THE OFFER TO EVERY USER, WHEREVER THEY BUY. Dynamic,
    plays once on scroll. Visual left, text right (text first on
    mobile).
+   Built (phase 3B): small cards that light up in order once on
+   scroll, completed steps with green checks, targeting chips beside
+   them, "RevenueCat Billing" on the checkout card. Reduced motion and
+   no-JS show the final state.
    Visual: an ad, then a web funnel with a branch by survey answer,
    tagged as localized to the visitor's country, then web checkout
    with Apple Pay and Google Pay labeled "where supported", then a
@@ -152,9 +175,11 @@ docs/copy.md v1.4 (locked). Visual grammar: CLAUDE.md.
    Visual, top: the governance badges lead. Collaborator roles
    including a Growth role, paywall version history, audit logs, SSO
    (SAML or OIDC), labeled Enterprise plan only.
-   Visual, below: the layered foundation diagram. App Store, Google
-   Play and Web at the bottom; entitlements in the middle; your app on
-   top. Refund Control sits with the foundation.
+   Visual, below (built phase 3B): the layered foundation diagram. App
+   Store, Google Play and Web at the bottom; one set of entitlements in
+   the middle; the Tidelark app on top; Refund Control as a node beside
+   the stores. The body is two sentences; the foundation detail lives
+   in the diagram labels.
    One line: Charts API for your own dashboards.
    Proof block for the enterprise reader: OpenAI (case-study sentence;
    the feature-page quote contains an em dash).

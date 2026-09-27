@@ -40,7 +40,7 @@
       enrolled: +el.getAttribute('data-enrolled'),
       paying: +el.getAttribute('data-paying'),
       price: +el.getAttribute('data-price'),
-      refund: el.getAttribute('data-refund'), /* shown as written */
+      priceLabel: el.getAttribute('data-price-label'),
       retention: el.getAttribute('data-retention').split(',').map(Number)
     };
   }
@@ -73,10 +73,10 @@
   /* Fill model-derived numbers into the markup */
   function fill(sel, fn) { qa(sel).forEach(function (el) { el.textContent = fn(el.getAttribute('data-k')); }); }
   fill('[data-out="conversion"]', function (k) { return (M[k].paying / M[k].enrolled * 100).toFixed(1) + '%'; });
-  fill('[data-out="ltv"]', function (k) { return money(ltv(k), unit === 'paying' ? 0 : 2); });
+  fill('[data-out="ltv"]', function (k) { return money(ltv(k), 2); });
   fill('[data-out="m3"]', function (k) { return M[k].retention[2] + '%'; });
-  fill('[data-out="price"]', function (k) { return money(M[k].price, 2); });
-  fill('[data-out="refund"]', function (k) { return M[k].refund + '%'; });
+  fill('[data-out="m12"]', function (k) { return M[k].retention[11] + '%'; });
+  fill('[data-out="price"]', function (k) { return M[k].priceLabel; });
   fill('[data-out="end"]', function (k) { return kilo(C[k][12]); });
 
   /* ---------- Chart ---------- */

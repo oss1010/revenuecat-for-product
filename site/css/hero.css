@@ -139,7 +139,7 @@
   justify-self: start;
   padding: 0.1875rem 0.625rem;
   border-radius: var(--radius-pill);
-  background: var(--rc-ink);
+  background: var(--rc-blue); /* actions are blue, white 4.59:1 */
   color: var(--rc-white);
   font-size: 0.75rem;
   font-weight: 700;
@@ -148,8 +148,8 @@
 
 /* Test: a small forecast line draws in (clip reveal) */
 .hl-spark { width: 100%; height: 2.5rem; }
-.hl-spark .a { stroke: var(--rc-outline); }
-.hl-spark .b { stroke: var(--rc-ink); }
+.hl-spark .a { stroke: var(--rc-red); }
+.hl-spark .b { stroke: var(--rc-green-line); }
 
 /* Keep: green pill, "this won" */
 .hl-keep-row { display: flex; align-items: center; gap: 0.5rem; }
@@ -177,7 +177,7 @@
   transition: transform 700ms var(--ease), opacity 300ms var(--ease);
 }
 .hl-cursor.is-on { opacity: 1; }
-.hl-cursor svg { color: var(--rc-blue); width: 1.5rem; height: 1.5rem; filter: drop-shadow(0 2px 3px rgba(31, 31, 71, 0.25)); transition: transform 120ms var(--ease); }
+.hl-cursor svg { color: var(--rc-red); width: 1.5rem; height: 1.5rem; filter: drop-shadow(0 2px 3px rgba(31, 31, 71, 0.25)); transition: transform 120ms var(--ease); }
 .hl-cursor.is-clicking svg { transform: scale(0.85); }
 
 @media (min-width: 64rem) {

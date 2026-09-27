@@ -64,6 +64,20 @@ Rules:
   links (--rc-blue-text) and the demo cursor's "You" pill. Never
   decorative, never a section background. Confirmed by the user
   2026-09-27; replaces the earlier "blue at most twice" rule.
+
+Color roles (set by the user 2026-09-27, applied across every visual):
+- Blue: actions and selection. Buttons, links, selected toggles and
+  tabs, the "You" pill. Stays the dominant color.
+- Green: winning, growth and live states. The pulsing "Running" dot,
+  variant B's chart line, "Now live", positive deltas, completed
+  steps. Fills use --rc-green with ink on top; lines and dots use
+  --rc-green-line (#16956E); green text uses --rc-green-text
+  (#197062).
+- Red: emphasis. Key numbers, the demo cursor's arrow, variant A's
+  chart line (3.39:1 on white passes the 3:1 bar for graphics). Red
+  text still needs 19px bold or larger.
+- Ink: text and UI chrome.
+- Graphical lines must pass 3:1 against their background.
 - No gradients between any two of these. Flat fills only. One
   exception: the hero wash, a faint radial lavender-to-peach gradient
   from --rc-wash-lavender and --rc-wash-peach, behind the hero visual.
@@ -78,7 +92,8 @@ scale strip.
   small glowing dots around the hero visual.
 - Product UI: white cards, light border, soft shadow, on a dotted-grid
   canvas. Phones have a white bezel.
-- Cursor demos: a blue arrow with a blue "You" pill.
+- Cursor demos: a red arrow (color roles: red is emphasis) with a blue
+  "You" pill.
 - Proof points: checkmark bullet lists.
 - Testimonial block: rounded square logo tile, large quote with the
   key number in red, name and role, "Read case study >". Customer
@@ -114,6 +129,10 @@ large text and non-text marks.
     chevron links are white (15.61:1); a blue button's hover there adds
     a white ring instead of darkening (the hover blue is 2.83:1
     against ink).
+- Added for the color roles: --rc-green-line #16956E is 3.78:1 on
+  white, 3.59:1 on off-white, 3.45:1 on the green tint (lines, dots).
+  --rc-green-text #197062 is 5.94:1 on white (text; white icons on it).
+  --rc-red as a chart line is 3.39:1 on white, 3.22:1 on off-white.
 - Any new color pairing must be checked before it ships.
 
 ### Typography

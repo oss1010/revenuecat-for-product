@@ -1,0 +1,117 @@
+/* Section 6: web-to-app funnel. Small cards light up in order, once,
+   when the flow scrolls into view. Completed steps get a green check
+   (ink on --rc-green, 8.01:1). Reduced motion: final state. */
+
+.flow { display: grid; gap: 1rem; max-width: 30rem; }
+.flow > .tag { justify-self: start; }
+.flow-steps { display: grid; gap: 0; counter-reset: none; }
+.flow-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+/* Connector line between steps */
+.flow-step::before {
+  content: "";
+  position: absolute;
+  top: 1.75rem;
+  bottom: 0;
+  left: 0.8125rem;
+  width: 2px;
+  background: var(--rc-line);
+}
+.flow-step:last-child { padding-bottom: 0; }
+.flow-step:last-child::before { display: none; }
+.flow-check {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--rc-outline);
+  border-radius: 50%;
+  background: var(--rc-white);
+  color: transparent;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.flow-check svg { width: 0.875rem; height: 0.875rem; }
+.flow-card {
+  display: grid;
+  gap: 0.375rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius);
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.flow-title { color: var(--rc-ink); font-size: var(--fs-small); font-weight: 700; }
+.flow-sub { color: var(--rc-body); font-size: 0.8125rem; }
+.flow-row { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.flow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.625rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-pill);
+  background: var(--rc-offwhite);
+  color: var(--rc-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.flow-pill.is-chosen { border-color: var(--rc-blue); color: var(--rc-blue-text); background: var(--rc-white); } /* the visitor's answer: selection */
+.flow-pill.is-offer { border-color: var(--rc-ink); background: var(--rc-white); }
+.flow-pill.is-dim { color: var(--rc-body); }
+.flow-pay { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.flow-pay span {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--rc-ink);
+  color: var(--rc-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.flow-tag { justify-self: start; color: var(--rc-body); font-size: 0.75rem; font-style: italic; }
+.flow-label {
+  justify-self: start;
+  padding: 0.0625rem 0.5rem;
+  border-radius: 0.375rem;
+  background: var(--rc-offwhite);
+  color: var(--rc-ink);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Lit (completed) steps */
+.flow-step.is-lit .flow-check { border-color: var(--rc-green); background: var(--rc-green); color: var(--rc-ink); } /* green fill, ink check 8.01:1 */
+.flow.is-playing .flow-step:not(.is-lit) .flow-card { opacity: 0.45; transform: translateY(0.25rem); }
+
+/* Targeting chips */
+.flow-targets { display: grid; gap: 0.5rem; }
+.flow-targets p { color: var(--rc-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.flow-targets ul { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.flow-targets li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-pill);
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+.flow-targets li svg { width: 0.875rem; height: 0.875rem; color: var(--rc-body); }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-check,
+  .flow-card { transition: none; }
+}

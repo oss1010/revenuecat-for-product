@@ -1,0 +1,143 @@
+/* Static visuals: the section 4 paywall editor and the section 7
+   foundation diagram. Our story, in RevenueCat's visual grammar:
+   white product cards, light borders, soft shadows. Illustrative. */
+
+/* ---------- Section 4: paywall editor ---------- */
+.editor { display: grid; overflow: hidden; box-shadow: var(--rc-glow); }
+.ed-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--rc-line);
+}
+.ed-title { margin-right: auto; color: var(--rc-ink); font-family: var(--font-display); font-size: 0.9375rem; font-weight: 700; }
+.ed-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.625rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-pill);
+  background: var(--rc-offwhite);
+  color: var(--rc-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ed-chip svg { width: 0.75rem; height: 0.75rem; flex: none; }
+.ed-live {
+  border-color: var(--rc-green);
+  background: var(--rc-green); /* live: green fill, ink text 8.01:1 */
+  color: var(--rc-ink);
+}
+.ed-body { display: grid; }
+.ed-layers { display: none; padding: 0.875rem 0.75rem; border-right: 1px solid var(--rc-line); }
+.ed-label { margin: 0 0 0.5rem 0.25rem; color: var(--rc-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.ed-layers ul { display: grid; gap: 0.125rem; }
+.ed-layers li {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+}
+.ed-layers li::before { content: "#"; color: var(--rc-outline); font-weight: 700; }
+.ed-layers li.is-selected { background: var(--rc-offwhite); color: var(--rc-blue-text); box-shadow: inset 3px 0 0 var(--rc-blue); }
+.ed-layers li.is-child { padding-left: 1.25rem; }
+.ed-canvas { display: grid; place-items: center; padding: 1.5rem 1rem; border-radius: 0; }
+.ed-phone { width: 13.75rem; }
+.ed-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+  border: 1.5px solid var(--rc-blue); /* the active input: selection is blue */
+  border-radius: var(--radius);
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+}
+.ed-ai {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: none;
+  color: var(--rc-blue-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.ed-ai svg { width: 0.875rem; height: 0.875rem; }
+.ed-input { flex: 1; min-width: 0; color: var(--rc-ink); font-size: 0.8125rem; line-height: 1.35; }
+.ed-send {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: var(--rc-blue);
+  color: var(--rc-white);
+}
+.ed-send svg { width: 0.875rem; height: 0.875rem; }
+
+@media (min-width: 48rem) {
+  .ed-body { grid-template-columns: 11rem minmax(0, 1fr); }
+  .ed-layers { display: block; }
+}
+
+/* ---------- Section 7: foundation diagram ---------- */
+.stack {
+  display: grid;
+  gap: 0.625rem;
+  padding: 1.25rem;
+}
+.stack-layer {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius);
+  background: var(--rc-white);
+  text-align: center;
+}
+.stack-kicker { color: var(--rc-body); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.stack-name { color: var(--rc-ink); font-family: var(--font-display); font-size: 1rem; font-weight: 700; }
+.stack-desc { color: var(--rc-body); font-size: 0.8125rem; line-height: 1.4; }
+.stack-app { border: 2px solid var(--rc-ink); }
+.stack-app .stack-name { display: inline-flex; align-items: center; gap: 0.5rem; }
+.stack-app svg { width: 1.5rem; height: 1.5rem; }
+.stack-ent { background: var(--rc-offwhite); }
+.stack-arrow { justify-self: center; width: 1rem; height: 1rem; color: var(--rc-outline); }
+.stack-base { display: grid; gap: 0.625rem; align-items: start; }
+.stack-stores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.stack-store {
+  display: grid;
+  place-items: center;
+  min-height: 3rem;
+  padding: 0.5rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-sm);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-align: center;
+}
+.stack-refund {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px dashed var(--rc-outline);
+  border-radius: var(--radius-sm);
+  background: var(--rc-white);
+}
+.stack-refund .stack-name { font-size: 0.875rem; }
+
+@media (min-width: 48rem) {
+  .stack-base { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; }
+}

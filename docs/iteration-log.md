@@ -1281,3 +1281,98 @@ the proof points.
 ### Screenshots
 - docs/process-shots/: hero and section 5 at 1440px and 390px, taken
   with headless Chrome over the DevTools protocol, as asked.
+
+## 2026-09-27: Build phase 3B, color roles, Charts module, every remaining visual
+
+### Color roles
+- Blue for actions and selection (buttons, links, selected toggles and
+  tabs, the "You" pill); green for winning, growth and live states;
+  red for emphasis (key numbers, the cursor arrow, variant A's line);
+  ink for text and chrome. Recorded in CLAUDE.md.
+- Brand green fails 3:1 as a line (1.95:1 on white), so two darker
+  shades were added and checked: --rc-green-line #16956E (3.78:1 on
+  white) for lines and dots, --rc-green-text #197062 (5.94:1) for
+  text. Variant A's red line passes at 3.39:1.
+
+### Built
+- Shared paywall: one-line benefits, "Save 50%" under Annual, no "Best
+  value", and the trial badge and white border follow whichever plan
+  the variant features. A variant C (annual featured) serves the
+  editor. The full hero loop was traced in headless Chrome: Design,
+  Test and Keep each change the featured plan, badge and trial line.
+- Simulator: LTV per paying customer ($59.52 and $130.46), labelled as
+  our illustrative model; the chart label and a math line under it;
+  "Why B wins" without the refund row and with month-12 retention; the
+  toast inline with the button, no reserved slot; the color roles.
+- Section 5: one Charts module (sidebar tabs and a chart panel) with
+  RevenueCat's own names: the four Paywall charts, Prediction Explorer
+  and Benchmarks metrics with percentiles.
+- Section 3: before/after panels became mini product UI for all three
+  jobs, reusing the locked step copy as their labels.
+- Section 4: the Tidelark paywall in a paywall editor (Layers, preview,
+  AI Editor prompt, published and version-history chips). Static.
+- Section 6: the funnel lights up step by step once on scroll, with
+  green checks, targeting chips and "RevenueCat Billing".
+- Section 7: body trimmed to two sentences; a layered foundation
+  diagram carries the entitlements and Refund Control detail.
+- No placeholders remain on the page.
+
+### Claim audit (2026-09-27)
+| # | Claim or label | Verdict | Outcome |
+|---|---|---|---|
+| 1 | ElevenLabs alternate quote (case study) | FAIL with a name and title | No speaker is printed on the quote, and RevenueCat's own credits for the case study conflict. Not added; company-only credit is possible if wanted |
+| 2a | Paywall charts | PASS conditional | "Paywall Encounter", "Paywall Conversion", "Paywall LTV", "Paywall Abandonment"; RevenueCat Paywalls; Paywall LTV is realized (https://www.revenuecat.com/docs/dashboard-and-metrics/charts) |
+| 2b | Cohort and prediction | PASS conditional | Panel titled "Prediction Explorer" with Realized LTV and Predicted LTV; caption that prediction is not a guarantee. Cohort Explorer is realized only |
+| 2c | Benchmarks | PASS conditional | Exact metric names and percentiles; peers in the same store and category. It is its own page in RevenueCat, not a chart |
+| 2d | Apple Search Ads keyword filter | PASS conditional | "Apple Search Ads Keyword" filter, iOS only, with Apple Search Ads attribution set up (https://www.revenuecat.com/changelog/release/charts-apple-search-ads-keyword-claim-type-2025-03-27). Kept off Benchmarks |
+| 2e | "Pull any chart into your own tools" | FAIL for "any" | The API covers a fixed list of charts. Used the settled "Pull chart data into your own dashboards with the Charts API." |
+| 3a, 3b | "Layers", "AI Editor" | PASS | RevenueCat's own names |
+| 3c | "Saved by Maya, Growth, 2 min ago" | FAIL with the role | Version history shows who saved and when; no role. Now "Saved by Maya, 2 min ago" |
+| 4 | "Self-serve" for Pro | PASS conditional | RevenueCat's own blog calls Pro its self-serve plan |
+
+### Brand-guard (first review of the built page)
+- Verdict: reads as a RevenueCat page, not builder output; execution
+  was pulling it toward template.
+- Top five non-copy fixes, all applied:
+  1. A CSS leak: old `.flow` rules left in shift.css from the first
+     section 3 build overrode the new funnel's layout (ragged cards,
+     misaligned connector). Deleted; completed checks now green fill
+     with ink (the CLAUDE.md fill rule), cards capped at 30rem.
+  2. Section 3 tabs: full-width slabs and the largest blue fill on the
+     page. Now compact pills in one row that scrolls on mobile; the
+     selected tab scrolls into view.
+  3. Section 7: the 2x2 icon tiles read as the old feature grid and
+     left a void beside the text. The four governance items became a
+     checks list under the body (still first in the section), and the
+     diagram is the single visual.
+  4. Testimonials: one component in three placements. Now a centered,
+     narrower block with a larger tile; "Test up to four variants at
+     once" moved under the simulator caption.
+  5. Container 75rem to 62rem, close to RevenueCat's ~990px; section
+     padding up to 132px at 1440. Hero and nav keep 72rem for the loop.
+- Not applied (listed for the next pass): sticky phone in the
+  simulator, a lighter mobile simulator, the charts table on mobile,
+  collapsing "Why B wins" in the conversion view, the reserved win-pill
+  space, quieter eyebrow and "Illustrative" tags, unified mock pill
+  styles, removing the plan icon tiles, larger plan names, two-column
+  logo rows on mobile, hero card spacing and Test-card icon, the hero
+  chip timing, a quieter tertiary link, smaller check lists in section
+  4, moving the Targeting line, Manrope 600 for headings (a type-scale
+  decision), and the CLAUDE.md cursor color (fixed: the arrow is red).
+
+### Verification
+- The session was not open in any window, so the preview pane could
+  not render. Verified in headless Chrome over the DevTools protocol
+  instead, at 390px and 1440px: every section rendered and reviewed,
+  the hero loop traced, rollout with the inline toast (beside the
+  button at 1440, below it at 390), "Now live" in green, and reset.
+- Reduced motion emulated for the first time (not just coded): the
+  hero holds the Keep state, the simulator shows the LTV view with the
+  forecast drawn and no pulse, the funnel shows all steps completed.
+- Keyboard: Charts tabs (arrows, Home, End), section 3 tabs and
+  slider, simulator dialog and reset.
+- Bugs caught: the funnel CSS leak (brand-guard), the trial badge over
+  Annual's price in the editor, "Why B wins" wrapping beside the chart
+  (now stacked under it), right-aligned tab labels on mobile.
+- Screenshots: docs/process-shots/full-page-1440.png and
+  full-page-390.png.
