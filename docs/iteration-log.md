@@ -1074,3 +1074,69 @@ the proof points.
   swaps, no pop), but the preview pane could not emulate the setting.
 - Headless screenshots and the brand-guard pass were skipped at the
   user's request. Screenshots to be taken by hand.
+
+## 2026-09-27: Build phase 1.5, visual language, proof points, simulator v2
+
+### Visual grammar
+- Recreated RevenueCat's visual grammar rather than reusing its files,
+  because the work must be our own and the reviewers would recognize
+  their own assets. In production, a PMM would pull from the design
+  library and brief the agency.
+- Source material in docs/reference/inspiration/ (gitignored): two
+  animation frame sheets, two product UI images, and full-page
+  captures of seven feature pages. Nothing from it is embedded.
+- Colors sampled by reading canvas pixels from the captures, not by
+  eye: off-white #F9F9FB (sections alternate exactly white and
+  #F9F9FB on the Experiments, Refund Control and Paywalls pages),
+  lavender wash #EFF0FA and peach wash #FCF6F7 (frame sheet
+  backgrounds).
+- Adopted: alternating backgrounds, the hero wash with dotted orbit
+  rings, chevron text links for every secondary CTA, white product
+  cards on a dotted-grid canvas, a white-bezel phone, the "You"
+  cursor, green winner pills on a light green tint, checkmark lists,
+  and testimonial blocks.
+- Contrast caught a problem the reference pages don't show: brand blue
+  as link text on the off-white is 4.37:1 and fails AA. Links use
+  #4F60C5 (5.24:1). Red on the lavender wash is 2.99:1, so red never
+  sits on the wash. Tokens and contrast notes are in CLAUDE.md.
+- Testimonial tiles show the company name, not the customer's logo:
+  the logo exception covers the scale strip only.
+
+### Claim audit (targeted, 2026-09-27)
+| # | Claim | Source | Verdict | Outcome on the page |
+|---|---|---|---|---|
+| a | Refund Control trust line | https://www.revenuecat.com/feature/refund-control | Wording confirmed, not used | It says "annual revenue", which the homepage labels don't. Scale strip keeps "146K+ apps supported" and "$17B+ revenue processed" (https://www.revenuecat.com/) |
+| b | Chance to Win and credible intervals next to predicted 12-month LTV | https://www.revenuecat.com/docs/tools/experiments-v1/experiments-results-v1 ; https://www.revenuecat.com/changelog/release/see-credible-intervals-in-experiment-results-2026-05-06 ; https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12 | FAIL for pLTV | Both apply to conversion metrics only (initial conversion, trial conversion, conversion to paying). Winner pill stays "Leads". Product gap updated in positioning.md |
+| c1 | OpenAI quote, Infrastructure page | https://www.revenuecat.com/feature/infrastructure ; https://www.revenuecat.com/customers/revenuecat-openai | PASS conditional | The feature-page quote contains an em dash, and published quotes are never re-punctuated. Used the complete case-study sentence instead, with Sara Conlon, Head of Financial Engineering. Exact wording in copy.md |
+| c2 | MOJO "$1M MRR", Paywalls page | https://www.revenuecat.com/feature/paywalls ; https://www.revenuecat.com/customers/mojo-case | FAIL | RevenueCat's line, not a quote: no speaker, no timeframe, and the case study never mentions $1M or MRR. Not used |
+| c3 | Pixelcut "16% increase in subscribers", Experiments page | https://www.revenuecat.com/feature/experiments ; https://www.revenuecat.com/customers/pixelcut | PASS conditional | Used word for word in section 5, with Dominique Yahyavi, Co-Founder. The metric is subscribers; never restate it as revenue, LTV or conversion |
+| d | "A Complete Mobile App Monetization Platform" | https://www.revenuecat.com/feature/experiments | PASS | Mid-page section heading. Added to positioning.md as support for the category |
+| d-flag | "no engineering effort" and "no code and no store approvals" on the same page | https://www.revenuecat.com/feature/experiments | FAIL for reuse | Never reused |
+
+### Simulator v2
+- Two surfaces on a dotted-grid canvas: the PM's panel (experiment
+  header, state, toggle, cards, winner line, rollout, toast) and the
+  user's phone showing only the Tidelark paywall ("Mornings that
+  stick.", Monthly and Annual with the featured trial badge, "Start
+  free trial", no prices).
+- Both metrics on every card; the judged metric is large. The two
+  rows swap sizes, so card height never changes.
+- Rollout reorders the phone's plans with a FLIP animation, sets the
+  state to "Rolled out", and shows the toast with the cat hop.
+- One-time cursor demo on first scroll into view. Any click, key or
+  focus in the simulator cancels it. Reduced motion shows the LTV view
+  statically.
+- Bug caught at 390px: the toggle's "Predicted 12-month LTV" stacked
+  on three lines, because the label was a grid and each text run
+  became its own row. Fixed by wrapping the label text in one span.
+- Verified at 390px and 1440px: the demo runs once and ends on the LTV
+  view; keyboard toggle, dialog (focus on Confirm, names the current
+  winner), rollout, focus return and toast all work; no horizontal
+  overflow. Reduced motion is handled in CSS and script but was not
+  emulated.
+
+### Open items closed
+- Section 6 flow now shows the download before the link tap.
+- Section 8 card CTAs and every secondary CTA are chevron text links;
+  the one-primary-per-viewport clash from phase 1 is gone.
+- Section 4 proof points have no trailing periods.

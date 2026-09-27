@@ -12,14 +12,29 @@
   --rc-body: #3D3D5C;   /* Body copy. 10.39:1 on white */
   --rc-white: #FFFFFF;  /* Page background */
 
+  /* Surfaces sampled from RevenueCat feature pages, 2026-09-27 */
+  --rc-offwhite: #F9F9FB;       /* Alternating section background */
+  --rc-wash-lavender: #EFF0FA;  /* Hero wash only. Never under red text (2.99:1) */
+  --rc-wash-peach: #FCF6F7;     /* Hero wash only */
+
   /* Interaction states, checked */
   --rc-blue-hover: #4F60C5;  /* Blue + 15% ink. White text 5.51:1 */
+  /* Chevron text links. Brand blue text on off-white is 4.37:1 and
+     fails AA, so links use the darker blue: 5.51 on white, 5.24 on
+     off-white, 4.86 on the lavender wash. */
+  --rc-blue-text: #4F60C5;
+
+  /* Winners: green pill (ink text 8.01:1) on a light green tint */
+  --rc-green-tint: #E2FAF0;  /* Green 12% on white. Ink text 14.25:1 */
 
   /* Tints of ink on white. No new hues */
   --rc-line: #E4E4E9;     /* Ink 12%. Decorative borders only (1.27:1) */
   --rc-outline: #84849A;  /* Ink 55%. Control outlines (3.65:1 on white) */
   --rc-tint: #F6F6F8;     /* Ink 4%. Placeholder fill. Body text 9.63:1 */
+  --rc-dot: #D2D2DA;      /* Ink 20%. Dotted grid and orbit dots, decorative */
   --rc-shadow: 0 1px 2px rgba(31, 31, 71, 0.06), 0 8px 24px rgba(31, 31, 71, 0.08);
+  /* Soft blue glow under product UI, as on RevenueCat feature pages */
+  --rc-glow: 0 1px 2px rgba(31, 31, 71, 0.06), 0 24px 64px rgba(87, 108, 219, 0.16);
 
   /* Type. objectSans and helveticaNeue are licensed, so: Manrope for
      display, RevenueCat's own fallback chain for body. */

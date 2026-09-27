@@ -34,17 +34,54 @@ Sources: RevenueCat press kit and revenuecat.com, inspected September 2026.
 | `--rc-white` | #FFFFFF | Default page background |
 | Logo files only | #F25A5A | logo_red.svg and logomark_red.svg use this red; the press kit swatch card states #F2545B. Use --rc-red for UI. Never recolor the logo files |
 
+Added September 2026. Surfaces sampled from full-page captures of
+RevenueCat's feature pages (canvas pixel reads); the rest derived and
+contrast-checked:
+| Token | Hex | Use |
+|---|---|---|
+| `--rc-offwhite` | #F9F9FB | Alternating section background (sampled) |
+| `--rc-wash-lavender` | #EFF0FA | Hero wash only (sampled) |
+| `--rc-wash-peach` | #FCF6F7 | Hero wash only (sampled) |
+| `--rc-blue-text` | #4F60C5 | Chevron text links. Blue + 15% ink. Also the blue hover state |
+| `--rc-green-tint` | #E2FAF0 | Winner card fill. Green 12% on white |
+| `--rc-line` | #E4E4E9 | Ink 12%. Decorative borders only |
+| `--rc-outline` | #84849A | Ink 55%. Control outlines |
+| `--rc-dot` | #D2D2DA | Ink 20%. Dotted grid and orbit dots, decorative |
+
 Rules:
 - Light page by default. Dark sections use --rc-ink, never pure black.
+- Sections alternate --rc-white and --rc-offwhite, as on RevenueCat's
+  feature pages. The hero and scale strip share the off-white.
 - Primary CTAs use --rc-blue. White on blue passes WCAG AA at
   4.59:1. This matches the live site, where "Sign up", "Start for
   free" and "Request a demo" are all blue.
 - Red is for emphasis and accent, not for primary buttons.
-- One primary CTA per viewport still holds.
-- Green means "this won" or "this went up". Never decorative.
-- Apart from primary CTAs, blue is the least-used color. More than
-  twice on the page means cut it.
-- No gradients between any two of these. Flat fills only.
+- One filled primary CTA per viewport. Secondary CTAs are text links
+  with a chevron ("Talk to sales >"), as on every feature page.
+- Green means "this won" or "this went up". Never decorative. Winners
+  are a green pill with a check and ink text, on --rc-green-tint.
+- Blue is for action only: primary CTA fills (--rc-blue), chevron text
+  links (--rc-blue-text) and the demo cursor's "You" pill. Never
+  decorative, never a section background.
+- No gradients between any two of these. Flat fills only. One
+  exception: the hero wash, a faint radial lavender-to-peach gradient
+  from --rc-wash-lavender and --rc-wash-peach, behind the hero visual.
+
+### Visual grammar
+Recreated from RevenueCat's feature pages as vector HTML and CSS,
+telling our story. Their files live in docs/reference/inspiration/,
+which is gitignored. Never embed or copy RevenueCat's images or
+videos. Exceptions: press-kit brand logos, and customer logos in the
+scale strip.
+- Hero: off-white with the wash; dotted orbit rings with one or two
+  small glowing dots around the hero visual.
+- Product UI: white cards, light border, soft shadow, on a dotted-grid
+  canvas. Phones have a white bezel.
+- Cursor demos: a blue arrow with a blue "You" pill.
+- Proof points: checkmark bullet lists.
+- Testimonial block: rounded square logo tile, large quote with the
+  key number in red, name and role, "Read case study >". Customer
+  logos are not copied into tiles; the tile shows the company name.
 
 ### Contrast rules
 Verified September 2026. WCAG AA needs 4.5:1 for normal text, 3:1 for
@@ -60,6 +97,22 @@ large text and non-text marks.
 - --rc-green on white is 1.95:1. FAILS even the 3:1 bar. Never use
   green as text or a line on white. Use green as a FILL with --rc-ink
   text on top, or green on --rc-ink (8.01:1).
+- Added September 2026, for the visual grammar:
+  - --rc-blue as text on --rc-offwhite is 4.37:1. FAILS at normal
+    size, so text links use --rc-blue-text: 5.51:1 on white, 5.24:1 on
+    off-white, 4.86:1 on the lavender wash.
+  - Red text on --rc-offwhite is 3.22:1 and on the lavender wash
+    2.99:1. Red numbers stay 19px bold or larger, and never on the
+    wash.
+  - Ink on --rc-offwhite 14.85:1; body on --rc-offwhite 9.88:1; ink on
+    --rc-green-tint 14.25:1.
+  - --rc-green pill on --rc-green-tint is 1.78:1, so the pill always
+    carries a text label ("Leads") in ink.
+  - --rc-outline is 3.65:1 on white and 3.47:1 on off-white.
+  - White on --rc-blue for the "You" pill is 4.59:1. On the ink band,
+    chevron links are white (15.61:1); a blue button's hover there adds
+    a white ring instead of darkening (the hover blue is 2.83:1
+    against ink).
 - Any new color pairing must be checked before it ships.
 
 ### Typography

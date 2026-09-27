@@ -1,7 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1.1. Built on docs/positioning.md v0.3. Words live in
-docs/copy.md v1.1 (locked).
+Status: v1.2. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.2 (locked). Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -29,12 +29,16 @@ docs/copy.md v1.1 (locked).
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    The closing band swaps with the hero: each variant closes with the
    other's line (B1 closes with B2, B2 closes with B1).
-   CTAs: Start for free (primary, blue). Talk to sales (secondary,
-   outlined). Small link: "Already on RevenueCat? Open Paywalls".
+   CTAs: Start for free (primary, blue fill). Talk to sales (chevron
+   text link). Small link: "Already on RevenueCat? Open Paywalls".
+   Background: off-white with the lavender-to-peach wash; dotted orbit
+   rings with two small dots around the hero visual.
 
 2. SCALE STRIP. Static.
    146K+ apps supported. $17B+ revenue processed. Customer logos
-   taken from revenuecat.com only.
+   taken from revenuecat.com only. Shares the hero's off-white.
+   Not used: the Refund Control page's trust line, which says "annual
+   revenue".
 
 3. THE SHIFT. Dynamic, drag-to-reveal before/after slider.
    Job: the whole argument in one glance, for skimmers.
@@ -58,24 +62,32 @@ docs/copy.md v1.1 (locked).
 
 5. JOB 2: LEARN WHAT USERS VALUE. Dynamic, toggle. BUILD FIRST, 45
    minute timebox.
-   The experiment simulator: two variants. No public page shows a
-   predicted LTV winner on a test with three or more variants, so the
-   simulator never shows three. Toggle: judge by trial conversion, or
-   judge by predicted 12-month LTV. The winner flips when toggled.
-   Winner shown as a green fill with ink text on top, per the contrast
-   rules. The "Roll out winner" button opens a confirm dialog ("Roll
-   out variant B to all users?", Confirm and Cancel). Confirm updates
-   the paywall and shows a "rolled out, no app release" toast, with
-   one small cat moment.
+   The experiment simulator (v2): two surfaces on a dotted-grid canvas.
+   Left, the PM's panel: experiment header and state, the toggle,
+   two variant cards, the winner line, "Roll out winner" and the
+   toast. Right, the user's phone, showing only the Tidelark paywall.
+   Two variants. No public page shows a predicted LTV winner on a test
+   with three or more variants, so the simulator never shows three.
+   Both metrics sit on every card; the judged one is large, and the
+   sizes swap so card height never changes. The winner flips when
+   toggled: a green pill ("Leads", ink text) on a light green tint.
+   No Chance to Win or interval: RevenueCat shows those for conversion
+   metrics only. "Roll out winner" opens a confirm dialog naming the
+   current winner. Confirm reorders the phone's plans to the winner's
+   featured plan, sets the state to "Rolled out" and shows the toast
+   with one small cat moment.
+   One-time demo: on first scroll into view, the "You" cursor clicks
+   the LTV option, the winner flips, a 2-second pause, the cursor
+   leaves. Never repeats. Any click, key press or focus in the
+   simulator cancels it. Reduced motion: the LTV view, static.
    Caption: the forecast appears once enough data is in, for
    experiments with a revenue primary metric. A forward-looking
    signal, not a guarantee.
-   Beside it, static: a paywall performance and LTV chart card,
-   illustrative. Realized LTV for RevenueCat Paywalls only, so no
-   forecast on this card.
-   Supporting lines: multivariate testing (up to four variants,
-   A/B/C/D) as one static line, with no predicted LTV attached.
-   Benchmarks, compare to similar apps.
+   Below it, one compact row: a paywall performance chart card,
+   illustrative (realized LTV for RevenueCat Paywalls only, so no
+   forecast on it), and the two supporting lines: multivariate testing
+   with no predicted LTV attached, and Benchmarks.
+   Then the proof block: Pixelcut (MOJO failed the audit).
    Fallback if over the timebox: a static two-panel comparison with the
    same numbers and the green winner.
 
@@ -88,9 +100,12 @@ docs/copy.md v1.1 (locked).
    and the subscription is active.
    Plus targeting chips showing different paywalls for different
    audiences.
-   Proof card, static: Floga, $120K+ in one day of pre-launch lifetime
-   memberships through RevenueCat Web Billing. The case study covers
-   Web Billing only, so the card must not suggest Floga used Funnels.
+   Flow steps: Ad click, Web funnel, Checkout, Get a Redemption Link,
+   Download the app, Tap the link (subscription active).
+   Customer story block, static: Floga, $120K+ in one day of
+   pre-launch lifetime memberships through RevenueCat Web Billing. The
+   case study covers Web Billing only, so the block sits apart from
+   the flow and must not suggest Floga used Funnels.
    Rules:
    - Country is localization only, never a funnel branch. No public
      page names country as a branch condition.
@@ -111,9 +126,13 @@ docs/copy.md v1.1 (locked).
    Play and Web at the bottom; entitlements in the middle; your app on
    top. Refund Control sits with the foundation.
    One line: Charts API for your own dashboards.
+   Proof block for the enterprise reader: OpenAI (case-study sentence;
+   the feature-page quote contains an em dash).
    Rule: no undo, revert or approval claims. None is documented.
 
 8. TWO WAYS TO START PLUS FINAL CTA. Static.
+   Card CTAs are chevron text links; the closing band holds the last
+   filled primary.
    Card "Pro": start free. Pricing sentence, exact: "Free up to
    $2,500 in monthly tracked revenue, then 1% of all tracked revenue,
    with Experiments and Targeting included." Keep "all".

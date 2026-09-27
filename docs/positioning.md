@@ -98,6 +98,11 @@ promise into the PM's job rather than restating it.
 
 ## Category
 Monetization platform.
+- Support: RevenueCat's own Experiments page carries the section
+  heading "A Complete Mobile App Monetization Platform"
+  (https://www.revenuecat.com/feature/experiments, mid-page, not the
+  hero or title). Claim audit 2026-09-27. Generic platform wording:
+  support for the category choice, not page copy.
 
 ## Deliberate choices
 - Revenue is not the lead. This is a persona page. The homepage
@@ -151,7 +156,10 @@ demand.
   trial or churn anomalies, or for anomaly alerts outside email.
 - A confidence range, sample size or validation shown with the
   12-month forecast. Raised by the Growth PM in the copy v1 review.
-  Not yet checked against public docs.
+  Checked 2026-09-27: Experiments show Chance to Win and 95% credible
+  intervals for conversion metrics only (initial conversion, trial
+  conversion, conversion to paying). Nothing is documented for the
+  predicted 12-month LTV, so the gap stands.
 - How long "enough data" takes at low traffic. Raised by the Solo PM
   in the copy v1 review. Not yet checked against public docs.
 

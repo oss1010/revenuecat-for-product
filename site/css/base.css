@@ -1,4 +1,6 @@
-/* Base: reset, type, layout, buttons, placeholders. Mobile first. */
+/* Base: reset, type, layout, buttons, placeholders, shared components.
+   Mobile first. Visual grammar recreated from RevenueCat feature pages
+   in HTML and CSS; no RevenueCat images are used. */
 
 *,
 *::before,
@@ -26,7 +28,7 @@ img { display: block; max-width: 100%; height: auto; }
 /* Keeps compounds like "12-month" from breaking at the hyphen */
 .nowrap { white-space: nowrap; }
 
-h1, h2, h3, p, ul, ol, figure { margin: 0; }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 
 a { color: inherit; }
@@ -60,7 +62,6 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 
 .eyebrow {
   display: inline-block;
-  margin-bottom: 1rem;
   padding: 0.25rem 0.875rem;
   border: 1px solid var(--rc-line);
   border-radius: var(--radius-pill);
@@ -95,9 +96,11 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   padding-block: var(--section-y);
   scroll-margin-top: var(--nav-h);
 }
+/* Alternating backgrounds: white and RevenueCat's off-white */
+.bg-off { background: var(--rc-offwhite); }
 
-.section-head { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem); }
-.section-head .eyebrow { justify-self: start; margin-bottom: 0; }
+.section-head { display: grid; gap: 1rem; margin-bottom: clamp(1.75rem, 1.25rem + 2vw, 2.75rem); }
+.section-head .eyebrow { justify-self: start; }
 
 /* Buttons */
 .btn {
@@ -136,11 +139,49 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .btn-ink:hover,
 .btn-ink:active { background: var(--rc-body); }
 
-.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+/* Secondary CTAs: text links with a chevron, as on RevenueCat feature pages */
+.link-chevron {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  color: var(--rc-blue-text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.link-chevron svg { width: 0.875rem; height: 0.875rem; flex: none; transition: transform var(--dur-fast) var(--ease); }
+.link-chevron:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.link-chevron:hover svg { transform: translateX(2px); }
+
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
 
 .tertiary { font-size: var(--fs-small); }
 .tertiary a { color: var(--rc-ink); text-underline-offset: 0.2em; }
 .tertiary a:hover { text-decoration-thickness: 2px; }
+
+/* Product UI: white card, light border, soft shadow */
+.ui-card {
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius);
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+}
+
+/* Dotted-grid canvas behind product UI */
+.dot-canvas {
+  border-radius: var(--radius-lg);
+  background-color: var(--rc-offwhite);
+  background-image: radial-gradient(circle, var(--rc-dot) 1px, transparent 1.4px);
+  background-size: 1.25rem 1.25rem;
+  background-position: 0.625rem 0.625rem;
+}
+
+/* Checkmark bullet lists */
+.checks { display: grid; gap: 0.75rem; }
+.checks li { display: flex; gap: 0.75rem; align-items: baseline; color: var(--rc-ink); }
+.checks svg { flex: none; width: 1.125rem; height: 1.125rem; transform: translateY(0.15em); }
 
 /* Placeholders for visuals not built yet */
 .placeholder {
@@ -150,10 +191,11 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   padding: clamp(1rem, 0.75rem + 1vw, 1.5rem);
   border: 2px dashed var(--rc-outline);
   border-radius: var(--radius-lg);
-  background: var(--rc-tint);
+  background: var(--rc-white);
   color: var(--rc-body);
   font-size: var(--fs-small);
 }
+.bg-off .placeholder { background: var(--rc-white); }
 .placeholder .tag { justify-self: start; }
 .placeholder-label {
   color: var(--rc-ink);
@@ -171,6 +213,49 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   border-radius: 50%;
   background: var(--rc-outline);
 }
+
+/* Testimonial block: logo tile, large quote, key number in red,
+   name and role, "Read case study". Red text only at 19px bold or
+   larger (3.39:1 on white, 3.22:1 on off-white). */
+.testimonial {
+  display: grid;
+  gap: 1.25rem 2rem;
+  align-items: start;
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+}
+.logo-tile {
+  display: grid;
+  place-items: center;
+  width: 6rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--rc-line);
+  border-radius: 1.25rem;
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.testimonial-body { display: grid; gap: 0.75rem; justify-items: start; max-width: 44rem; }
+.testimonial-label {
+  color: var(--rc-body);
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+.testimonial-quote {
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.testimonial-quote .num { color: var(--rc-red); font-weight: 700; }
+.testimonial-cite { font-size: var(--fs-small); font-style: normal; }
+.testimonial-cite strong { color: var(--rc-ink); }
 
 /* Nav */
 .site-nav {
@@ -196,19 +281,44 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 }
 .nav-cta.is-quiet:hover { border-color: var(--rc-ink); }
 
-/* 1. Hero */
-.hero { padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem) clamp(2rem, 1rem + 3vw, 4rem); }
-.hero-grid { display: grid; gap: clamp(2rem, 1rem + 4vw, 4rem); align-items: center; }
+/* 1. Hero: off-white with a faint lavender-to-peach wash behind the
+   visual. The only gradient on the page. */
+.hero {
+  padding-block: clamp(2.5rem, 1.5rem + 4vw, 5rem) clamp(2rem, 1rem + 3vw, 3.5rem);
+  overflow: hidden; /* the orbit is wider than the visual */
+  background:
+    radial-gradient(34rem 26rem at 80% 30%, var(--rc-wash-lavender), transparent 70%),
+    radial-gradient(28rem 22rem at 58% 78%, var(--rc-wash-peach), transparent 70%),
+    var(--rc-offwhite);
+}
+.hero-grid { display: grid; gap: clamp(2.5rem, 1rem + 5vw, 4rem); align-items: center; }
 .hero-copy { display: grid; gap: 1.5rem; justify-items: start; }
-.hero-visual { min-height: 22rem; }
+.hero-stage { position: relative; display: grid; place-items: center; padding: clamp(1.5rem, 1rem + 3vw, 3rem) 0; }
+.hero-visual { position: relative; z-index: 1; width: 100%; max-width: 32rem; min-height: 20rem; box-shadow: var(--rc-glow); border-style: solid; border-width: 1px; border-color: var(--rc-line); }
 
-/* 2. Scale strip */
-.scale { padding-bottom: clamp(3rem, 2rem + 3vw, 4.5rem); }
+/* Dotted orbit rings with two small dots, around the hero visual */
+.orbit {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: min(36rem, 115%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.orbit circle { fill: none; }
+.orbit .ring-dots { stroke: var(--rc-dot); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 0 14; }
+.orbit .ring-line { stroke: var(--rc-line); stroke-width: 1.5; }
+.orbit .glow-red { fill: var(--rc-red); filter: drop-shadow(0 0 6px rgba(242, 84, 91, 0.55)); }
+.orbit .glow-ink { fill: var(--rc-ink); opacity: 0.5; }
+
+/* 2. Scale strip: continues the hero background */
+.scale { padding-bottom: clamp(3rem, 2rem + 3vw, 4.5rem); background: var(--rc-offwhite); }
+.scale .container { display: grid; gap: 2rem; justify-items: center; text-align: center; }
 .stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 3rem;
-  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 1rem 3.5rem;
 }
 .stats li { display: grid; }
 .stat-num {
@@ -219,7 +329,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   color: var(--rc-red);
 }
 .stat-label { font-size: var(--fs-small); }
-.logo-placeholder { min-height: 5rem; }
+.logo-placeholder { width: 100%; min-height: 4.5rem; }
 
 /* 3. The shift */
 .shift-cols { display: grid; gap: 1.5rem; }
@@ -239,6 +349,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   font-size: 0.8125rem;
   font-weight: 700;
 }
+.step-detail { display: block; font-size: var(--fs-small); }
 .shift-beat {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
@@ -268,37 +379,23 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 /* 4. Change */
 .split { display: grid; gap: clamp(2rem, 1rem + 4vw, 4rem); align-items: center; }
 .split > div:first-child { display: grid; gap: 1rem; justify-items: start; }
-.proof { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
-.proof li { display: flex; gap: 0.75rem; align-items: baseline; color: var(--rc-ink); }
-.proof svg { flex: none; width: 1.125rem; height: 1.125rem; transform: translateY(0.15em); }
+.split .checks { margin-top: 0.5rem; }
 .editor-placeholder { min-height: 20rem; }
 
-/* 5. Learn: layout only. The simulator has its own file. */
-.learn-grid { display: grid; gap: 1.5rem; align-items: start; }
-.chart-card { min-height: 14rem; }
-.support-lines { display: grid; gap: 0.5rem; margin-top: 2rem; color: var(--rc-ink); font-size: var(--fs-small); }
+/* 5. Learn: layout around the simulator (simulator.css) */
+.learn-row { display: grid; gap: 1.5rem; margin-top: 1.5rem; align-items: stretch; }
+.chart-card { display: grid; gap: 0.75rem; align-content: start; padding: 1.25rem; }
+.chart-card .tag { justify-self: start; }
+.chart-card p { color: var(--rc-ink); font-size: var(--fs-small); font-weight: 600; }
+.chart-spark { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+.chart-spark figure { display: grid; gap: 0.25rem; }
+.chart-spark svg { width: 100%; height: 2.75rem; }
+.chart-spark figcaption { font-size: var(--fs-small); }
+.learn-row .checks { align-content: center; font-size: var(--fs-small); }
 
 /* 6. Fit */
-.flow-placeholder { min-height: 18rem; }
-.flow-step-tag { display: block; margin-top: 0.25rem; font-style: italic; }
-.fit-foot { display: grid; gap: 1.5rem; margin-top: 1.5rem; align-items: start; }
-.proof-card {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 1.5rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius-lg);
-  background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
-  color: var(--rc-ink);
-  text-decoration: none;
-  font-size: var(--fs-body);
-}
-.proof-card:hover { border-color: var(--rc-outline); }
-.proof-card svg { flex: none; width: 1.5rem; height: 1.5rem; }
-.small-print { font-size: var(--fs-small); }
+.flow-placeholder { min-height: 16rem; }
+.small-print { margin-top: 1.5rem; font-size: var(--fs-small); }
 
 /* 7. Teams */
 .teams-body { display: grid; gap: 1rem; }
@@ -308,16 +405,12 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   gap: 0.75rem;
   align-items: center;
   padding: 1rem 1.25rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius);
-  background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
   color: var(--rc-ink);
   font-weight: 600;
   font-size: var(--fs-small);
 }
 .badges svg { flex: none; width: 1.25rem; height: 1.25rem; }
-.diagram-placeholder { min-height: 16rem; }
+.diagram-placeholder { min-height: 14rem; }
 .charts-line { margin-top: 1.5rem; color: var(--rc-ink); }
 
 /* 8. Two ways to start */
@@ -328,14 +421,11 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   align-content: start;
   justify-items: start;
   padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius-lg);
-  background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
 }
 .footnote { font-size: var(--fs-small); }
 
-/* Closing band: dark section in ink, never black */
+/* Closing band: dark section in ink, never black. The page's last
+   filled primary. */
 .final-band {
   padding-block: var(--section-y);
   background: var(--rc-ink);
@@ -346,25 +436,25 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .final-band .h2 { color: var(--rc-white); max-width: 18em; }
 .final-band .cta-row { justify-content: center; }
 .final-band .btn-primary:hover { background: var(--rc-blue); box-shadow: 0 0 0 2px var(--rc-white); }
-.final-band .btn-secondary { background: transparent; border-color: var(--rc-white); color: var(--rc-white); }
-.final-band .btn-secondary:hover { background: var(--rc-white); color: var(--rc-ink); }
+.final-band .link-chevron { color: var(--rc-white); }
 .final-band .tertiary a { color: var(--rc-white); }
 .final-band :focus-visible { outline-color: var(--rc-white); }
 
 /* Tablet and up */
 @media (min-width: 48rem) {
   .shift-cols { grid-template-columns: 1fr 1fr; }
-  .fit-foot { grid-template-columns: 1fr 1fr; }
   .badges { grid-template-columns: 1fr 1fr; }
   .plans { grid-template-columns: 1fr 1fr; }
+  .learn-row { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .testimonial { grid-template-columns: auto minmax(0, 1fr); }
+  .logo-tile { width: 7.5rem; }
 }
 
 /* Desktop */
 @media (min-width: 64rem) {
   .hero-grid { grid-template-columns: 1fr 1fr; }
-  .hero-visual { min-height: 28rem; }
+  .hero-visual { min-height: 24rem; }
   .split { grid-template-columns: 1fr 1fr; }
-  .learn-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
   .badges { grid-template-columns: repeat(4, 1fr); }
 }
 
