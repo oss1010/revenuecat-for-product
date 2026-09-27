@@ -7,7 +7,7 @@ Product managers at subscription apps, solo through enterprise.
 They own revenue outcomes. They do not write billing code.
 
 ## Direction
-[LOCKED IN STAGE 2: not yet decided]
+Draft positioning in docs/positioning.md (v0.1, under review).
 
 ## Non-negotiables
 - No invented stats, customers, quotes or logos.
