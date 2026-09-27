@@ -1,7 +1,7 @@
-/* Hero loop: the Tidelark phone flanked by three decision cards (Change,
-   Learn, Fit). Each card activates in turn, about 3 seconds each, and
-   visibly changes the phone. Mobile: phone only, with a caption chip.
-   Illustrative and decorative (aria-hidden); the H1 carries the idea. */
+/* Hero loop: Design, Test, Keep, about 10.5 seconds. The Tidelark phone
+   (shared paywall) sits between three cards; every cursor click makes a
+   visible change. Mobile: phone plus a cycling caption chip.
+   Decorative and illustrative (aria-hidden); the H1 carries the idea. */
 
 .hero-stage {
   position: relative;
@@ -14,39 +14,20 @@
   z-index: 1;
   display: grid;
   justify-items: center;
-  gap: 0.875rem;
+  gap: 0.75rem;
   width: 100%;
 }
-.hl-center { position: relative; }
-.hl-phone { width: 14rem; }
+.hl-center { position: relative; display: grid; justify-items: center; gap: 0.625rem; }
+.hl-phone { width: 14.5rem; }
 
-/* Phone states. Rows reorder in JS; badges follow the state here. */
-.hero-loop:not([data-state="base"]) .pw-plan[data-plan="annual"] { order: -1; } /* static and no-JS state */
-.hl-phone .pw-plan[data-plan="annual"] .pw-badge { display: none; }
-.hero-loop[data-state="change"] .pw-plan[data-plan="annual"] .pw-badge[data-trial="3"],
-.hero-loop[data-state="learn"] .pw-plan[data-plan="annual"] .pw-badge[data-trial="7"],
-.hero-loop[data-state="fit"] .pw-plan[data-plan="annual"] .pw-badge[data-trial="7"] { display: inline-block; }
+/* Experiment chip above the phone: shown during Test */
+.hl-test-chip { opacity: 0; transition: opacity var(--dur) var(--ease); }
+.hero-loop[data-step="test"] .hl-test-chip { opacity: 1; }
 
-/* "Germany" chip: the targeted audience, shown on the Fit step */
-.hl-geo {
-  position: absolute;
-  top: 1.625rem;
-  right: 0.875rem;
-  padding: 0.0625rem 0.5rem;
-  border-radius: var(--radius-pill);
-  background: var(--rc-white);
-  color: var(--rc-ink);
-  font-size: 0.6875rem; /* inside the illustrative mock only */
-  font-weight: 700;
-  opacity: 0;
-  transition: opacity var(--dur) var(--ease);
-}
-.hero-loop[data-state="fit"] .hl-geo { opacity: 1; }
-
-/* Toast on the Change step */
+/* Toast over the phone on Keep */
 .hl-toast {
   position: absolute;
-  top: 2.5rem;
+  top: 3.25rem;
   left: 50%;
   z-index: 2;
   display: flex;
@@ -91,15 +72,15 @@
   text-align: center;
 }
 
-/* Decision cards and cursor: desktop only */
+/* Cards and cursor: desktop only */
 .hl-card,
 .hl-cursor { display: none; }
 
 .hl-card {
   position: absolute;
   z-index: 2;
-  width: 12.5rem;
-  gap: 0.625rem;
+  width: 11.25rem;
+  gap: 0.5rem;
   align-items: flex-start;
   padding: 0.75rem 0.875rem;
   border: 1px solid var(--rc-line);
@@ -125,17 +106,60 @@
 }
 .hl-card.is-active .hl-card-icon { background: var(--rc-ink); color: var(--rc-white); }
 .hl-card-icon svg { width: 1.125rem; height: 1.125rem; }
-.hl-card-body { display: grid; gap: 0.125rem; }
+.hl-card-body { display: grid; gap: 0.3125rem; min-width: 0; }
 .hl-card-kicker { color: var(--rc-ink); font-family: var(--font-display); font-size: 0.875rem; font-weight: 700; }
-.hl-card-text { color: var(--rc-body); font-size: 0.875rem; line-height: 1.35; }
+.hl-card-text { color: var(--rc-body); font-size: 0.8125rem; line-height: 1.35; }
+
+/* Design: an editor field whose value the cursor changes */
+.hl-field { display: grid; gap: 0.125rem; }
+.hl-field-label { color: var(--rc-body); font-size: 0.75rem; }
+.hl-field-value {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 7rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--rc-outline);
+  border-radius: 0.5rem;
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.hl-field-value::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+/* Mini buttons the cursor clicks */
+.hl-mini-btn {
+  justify-self: start;
+  padding: 0.1875rem 0.625rem;
+  border-radius: var(--radius-pill);
+  background: var(--rc-ink);
+  color: var(--rc-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.hl-mini-btn.is-pressed { transform: scale(0.94); }
+
+/* Test: a small forecast line draws in (clip reveal) */
+.hl-spark { width: 100%; height: 2.5rem; }
+.hl-spark .a { stroke: var(--rc-outline); }
+.hl-spark .b { stroke: var(--rc-ink); }
+
+/* Keep: green pill, "this won" */
+.hl-keep-row { display: flex; align-items: center; gap: 0.5rem; }
 .hl-win {
   display: inline-grid;
   place-items: center;
   width: 1.25rem;
   height: 1.25rem;
-  margin-top: 0.25rem;
   border-radius: 50%;
-  background: var(--rc-green); /* "this won": green fill, ink check */
+  background: var(--rc-green); /* green fill, ink check */
   color: var(--rc-ink);
   visibility: hidden;
 }
@@ -157,14 +181,14 @@
 .hl-cursor.is-clicking svg { transform: scale(0.85); }
 
 @media (min-width: 64rem) {
-  .hero-loop { display: block; min-height: 33rem; }
+  .hero-loop { display: block; min-height: 35rem; }
   .hero-loop > .tag { position: absolute; top: 0; left: 0; }
   .hl-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-  .hl-phone { width: 15rem; }
+  .hl-phone { width: 13.75rem; }
   .hl-card { display: flex; }
-  .hl-card[data-step="change"] { top: 9%; left: 0; }
-  .hl-card[data-step="learn"] { top: 41%; right: 0; }
-  .hl-card[data-step="fit"] { bottom: 9%; left: 3%; }
+  .hl-card[data-card="design"] { top: 12%; left: 0; }
+  .hl-card[data-card="test"] { top: 36%; right: 0; }
+  .hl-card[data-card="keep"] { bottom: 10%; left: 0; }
   .hl-cursor { display: flex; }
   .hl-chip { display: none; }
 }
@@ -174,7 +198,7 @@
   .hl-card-icon,
   .hl-toast,
   .hl-toast.is-visible,
-  .hl-geo,
+  .hl-test-chip,
   .hl-cursor { transition: none; }
   .hl-cursor { display: none; }
 }

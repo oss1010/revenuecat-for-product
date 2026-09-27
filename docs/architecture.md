@@ -1,7 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1.3. Built on docs/positioning.md v0.3. Words live in
-docs/copy.md v1.3 (locked). Visual grammar: CLAUDE.md.
+Status: v1.4. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.4 (locked). Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -25,13 +25,15 @@ docs/copy.md v1.3 (locked). Visual grammar: CLAUDE.md.
    offer for an audience or on web). Cards activate in sequence, about 3
    seconds each, and each visibly changes what the phone shows.
    Mobile: phone only, with a caption chip cycling the three decisions.
-   Built (phase 2): the same Tidelark phone as the simulator. Change
-   features the annual plan and shows "Published. No app release.";
-   Learn shows variant B's 7-day trial; Fit switches to a dark paywall
-   with a "Germany" chip. A 9-second loop; the "You" cursor clicks each
-   card on desktop. Pauses off-screen, on hover and in background
-   tabs. Reduced motion: the Learn state, static. Eyebrow pill above
-   the H1: "For product teams".
+   Rebuilt (phase 3A) as Design, Test, Keep, about 10.5 seconds, on the
+   shared Tidelark paywall. Design: the cursor changes the featured
+   plan to Monthly and the phone updates. Test: the cursor starts a
+   test; "A/B test running · 50/50" appears, the phone alternates A
+   and B, and a small forecast line draws in. Keep: "B leads on
+   predicted 12-month LTV"; the cursor clicks "Roll out", the phone
+   locks to B: "Published. No app release." Pauses off-screen, on
+   hover and in background tabs. Reduced motion: the Keep state,
+   static. Eyebrow pill above the H1: "For product teams".
    Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    The closing band swaps with the hero: each variant closes with the
@@ -70,7 +72,22 @@ docs/copy.md v1.3 (locked). Visual grammar: CLAUDE.md.
 
 5. JOB 2: LEARN WHAT USERS VALUE. Dynamic, toggle. BUILD FIRST, 45
    minute timebox.
-   The experiment simulator (v2): two surfaces on a dotted-grid canvas.
+   Simulator v3 (phase 3A): variant A features Weekly with a 3-day
+   trial, variant B Monthly with a 7-day trial, on the shared Tidelark
+   paywall. Judged by "Conversion to paying" (RevenueCat's metric name)
+   or predicted 12-month LTV. A cumulative revenue chart, month 0 to 1
+   observed, months 1 to 12 predicted: A leads early, B overtakes at
+   month 4 and ends about 47% higher. The conversion view shows only
+   the observed month; the LTV view draws the forecast in, marks the
+   crossover and shows "Why B wins" (conversion, month-3 retention,
+   price per month, refund rate). The phone alternates "Variant A ·
+   50%" and "Variant B · 50%" during the test; on rollout a pulse
+   travels to it and it shows "Now live: Variant B · 100%". The
+   "Running" dot pulses. Model fitted to RevenueCat's published
+   ranges; LTV per enrolled customer, labelled as our illustrative
+   unit (RevenueCat publishes none). Also: a Benchmarks percentile
+   visual, and a four-way traffic-split bar for multivariate testing.
+   Earlier (v2): two surfaces on a dotted-grid canvas.
    Left, the PM's panel: experiment header and state, the toggle,
    two variant cards, the winner line, "Roll out winner" and the
    toast. Right, the user's phone, showing only the Tidelark paywall.

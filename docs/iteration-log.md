@@ -1209,3 +1209,75 @@ the proof points.
 - Not verified: real touch (the tools send mouse events), reduced
   motion (not emulated), and visual screenshots of sections 3 and 8
   (the preview pane was hidden and stopped rendering).
+
+## 2026-09-27: Build phase 3A, shared paywall, simulator v3, hero loop, copy v1.4
+
+### Why the variants changed to weekly versus monthly
+- The simulator had compared annual-first with monthly-first. Annual
+  plans are paid upfront, so an annual variant books a year of revenue
+  in month one: it could never show a variant that leads early and is
+  then overtaken. The early-lead-then-crossover story would have been
+  false.
+- Now: variant A features Weekly (3-day trial), variant B features
+  Monthly (7-day trial). Both bill every period, so cumulative revenue
+  can genuinely cross: A leads on early conversion, B overtakes as its
+  subscribers stay.
+
+### The model, fitted to published ranges
+- The starting model's retention curves ran 3 to 4 times above
+  RevenueCat's published figures (weekly one-year retention about 3%
+  to 4%, monthly about 17% to 19%), and 12.4% conversion sat above the
+  hard-paywall median (10.7%, State of Subscription Apps 2026).
+- Refit, keeping the shape: A 11.0% conversion to paying at $30.29 a
+  month (weekly $6.99), retention 100 to 3.5% over 12 months; B 7.4%
+  at $29.99, retention 100 to 18%. Result: A leads at month 1 ($33.3K
+  vs $22.2K) and month 3 ($46.6K vs $45.7K); B overtakes at month 4
+  ($54.1K vs $50.3K) and ends 47% higher at month 12 ($96.5K vs
+  $65.5K). Refund rates 6.0% and 5.0% are labelled assumptions.
+- RevenueCat publishes no unit for predicted 12-month LTV, so the
+  cards show LTV per enrolled customer ($6.55 vs $9.65) and the
+  caption says so; the chart carries the totals.
+
+### Claim audit (2026-09-27)
+| # | Claim | Source | Verdict | Outcome |
+|---|---|---|---|---|
+| 1a | Conversion metric names | https://www.revenuecat.com/docs/tools/experiments-v1/experiments-results-v1 | PASS | "Initial conversion rate", "Trial conversion rate", "Conversion to paying". The 11.0% and 7.4% are labelled "Conversion to paying" |
+| 1b | A refund rate in Experiments | Same page | Not a metric | Experiments shows "Refunded customers", a count. The refund row in "Why B wins" is illustrative, not a readout |
+| 1c | Unit of predicted 12-month LTV | https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12 | FAIL for any unit | None published. Our unit is labelled as ours |
+| 2a | What the Experiments forecast is based on | Same changelog | PASS conditional | "It uses each variant's observed conversion and retention data to model future revenue." Used in the "Why B wins" caption |
+| 2c | Experiments and Prediction Explorer share a model | none | FAIL | Never claimed |
+| 3a | Realized and predicted values side by side | https://www.revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer | PASS conditional | A cohort table, not a line chart over months. Our chart is labelled an illustrative model |
+| 3b | A chart checking a past forecast | Settled v0.3 rows 1b, 1c | FAIL | Not shown |
+| 4 | ElevenLabs quote, Infrastructure page | https://www.revenuecat.com/feature/infrastructure ; https://www.revenuecat.com/customers/how-elevenlabs-hit-1m-arr-in-just-16-days | FAIL | The feature page and the case study credit the same sentence to different people. Not added |
+| 5 | How the pricing page describes Pro | https://www.revenuecat.com/pricing/ | PASS conditional | By price only, no audience line. The Pro label now uses that wording |
+| 6 | Plausibility of the model | https://www.revenuecat.com/state-of-subscription-apps ; 2025 report page; RevenueCat renewal-rate and one-year retention blogs | Refit | See "The model" above. The 2026 PDF was too large to fetch; retention and refunds by plan length come from the 2025 page and blogs |
+
+### Built
+- One shared Tidelark paywall: a single HTML template cloned into each
+  phone by paywall.js, so its copy lives once. A premium dark app look
+  (sunrise art, three benefits, Weekly, Monthly and Annual with "Best
+  value", a trial line, "Start free trial", "Cancel anytime" and
+  "Restore purchases").
+- Simulator v3: the forecast chart (observed then predicted, reveal on
+  the LTV view, crossover marked), "Why B wins", a pulsing "Running"
+  dot, a traffic-split chip on the phone, and a pulse that travels to
+  the phone on rollout before it shows "Now live: Variant B · 100%".
+- Hero loop rebuilt as Design, Test, Keep (about 10.5 seconds), where
+  every cursor click changes something visible.
+- Section 5 also gained a Benchmarks percentile visual and a four-way
+  traffic-split bar.
+- Nav "Log in" link; copy v1.4 recorded in copy.md.
+
+### Bugs caught in verification
+- Hero cards covered the paywall's prices at 1440px. Narrowed the
+  cards and phone so nothing overlaps the screen.
+- The rollout waited on the pulse animation's finish event, which a
+  background tab can throttle; the phone never locked while the pane
+  was hidden. Added a timer fallback and stopped the traffic split at
+  the start of rollout.
+- The local server's CSS was cached by the preview; verification now
+  reloads stylesheets before measuring.
+
+### Screenshots
+- docs/process-shots/: hero and section 5 at 1440px and 390px, taken
+  with headless Chrome over the DevTools protocol, as asked.

@@ -1,0 +1,149 @@
+/* The Tidelark paywall: one shared component (template#tl-paywall,
+   cloned by paywall.js) used by the hero loop and the section 5
+   simulator, and later the editor. Tidelark is a fictional premium AI
+   morning-routine coach. Illustrative prices.
+   Dark app UI on --rc-ink. White text 15.61:1; white at 72% is 8.3:1.
+   Variant A features Weekly with a 3-day trial; variant B features
+   Monthly with a 7-day trial. */
+
+.tl {
+  --tl-soft: rgba(255, 255, 255, 0.72);
+  --tl-line: rgba(255, 255, 255, 0.2);
+  --tl-fill: rgba(255, 255, 255, 0.06);
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  min-height: 100%;
+  padding: 1.75rem 0.875rem 0.875rem;
+  background: var(--rc-ink);
+  color: var(--rc-white);
+  font-family: var(--font-body);
+}
+.tl-close {
+  position: absolute;
+  top: 1.5rem;
+  left: 0.875rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--tl-soft);
+}
+.tl-art { width: 100%; height: auto; margin: 0.25rem 0 0; }
+.tl-brand {
+  color: var(--tl-soft);
+  font-size: 0.625rem; /* inside the illustrative mock only */
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.tl-head {
+  color: var(--rc-white);
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.tl-benefits { display: grid; gap: 0.25rem; margin: 0.125rem 0 0.25rem; }
+.tl-benefits li {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  color: var(--tl-soft);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+}
+.tl-benefits svg { flex: none; width: 0.75rem; height: 0.75rem; color: var(--rc-white); }
+
+.tl-plans { display: grid; gap: 0.375rem; }
+.tl-plan {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--tl-line);
+  border-radius: 0.625rem;
+  background: var(--tl-fill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.tl-radio {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  border: 1.5px solid var(--tl-soft);
+  border-radius: 50%;
+  transition: border-width var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.tl-price { font-variant-numeric: tabular-nums; }
+.tl-price small { color: var(--tl-soft); font-size: 0.625rem; font-weight: 500; }
+.tl-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: 0.5rem;
+  padding: 0.0625rem 0.4375rem;
+  border-radius: var(--radius-pill);
+  background: var(--rc-red);
+  color: var(--rc-ink); /* ink on red 4.60:1 */
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* Featured plan per variant */
+.tl[data-variant="a"] .tl-plan[data-plan="weekly"],
+.tl[data-variant="b"] .tl-plan[data-plan="monthly"] {
+  border: 2px solid var(--rc-white);
+  background: rgba(255, 255, 255, 0.12);
+}
+.tl[data-variant="a"] .tl-plan[data-plan="weekly"] .tl-radio,
+.tl[data-variant="b"] .tl-plan[data-plan="monthly"] .tl-radio {
+  border: 4px solid var(--rc-white);
+}
+
+.tl-trial {
+  min-height: 1.1em;
+  color: var(--tl-soft);
+  font-size: 0.6875rem;
+  text-align: center;
+}
+.tl-trial span { display: none; }
+.tl[data-variant="a"] .tl-trial [data-trial="a"],
+.tl[data-variant="b"] .tl-trial [data-trial="b"] { display: inline; }
+
+.tl-cta {
+  display: grid;
+  place-items: center;
+  min-height: 2.375rem;
+  border-radius: var(--radius-pill);
+  background: var(--rc-white);
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.tl-fine {
+  display: flex;
+  justify-content: center;
+  gap: 0.875rem;
+  color: var(--tl-soft);
+  font-size: 0.5625rem;
+}
+
+/* A brief highlight when the paywall changes variant */
+.tl.is-changing .tl-plans { animation: tl-flash 520ms var(--ease); }
+@keyframes tl-flash {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.025); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-plan,
+  .tl-radio { transition: none; }
+  .tl.is-changing .tl-plans { animation: none; }
+}

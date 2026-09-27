@@ -302,6 +302,18 @@ html[data-variant="b2"] .v-b2 { display: inline; }
   min-height: var(--nav-h);
 }
 .nav-logo img { width: auto; height: 1.5rem; }
+.nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+.nav-login {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--rc-ink);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-login:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 /* One primary CTA per viewport: the nav CTA stays outlined while an
    in-page primary CTA is on screen (nav.js). */
 .nav-cta.is-quiet {
@@ -359,6 +371,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 }
 .stat-label { font-size: var(--fs-small); }
 .scale .logo-row { max-width: 52rem; }
+.scale .trusted-label { margin-bottom: -1rem; }
 
 /* 3. The shift: interactive module in shift.css.
    Numbered steps below are used by the section 6 flow placeholder. */
@@ -401,19 +414,49 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .proof-row .testimonial { margin-top: 0; }
 .variants-card { display: grid; gap: 1rem; align-content: start; padding: 1.25rem; }
 .variants-card p { color: var(--rc-ink); font-weight: 600; }
-.abcd { display: flex; gap: 0.5rem; }
-.abcd span {
+.split4 {
   display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
   border: 1px solid var(--rc-outline);
   border-radius: var(--radius-sm);
-  background: var(--rc-white);
-  color: var(--rc-ink);
-  font-family: var(--font-display);
+  font-size: 0.8125rem; /* illustrative UI */
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
+.split4 span { display: grid; place-items: center; min-height: 2.5rem; }
+.split4 span:nth-child(1) { background: var(--rc-ink); color: var(--rc-white); }
+.split4 span:nth-child(2) { background: var(--rc-body); color: var(--rc-white); }
+.split4 span:nth-child(3) { background: var(--rc-line); color: var(--rc-ink); }
+.split4 span:nth-child(4) { background: var(--rc-white); color: var(--rc-ink); }
+.split4-caption { color: var(--rc-body); font-size: 0.8125rem; }
+
+/* Benchmarks: percentile bars, your app against similar apps */
+.bench-card { display: grid; gap: 0.875rem; align-content: start; padding: 1.25rem; }
+.bench-card .tag { justify-self: start; }
+.bench-card > p { color: var(--rc-ink); font-size: var(--fs-small); font-weight: 600; }
+.bench { display: grid; gap: 0.625rem; }
+.bench-row { display: grid; grid-template-columns: 6rem 1fr; align-items: center; gap: 0.75rem; }
+.bench-label { color: var(--rc-body); font-size: 0.8125rem; }
+.bench-track { position: relative; height: 0.75rem; border-radius: var(--radius-pill); background: var(--rc-offwhite); box-shadow: inset 0 0 0 1px var(--rc-line); }
+.bench-band { position: absolute; top: 0; bottom: 0; left: var(--from); right: calc(100% - var(--to)); border-radius: var(--radius-pill); background: var(--rc-dot); }
+.bench-median { position: absolute; top: -0.1875rem; bottom: -0.1875rem; left: var(--at); width: 2px; background: var(--rc-outline); }
+.bench-you {
+  position: absolute;
+  top: 50%;
+  left: var(--at);
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2px solid var(--rc-white);
+  border-radius: 50%;
+  background: var(--rc-ink);
+  box-shadow: 0 0 0 1px var(--rc-ink);
+  transform: translate(-50%, -50%);
+}
+.bench-legend { display: flex; flex-wrap: wrap; gap: 0.375rem 1rem; color: var(--rc-body); font-size: 0.75rem; }
+.bench-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
+.bench-legend .k-you { width: 0.625rem; height: 0.625rem; border-radius: 50%; background: var(--rc-ink); }
+.bench-legend .k-band { width: 1rem; height: 0.5rem; border-radius: var(--radius-pill); background: var(--rc-dot); }
 
 /* 6. Fit */
 .flow-placeholder { min-height: 16rem; }
