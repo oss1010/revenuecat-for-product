@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Blocks the commit if any staged text file contains an em dash (U+2014).
+# Checks the staged version of each file, not the working copy.
+# Skips binary files, docs/reference/ and public/brand/.
+# Enable once per clone: git config core.hooksPath .githooks
+# Bypass for one commit: git commit --no-verify
+
+EM_DASH=$'\xe2\x80\x94'
+found=0
+
+while IFS= read -r -d '' file; do
+  case "$file" in
+    docs/reference/*|public/brand/*) continue ;;
+  esac
+  # grep -I treats binary content as non-matching.
+  matches=$(git show ":$file" | LC_ALL=C grep -I -n -F "$EM_DASH")
+  if [ -n "$matches" ]; then
+    while IFS= read -r line; do
+      echo "  $file:${line%%:*}"
+    done <<< "$matches"
+    found=1
+  fi
+done < <(git diff --cached --name-only -z --diff-filter=ACMR)
+
+if [ "$found" -ne 0 ]; then
+  echo "Commit blocked: em dash found in the staged lines above."
+  echo "Rewrite with a period, comma, colon or parentheses."
+  exit 1
+fi
+
+exit 0

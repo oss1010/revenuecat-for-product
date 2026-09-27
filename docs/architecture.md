@@ -1,6 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1. Built on docs/positioning.md v0.3.
+Status: v1.1. Built on docs/positioning.md v0.3. Words live in
+docs/copy.md v1.1 (locked).
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -24,12 +25,13 @@ Status: v1. Built on docs/positioning.md v0.3.
    offer for an audience or on web). Cards activate in sequence, about 3
    seconds each, and each visibly changes what the phone shows.
    Mobile: phone only, with a caption chip cycling the three decisions.
-   Copy: headline from customer language, written at the copy stage.
+   Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
+   with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    CTAs: Start for free (primary, blue). Talk to sales (secondary,
    outlined). Small link: "Already on RevenueCat? Open Paywalls".
 
 2. SCALE STRIP. Static.
-   Trusted by 146K+ apps. $17B+ revenue processed. Customer logos
+   146K+ apps supported. $17B+ revenue processed. Customer logos
    taken from revenuecat.com only.
 
 3. THE SHIFT. Dynamic, drag-to-reveal before/after slider.
@@ -59,8 +61,10 @@ Status: v1. Built on docs/positioning.md v0.3.
    simulator never shows three. Toggle: judge by trial conversion, or
    judge by predicted 12-month LTV. The winner flips when toggled.
    Winner shown as a green fill with ink text on top, per the contrast
-   rules. The "Roll out winner" button updates the paywall and shows a
-   "rolled out, no app release" toast, with one small cat moment.
+   rules. The "Roll out winner" button opens a confirm dialog ("Roll
+   out variant B to all users?", Confirm and Cancel). Confirm updates
+   the paywall and shows a "rolled out, no app release" toast, with
+   one small cat moment.
    Caption: the forecast appears once enough data is in, for
    experiments with a revenue primary metric. A forward-looking
    signal, not a guarantee.
@@ -95,20 +99,23 @@ Status: v1. Built on docs/positioning.md v0.3.
      Floga proof, as the case study's own "RevenueCat Web Billing".
    - No store-fee or commission claims anywhere in this section.
 
-7. FOUNDATION AND TEAMS. Static.
-   Layered diagram: App Store, Google Play and Web at the bottom;
-   entitlements and one source for analytics in the middle; your app on
-   top.
-   Badges: Refund Control, collaborator roles including a Growth role,
-   audit logs, paywall version history, SSO (SAML or OIDC), labeled
-   Enterprise plan only.
+7. TEAMS AND FOUNDATION. Static.
+   Job: answer the enterprise PM's first question, who can change a
+   live paywall, with verified capabilities only.
+   Visual, top: the governance badges lead. Collaborator roles
+   including a Growth role, paywall version history, audit logs, SSO
+   (SAML or OIDC), labeled Enterprise plan only.
+   Visual, below: the layered foundation diagram. App Store, Google
+   Play and Web at the bottom; entitlements in the middle; your app on
+   top. Refund Control sits with the foundation.
    One line: Charts API for your own dashboards.
+   Rule: no undo, revert or approval claims. None is documented.
 
-8. TWO PATHS PLUS FINAL CTA. Static.
-   Startup path: start free. Pricing sentence, exact: "Free up to
+8. TWO WAYS TO START PLUS FINAL CTA. Static.
+   Card "Pro": start free. Pricing sentence, exact: "Free up to
    $2,500 in monthly tracked revenue, then 1% of all tracked revenue,
    with Experiments and Targeting included." Keep "all".
-   Team path: talk to sales, governance recap.
+   Card "Enterprise": custom pricing and SSO, talk to sales.
    Closing CTA.
 
 ## Coverage: what's new, and where it shows

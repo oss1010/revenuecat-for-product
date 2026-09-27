@@ -149,6 +149,11 @@ demand.
 - Proactive alerts beyond revenue. Revenue anomaly email alerts exist
   (beta, checked twice daily). Nothing is documented for conversion,
   trial or churn anomalies, or for anomaly alerts outside email.
+- A confidence range, sample size or validation shown with the
+  12-month forecast. Raised by the Growth PM in the copy v1 review.
+  Not yet checked against public docs.
+- How long "enough data" takes at low traffic. Raised by the Solo PM
+  in the copy v1 review. Not yet checked against public docs.
 
 ## Notes for architecture
 - One-line pricing statement near the primary CTA: "Free up to $2,500

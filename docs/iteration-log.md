@@ -1002,3 +1002,31 @@ Flagged, not audited (not changed unless listed above):
 Fourteen line-level cuts suggested, about 85 words (11%). Not applied.
 First cut recommended: the section 4 opening sentence, which repeats
 the proof points.
+
+## 2026-09-27: Copy v1.1 (locked)
+
+- Copy v1.1 locked. Hero B1; B2 moved to the closing band and becomes
+  the hero test variant (?v=b2), since pm-critic split three ways
+  between clarity and memorability. Variant A dropped: it sat on
+  Superwall's owned promise.
+- Section 6 headline gained "App or web" after the skimmer test showed
+  web was invisible in the headlines.
+- Section 7 rebuilt around the enterprise PM's first question, who can
+  change a live paywall, answered only with verified capabilities. No
+  undo, revert or approval claims.
+- All web-copy cuts accepted.
+- Em dash pre-commit hook built (.githooks/pre-commit, enabled with
+  git config core.hooksPath .githooks). The video notes had logged it
+  as done before it existed. Caught in the copy review, built today,
+  and tested: a staged em dash blocks the commit; docs/reference/ and
+  public/brand/ are excluded.
+
+### Also changed
+- Section 5 simulator: "Roll out winner" now opens a confirm dialog
+  before the toast, matching the confirm step in RevenueCat's docs.
+- Section 7 uses the audited wording for version history, "who saved
+  each version, and when".
+- Architecture: the foundation diagram drops "one source for
+  analytics", to match the cut copy line.
+- Positioning: two product gaps added from the copy v1 review, the
+  forecast's confidence range and time to enough data at low traffic.
