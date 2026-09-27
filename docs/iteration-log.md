@@ -447,3 +447,217 @@ docs/brief.md has only a heading, so it is not a source for anything. There are 
 - https://www.revenuecat.com/changelog/ loads its entries client-side and showed none, so I couldn't list every entry. Question 1 relies on the individual release pages and a targeted search.
 - The /release/... and /changelog/release/... URL forms both load. Cite the /changelog/release/ form.
 - The paywall charts URL is dated 2025-11-24, but the page showed November 21, 2025. The date is minor; the claim stands.
+
+## 2026-09-26: Positioning v0.2
+
+- Positioning v0.1 rejected after the three-agent review: the one idea
+  used Superwall's owned PM-page language, "every surface" matched
+  Superwall's homepage headline, the reason to believe only worked for
+  existing customers, and the forecast was stated as a guarantee.
+- Considered "decision confidence, calls a PM can defend". Rejected:
+  it promoted one synthetic persona's concern (enterprise approvals)
+  over the seven PM pain points we're designing against, and the
+  framing is defensive.
+- Considered revenue as the lead ("make more money", then "long-term
+  revenue"). Rejected for this page: it's the brand promise and
+  belongs on the homepage. A persona page translates the promise into
+  the persona's job. PMs own experience and strategy, not necessarily
+  the revenue number.
+- Chosen: monetization is a product decision the PM can make like
+  one. Three jobs mapped to the seven pain points plus a foundation.
+  Revenue as the outcome.
+- Process correction: positioning now derives from the persona's
+  job-to-be-done and pain points first. Competitors and agents act as
+  filters, not as the source.
+
+### claim-auditor (targeted audit behind v0.2)
+
+Seven items audited before v0.2's [PENDING] lines were filled. Only
+passing claims were used; failures are listed under "Cut after audit"
+in docs/positioning.md. Output below as returned.
+
+#### Targeted claim audit: positioning v0.2, checked 2026-09-26
+
+docs/brief.md is not a source. Rows reuse the earlier claim-auditor results where they apply. Quotes come from a fetch tool that summarises pages, so check the wording against the live page before publishing.
+
+| # | Claim | Source URL | Verdict | Safe wording |
+|---|---|---|---|---|
+| 1a | Role-based permissions (collaborator roles) | https://www.revenuecat.com/docs/projects/collaborators. Six roles: Administrator, Operations, View Only, Growth, Developer, Support. Growth can edit paywalls and offerings but not app settings. "All roles and permission levels are now available on every plan" | PASS. Tier: every plan | Collaborator roles on every plan, including a Growth role for paywalls and offerings |
+| 1b | Approvals before a paywall, offering or experiment change goes live | NONE. Not on the collaborators page, the audit log docs or the paywall version changelog | FAIL. Not in public docs | none |
+| 1c | Audit log | https://www.revenuecat.com/docs/dashboard-and-metrics/audit-logs (Audit Logs tab under Project Settings; "sign-ins, data exports, and project modifications"); https://www.revenuecat.com/changelog/release/audit-logs-2024-07-03 ("Track who changed what in your project") | PASS, conditional. No tier stated on either page. Offering, paywall and experiment edits are not named as logged events | Audit logs track who changed what, with CSV export |
+| 1d | Revert or undo for Offerings and Experiments | NONE. Closest: https://www.revenuecat.com/changelog/release/see-who-edited-each-paywall-version-and-discard-unsaved-drafts-2026-02-16. Discard lets you "revert to the last saved version", for unsaved paywall drafts only. A stopped experiment "can't be restarted" (https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06) | FAIL. No documented revert for Offerings, Experiments or a winner rollout | none |
+| 1e | Paywall version history | Same 2026-02-16 changelog, which shows "the author of each saved version" and the time | PASS. No tier stated | Paywall version history shows who saved each version, and when |
+| 2a | Public docs explain how RevenueCat revenue relates to store reports | https://www.revenuecat.com/docs/dashboard-and-metrics/reconciling-with-financial-reports (App Store only, five causes); https://www.revenuecat.com/docs/revenuecat-support/general-troubleshooting (both stores: "won't align 1:1 with those stores") | PASS. The App Store has its own guide. Google Play gets only a troubleshooting note | Documented reconciliation between RevenueCat revenue and App Store financial reports |
+| 2b | "One source of monetization data" | https://www.revenuecat.com/feature/charts ("Your source of truth for revenue data"); https://www.revenuecat.com/feature/web ("One source of truth for entitlements, purchase history, and analytics."). Limit: "For accounting purposes we recommend using the actual store payout reports." (general troubleshooting) | PASS, conditional: analytics scope only. FAIL if read as payouts, finance or accounting | One source of truth for entitlements, purchase history and analytics |
+| 2c | RevenueCat uses "source of truth" wording, and for what scope | Charts: revenue data "across subscriptions, one-time purchases, and even your in-app advertising". Web: entitlements, purchase history, analytics. https://www.revenuecat.com/docs/offerings/virtual-currency/faq/balance-source-of-truth covers virtual currency balances (search result only, not fetched) | PASS | Your source of truth for revenue data (Charts page wording) |
+| 3a | Experiments work on web paywalls | https://www.revenuecat.com/feature/web ("Same visual editor, same A/B tests, same targeting rules as mobile"); https://www.revenuecat.com/blog/company/paywalls-on-the-web, Dec 31, 2025 ("Experiments work the same way they do on mobile") | PASS, conditional. Marketing pages only, see 3b | A/B test web paywalls with the same tools as mobile |
+| 3b | Web experiments are documented (docs or changelog) | NONE. https://www.revenuecat.com/docs/tools/experiments returns 404, so there is no non-v1 doc and the v1 docs are the live ones. https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1 lists mobile SDKs only. https://www.revenuecat.com/docs/web/paywalls does not mention Experiments or Targeting: with no offering passed, it shows the "current" offering. https://www.revenuecat.com/docs/web/overview mentions only "A/B testing and experimentation with different purchase flows" as a use case. No changelog entry found | FAIL for anything beyond 3a: predicted LTV, existing-customer tests, results or SDK minimums on web | none |
+| 4a | Targeting conditions | https://www.revenuecat.com/docs/tools/targeting. Exact names: Custom attributes, Country, App, App Version, RevenueCat SDK Version, Platform. "Targeting is available on Pro and Enterprise plans." | PASS. Tier: Pro and Enterprise. There is no Store condition: Platform covers it ("e.g. iOS, watchOS, Android"). Placements are not a condition: "conditions are for defining who the customer is". Country means storefront, or geolocation otherwise. Web Billing: App Version is "Not sent" | Target paywalls by country, platform, app, app version, SDK version or custom attributes |
+| 4b | "Paywall Rules" as audience targeting | https://www.revenuecat.com/changelog/release/edit-paywall-rules-more-clearly-2026-07-30 ("change the visibility of certain components") | FAIL if used as a synonym for Targeting. Rules change components within one paywall | none |
+| 5a | "Refund Handler" | NONE. The name is not used on any page checked. The feature is called Refund Control: https://www.revenuecat.com/feature/refund-control, https://www.revenuecat.com/docs/customers/refund-control | FAIL on the name | Refund Control |
+| 5b | Refund Control answers store refund requests using usage data and your preference | Feature page: "handle refund requests across the App Store and Google Play", "to prevent auto-approved refunds". Docs: Apple consumption requests, and Google via `orders.reviewrefund`. Policies: Prefer full refund, Prefer no refund, Send consumption data only, Do not respond to refund requests. It started as an Apple-only release: https://www.revenuecat.com/changelog/release/handling-refund-requests-consumption-requests-2024-11-13 | PASS. Stores: App Store and Google Play. No tier stated, no beta label. Consent caveat: "Enabling consumption data sharing confirms that you obtained consent from your Customers." The store makes the final decision | Refund Control sends Apple and Google usage data and your refund preference |
+| 6 | Floga made six figures before its app was live | https://www.revenuecat.com/customers/floga: "Generated $120K+ in one day of pre-launch lifetime memberships via RevenueCat Web Billing". Headline: "made six figures in one day". "With the app still in development" (search snippet of the same page, not fetched) | PASS. Scope: one day of pre-sold lifetime memberships on Web Billing, not subscription revenue. Do not reuse "commission-free" or the "30%" quote: store-fee claims are not universal | Floga made $120K+ in one day of pre-launch lifetime memberships |
+| 7a | Paywalls has a visual editor | https://www.revenuecat.com/feature/web ("Same visual editor"); https://www.revenuecat.com/pricing/ ("Native and remotely configurable paywall editor, pre-built templates") | PASS. No tier stated for the editor. Still needs RevenueCatUI and minimum SDK versions (iOS 5.27.1+, Android 8.19.2+) | Design paywalls in a visual editor, starting from pre-built templates |
+| 7b | AI paywall generation is public | https://www.revenuecat.com/changelog/release/build-and-edit-paywalls-with-ai-2026-07-15 ("The Paywalls AI Editor is now generally available"; "the default starting point when creating a paywall"); https://www.revenuecat.com/feature/paywalls ("Show it or describe it. Then let AI build it.") | PASS. Generally available since 2026-07-15. No beta label, no tier stated | Start from a prompt or screenshot, and the AI Editor builds the paywall |
+
+#### Note: item 1, rollout controls
+
+Two of the four controls are public: collaborator roles, on every plan, and audit logs, with no tier stated. Approvals and revert or undo for Offerings and Experiments do not appear in public docs. The closest thing to revert is in the paywall editor: it shows who saved each version and lets you discard an unsaved draft. Experiments are stopped or rolled out by hand. A stopped test "can't be restarted", and no docs describe undoing a winner rollout. The audit log docs name sign-ins, exports and "project modifications", but they do not say by name that offering, paywall or experiment edits are logged. So the page can give enterprise a partial governance answer: role-based control over who can change paywalls and offerings, an audit log of who changed what, and rollouts that a person triggers. It cannot claim approvals or rollback. The earlier Pillar 1 proposal ("under the roles, approvals, audit trail and rollback your team sets") fails on two of its four terms. Use "under the roles your team sets, with an audit log of who changed what" instead, and send approval and rollback questions to sales. Before using audit logs as proof, ask RevenueCat whether they record Offering and Experiment edits, and on which tier.
+
+#### Note: item 2, revenue reconciliation
+
+RevenueCat publishes reconciliation guidance, but it steers finance teams away from RevenueCat. The App Store guide lists five causes of difference: transaction date vs settlement date, calendar months vs fiscal months, purchase-date vs bank exchange rates, estimated tax and commission, and refund dating. It tells readers to "Rely on Apple's financial reports for accurate payout data" and for "all accounting use cases". The general troubleshooting page covers both stores. It says RevenueCat "doesn't pull data from App Store or Google Play reports directly", and that Google Play counts free trials as active subscribers while RevenueCat does not. There is no dedicated Google Play reconciliation guide. RevenueCat's own "source of truth" wording covers revenue analytics on the Charts page, and entitlements, purchase history and analytics on the Web page. So the page can call RevenueCat the source of truth for monetization analytics across stores, with documented reconciliation to App Store reports. It must not call RevenueCat the financial record, or say it replaces store payout reports. A finance section should say what RevenueCat is for ("trend analysis, real-time insights, and estimating future earnings") and point to store reports for payouts.
+
+#### Pages that did not load
+
+- https://www.revenuecat.com/docs/tools/experiments returned 404. There is no non-v1 Experiments doc at that path.
+- https://www.revenuecat.com/docs/platform-resources/apple-platform-resources/handling-refund-requests returned 404, though search still lists it. Used https://www.revenuecat.com/docs/customers/refund-control instead.
+- https://www.revenuecat.com/docs/web/revenuecat-billing/web-paywall-links returned 404. Used https://www.revenuecat.com/docs/web/paywalls and https://www.revenuecat.com/docs/web/overview instead.
+
+### pm-critic on v0.2
+
+Note: pm-critic ran in parallel with the log update above and read
+the log before the claim-auditor section was appended. Its point that
+the "Cut after audit" source trail is broken no longer applies.
+
+#### Solo PM (4 people, $30K MRR)
+
+**Would I say it?** No. At four people everything is a product decision, and most of them are cash decisions too. Nobody on my team argues otherwise, so the line wins an argument I'm not having. "Make it like one" doesn't tell me what you sell. The one idea is my first screen and I'd leave there. What I actually type in Slack: "Can we try annual-first on the paywall without waiting for the next build?" The only v0.2 line that sounds like me is buried in Who it's for: "they feel it most when they can't move."
+
+The tension loses me too. It says pricing is the hardest thing to change. Then the statement promises paywalls, packaging and targeting, and pricing quietly disappears. I change prices in App Store Connect with no release. What needed a release was which products the app shows. Say that, or I'll assume you don't know how my setup works.
+
+**What matters, what I'd skip.** Job 1, by a distance. The visual editor, the templates and the AI Editor are the only proof here I can picture using this week. But "without an app release" is stated flat. The auditor's v0.1 fix, "once your app shows RevenueCat paywalls", didn't make it into v0.2. My first change means an SDK update, the paywall UI package and a release. Say "one release, then none" and I'll believe the rest. Say "no release" and I find out on day one that it's false.
+
+Skip Job 2 for now. I do care about churn, but nothing says I'll ever see the forecast. "Once guardrails are met": which guardrails, and how many weeks at my traffic? Your audit notes tie the LTV prediction accuracy figure to apps with at least 2,000 paid subscriptions. v0.2 doesn't say whether the Experiments forecast has a floor like that. And short-term conversion pays payroll. I'll take a 12-month signal if it shows up in weeks.
+
+Skip most of Job 3. I have one app, so targeting by app and SDK version is noise. Web is tempting for the fees, but Funnels with a checkout step need Redemption Links and an app update. "In the app or on the web" reads like a toggle, and it's actually a sprint. The Foundation is what I probably already use RevenueCat for, so it's no reason to do more.
+
+**What stops me.** The price in dollars at $30K MRR, with Experiments and Targeting on. Open risks says "the page can't answer it." Your pricing page is public, so not linking it is a choice. If I'm already a customer, the question is whether this comes with what I pay today or is an upsell, and v0.2 can't tell me. It never says which plan Experiments is on. And "(Pro and Enterprise)" in Job 3 could apply to all targeting or only to custom attributes. Superwall explains its pricing model in one sentence. You tell me 146,000 apps trust you.
+
+#### Growth PM (60 people, runs experiments)
+
+**Would I say it?** No, and I'd actively avoid it. Post "monetization is a product decision" in #growth and finance replies "and a finance one", and they'd be right. It's a turf claim, not an insight. What I'd write: "We're not calling this on trial starts. Wait for the 12-month number." If "make it like one" means a hypothesis, a control and a readout, I'd sign that part, but the line doesn't say it.
+
+The tension describes a team less mature than mine. We stopped judging on short-term conversion years ago, and we pull D30 and D90 by variant from the warehouse. What I'd pay for is time, not the lesson: a 12-month signal while the test is still running. v0.2 never presents the forecast as speed. I'd read past the first screen only to find Job 2.
+
+**What matters, what I'd skip.** Job 2, and within it only the predicted 12-month LTV line. The rest of its proof doesn't match its pains:
+- "Attribution blind spots" is backed by Funnels UTM tracking. That covers web funnels only. My blind spots are SKAN and the MMP.
+- "Late detection of monetization issues" is backed by paywall charts. A chart doesn't detect anything. Is there an alert? Not stated.
+- "LTV prediction" and "predicted 12-month LTV" are listed as two proofs. Is that one model or two? If two, which do I trust?
+
+The claim I don't buy is "Long-term value is how user value shows up in the numbers." LTV is what users pay over time, not what they value. A variant that hides the monthly plan can win on LTV and still be a worse product. It gets worse: a 12-month horizon ends about when an annual subscriber first renews. On annual versus monthly, the test I run most, the forecast sees monthly churn in full and annual renewal barely or not at all. Your tension opens with exactly that question, whether users stay, and v0.2 doesn't say how the model handles it.
+
+Two more problems. "Web paywalls A/B tested using the same tools as mobile" sits next to a Cut list saying predicted LTV isn't claimed for web. So on web I get the tools minus the only one I want. And "a 12-month forecast per variant, where Superwall shows proceeds to date" beats exactly one vendor. Your own competitor-watch says Adapty and Apphud already forecast inside the test. If I've evaluated Adapty, that bullet makes you look uninformed.
+
+Skip Job 1, because we already change paywalls through remote config. I only care about the Foundation if its numbers reconcile. Job 3 matters to me for a reason v0.2 misses. Per the 2026-02-06 changelog, rollout can create a targeting rule, so a winner ships to the segment where it won. v0.2 files one-action rollout under Job 1 as a speed feature. For me it's the link from Job 2 to Job 3.
+
+**What stops me.** I can't check the forecast:
+- Nothing compares predicted against realized 12-month revenue.
+- Nothing says what it assumes for a price or plan with no history.
+- There's no holdout. Rollout stops the test, the Cut list says a stopped experiment can't be restarted, and nothing documents undoing a rollout. The control group is gone at the moment I'd need it to check the forecast.
+
+Still open from v0.1: which revenue the forecast uses (gross, net of store fees or net of refunds), warehouse export of assignments and results, and running next to Statsig or Amplitude without assigning users twice.
+
+#### Enterprise PM (media company)
+
+**Would I say it?** No. Here monetization is a commercial decision. Consumer revenue and finance set the offer: price points, bundles, the promo calendar. My job is to make the app carry that offer well. If I said "monetization is a product decision" in the subscriptions steering meeting, the head of consumer revenue would correct me and legal would ask who signed off. What I'd actually write: "Can the app run the Black Friday offer the same day as web, without a release, once legal has approved the copy?" That sentence has a date, a channel and an approval in it. v0.2 has none of the three.
+
+**What matters, what I'd skip.** The Foundation, if it holds for us. "Entitlements across platforms" is the job: someone who subscribed on the web has to be unlocked in the app. But our web subscriptions already run on a billing and identity stack we won't replace, and v0.2 only names RevenueCat's own Web Billing. Does it grant entitlements for subscriptions billed elsewhere? Not stated. Second is Job 3. Targeting by country (our editions) and custom attributes (print subscribers, registered readers) is real for us, if our CDP can push those attributes in. Not stated.
+
+Skip the AI Editor. To brand and legal, "builds a paywall from a prompt or screenshot" means an unreviewed paywall with price and renewal terms on it. Job 2 is interesting, but the Foundation now limits RevenueCat's numbers to "analytics scope, not payouts or accounting". A forecast in a revenue figure finance doesn't recognize loses the meeting before anyone reads it. And much of our paywall is a metered article wall, not a subscription screen. Does "paywall" here cover a meter? Not stated. I assume not, which shrinks Job 1 to one screen in my app.
+
+**Do I feel addressed?** No. This is a startup page with one enterprise clause, and I'd stop reading at Job 1.
+- "from solo founder-PMs to enterprise product teams" is the only line written to me, and it sits in the audience definition, not the pitch.
+- "Enterprise" appears once in the proof, as a plan tier gating custom attributes.
+- "they feel it most when they can't move": I can move. Our release train ships weekly. My bottleneck is sign-off, and moving without it causes an incident.
+- The page pairs "Change it without a release" and "one-action winner rollout" with a Cut list admitting that approvals and revert aren't documented and a stopped experiment can't be restarted. v0.1's review asked for a governance answer. v0.2 deleted "yourself" and left nothing in its place. On a vendor page, I read silence as no.
+- The only customer proof is Floga: $120K+ in one day of pre-launch lifetime memberships. A launch spike on lifetime deals is the opposite of a recurring subscription business.
+- "For existing customers: no second vendor". I'm not one. For me, you are the second vendor: a security review, a DPA, procurement.
+- "All three jobs plus the foundation on one platform". Pitches for putting everything on one platform make our architects nervous. They want to know what you replace and what you plug into.
+
+What does work: "the store makes the final call" and "analytics scope, not payouts or accounting". Honest limits are what get past legal, so keep both on the page. But Refund Control sends usage data to Apple and Google on our behalf, and privacy will ask what data, under what consent. Not stated.
+
+Your own source trail is also broken. "Cut after audit" cites a claim-auditor table under "Positioning v0.2" in docs/iteration-log.md, and the log has no such section. If a claim can't be traced to its source, legal won't sign off the page.
+
+**What stops me.** Who can change a paywall that millions of subscribers see, and how we undo it. That means roles and permissions, SSO, an audit log, a draft-and-review step, scheduled changes and rollback. v0.2 answers none of these, and the Cut list confirms two aren't in public docs. If the page won't say, I assume the answer is no and never take it to security.
+
+#### Where the three disagree
+
+- **All three reject the one idea, for opposite reasons.** For Solo it's a truism that doesn't say what you sell. For Growth it's a turf claim that starts a fight with finance. For Enterprise it's simply wrong where monetization is a commercial decision. The one line that lands, "they feel it most when they can't move", lands only for Solo. Enterprise reads the same line as a description of an incident.
+- **The page order is Solo's priority list.** Solo wants Job 1. Growth wants Job 2 plus rollout to a segment. Enterprise wants the Foundation plus governance. Opening on "change it without a release" wins Solo, bores Growth and alarms Enterprise. That's the same split v0.1 had, minus "yourself".
+- **"In the app or on the web" means three different things.** For Solo it's a Redemption Links sprint to save on fees. For Growth it's margin, but without the forecast, which isn't claimed for web. For Enterprise it's an existing web billing stack v0.2 never mentions. The honest caveats split them too: Growth and Enterprise trust the carefully limited lines most, and Solo skips them.
+
+#### The single change
+
+The worst served is the Enterprise PM, for the second version running. v0.1's single change was only half done: "yourself" is gone, nothing replaced it, and the Cut list now records that approvals and revert aren't documented.
+
+The change: give Job 1 a governance proof line that says who can change what, and audit it like every other line. The candidates are dashboard roles and permissions, SSO, security certifications and a change history. Claim only the ones RevenueCat publishes. For what isn't documented (approvals, scheduled changes, rollback), put an explicit route on the page instead of silence, worded so it doesn't imply the features exist. For example: "How changes are approved and rolled back at your scale: talk to our team."
+
+It costs Solo nothing, because the solo PM is the admin. Growth gets its reversibility question on the record. If the audit finds no roles or change history at all, that is the finding: stop pitching one-action rollout to enterprise visitors until sales has an answer.
+
+### competitor-watch on v0.2 (competitive-scan.md only, no fetching)
+
+Half of this is Superwall's positioning. The supporting frame, where the PM owns pricing, packaging, the paywall and access control, says the same thing Superwall's PM page already OWNS. The headline, "Monetization is a product decision", is not owned or claimed by any competitor in the scan.
+
+#### Where the closest equivalents sit
+
+| Competitor | Closest equivalent, per the scan | Class | Where |
+|---|---|---|---|
+| Superwall | "Own the monetization roadmap end to end without a release or an engineering queue" | OWNED | PM page (/solutions/product-managers). Scan does not say headline or body |
+| Qonversion | "Transform your product management." | OWNED (weak match) | PM page (/for-product-managers), which the scan calls generic. Headline status not stated |
+| Purchasely | "Your conversion problem is not one screen." | CLAIMED, caveat | /conversion. Scan does not give the page type. Not aimed at PMs |
+| Adapty | "Make financial decisions on accurate revenue analytics." | CLAIMED, caveat | Homepage or /performance-analytics. Scan does not say which. No PM page |
+| Apphud | "remote product management on paywalls" | CLAIMED, caveat | Comparison table at /revenuecat. Scan does not define the term |
+| Adapty, Apphud | Pick revenue winners inside experiments | PARITY | Competitor docs, per the scan's corrections |
+| Build in-house | "Engineering's own roadmap" | None | Objection, no page |
+| Apple / Google native | "Free, built in" | None | Objection, no page |
+
+- The scan's positioning column has no quotation marks, so none of these lines can be confirmed as verbatim page copy.
+- Superwall is the only direct hit: a PM page, aimed at PMs, about owning monetization. Any line built on "PMs own monetization" is a positioning conflict.
+- Qonversion holds a PM page, but according to the scan it says nothing about monetization being a product decision. It does not block the headline.
+- Purchasely treats conversion as a journey problem (how much of the app it covers), not a question of who decides. Adjacent, not equivalent.
+- Adapty uses "decisions" but calls them financial, and it talks to developers, marketers and app owners. That is the opposite framing and a useful contrast: RevenueCat says product, Adapty says finance.
+- Apphud's line is a row in a comparison table used to attack RevenueCat, not a position. If it means remote control of which products a paywall shows, it overlaps "packaging" in the supporting frame, not the headline. The scan marks RevenueCat's supposed gap here as unverified.
+- PARITY on revenue winners means "decide on revenue, not clicks" is not proof only RevenueCat has. It does not block the claim.
+
+#### Same claim as Superwall, or different?
+
+- Headline: a different claim. Superwall's claim is about independence: who acts (the PM, alone) and what gets removed (the release, the engineering queue). "Monetization is a product decision" says what monetization is and implies a standard for deciding it. It removes nobody.
+- Supporting frame: the same claim in different words. "Part of the product experience a PM owns and is responsible for" restates "Own the monetization roadmap end to end". "Own" is the key verb in both.
+- Second sentence: undecided. "Make it like one" means nothing until the page proves it. If the proof is "change the paywall without engineering and test it", it becomes the promise every vendor makes, which the scan says Superwall "says best". If the proof is the decision standard (what counts as a win, how it rolls out, what it is compared against), it is a different claim.
+
+#### Copy risk
+
+- "Own", "monetization roadmap" and "end to end" in one line reads as Superwall's PM page. Drop "owns" from the supporting frame.
+- "No app release" is fine alone. Put it next to an engineering-removal phrase inside an ownership line and it mirrors Superwall's "without a release or an engineering queue".
+- "Not just the paywall" or "not one screen" is Purchasely. Listing pricing, packaging, paywall and access control is safe. Framing that list as "more than a paywall" is not.
+- "Transform" plus "product management" is Qonversion's PM page.
+- "Make decisions on accurate revenue data" is Adapty's sentence structure. "Make it like one" is safe. Do not extend it with "on accurate revenue data".
+- The headline sentence matches nothing in the scan. The scan covers only the pages it lists, so it cannot rule out the phrase appearing elsewhere.
+
+#### The angle Superwall cannot claim
+
+- Define "like one" as a decision standard on one system: judge a change on predicted 12-month LTV, roll out the winner in one action, and compare the result against Benchmarks. All of it runs on the billing data engineering has already integrated (scan, "What RevenueCat can claim alone", points 1 and 2).
+- Superwall cannot say "no new vendor, no migration", because it calls itself "a complete, standalone subscription platform". For apps already on RevenueCat, RevenueCat can say it.
+- Predicted LTV alone is not unique. Adapty's signature claim is a 12-month LTV and revenue prediction. The scan does not say where that appears, so the best classification is CLAIMED. The claim is the combination on one system, not the forecast.
+- Limits from the scan:
+  - The forecast is a signal, not a promise.
+  - It only applies with a revenue primary metric, once guardrails are met.
+  - Experiments is on Pro and Enterprise.
+  - Never say "no new SDK".
+  - "No app release" only holds if the app already reads offerings from RevenueCat.
+
+#### Angles we are missing
+
+- Purchasely covers the whole first session, not only the paywall. The supporting frame stops at the paywall. The scan cannot establish whether RevenueCat can claim onboarding.
+- Superwall has "agents that surface the next test". Choosing what to test next is part of making a product decision. The scan shows no RevenueCat equivalent. Benchmarks is the closest thing the scan supports.
+- Risk: "pricing" leads the supporting frame, and Apphud's table says RevenueCat lacks advanced pricing A/B testing. The scan marks this unverified. Do not lead with pricing until it is checked.
+- Risk: a page that pushes PMs to experiment more makes Superwall's pricing attack stronger (RevenueCat charges a fee on revenue the experiments did not earn). The scan rates that attack fair and says nothing on the page answers it.
+
+#### Verdict
+
+- Keep the headline. Nobody in the scan owns "monetization is a product decision". Superwall owns "PMs own monetization", which is close but not the same claim.
+- Rewrite the supporting frame. "A PM owns and is responsible for" is Superwall's PM-page claim in different words. Replace the ownership language with the decision standard.
+- Prove "make it like one" with one system: predicted LTV winner, one-action rollout, Benchmarks, and no new vendor for existing customers. If the proof is "without engineering" instead, it is the promise every vendor makes, and Superwall makes it best.
+
+Source: docs/competitive-scan.md (only file read, no web access used).
