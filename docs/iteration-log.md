@@ -767,3 +767,105 @@ docs/brief.md is not a source. Rows reuse earlier claim-auditor results where th
   interaction types, because the current page is entirely static
   imagery and visual storytelling is the first evaluation criterion.
 - Build fallback order decided in advance.
+
+## 2026-09-26: Architecture v1, audit follow-up
+
+- Placeholders filled from the v0.3 audit. Section 8 uses the exact
+  pricing sentence from positioning.md. Section 7 adds SSO (SAML or
+  OIDC) to the governance badges, labeled Enterprise plan only.
+- Pending list removed. Realized-LTV check noted as cut (v0.3 audit,
+  item 1 failed). Alerts noted as not claimed, since revenue anomaly
+  emails are in beta. Replaced with one line: final check of every
+  claim against the live pages before publishing.
+- Section 3 fixed. The "now" side had run predicted 12-month value
+  straight into "also offered on web", which suggested a web test got
+  a forecast. Positioning v0.3 does not claim predicted LTV for web.
+  Now: edited, tested in the app, predicted 12-month value, rolled
+  out in one action. Web is a separate beat, a checkout for people
+  who arrive on the web, shown as a channel and never as a forecasted
+  experiment.
+- claim-auditor run on the three capabilities in architecture v1 that
+  had no source in the repo: Charts API, Apple Pay and Google Pay at
+  web checkout, multivariate experiments. The brief was pasted into
+  docs/brief.md (local, gitignored) after the first pass, so a second
+  pass re-read it. The brief changed no verdict. It added three rows
+  that fail because their only source is the brief (1d, 2g, 2h).
+- Caught by the audit, not by drafting: the simulator's "three
+  variants if time allows" would have put a predicted LTV winner on a
+  multivariate test, which no public page shows.
+
+### claim-auditor (targeted audit behind architecture v1)
+
+#### Targeted claim audit: architecture v1, checked 2026-09-26
+
+docs/brief.md was used for leads only. Every PASS cites a public
+RevenueCat URL, and a claim sourced only by the brief is FAIL for
+publishing. All source URLs returned HTTP 200 on 2026-09-26. The fetch
+tool summarises pages, so check wording against the live page before
+publishing.
+
+| # | Claim | Public source | Verdict | Safe wording |
+|---|---|---|---|---|
+| 1a | A public Charts API exists | https://www.revenuecat.com/changelog/release/access-your-revenuecat-chart-data-via-api-2026-02-05 (Feb 5, 2026; programmatic access to the analytics behind the dashboard); https://www.revenuecat.com/docs/api-v2/charts-and-metrics (returns time-series data for a named chart) | PASS | Charts API: the same chart data as your dashboard, for your own tools |
+| 1b | "for your own dashboards" | Same changelog: pull data into your own tools, build custom dashboards, automate reports | PASS | Pull chart data into your own dashboards with the Charts API |
+| 1c | Plan limits or beta label | None stated on the changelog, the API v2 reference or https://www.revenuecat.com/pricing/ (REST API listed among features included) | PASS conditional | Say nothing about plan, availability or rate limits. A missing label is not a GA statement |
+| 1d | Access to "all" subscription analytics data (brief) | Brief only. The changelog describes the same data as the dashboard. The API's chart list has no experiment results or funnel analytics | FAIL for "all" | The Charts API gives you the same subscription analytics that power your RevenueCat dashboard |
+| 2a | Apple Pay and Google Pay at web checkout | https://www.revenuecat.com/docs/web/web-billing/payment-methods (shown next to card once enabled, when available to the customer); https://www.revenuecat.com/changelog/release/rc-billing-apple-pay-google-pay-support-2024-11-29 | PASS conditional | Apple Pay and Google Pay at checkout, where the device and browser support them |
+| 2b | Apple Pay and Google Pay in the Funnels checkout step | https://www.revenuecat.com/docs/tools/funnels/configuring-payments (appear in funnel checkout steps with no extra Stripe setup) | PASS conditional | Same as 2a. Stripe-based checkout only (RevenueCat Billing or Stripe Billing). Not for Paddle funnels |
+| 2c | Funnel branch by survey answer | https://www.revenuecat.com/docs/tools/funnels/creating-funnels (split flow on user data, UTM parameters, survey answers); https://www.revenuecat.com/blog/company/funnels-public-beta | PASS | Route visitors by their survey answers |
+| 2d | Funnel branch by country | Brief only. Checked creating-funnels docs, Funnels overview docs, GA changelog, Funnels feature page, Paywalls rules docs and the public beta blog. No public page names country as a branch condition. The public beta blog describes detecting country by IP to localize the experience, which is localization, not routing | FAIL for publishing | Branch on survey answer or ad campaign (URL parameter). Show country as "localized to the visitor's country" |
+| 2e | Redemption Link, then the app opens with the subscription active | https://www.revenuecat.com/docs/tools/funnels/deploying-funnels (checkout funnels require Redemption Links); https://www.revenuecat.com/docs/web/redemption-links (one-time deep links, 60-minute expiry); public beta blog (download the app, tap the link, subscription active) | PASS conditional | They get a Redemption Link, download the app, tap the link, and the subscription is active. Never "no engineering" |
+| 2f | Product name "Web Billing" | https://www.revenuecat.com/docs/web/web-billing/localization and the payment-methods page call it RevenueCat Billing, formerly Web Billing | PASS conditional | "RevenueCat Billing" in UI labels. "Web Billing" only when quoting the Floga case study |
+| 2g | Funnels publish "without touching engineering" (brief) | Brief only. Contradicted by the Redemption Links docs (minimum SDK versions, deep-link handling) and deploying-funnels | FAIL (hard rule) | Build and publish funnels in the dashboard, with no app release for each change, once the app handles Redemption Links |
+| 2h | Web Billing bypasses store commissions, "typically 15-30%" (brief) | Brief only. A store-fee claim stated as universal | FAIL (hard rule) | Leave fees off the Section 6 visual. Any fee line needs a public source and a note that fee rules differ by region |
+| 3a | Multivariate experiments, up to four variants | https://www.revenuecat.com/changelog/release/experiments-multivariate-testing-abcd-2025-04-29; https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1 (up to 4 variants: 1 control, up to 3 treatments); https://www.revenuecat.com/feature/experiments | PASS | Test up to four variants at once (A/B/C/D) |
+| 3b | Predicted 12-month LTV, two-variant simulator | https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12 (revenue primary metric, shows once guardrails are met, forward-looking signal while the test runs) | PASS conditional | A forward-looking signal of 12-month value while the test runs, once enough data is in. Not a guarantee |
+| 3c | Predicted 12-month LTV with three variants | The changelog's "for each variant" is generic, and the brief repeats it. No public page shows a predicted LTV winner on a test with three or more variants. Multivariate results docs describe each treatment's chance to win against the control, and realized LTV | FAIL | Keep the simulator at two variants. Mention multivariate only as a static line, with no predicted LTV attached |
+| 3d | "Roll out winner" in one action | https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06; configuring-experiments-v1 (set default offering, create a targeting rule, or mark winner only) | PASS (two variants); PASS conditional (multivariate: not restricted, not shown) | Button "Roll out winner". Toast "Rolled out, no app release" |
+
+#### Conditions the visuals must respect
+- Charts API: someone builds the dashboard. The visual must not imply
+  the API is no-code. It needs a v2 secret key with chart read
+  permission, and the Charts and Metrics rate limit is 25 requests
+  per minute (seen summarised).
+- Wallets: processed through Stripe and shown only when the device and
+  browser support them. RevenueCat's hosted domains are registered
+  with Stripe automatically; custom funnel domains once verified; Web
+  SDK purchases on your own domain need manual registration. No wallet
+  claim for Paddle funnels.
+- Redemption Links: minimum SDKs iOS 5.14.1, Android 8.10.6, Flutter
+  8.4.0, React Native 8.5.0. The app must handle the deep link. Show
+  the download beat before the link tap. The docs say the link fails
+  if the app isn't installed or it's opened on desktop (seen
+  summarised).
+- Funnels are GA as of July 13, 2026
+  (https://www.revenuecat.com/changelog/release/build-complete-web-to-app-funnels-with-revenuecat-2026-07-13).
+  No beta label needed.
+- Predicted LTV needs a revenue primary metric and appears once
+  guardrails are met. The trial-conversion vs predicted-LTV toggle is
+  a comparison lens in the simulator, not a product setting.
+- Rollout action labels differ by page. Use "Roll out winner", the
+  changelog label.
+
+#### Proposed architecture changes, not yet applied
+- Section 5: two variants only. Multivariate (up to four variants,
+  A/B/C/D) as one static supporting line, without predicted LTV.
+  "Ship the winner" becomes "Roll out winner". Caption extended: the
+  forecast appears once enough data is in, for experiments with a
+  revenue primary metric; a forward-looking signal, not a guarantee.
+- Section 1: the hero "Learn" card shows two variants only.
+- Section 6: branch by survey answer, localized to the visitor's
+  country. Apple Pay and Google Pay on Stripe-based checkout, where
+  the device and browser support them. The Redemption Link beat shows
+  the download before the tap.
+- Sections 6 and coverage table: "RevenueCat Billing" in UI labels,
+  "Web Billing" only when quoting the Floga case study.
+- Section 7: optional wording, "Pull chart data into your own
+  dashboards with the Charts API."
+
+#### Pages that did not load
+- https://www.revenuecat.com/docs/web/web-billing (404)
+- https://www.revenuecat.com/docs/web/web-billing/overview (404)
+- The API v2 anchor for the get-chart-data operation did not render;
+  https://www.revenuecat.com/docs/api-v2/charts-and-metrics was used
+  instead.

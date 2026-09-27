@@ -36,11 +36,14 @@ Status: v1. Built on docs/positioning.md v0.3.
    Job: the whole argument in one glance, for skimmers.
    Left, before: a paywall change as a ticket, a sprint, App Review,
    judged on trial starts.
-   Right, now: edited in the dashboard, tested, predicted 12-month
-   value shown, rolled out in one action, also offered on web.
+   Right, now: edited in the dashboard, tested in the app, predicted
+   12-month value shown, rolled out in one action. Then a separate
+   beat: a web checkout for people who arrive on the web.
    Below: three rows (Change, Learn, Fit) that anchor-link to sections
    4, 5 and 6.
    Rule: "before" is the PM's status quo, never an older RevenueCat.
+   Rule: web appears as a channel, never as a forecasted experiment.
+   Predicted 12-month LTV is not claimed for web (positioning v0.3).
 
 4. JOB 1: CHANGE IT WITHOUT A RELEASE. Static.
    Visual: the paywall editor with the AI Editor prompt bar and a
@@ -79,11 +82,14 @@ Status: v1. Built on docs/positioning.md v0.3.
    entitlements and one source for analytics in the middle; your app on
    top.
    Badges: Refund Control, collaborator roles including a Growth role,
-   audit logs, paywall version history, [SSO pending audit].
+   audit logs, paywall version history, SSO (SAML or OIDC), labeled
+   Enterprise plan only.
    One line: Charts API for your own dashboards.
 
 8. TWO PATHS PLUS FINAL CTA. Static.
-   Startup path: start free, [pricing sentence pending audit].
+   Startup path: start free. Pricing sentence, exact: "Free up to
+   $2,500 in monthly tracked revenue, then 1% of all tracked revenue,
+   with Experiments and Targeting included." Keep "all".
    Team path: talk to sales, governance recap.
    Closing CTA.
 
@@ -124,5 +130,12 @@ SDK how-it-works steps (link to docs instead), the feature-tile grid,
 the time-saved CTO testimonial, Figma export, custom variables, draft
 mode, ASA segmentation, the branding system, and any competitor names.
 
-## Pending audit
-Pricing sentence, SSO, realized-LTV check, alerts.
+## Not claimed
+- Realized-LTV check: cut. The v0.3 audit found no page that
+  describes checking a past forecast against what a cohort or an
+  experiment later realized.
+- Alerts: not claimed. Revenue anomaly email alerts exist but are in
+  beta.
+
+## Before publishing
+Final check of every claim against the live pages.
