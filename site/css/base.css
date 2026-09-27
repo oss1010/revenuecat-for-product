@@ -558,6 +558,25 @@ html[data-variant="b2"] .v-b2 { display: inline !important; }
 .final-band .tertiary a { color: var(--rc-white); }
 .final-band :focus-visible { outline-color: var(--rc-white); }
 
+/* Footer: one quiet link on the ink band. White at 72% on ink is
+   8.6:1; a hairline separates it from the closing band. */
+.site-footer {
+  padding-block: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--rc-ink);
+  text-align: center;
+}
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.site-footer a:hover { color: var(--rc-white); text-decoration: underline; text-underline-offset: 0.2em; }
+.site-footer :focus-visible { outline-color: var(--rc-white); }
+
 /* Tablet and up */
 @media (min-width: 48rem) {
   .badges { grid-template-columns: 1fr 1fr; }

@@ -1700,3 +1700,51 @@ product source.
   and 968 to 1,226 (1440), from the Pixelcut block; section 5 3,011 to
   2,693 and 2,519 to 2,283; section 7 1,528 to 1,622 and 1,076 to
   1,184 (small print); page 11,543 to 11,734 and 9,051 to 9,180.
+
+## 2026-09-27: Process doc page (/process)
+
+Built site/process/index.html from docs/process-doc-content.md v3, in
+the main page's tokens, Manrope and card style (site/css/process.css).
+Both pages carry `noindex`; the main page has a quiet footer link,
+"How this page was made".
+
+### Reconciled with the build and this log
+Where the content file and the record differed, the record won:
+- Timeline: "7 phases" became "8 phases" (1, 1.5, 2, 3A, 3B, 4, 5,
+  5.1: eight commits and eight log entries).
+- Competitive scan: Superwall $1.5B+ became $1.6B+ (competitor-watch,
+  2026-09-26); Apphud "Not stated" became "14,000+ apps, $1B+ tracked,
+  self-reported" (same run).
+- Pain table: one-action rollout is shown in section 5's simulator, not
+  section 4, so its page column reads "4, 5".
+- claim-auditor: the Benchmarks item described a 20th to 80th band as
+  the error. The page had drawn 25th to 75th; RevenueCat uses 20th to
+  80th (phase 4, logged PASS conditional).
+- web-copy's job: its agent file drafts and tightens copy with a 30%
+  cut version and has no headline rule. Now "Drafts and tightens
+  landing-page copy, always with a version cut by 30%. Used here for
+  line-level cuts only".
+- The repo line: press-kit logos, customer logos and the homepage and
+  /for-product captures are tracked. Now lists what is kept out: the
+  brief, my notes, and the animations, product images and feature-page
+  captures in docs/reference/inspiration/.
+
+### Counts filled from this log
+- Agent reviews: 24 logged runs (competitor-watch 4, pm-critic 4,
+  claim-auditor 13, brand-guard 2, web-copy 1). pm-critic's two passes
+  on copy v1 and the architecture audit's second pass count once.
+- Claim-auditor fails: 56. Every FAIL verdict in claim-auditor output
+  here (52 in tables, 4 in the final 48-string sweep); conditional
+  PASS rows not counted. Each was reworded or kept off the page.
+- web-copy: 14 cuts, about 85 words (11%). brand-guard: the five
+  phase 3B fixes.
+
+### Print and PDF
+- US Letter, page numbers in the bottom margin (CSS page-margin boxes).
+- Forced page break before section 6 only. Section 3 starts a page
+  naturally; a break before 2 or 5 left a page a third or more empty.
+- Table and skimmer borders sit on the rows, so a split closes on a
+  full row. Section end space is a margin, which truncates at a page
+  break, so no strip of background spills onto the next page.
+- docs/process-shots/process-doc.pdf: 15 pages, every page checked;
+  largest gap before the last page is about 19% (page 8).
