@@ -1636,3 +1636,67 @@ simulator, 989.
 
 Screenshots: docs/process-shots/phase5-full-page-390.png and
 phase5-full-page-1440.png.
+
+## 2026-09-27: Build phase 5.1, final fixes (design frozen for good)
+
+Ten fixes from the phase 5 ranked list, nothing beyond them.
+
+### What changed
+1. Pixelcut moved from section 5 to section 4, as that section's
+   customer story, in the same centered block. Why: Pixelcut's case
+   study says "we ran a test between a weekly and a monthly subscription
+   offering, and the weekly offer resulted in 16% more paying
+   customers." Section 5's simulator argues that weekly's early lead is
+   the wrong winner, so beside it the quote invited a reader to click
+   through and find the opposite lesson. In section 4, about changing
+   paywalls without a release, it supports the point with no clash.
+   The quote itself is unchanged.
+2. Section 5: a line under the "What you can test" chips, and the chips
+   restyled as plain tags (tint fill, no outline, small radius) so they
+   don't read as filters.
+3. Hero: the Test chip names the metric ("B leads on predicted LTV",
+   15px clear of the card edge; cards widened equally to 12rem). No
+   card empties: Test and Roll out keep their last result until their
+   own beat. During the test the chip reads "Test running" in outline;
+   Roll out resets to "B · 50%" with "No app release." beside an empty
+   ring, then fills and the ring becomes the green check.
+4. Enterprise card: "Security and compliance >" beside "Talk to sales".
+5. Section 6 step 4: "Download the app, tap the link, unlocked".
+6. Section 7: the Refund Control bullet restores the store's final
+   call, and drops "usage data" (audit FAIL).
+7. Section 7 small print: Customer Center plan availability.
+8. Benchmarks: Monthly Churn Rate at the 14th percentile, below the
+   20th, where RevenueCat's scorecard points focus.
+9. Mobile hero: the caption chip changes at the same moment as the
+   phone (traced at 390: every phone change and chip change share a
+   timestamp).
+10. "How the forecast works >": skipped, per the audit.
+Also: the hero chip's state attributes are named data-chip-* so they
+can't collide with the simulator's data-rollout and data-reset hooks.
+
+### Claim audit (2026-09-27)
+| # | Claim | Verdict | Outcome |
+|---|---|---|---|
+| 2 | "Prices come from the products in your App Store and Google Play accounts." | PASS conditional | True for apps; on the web, RevenueCat Billing prices are set in the RevenueCat dashboard, and the tools are App Store Connect and Google Play Console. Now "In your apps, prices come from the products you set up in App Store Connect and Google Play Console." |
+| 4 | Security and compliance link | PASS | https://www.revenuecat.com/security-and-compliance, "RevenueCat Security & Compliance", linked from the live /for-product footer. 200 |
+| 5 | "Download the app, tap the link, unlocked" | PASS conditional | Funnels beta post: "They get a Redemption Link, download your app, tap the link, and their subscription is already active." The app must handle Redemption Links (SDK minimums, URL scheme): added to section 6 small print |
+| 6 | Refund Control with "usage data" | FAIL on "usage data" | Docs: "RevenueCat doesn't currently collect or send consumption percentages or usage events"; "the store makes the final refund decision". Now "...with the required data and your refund preference; the store makes the final call" |
+| 7 | Customer Center plans | PASS | "Customer Center is available on Pro and Enterprise plans." Used verbatim |
+| 10 | "How the forecast works >" | FAIL | The changelog names the inputs only; the Experiments results docs never mention prediction; Prediction Explorer's docs explain a different tool. Link skipped |
+Also noted by the audit, not changed: Experiments is on Pro and
+Enterprise, with no plan line in section 5; Amazon Appstore is also a
+product source.
+
+### Verification
+- Headless Chrome at 390 and 1440: no console errors, no horizontal
+  overflow, no missing images. Preview pane refreshed.
+- Keyboard: the new Security link sits in tab order after "Talk to
+  sales"; section 3, simulator (two-step rollout, Escape, reset focus)
+  and Charts unchanged.
+- Reduced motion: hero static on Roll out done, "B leads on predicted
+  LTV", chip "Roll out: B published, no app release"; section 3 end
+  states; Benchmarks at the 14th percentile.
+- Section heights, px, phase 5 to 5.1: section 4 1,536 to 1,888 (390)
+  and 968 to 1,226 (1440), from the Pixelcut block; section 5 3,011 to
+  2,693 and 2,519 to 2,283; section 7 1,528 to 1,622 and 1,076 to
+  1,184 (small print); page 11,543 to 11,734 and 9,051 to 9,180.

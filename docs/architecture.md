@@ -1,7 +1,14 @@
 # Page architecture: /for-product refresh
 
-Status: v1.7, final (phase 5: red team and owner review). No more
-design changes. Built on docs/positioning.md v0.3. Words live in
+Status: v1.8, frozen (phase 5.1: final fixes from the ranked list). No
+more design changes. Phase 5.1 in brief: Pixelcut is section 4's
+customer story (its case study has weekly beating monthly, which
+clashed with section 5's simulator); section 5 chips are plain tags
+with a prices line; hero cards keep their last result until their own
+beat and the mobile chip changes with the phone; Enterprise links
+Security and compliance; section 6 step 4 names the download and the
+link; section 7 restores the store's final call on refunds and states
+Customer Center's plans; churn sits below the 20th percentile. Built on docs/positioning.md v0.3. Words live in
 docs/copy.md v1.7 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 
 ## Principles

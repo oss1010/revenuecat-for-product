@@ -7,7 +7,9 @@
    3. Roll out: the cursor clicks the rollout bar; it fills green from
       "B · 50%" to "B · 100%", then "No app release." and the phone
       locks to B.
-   Pauses off-screen, on hover and in background tabs. Under
+   No card is ever empty: each keeps its last finished state until its
+   own beat. The mobile caption chip changes at the same moment as the
+   phone. Pauses off-screen, on hover and in background tabs. Under
    prefers-reduced-motion the markup's static Roll out state stays. */
 (function () {
   var stage = document.querySelector('[data-hero-loop]');
@@ -24,8 +26,9 @@
   var barFill = stage.querySelector('.hl-bar-fill');
   var barPct = stage.querySelector('[data-hl-pct]');
   var sparkClip = stage.querySelector('.hl-spark-clip');
-  var lineLabels = stage.querySelectorAll('.hl-line-lbl');
-  var chips = stage.querySelectorAll('.hl-chip [data-step]');
+  var chip = stage.querySelector('[data-hl-chip]');
+  var leads = stage.querySelector('.hl-leads');
+  var leadsText = stage.querySelector('.hl-leads-text');
   var cursor = stage.querySelector('.hl-cursor');
 
   var BEAT = 2600;
@@ -49,7 +52,6 @@
   function activate(name) {
     Object.keys(cards).forEach(function (k) { cards[k].classList.toggle('is-active', k === name); });
     loop.setAttribute('data-step', name);
-    chips.forEach(function (c) { c.hidden = c.getAttribute('data-step') !== name; });
   }
 
   function drawSpark(ms) {
@@ -77,7 +79,6 @@
     }
     barFrame = window.requestAnimationFrame(frame);
   }
-  function showLineLabels(on) { lineLabels.forEach(function (l) { l.style.opacity = on ? '1' : '0'; }); }
 
   function pointAt(el) {
     var box = loop.getBoundingClientRect();
@@ -100,14 +101,19 @@
     if (withCursor) later(function () { cursor.classList.remove('is-on'); }, at + 450);
   }
 
+  /* The mobile chip follows the phone */
+  function setChip(key) { chip.textContent = chip.getAttribute('data-chip-' + key); }
+  function setLeads(done) {
+    cards.test.classList.toggle('is-leading', done);
+    leadsText.textContent = leads.getAttribute(done ? 'data-done' : 'data-running');
+  }
+
+  /* Only Design starts over; Test and Roll out keep their last result
+     until their beats */
   function reset() {
     setPaywall('a');
+    setChip('reset');
     designValue.textContent = designValue.getAttribute('data-before');
-    sparkClip.setAttribute('width', '0');
-    showLineLabels(false);
-    cards.test.classList.remove('is-leading');
-    cards.rollout.classList.remove('is-done');
-    setBar(50);
   }
 
   function cycle() {
@@ -118,21 +124,29 @@
     click(designValue, 800, function () {
       designValue.textContent = designValue.getAttribute('data-after');
       setPaywall('b');
+      setChip('design');
     });
     /* 2. Test, 2.6 to 5.2s */
     later(function () { activate('test'); }, BEAT);
     click(chart, BEAT + 700, function () {
+      setLeads(false);
+      sparkClip.setAttribute('width', '0');
       drawSpark(800);
-      showLineLabels(true);
       setPaywall('a');
+      setChip('running');
     });
     later(function () { setPaywall('b'); }, BEAT + 1200);
     later(function () { setPaywall('a'); }, BEAT + 1650);
-    later(function () { setPaywall('b'); cards.test.classList.add('is-leading'); }, BEAT + 2050);
+    later(function () { setPaywall('b'); setLeads(true); setChip('test'); }, BEAT + 2050);
     /* 3. Roll out, 5.2 to 7.8s */
-    later(function () { activate('rollout'); }, BEAT * 2);
+    later(function () {
+      activate('rollout');
+      cards.rollout.classList.remove('is-done');
+      setBar(50);
+    }, BEAT * 2);
     click(bar, BEAT * 2 + 700, function () {
       setPaywall('b');
+      setChip('rollout');
       fillBar(900, function () { cards.rollout.classList.add('is-done'); });
     });
     later(cycle, LOOP_MS);

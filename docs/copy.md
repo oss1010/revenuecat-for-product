@@ -1,8 +1,24 @@
 # Copy: /for-product refresh
 
-Status: v1.7 LOCKED, final. No more design changes. Hero B1 by default, B2 as the hero test variant.
+Status: v1.8 LOCKED. Design frozen for good (phase 5.1). Hero B1 by default, B2 as the hero test variant.
 Voice: short, direct, a little playful. The headlines carry the
 argument on their own. All mock data is illustrative and labeled.
+
+v1.8 changes (build phase 5.1, final fixes, 2026-09-27). Each marked
+[v1.8] below. Claim audit of items 2, 4, 5, 6, 7 and 10: 2026-09-27,
+see docs/iteration-log.md.
+- Pixelcut moves from section 5 to section 4 as its customer story.
+- Section 5: a prices line under the chips; the chips become plain
+  tags.
+- Hero: the Test chip names the metric; no card empties during the
+  loop; the mobile chip changes with the phone.
+- Enterprise card: "Security and compliance >".
+- Section 6 step 4: "Download the app, tap the link, unlocked".
+- Section 7: Refund Control bullet restores the store's final call;
+  Customer Center plan availability in small print.
+- Benchmarks: Monthly Churn Rate at the 14th percentile.
+- Not added: "How the forecast works >" (audit: no public page
+  explains how the Experiments forecast is made).
 
 v1.7 changes (build phase 5, red team and owner review, 2026-09-27).
 Each marked [v1.7] below. Claim audit of every new line: 2026-09-27,
@@ -197,6 +213,16 @@ seconds (three beats of 2.6 seconds), starts on load, loops with no
 idle pause. Replaces the v1.4 Design, Test, Keep loop.
 - Design: "Featured plan" changes from "Weekly" to "Monthly"; the phone
   features the monthly plan.
+- v1.8: the Test chip reads "B leads on predicted LTV" (green); while
+  the test runs it reads "Test running" (outline). No card empties:
+  Test and Roll out keep their last result until their own beat; Roll
+  out then shows "B · 50%" with "No app release." beside an empty ring
+  until the bar fills and the ring turns into a green check.
+- Mobile caption chip [v1.8], changing at the same moment as the phone:
+  "Design: weekly plan featured" (phone on A) / "Design: monthly plan
+  featured" (phone on B) / "Test: A/B test running · 50/50" (phone
+  alternates) / "Test: B leads on predicted 12-month LTV" (phone settles
+  on B) / "Roll out: B published, no app release".
 - Test [v1.7]: "Test", "Weekly vs monthly", a larger chart with two
   labeled lines, A (red) and B (green); the phone alternates A and B;
   then a "B leads" chip (green fill). "Judged on: predicted 12-month
@@ -296,6 +322,17 @@ ElevenLabs testimonial: not added [v1.4]. RevenueCat's own pages credit
 the Infrastructure-page quote to two different people (Jack McDermott
 on the feature page, Marcin Jelenski in the case study). Audit FAIL
 until the speaker is confirmed.
+Customer story [v1.8], moved from section 5, same centered block:
+- Quote: "Being able to find a variant that produces a 16% increase in
+  subscribers definitely makes RevenueCat worth it." Key number in red:
+  16% increase.
+- Dominique Yahyavi, Co-Founder, Pixelcut. Read case study >
+  (https://www.revenuecat.com/customers/pixelcut)
+- Why it moved: Pixelcut's case study says its weekly offer beat
+  monthly (16% more paying customers). Beside section 5's simulator,
+  which argues weekly's early lead is the wrong winner, a reader who
+  clicks through finds the opposite lesson. In section 4 it proves the
+  paywall-changing point without that clash.
 Proof points [v1.7], three:
 - Start from a template, a Figma import, or an AI Editor draft from a
   prompt or a screenshot
@@ -330,6 +367,18 @@ Headline: Win the year, not just the week.
 Body: Early conversion can crown the wrong winner. RevenueCat
 Experiments forecast each variant's 12-month value while the test
 runs. Roll out the one predicted to earn more.
+v1.8: the chips are plain tags (tint fill, no outline), so they don't
+read as filters. Line under them: "In your apps, prices come from the
+products you set up in App Store Connect and Google Play Console."
+(Requested: "Prices come from the products in your App Store and
+Google Play accounts." Audit PASS conditional: true for the apps, but
+Experiments also run on web paywalls, where RevenueCat Billing prices
+are set in the RevenueCat dashboard; and the tools are App Store
+Connect and Google Play Console.)
+"How the forecast works >": not added [v1.8]. No public page explains
+how the Experiments forecast is made; the Prediction Explorer docs
+describe a different tool.
+The Pixelcut block moved to section 4 [v1.8].
 Chip row above the simulator [v1.7]: "What you can test:" Price /
 Trial length / Paywall design / Up to 4 variants. (Audit PASS: preset
 experiment types "Price point", "Free trial offer", "Paywall design";
@@ -421,8 +470,9 @@ Charts module, v1.7 changes:
   "Best month".
 - Realized LTV per Customer: a red ring marks May, labeled "Best
   cohort".
-- Benchmarks: Monthly Churn Rate now 38th percentile, below the median,
-  tagged "Where to focus". Markers green above the median, red below.
+- Benchmarks: Monthly Churn Rate below the median, tagged "Where to
+  focus": 38th percentile in v1.7, 14th in v1.8, below the 20th, where
+  RevenueCat's scorecard points focus. Markers green above the median, red below.
   A median tick on each bar. Legend: "Your app, above the median",
   "Below the median", "Similar apps, 20th to 80th percentile".
 - Not added: "Explore the demo dashboard >". The current /for-product
@@ -489,6 +539,11 @@ on the web". (Requested: "See which campaign drove each web
 subscription". Audit FAIL on "each": RevenueCat breaks funnel
 conversions and revenue down by campaign, and its Web page says "see
 which campaigns drive paying customers".)
+v1.8: step 4 is "Download the app, tap the link, unlocked" (was
+"Unlocked in the app", "With one link"). Source: RevenueCat's Funnels
+beta post, "They get a Redemption Link, download your app, tap the
+link, and their subscription is already active." Small print adds
+"Your app needs to handle Redemption Links." (the audit condition).
 Journey [v1.7], four steps, tagged Illustrative: "Ad" (a tiny
 "Tidelark, Sponsored" ad with "Get", desktop only) > "Quiz", "What's
 your goal?", "Start earlier" (chosen), "Sleep better" > "Checkout",
@@ -534,8 +589,9 @@ Customer story block [v1.2]:
 (Production note: the case study covers Web Billing only. The block
 sits apart from the funnel flow so it doesn't suggest Floga used
 Funnels.)
-Small print [v1.6]: Targeting is included on Pro and Enterprise. Fee
-rules differ by store and region.
+Small print [v1.8]: Targeting is included on Pro and Enterprise. Fee
+rules differ by store and region. Your app needs to handle Redemption
+Links.
 
 ## 7. The foundation [v1.7]
 Eyebrow: The foundation
@@ -553,8 +609,12 @@ Bullets:
   (Requested: "with a win-back offer before they go". Audit FAIL on
   "win-back": RevenueCat uses it for users who already churned.
   Customer Center: Pro and Enterprise, in the app via RevenueCatUI.)
-- Refund Control answers App Store and Google Play refund requests with
-  usage data
+- Refund Control responds to App Store and Google Play refund requests
+  with the required data and your refund preference; the store makes
+  the final call [v1.8]
+  (v1.7 said "with usage data". Audit FAIL: RevenueCat's docs say it
+  doesn't collect or send usage events; it sends the required data and
+  your preference, and "the store makes the final refund decision".)
 - Paywall version history and audit logs, plus SSO on Enterprise
   (Requested: "Version history, audit logs, and SSO on Enterprise".
   Audit FAIL as worded: only SSO is documented as Enterprise.)
@@ -563,6 +623,8 @@ Diagram, trimmed so it doesn't repeat the bullets: the title is gone
 (the headline carries it); "Refund Control" is a name-only node; note
 "Same account, every device."
 OpenAI block unchanged.
+Small print [v1.8]: Customer Center is available on Pro and Enterprise
+plans.
 Superseded in v1.7 (kept for the record):
 
 ## 7. Teams and foundation (before v1.7)
@@ -630,6 +692,9 @@ Bullets [v1.3, claim audit 2026-09-27]:
 - Custom SLAs for high-volume apps
 - Volume discounts
 CTA, card 2: Talk to sales, as a chevron text link [v1.2]
+Link, card 2 [v1.8]: Security and compliance >
+(https://www.revenuecat.com/security-and-compliance, the page the live
+/for-product footer links), beside "Talk to sales".
 Each card has an icon tile [v1.3].
 "Trusted by" row [v1.3], full width below both cards, never inside
 one: no public page ties any customer to a plan. Logos, grayscale:

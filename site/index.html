@@ -76,7 +76,7 @@
             <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Design</span></span>
             <span class="hl-field"><span class="hl-field-label">Featured plan</span><span class="hl-field-value" data-design-value data-before="Weekly" data-after="Monthly">Monthly</span></span>
           </div>
-          <div class="hl-card" data-card="test">
+          <div class="hl-card is-leading" data-card="test">
             <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 19h16M7 16l4-6 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Test</span></span>
             <span class="hl-card-text">Weekly vs monthly</span>
             <span class="hl-mini" data-hl-chart>
@@ -91,7 +91,7 @@
               <span class="hl-line-lbl a">A</span>
               <span class="hl-line-lbl b">B</span>
             </span>
-            <span class="hl-leads"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>B leads</span>
+            <span class="hl-leads" data-running="Test running" data-done="B leads on predicted LTV"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="hl-leads-text">B leads on predicted LTV</span></span>
           </div>
           <div class="hl-card is-active is-done" data-card="rollout">
             <span class="hl-card-head"><span class="hl-card-icon"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hl-card-kicker">Roll out</span></span>
@@ -103,11 +103,12 @@
             <div class="phone hl-phone"><div class="phone-screen" data-paywall="b"></div></div>
           </div>
 
-          <p class="hl-chip">
-            <span data-step="design" hidden>Design: monthly plan featured</span>
-            <span data-step="test" hidden>Test: B leads on predicted 12-month LTV</span>
-            <span data-step="rollout">Roll out: B published, no app release</span>
-          </p>
+          <p class="hl-chip" data-hl-chip
+             data-chip-reset="Design: weekly plan featured"
+             data-chip-design="Design: monthly plan featured"
+             data-chip-running="Test: A/B test running · 50/50"
+             data-chip-test="Test: B leads on predicted 12-month LTV"
+             data-chip-rollout="Roll out: B published, no app release">Roll out: B published, no app release</p>
 
           <div class="hl-cursor">
             <svg viewBox="0 0 24 24" focusable="false"><path d="M3 2l17 8-7.2 2.2L10 20z" fill="currentColor" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/></svg>
@@ -238,53 +239,66 @@
 
   <!-- 4. Change it without a release: text left, visual right -->
   <section class="section bg-off" id="change" aria-labelledby="change-title">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">Change it without a release</p>
-        <h2 class="h2" id="change-title">Your paywall shouldn't wait for a release.</h2>
-        <p class="body">Integrate once. Then your product team changes paywalls and which plans they show from the dashboard, with no engineering sprint and no App Review. One release, then none.</p>
-        <ul class="checks">
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start from a template, a Figma import, or an AI Editor draft from a prompt or a screenshot</span></li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One paywall for iOS, Android, React Native, Flutter and the web</span></li>
-          <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles decide who can change paywalls and offerings</span></li>
-        </ul>
-        <p class="fine-print">On supported SDK versions. On the web through a Web Purchase Link or the Web SDK.</p>
-        <div class="link-row">
-          <a class="link-chevron" href="https://www.revenuecat.com/feature/paywalls">Learn more about Paywalls<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a class="link-chevron" href="https://www.youtube.com/watch?v=mPzCTxIlMXE">Watch the product demo<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
-      <div class="editor ui-card" aria-hidden="true">
-        <div class="ed-bar">
-          <span class="ed-title">Tidelark paywall</span>
-          <span class="tag">Illustrative</span>
-          <span class="ed-chip"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Saved by Maya, 2 min ago</span>
-          <span class="ed-chip ed-live"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published. No app release.</span>
-        </div>
-        <div class="ed-body">
-          <div class="ed-layers">
-            <p class="ed-label">Layers</p>
-            <ul>
-              <li>Paywall</li>
-              <li class="is-child">Image</li>
-              <li class="is-child">Headline</li>
-              <li class="is-child">Benefits</li>
-              <li class="is-child is-selected">Plans</li>
-              <li class="is-child">Trial line</li>
-              <li class="is-child">Button</li>
-              <li class="is-child">Footer</li>
-            </ul>
-          </div>
-          <div class="ed-canvas dot-canvas">
-            <div class="phone ed-phone"><div class="phone-screen" data-paywall="c"></div></div>
+    <div class="container">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Change it without a release</p>
+          <h2 class="h2" id="change-title">Your paywall shouldn't wait for a release.</h2>
+          <p class="body">Integrate once. Then your product team changes paywalls and which plans they show from the dashboard, with no engineering sprint and no App Review. One release, then none.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Start from a template, a Figma import, or an AI Editor draft from a prompt or a screenshot</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One paywall for iOS, Android, React Native, Flutter and the web</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Collaborator roles decide who can change paywalls and offerings</span></li>
+          </ul>
+          <p class="fine-print">On supported SDK versions. On the web through a Web Purchase Link or the Web SDK.</p>
+          <div class="link-row">
+            <a class="link-chevron" href="https://www.revenuecat.com/feature/paywalls">Learn more about Paywalls<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link-chevron" href="https://www.youtube.com/watch?v=mPzCTxIlMXE">Watch the product demo<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-        <div class="ed-prompt">
-          <span class="ed-ai"><svg viewBox="0 0 16 16" focusable="false"><path d="M8 1.5l1.6 4.9 4.9 1.6-4.9 1.6L8 14.5l-1.6-4.9L1.5 8l4.9-1.6z" fill="currentColor"/></svg>AI Editor</span>
-          <span class="ed-input">Feature the annual plan and add a 7-day trial badge</span>
-          <span class="ed-send"><svg viewBox="0 0 16 16" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="editor ui-card" aria-hidden="true">
+          <div class="ed-bar">
+            <span class="ed-title">Tidelark paywall</span>
+            <span class="tag">Illustrative</span>
+            <span class="ed-chip"><svg viewBox="0 0 16 16" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5v3l2 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Saved by Maya, 2 min ago</span>
+            <span class="ed-chip ed-live"><svg viewBox="0 0 16 16" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Published. No app release.</span>
+          </div>
+          <div class="ed-body">
+            <div class="ed-layers">
+              <p class="ed-label">Layers</p>
+              <ul>
+                <li>Paywall</li>
+                <li class="is-child">Image</li>
+                <li class="is-child">Headline</li>
+                <li class="is-child">Benefits</li>
+                <li class="is-child is-selected">Plans</li>
+                <li class="is-child">Trial line</li>
+                <li class="is-child">Button</li>
+                <li class="is-child">Footer</li>
+              </ul>
+            </div>
+            <div class="ed-canvas dot-canvas">
+              <div class="phone ed-phone"><div class="phone-screen" data-paywall="c"></div></div>
+            </div>
+          </div>
+          <div class="ed-prompt">
+            <span class="ed-ai"><svg viewBox="0 0 16 16" focusable="false"><path d="M8 1.5l1.6 4.9 4.9 1.6-4.9 1.6L8 14.5l-1.6-4.9L1.5 8l4.9-1.6z" fill="currentColor"/></svg>AI Editor</span>
+            <span class="ed-input">Feature the annual plan and add a 7-day trial badge</span>
+            <span class="ed-send"><svg viewBox="0 0 16 16" focusable="false"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
         </div>
       </div>
+
+      <figure class="testimonial">
+        <div class="logo-tile" aria-hidden="true">Pixelcut</div>
+        <div class="testimonial-body">
+          <blockquote class="testimonial-quote">
+            <p>&ldquo;Being able to find a variant that produces a <span class="num">16% increase</span> in subscribers definitely makes RevenueCat worth it.&rdquo;</p>
+          </blockquote>
+          <figcaption class="testimonial-cite"><strong>Dominique Yahyavi</strong>, Co-Founder, Pixelcut</figcaption>
+          <a class="link-chevron" href="https://www.revenuecat.com/customers/pixelcut">Read case study<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </figure>
     </div>
   </section>
 
@@ -305,6 +319,7 @@
           <li>Paywall design</li>
           <li>Up to 4 variants</li>
         </ul>
+        <p class="testables-note">In your apps, prices come from the products you set up in App Store Connect and Google Play Console.</p>
       </div>
 
       <div class="sim dot-canvas" data-sim data-judge="conversion">
@@ -482,7 +497,7 @@
             </div>
             <div class="bench">
               <div class="bench-row"><span class="bench-label">Conversion to Paying (7 days)</span><span class="bench-value">72nd percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-up" style="--at: 72%"></span></span></div>
-              <div class="bench-row is-focus"><span class="bench-label">Monthly Churn Rate <span class="bench-focus">Where to focus</span></span><span class="bench-value">38th percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-down" style="--at: 38%"></span></span></div>
+              <div class="bench-row is-focus"><span class="bench-label">Monthly Churn Rate <span class="bench-focus">Where to focus</span></span><span class="bench-value">14th percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-down" style="--at: 14%"></span></span></div>
               <div class="bench-row"><span class="bench-label">Realized LTV per Paying Customer (30 days)</span><span class="bench-value">81st percentile</span><span class="bench-track" aria-hidden="true"><span class="bench-band" style="--from: 20%; --to: 80%"></span><span class="bench-mid"></span><span class="bench-you is-up" style="--at: 81%"></span></span></div>
             </div>
             <p class="bench-legend"><span><i class="k-you is-up"></i>Your app, above the median</span><span><i class="k-you is-down"></i>Below the median</span><span><i class="k-band"></i>Similar apps, 20th to 80th percentile</span></p>
@@ -493,19 +508,6 @@
       <div class="charts-api">
         <p>Need the numbers elsewhere? Pull chart data into your own dashboards with the Charts API.</p>
         <a class="link-chevron" href="https://www.revenuecat.com/feature/charts">Learn more about Charts<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-
-      <div class="proof-row">
-        <figure class="testimonial">
-          <div class="logo-tile" aria-hidden="true">Pixelcut</div>
-          <div class="testimonial-body">
-            <blockquote class="testimonial-quote">
-              <p>&ldquo;Being able to find a variant that produces a <span class="num">16% increase</span> in subscribers definitely makes RevenueCat worth it.&rdquo;</p>
-            </blockquote>
-            <figcaption class="testimonial-cite"><strong>Dominique Yahyavi</strong>, Co-Founder, Pixelcut</figcaption>
-            <a class="link-chevron" href="https://www.revenuecat.com/customers/pixelcut">Read case study<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          </div>
-        </figure>
       </div>
     </div>
   </section>
@@ -539,7 +541,7 @@
           <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ad</p><div class="flow-ad" aria-hidden="true"><span class="flow-ad-icon"></span><span class="flow-ad-text"><b>Tidelark</b><small>Sponsored</small></span><span class="flow-ad-cta">Get</span></div></div></li>
           <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quiz</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div></div></li>
           <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Checkout</p><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Where supported</p></div></li>
-          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlocked in the app</p><p class="flow-sub">With one link</p></div></li>
+          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download the app, tap the link, unlocked</p></div></li>
         </ol>
       </div>
 
@@ -552,7 +554,7 @@
         </div>
       </figure>
 
-      <p class="small-print">Targeting is included on Pro and Enterprise. Fee rules differ by store and region.</p>
+      <p class="small-print">Targeting is included on Pro and Enterprise. Fee rules differ by store and region. Your app needs to handle Redemption Links.</p>
     </div>
   </section>
 
@@ -566,7 +568,7 @@
           <p class="body">Underneath every paywall is infrastructure trusted by over 146,000 apps: one set of entitlements across the App Store, Google Play and the web, with Apple and Google API changes handled for you.</p>
           <ul class="checks">
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Customer Center lets subscribers manage or cancel on their own in your app, and can show an offer to stay right before they cancel</span></li>
-            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Refund Control answers App Store and Google Play refund requests with usage data</span></li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Refund Control responds to App Store and Google Play refund requests with the required data and your refund preference; the store makes the final call</span></li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Paywall version history and audit logs, plus SSO on Enterprise</span></li>
           </ul>
           <a class="link-chevron" href="https://www.revenuecat.com/feature/infrastructure">Learn more about infrastructure<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -609,6 +611,8 @@
           <a class="link-chevron" href="https://www.revenuecat.com/customers/revenuecat-openai">Read case study<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
       </figure>
+
+      <p class="small-print">Customer Center is available on Pro and Enterprise plans.</p>
     </div>
   </section>
 
@@ -643,7 +647,10 @@
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Custom SLAs for high-volume apps</span></li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volume discounts</span></li>
           </ul>
-          <a class="link-chevron" href="https://www.revenuecat.com/talk-to-sales">Talk to sales<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="link-row">
+            <a class="link-chevron" href="https://www.revenuecat.com/talk-to-sales">Talk to sales<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="link-chevron" href="https://www.revenuecat.com/security-and-compliance">Security and compliance<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </article>
       </div>
       <!-- Below both cards, never inside one: no public page ties these
