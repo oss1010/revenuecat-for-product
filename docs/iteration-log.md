@@ -753,3 +753,17 @@ docs/brief.md is not a source. Rows reuse earlier claim-auditor results where th
 #### Pages that did not load
 
 - None. The pricing page FAQ answers ("What is MTR?", "what happens when I reach $2.5k MTR?") did not render in the fetch. https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management was used instead.
+
+## 2026-09-26: Architecture v1
+
+- Architecture v1. The hero visual was first planned as a paywall on a
+  phone. Rejected: it represented one job, not the positioning.
+  Replaced with a phone flanked by three decision cards.
+- Planned to follow one paywall through the page as a visual thread.
+  Rejected: it would have made this a paywalls page and hidden Funnels,
+  Web Billing and Charts. Replaced with one fictional app as the
+  thread.
+- Visual plan set at half static, half dynamic, with four different
+  interaction types, because the current page is entirely static
+  imagery and visual storytelling is the first evaluation criterion.
+- Build fallback order decided in advance.
