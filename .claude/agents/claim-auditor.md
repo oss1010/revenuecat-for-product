@@ -18,6 +18,9 @@ Hard fails, no exceptions:
   minimum SDK versions, paywall components and Redemption Link
   handling are real. Correct wording is "no app release" and "no
   engineering sprint".
+- Any claim of "no new SDK". Paywalls needs the paywall UI package
+  and a minimum SDK version; Funnels need Redemption Link handling.
+  Correct wording is "no new vendor" and "no migration".
 - Any claim that prices can be changed instantly. Prices live in App
   Store Connect and Play Console. RevenueCat controls which products,
   packages and paywall a user sees.

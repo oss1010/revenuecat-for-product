@@ -1,7 +1,6 @@
 # RevenueCat /for-product refresh
 
-Take-home for the Senior PMM role. Deliverables: a vibe-coded landing
-page for Product Managers, a process doc, a 5-minute video.
+Concept refresh of the RevenueCat /for-product page, targeting Product Managers.
 
 ## Audience
 Product managers at subscription apps, solo through enterprise.

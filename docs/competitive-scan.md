@@ -1,7 +1,8 @@
 # Competitive scan: RevenueCat for Product Managers
 
-Sourced from competitor pages, September 2026. Ground truth for the
-competitor-watch agent.
+Sourced from competitor pages, September 2026, and corrected against
+competitor docs and RevenueCat's changelog on 2026-09-26. Ground
+truth for the competitor-watch agent.
 
 ## The set
 
@@ -30,7 +31,7 @@ a live objection.
 |---|---|
 | **Superwall:** RevenueCat charges on all tracked revenue, so experiments carry a fee on revenue they didn't earn. Also claims migration off RevenueCat has been the dominant direction | **Fair.** The sharpest live attack, and it is about pricing model rather than capability. Nothing on the page can answer it |
 | **Adapty:** front-loads testimonials from teams who migrated off RevenueCat | Real, unquantified |
-| **Apphud:** comparison table marks RevenueCat as lacking LTV predictions, web2app, remote product management on paywalls, and advanced pricing A/B testing | **All four are now wrong.** Every one is a shipped capability per docs/brief.md |
+| **Apphud:** comparison table marks RevenueCat as lacking LTV predictions, web2app, remote product management on paywalls, and advanced pricing A/B testing | **Wrong on LTV predictions.** Predicted 12-month LTV winners shipped in Experiments on 2026-02-12 (https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12). **Unverified on the other three:** no RevenueCat source checked yet |
 
 ## The finding that matters
 
@@ -48,23 +49,46 @@ without engineering, test it, read the analytics. Superwall says it
 best, Qonversion says it blandly, Adapty adds more analytics on top.
 That promise is table stakes and differentiates nobody.
 
-## What nobody is claiming
+## What RevenueCat can claim alone
 
-Three open spaces after reading all seven.
+This replaces the earlier "open spaces", which were written from
+marketing pages. Competitor docs showed two of them were wrong:
+Adapty and Apphud already pick revenue winners inside experiments,
+and Benchmarks has shipped (2026-04-13) with Adapty Autopilot
+competing. Details in docs/iteration-log.md, 2026-09-26.
 
-1. **Deciding on money inside the experiment.** Adapty predicts in a
-   dashboard. Superwall's agents recommend the next test. Nobody says
-   the experiment tells you which variant earns more and you ship it
-   in one action.
-2. **Knowing whether your number is good.** RevenueCat has the data
-   position for it: 146K+ apps supported, 5B+ API requests daily,
-   $17B+ revenue processed (revenuecat.com homepage, September 2026).
-   Nobody claims it. Note: in-product benchmarking is not in the
-   brief's feature list, so this is roadmap territory, not a page
-   claim.
-3. **Store and web as one revenue picture.** Everyone has web2app now,
-   but treats it as a separate funnel product. RevenueCat can say one
-   entitlement system, one truth, both surfaces.
+1. **No new vendor and no migration for existing customers.** A PM
+   whose app already runs RevenueCat gets the predicted LTV winner,
+   one-action rollout and Benchmarks on the backend engineering has
+   already integrated. Every competitor's pitch means adding a vendor
+   or migrating. Superwall now calls itself "a complete, standalone
+   subscription platform" (https://superwall.com/).
+   Limits: never "no new SDK". Paywalls needs the paywall UI package
+   and a minimum SDK version; Funnels need Redemption Link handling.
+   "No app release" only holds if the app already reads offerings
+   from RevenueCat.
+2. **One system from billing to experiments.** Purchases, customer
+   data, experiments, the 12-month LTV forecast, rollout and
+   Benchmarks run on the same data.
+   - Purchases, customer data and revenue: https://www.revenuecat.com/
+   - Predicted 12-month LTV winners in Experiments, 2026-02-12:
+     https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12
+   - Roll out an experiment winner in one action, 2026-02-06:
+     https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06
+   - Benchmarks, 2026-04-13:
+     https://www.revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13
+   Limits: the LTV forecast is a signal, not a promise. It only
+   applies to experiments with a revenue primary metric, once
+   guardrails are met. Experiments is on Pro and Enterprise; Pro is
+   free up to $2,500 MTR (https://www.revenuecat.com/pricing/).
+3. **Scale.** 146K+ apps supported and $17B+ revenue processed
+   (https://www.revenuecat.com/, September 2026).
+   Limits: do not tie scale to prediction accuracy, since nothing
+   public supports it. Never write "benchmarked against 146K apps",
+   since the Benchmarks peer-set size is not disclosed.
+
+Not confirmed, so verify before claiming: store and web as one
+revenue picture inside Experiments.
 
 ## Sources
 
@@ -78,3 +102,12 @@ Inspected September 2026.
 - Apphud vs RevenueCat: https://apphud.com/revenuecat
 - RevenueCat homepage: https://www.revenuecat.com/
 - Current page under refresh: https://www.revenuecat.com/for-product/
+
+Added 2026-09-26 from the competitor-watch check:
+- RevenueCat changelog, predicted 12-month LTV winners: https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12
+- RevenueCat changelog, one-action rollout: https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06
+- RevenueCat changelog, Benchmarks: https://www.revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13
+- RevenueCat Benchmarks docs: https://www.revenuecat.com/docs/dashboard-and-metrics/benchmarks
+- RevenueCat pricing: https://www.revenuecat.com/pricing/
+- Superwall homepage: https://superwall.com/
+- Competitor docs behind the corrections: listed in docs/iteration-log.md
