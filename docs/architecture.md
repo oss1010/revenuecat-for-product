@@ -19,9 +19,9 @@ Status: v1. Built on docs/positioning.md v0.3.
    Job: the reader feels seen in three seconds and sees the idea
    working.
    Visual: a phone (the user's experience) flanked by three decision
-   cards: Change (a paywall edit), Learn (an experiment with the
-   winner picked on predicted 12-month value), Fit (a different offer
-   for an audience or on web). Cards activate in sequence, about 3
+   cards: Change (a paywall edit), Learn (a two-variant experiment with
+   the winner picked on predicted 12-month value), Fit (a different
+   offer for an audience or on web). Cards activate in sequence, about 3
    seconds each, and each visibly changes what the phone shows.
    Mobile: phone only, with a caption chip cycling the three decisions.
    Copy: headline from customer language, written at the copy stage.
@@ -54,28 +54,46 @@ Status: v1. Built on docs/positioning.md v0.3.
 
 5. JOB 2: LEARN WHAT USERS VALUE. Dynamic, toggle. BUILD FIRST, 45
    minute timebox.
-   The experiment simulator: two variants, three if time allows to
-   show multivariate. Toggle: judge by trial conversion, or judge by
-   predicted 12-month LTV. The winner flips when toggled. Winner shown
-   as a green fill with ink text on top, per the contrast rules. "Ship
-   the winner" updates the paywall and shows a "rolled out, no app
-   release" toast, with one small cat moment. Caption: the forecast
-   appears once enough data is in.
+   The experiment simulator: two variants. No public page shows a
+   predicted LTV winner on a test with three or more variants, so the
+   simulator never shows three. Toggle: judge by trial conversion, or
+   judge by predicted 12-month LTV. The winner flips when toggled.
+   Winner shown as a green fill with ink text on top, per the contrast
+   rules. The "Roll out winner" button updates the paywall and shows a
+   "rolled out, no app release" toast, with one small cat moment.
+   Caption: the forecast appears once enough data is in, for
+   experiments with a revenue primary metric. A forward-looking
+   signal, not a guarantee.
    Beside it, static: a paywall performance and LTV chart card,
-   illustrative.
-   One supporting line: Benchmarks, compare to similar apps.
+   illustrative. Realized LTV for RevenueCat Paywalls only, so no
+   forecast on this card.
+   Supporting lines: multivariate testing (up to four variants,
+   A/B/C/D) as one static line, with no predicted LTV attached.
+   Benchmarks, compare to similar apps.
    Fallback if over the timebox: a static two-panel comparison with the
    same numbers and the green winner.
 
 6. JOB 3: FIT THE OFFER TO EVERY USER, WHEREVER THEY BUY. Dynamic,
    plays once on scroll.
-   Visual: an ad, then a web funnel with a branch (by country or survey
-   answer), then web checkout with Apple Pay and Google Pay, then a
-   Redemption Link, then the app opens with the subscription active.
+   Visual: an ad, then a web funnel with a branch by survey answer,
+   tagged as localized to the visitor's country, then web checkout
+   with Apple Pay and Google Pay labeled "where supported", then a
+   Redemption Link, then the app is downloaded, the link is tapped,
+   and the subscription is active.
    Plus targeting chips showing different paywalls for different
    audiences.
    Proof card, static: Floga, $120K+ in one day of pre-launch lifetime
-   memberships through Web Billing.
+   memberships through RevenueCat Web Billing. The case study covers
+   Web Billing only, so the card must not suggest Floga used Funnels.
+   Rules:
+   - Country is localization only, never a funnel branch. No public
+     page names country as a branch condition.
+   - Wallets are "where supported": Stripe-based checkout only, and
+     only on devices and browsers that support them.
+   - The download beat always comes before the link tap.
+   - "RevenueCat Billing" in UI labels. "Web Billing" only in the
+     Floga proof, as the case study's own "RevenueCat Web Billing".
+   - No store-fee or commission claims anywhere in this section.
 
 7. FOUNDATION AND TEAMS. Static.
    Layered diagram: App Store, Google Play and Web at the bottom;
@@ -100,7 +118,7 @@ Status: v1. Built on docs/positioning.md v0.3.
 | Experiments: predicted 12-month LTV, one-action rollout, multivariate | 1, 5 |
 | Charts: LTV prediction, paywall performance, Charts API | 5, 7 |
 | Web-to-app Funnels | 3, 6 |
-| Web Billing | 3, 6 |
+| RevenueCat Billing (formerly Web Billing) | 3, 6 |
 | Targeting | 1, 6 |
 | Refund Control | 7 |
 

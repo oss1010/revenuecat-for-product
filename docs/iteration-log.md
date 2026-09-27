@@ -869,3 +869,136 @@ publishing.
 - The API v2 anchor for the get-chart-data operation did not render;
   https://www.revenuecat.com/docs/api-v2/charts-and-metrics was used
   instead.
+
+## 2026-09-26: Copy v1
+
+- Hero direction B chosen and widened from "paywalls" to
+  "subscription experience", so the hero doesn't narrow the page back
+  to one product.
+- Wordplay variants B1 ("worth renewing") and B2 ("the reason they
+  renew") added, since a subscription is renewal by definition.
+- B2 placed in the final band.
+- A kept as the test variant.
+- The contrarian line became section 5's headline: "Win the year, not
+  the week."
+- Architecture updated with the audit fixes: two-variant simulator,
+  "Roll out winner", funnel branches by survey answer with country as
+  localization only, wallets "where supported", download before the
+  link tap, "RevenueCat Billing" in UI labels, no store-fee claims in
+  section 6.
+
+### Copy changes after review
+Body copy only. No H1 option or section headline was changed.
+- Hero sub B1: "one click" became "one action". RevenueCat's docs
+  describe a button, a choice of strategy and a confirm step, and the
+  changelog says "one action" (claim-auditor 4a, FAIL).
+- Variant A sub and section 5 body: "the one that pays over time" and
+  "the one users keep paying for" became "the one predicted to earn
+  more". Both stated the forecast as an outcome. CLAUDE.md: predicted
+  LTV is a forward-looking signal (flagged by claim-auditor and
+  competitor-watch).
+- Section 5 caption: added "with revenue as its primary metric", the
+  condition the architecture audit set.
+- Section 5 chart card: "for every paywall" became "for each
+  RevenueCat paywall" (claim-auditor 2b, FAIL). Tagged Illustrative.
+  Production note: the card shows realized LTV, no forecast.
+- Section 6 flow tagged Illustrative.
+- Section 6 Floga: "through Web Billing, before its app was live"
+  became "through RevenueCat Web Billing, while its app was still in
+  development" (claim-auditor 6c, 6d). Production note: the case study
+  covers Web Billing only, not Funnels.
+- Section 6 small print and section 8 cards: the Targeting line read
+  like a paid upgrade because card 1 never named Pro. Added plan labels
+  "Pro" and "Enterprise" to the cards, keeping the audited pricing
+  sentence exact, and the small print now says Targeting is included
+  on Pro, free up to $2,500 in monthly tracked revenue, and on
+  Enterprise (claim-auditor 5c).
+- Section 7 Refund Control: "with the usage data the store uses to
+  decide" became the settled positioning wording, "with usage data and
+  your refund preference. The store makes the final call." No audited
+  page says the store decides from this data.
+- Fictional app: Stridewell rejected. StrideWell is a real App Store
+  running app. Proposed placeholder: Tidelark (claim-auditor 7).
+
+### claim-auditor (copy v1, new claims only)
+
+Every PASS cites a public RevenueCat URL. docs/brief.md was used for
+leads only. The fetch tool summarises pages, so check wording against
+the live page before publishing.
+
+| # | Claim | Source URL | Verdict | Safe wording |
+|---|---|---|---|---|
+| 1 | "One set of entitlements across the App Store, Google Play and the web." | https://www.revenuecat.com/docs/getting-started/entitlements; https://www.revenuecat.com/docs/customers/identifying-customers (same App User ID on different platforms is one user); https://www.revenuecat.com/feature/web (one subscriber record whether a user buys on web, iOS or Android); https://www.revenuecat.com/docs/web/overview | PASS conditional | Keep. Longer form: "...for the same user on every platform." Same project and same App User ID only; anonymous IDs don't share status |
+| 2a | "Paywall performance: conversion, LTV and abandonment" | https://www.revenuecat.com/changelog/release/track-paywall-performance-with-new-real-time-charts-2025-11-24 (four charts, launched in beta); https://www.revenuecat.com/docs/dashboard-and-metrics/charts (Charts v3 only); https://www.revenuecat.com/docs/dashboard-and-metrics/charts/paywall-ltv-chart | PASS conditional | "Paywall charts: conversion, LTV and abandonment". LTV here is realized, not predicted |
+| 2b | "for every paywall" | Paywall conversion, LTV and abandonment chart docs: only RevenueCat Paywalls are tracked, not custom-code paywalls | FAIL | "for each RevenueCat paywall" |
+| 3 | "Visual editor and pre-built templates"; "start from a template" | https://www.revenuecat.com/docs/tools/paywalls; https://www.revenuecat.com/pricing/ (paywall editor and pre-built templates listed) | PASS conditional | Keep. Paywalls SDK minimums apply; keep "one release, then none" nearby |
+| 4a | "roll it out in one click" | https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06; https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1 (button, choose a strategy, confirm) | FAIL | "roll it out in one action" |
+| 4b | "one action" | Same two pages | PASS conditional | "Roll out the winner in one action". Never "one click" or "one tap" |
+| 5a | "Targeting is available on Pro and Enterprise plans." | https://www.revenuecat.com/docs/tools/targeting (settled, v0.2 row 4a) | PASS | See 5c |
+| 5b | Pricing sentence with "Experiments and Targeting included" | https://www.revenuecat.com/pricing/, re-checked 2026-09-26. The Pro plan is free up to $2,500 MTR, then 1% | PASS | See 5c |
+| 5c | 5a and 5b together | Pricing page shows two plans, Pro and Enterprise. Legacy plans (https://www.revenuecat.com/blog/company/navigating-revenuecats-new-pricing-for-existing-users) never mention Targeting | PASS conditional | Both true, but name "Pro" on card 1 so the small print doesn't read as a paid upgrade. Say nothing about legacy plans |
+| 6a | "Floga made $120K+ in a single day" | https://www.revenuecat.com/customers/floga | PASS | Keep |
+| 6b | "selling pre-launch lifetime memberships" | Same page | PASS | Keep |
+| 6c | "through Web Billing" | Same page uses "RevenueCat Web Billing" throughout; current docs name the engine RevenueCat Billing | PASS conditional | "through RevenueCat Web Billing" |
+| 6d | "before its app was live" | Same page says pre-launch and the app still in development; never "live" | PASS conditional | "while its app was still in development" |
+| 6e | Full Floga sentence | Rows 6a to 6d | PASS conditional | "Floga made $120K+ in a single day selling pre-launch lifetime memberships through RevenueCat Web Billing, while its app was still in development." |
+| 7 | "Stridewell" as the fictional app | https://apps.apple.com/us/app/stridewell/id6760530496 (StrideWell, running coach, Health & Fitness); also stridewell.life and stridewell.com | FAIL | Tidelark (first choice), Kettlewren or Quillbeam. No exact match found for these. Not a trademark check |
+
+Flagged, not audited (not changed unless listed above):
+- Variant A H1 "Launch a paywall today": the first paywall needs the
+  SDK, the paywall UI package, an app release and App Review. "The next
+  12 months" reads as realized results, not a forecast.
+- Hero sub B1 "not early conversion": same shape as v0.1 row 10, which
+  failed. Fix then was "as well as conversion".
+- "Design and test paywalls, pricing and offers": "pricing" can read as
+  changing prices, which live in the store consoles.
+- Section 4 "Add the SDK once": drops the paywall UI package. Later
+  features have their own SDK minimums.
+- Section 8 card 2 lists collaborator roles (every plan) and audit logs
+  (no stated tier) next to Enterprise.
+- Hero Fit card "new offer": Targeting controls which offering shows,
+  not a new price.
+- Section 2 logos: none chosen yet. Each needs a revenuecat.com source.
+
+### competitor-watch (docs/competitive-scan.md only, no fetching)
+
+| Line | Verdict | Closest equivalent in the scan | Source in scan |
+|---|---|---|---|
+| B: "Build the subscription experience your users stay for." | NOT IN SCAN | Purchasely: owns the whole first session (scope, not staying) | Line 16; https://www.purchasely.com/conversion |
+| B1: "Build a subscription experience worth renewing." | NOT IN SCAN | Adapty: ML prediction of LTV 12 months out (measures value, doesn't promise renewal) | Line 15; Adapty homepage and feature page, so CLAIMED at most |
+| B2: "Build the reason they renew." | NOT IN SCAN | Win-back features at Apphud and Purchasely (features, not a position) | Lines 16, 18 |
+| "Win the year, not the week." | CLAIMED (the idea, by Adapty). Words original | Adapty's 12-month LTV prediction; revenue winners in experiments are PARITY at Adapty and Apphud | Line 15; lines 54-58 |
+| Variant A | CLAIMED (Adapty, second half). First half sits on Superwall's OWNED PM-page promise | Superwall: without a release or an engineering queue | Lines 14-15, 45-50; https://superwall.com/solutions/product-managers |
+
+- Outside the scan, this log records Superwall owning "revenue beats
+  conversion" on a solutions page (OWNED) and Adapty's homepage "A/B
+  test for revenue, not just conversions" (CLAIMED). The scan should be
+  updated. Until then, section 5 and variant A are more exposed than
+  CLAIMED suggests.
+- Renewal is open ground in the scan and is the category's central
+  promise, which the leader can claim.
+- Recommendation: B1 as the hero, B2 as the closing band.
+- Also flagged: the hero sub's "without waiting on an app release" and
+  the section 4 headline echo Superwall's PM-page promise. Three "X, not
+  Y" contrasts on one page will read as category language.
+
+### pm-critic (two passes)
+
+- Pass 1, eight headlines only. Solo PM got "change my paywall without
+  an app update", from headline 3, not the hero. Growth PM read it as
+  the same pitch every paywall tool makes. Enterprise PM saw nothing
+  about web. All three: headline 3 does the most work, "Start where you
+  are." the least, and the hero is the most expensive miss.
+- Pass 2, full copy. Solo ranked B2, B1, B. Growth ranked B1, B2, B.
+  Enterprise ranked B, B1, B2. Combined: B1, B2, B. All three would
+  repeat the hero sub, not any H1. Enterprise PM: still a startup page
+  with an enterprise section attached.
+- Worst served: Enterprise PM. Suggested change: rebuild section 7
+  around who can change a live paywall and how you see it, using only
+  roles, audit logs, version history and SSO. No approvals or revert
+  are documented, so say what the roles restrict.
+
+### web-copy
+Fourteen line-level cuts suggested, about 85 words (11%). Not applied.
+First cut recommended: the section 4 opening sentence, which repeats
+the proof points.
