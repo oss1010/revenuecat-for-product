@@ -1,7 +1,7 @@
 # Page architecture: /for-product refresh
 
-Status: v1.5. Built on docs/positioning.md v0.3. Words live in
-docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
+Status: v1.6, design frozen (phase 4). Built on docs/positioning.md
+v0.3. Words live in docs/copy.md v1.6 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 
 ## Principles
 - The hero carries the idea. The sections carry the proof.
@@ -34,6 +34,13 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    locks to B: "Published. No app release." Pauses off-screen, on
    hover and in background tabs. Reduced motion: the Keep state,
    static. Eyebrow pill above the H1: "For product teams".
+   Phase 4: Design, Test, Roll out. About 8 seconds, three beats of 2.6
+   seconds, starting on load with no idle pause. Test shows what is
+   tested and what it is judged on, with a mini chart of two labeled
+   lines (A red, B green) and a green "B leads". Roll out: the cursor
+   clicks "Roll out B", the card shows "Published. No app release."
+   with a green check and the phone locks to B. Reduced motion: the
+   Roll out state, done.
    Copy: H1 is B1 by default. Hero test: B1 against B2, switchable
    with a URL parameter (?v=b2). Same sub, cards and CTAs in both.
    The closing band swaps with the hero: each variant closes with the
@@ -66,6 +73,13 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    a predicted 12-month LTV winner chip. Fit: one paywall for three
    users, against three users with three paywalls plus a web checkout
    card. No numbers that would need a source.
+   Phase 4: no slider. Three tab pills; each tab shows Before and With
+   RevenueCat side by side at equal heights, stacked on mobile. Change:
+   two tracks, four stops ending "Live after the next release" against
+   a short track ending "Live. No app release." Learn: two segmented
+   12-month bars, week one only against the whole year, predicted.
+   Fit: one paywall on one phone for three users against iPhone,
+   Android and web, each with a different offer.
    Rule: "before" is the PM's status quo, never an older RevenueCat.
    Rule: web appears as a channel, never as a forecasted experiment.
    Predicted 12-month LTV is not claimed for web (positioning v0.3).
@@ -76,8 +90,14 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    featured) center, the AI Editor prompt bar below, a green
    "Published. No app release." chip and a version-history chip
    ("Saved by Maya, 2 min ago"; no role, per the audit).
-   Proof: visual editor, templates, AI Editor as a drafting tool
-   (generally available July 2026), one-action rollout.
+   Proof: visual editor, templates, AI Editor as a drafting tool, one
+   paywall across the app SDKs and the web. No status label for the AI
+   Editor: RevenueCat's docs say beta, its changelog says generally
+   available (July 2026). Figma import is its own starting point (the
+   Figma plugin), never something the AI Editor drafts from.
+   Phase 4: small print for SDK versions and the web route, and two
+   links: the Paywalls page and the product demo video (linked, never
+   embedded; the same video ID the Paywalls page embeds).
    Language rule: "one release, then none".
 
 5. JOB 2: LEARN WHAT USERS VALUE. Dynamic, toggle. BUILD FIRST, 45
@@ -135,6 +155,26 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    Keyword" filter chip (not on Benchmarks). Below: the Charts API line
    in the audited wording. "Test up to four variants at once" is a
    checkmark line beside Pixelcut.
+   Phase 4, simulator v4: the "Why B wins" table is gone; the why sits
+   on the chart lines ("Weekly: 3.5% still paying at month 12", "Monthly:
+   18% still paying at month 12"), as a key under the chart on narrow
+   screens. Compact variant cards, side by side at every width, both
+   metrics as rows. No dialog: "Roll out winner" arms a second step,
+   "Confirm: roll out B to 100%"; Escape or blur disarms. The toast
+   stays inline. The one-time demo runs the whole sequence (LTV, Roll
+   out, confirm, phone live) without moving focus. Desktop: the phone
+   is sticky beside the panel. Mobile: a "What users see" strip with a
+   small paywall thumbnail and the live chip. Mobile height 2,167px to
+   about 1,210px.
+   Phase 4, Charts module: headline "The test ends. The learning
+   doesn't." The tables are replaced by line charts in the style of
+   RevenueCat Charts, with a hover marker (pointer, touch drag, or
+   arrow keys on the focused plot, announced through a live region):
+   Paywall Conversion with two paywalls, and Realized LTV per Customer
+   by cohort month with the recent months marked incomplete.
+   Benchmarks keeps the percentile bars, now with RevenueCat's 20th to
+   80th band. The Apple Search Ads chip appears on the first two only.
+   Below: the Charts API line and "Learn more about Charts".
    Fallback if over the timebox: a static two-panel comparison with the
    same numbers and the green winner.
 
@@ -154,6 +194,13 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    audiences.
    Flow steps: Ad click, Web funnel, Checkout, Get a Redemption Link,
    Download the app, Tap the link (subscription active).
+   Phase 4: the text sits beside three web lines in RevenueCat's own
+   phrasing (lower platform fees on web purchases, flexible pricing and
+   promos on the web, pre-sell before launch) and links to Funnels and
+   Web. The journey is full width in two lanes, "On the web" and "In
+   the app", on a shared four-column grid with chevrons; on mobile a
+   tight timeline. Visual height: 739px to 411px on desktop, 727px to
+   615px on mobile.
    Customer story block, static: Floga, $120K+ in one day of
    pre-launch lifetime memberships through RevenueCat Web Billing. The
    case study covers Web Billing only, so the block sits apart from
@@ -166,7 +213,10 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    - The download beat always comes before the link tap.
    - "RevenueCat Billing" in UI labels. "Web Billing" only in the
      Floga proof, as the case study's own "RevenueCat Web Billing".
-   - No store-fee or commission claims anywhere in this section.
+   - Fees: only "Lower platform fees on web purchases" (a heading on
+     RevenueCat's Funnels page), with "Fee rules differ by store and
+     region." in the small print. No percentages, never "eliminate",
+     "bypass" or "commission-free".
 
 7. TEAMS AND FOUNDATION. Static. Text left; visual right (badges,
    then the diagram).
@@ -180,7 +230,13 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
    the middle; the Tidelark app on top; Refund Control as a node beside
    the stores. The body is two sentences; the foundation detail lives
    in the diagram labels.
-   One line: Charts API for your own dashboards.
+   Phase 4: the diagram is redrawn as "Subscribe once, unlocked
+   everywhere": the store side on top (bought once on the App Store;
+   Google Play and Web beside it; Refund Control as a small dashed
+   node), the entitlement as the shared key in the middle, and Pro
+   unlocked on iPhone, Android and web below, for the same account.
+   "Learn more about infrastructure" under the checklist. The Charts
+   API line moved to section 5.
    Proof block for the enterprise reader: OpenAI (case-study sentence;
    the feature-page quote contains an em dash).
    Rule: no undo, revert or approval claims. None is documented.
@@ -203,14 +259,15 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 |---|---|
 | Paywalls, AI generation | 1, 4 |
 | Experiments: predicted 12-month LTV, one-action rollout, multivariate | 1, 5 |
-| Charts: LTV prediction, paywall performance, Charts API | 5, 7 |
+| Charts: Paywall Conversion, Realized LTV per Customer, Benchmarks, Charts API | 5 |
 | Web-to-app Funnels | 3, 6 |
 | RevenueCat Billing (formerly Web Billing) | 3, 6 |
 | Targeting | 1, 6 |
-| Refund Control | 7 |
+| Refund Control, cross-platform entitlements | 7 |
 
 ## Motion rules
-- Subtle. Loops under 10 seconds. Pause when off-screen or on hover.
+- Subtle. Loops under 10 seconds (the hero is about 8). Pause when
+  off-screen or on hover.
 - Respect prefers-reduced-motion: every dynamic module has a static
   poster state.
 - No layout shift. No sound.
@@ -219,7 +276,8 @@ docs/copy.md v1.5 (locked). Color roles: CLAUDE.md. Visual grammar: CLAUDE.md.
 1. Section 5 simulator, 45-minute timebox.
 2. Hero loop.
 3. Static sections.
-4. Section 6 scroll flow, then section 3 slider.
+4. Section 6 scroll flow, then section 3 tabs (the slider was cut in
+   phase 4).
 
 If time runs short, sections 6 and 3 ship as static diagrams. The hero
 and the simulator stay dynamic because they carry the positioning.

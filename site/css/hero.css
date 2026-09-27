@@ -1,4 +1,4 @@
-/* Hero loop: Design, Test, Keep, about 10.5 seconds. The Tidelark phone
+/* Hero loop: Design, Test, Roll out, about 8 seconds. The Tidelark phone
    (shared paywall) sits between three cards; every cursor click makes a
    visible change. Mobile: phone plus a cycling caption chip.
    Decorative and illustrative (aria-hidden); the H1 carries the idea. */
@@ -19,42 +19,6 @@
 }
 .hl-center { position: relative; display: grid; justify-items: center; gap: 0.625rem; }
 .hl-phone { width: 14.5rem; }
-
-/* Experiment chip above the phone: shown during Test */
-.hl-test-chip { opacity: 0; transition: opacity var(--dur) var(--ease); }
-.hero-loop[data-step="test"] .hl-test-chip { opacity: 1; }
-
-/* Toast over the phone on Keep */
-.hl-toast {
-  position: absolute;
-  top: 3.25rem;
-  left: 50%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  width: max-content;
-  max-width: calc(100% - 1rem);
-  padding: 0.375rem 0.625rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius-sm);
-  background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
-  color: var(--rc-ink);
-  font-size: 0.8125rem; /* inside the illustrative mock only */
-  font-weight: 700;
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, -0.25rem);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s linear var(--dur);
-}
-.hl-toast.is-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility 0s;
-}
-.hl-toast svg { width: 0.875rem; height: 0.875rem; flex: none; }
 
 /* Mobile caption chip */
 .hl-chip {
@@ -146,13 +110,41 @@
 }
 .hl-mini-btn.is-pressed { transform: scale(0.94); }
 
-/* Test: a small forecast line draws in (clip reveal) */
-.hl-spark { width: 100%; height: 2.5rem; }
+/* Test: two labeled lines draw in (clip reveal). A red, B green. */
+.hl-mini { position: relative; display: block; padding-right: 1rem; }
+.hl-spark { display: block; width: 100%; height: 2.5rem; }
 .hl-spark .a { stroke: var(--rc-red); }
 .hl-spark .b { stroke: var(--rc-green-line); }
+.hl-line-lbl { position: absolute; right: 0; font-size: 0.6875rem; font-weight: 800; transition: opacity var(--dur) var(--ease); }
+.hl-line-lbl.a { top: 0.5rem; color: var(--rc-ink); }
+.hl-line-lbl.b { top: -0.125rem; color: var(--rc-ink); }
+.hl-leads {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.0625rem 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--rc-green); /* winning: green fill, ink 8.01:1 */
+  color: var(--rc-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  visibility: hidden;
+}
+.hl-leads svg { width: 0.75rem; height: 0.75rem; }
+.hl-card.is-leading .hl-leads { visibility: visible; }
 
-/* Keep: green pill, "this won" */
-.hl-keep-row { display: flex; align-items: center; gap: 0.5rem; }
+/* Roll out: "Roll out B", then "Published. No app release." */
+.hl-published {
+  display: none;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--rc-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+.hl-card.is-done .hl-published { display: inline-flex; }
+.hl-card.is-done .hl-mini-btn { display: none; }
 .hl-win {
   display: inline-grid;
   place-items: center;
@@ -164,7 +156,7 @@
   visibility: hidden;
 }
 .hl-win svg { width: 0.75rem; height: 0.75rem; }
-.hl-card.is-active .hl-win { visibility: visible; }
+.hl-card.is-done .hl-win { visibility: visible; }
 
 .hl-cursor {
   position: absolute;
@@ -181,14 +173,14 @@
 .hl-cursor.is-clicking svg { transform: scale(0.85); }
 
 @media (min-width: 64rem) {
-  .hero-loop { display: block; min-height: 35rem; }
+  .hero-loop { display: block; min-height: 34rem; }
   .hero-loop > .tag { position: absolute; top: 0; left: 0; }
   .hl-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
   .hl-phone { width: 13.75rem; }
   .hl-card { display: flex; }
-  .hl-card[data-card="design"] { top: 12%; left: 0; }
-  .hl-card[data-card="test"] { top: 36%; right: 0; }
-  .hl-card[data-card="keep"] { bottom: 10%; left: 0; }
+  .hl-card[data-card="design"] { top: 10%; left: 0; }
+  .hl-card[data-card="test"] { top: 30%; right: 0; }
+  .hl-card[data-card="rollout"] { bottom: 9%; left: 0; }
   .hl-cursor { display: flex; }
   .hl-chip { display: none; }
 }
@@ -196,9 +188,7 @@
 @media (prefers-reduced-motion: reduce) {
   .hl-card,
   .hl-card-icon,
-  .hl-toast,
-  .hl-toast.is-visible,
-  .hl-test-chip,
+  .hl-line-lbl,
   .hl-cursor { transition: none; }
   .hl-cursor { display: none; }
 }

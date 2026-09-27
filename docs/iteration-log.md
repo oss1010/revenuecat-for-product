@@ -1376,3 +1376,109 @@ the proof points.
   (now stacked under it), right-aligned tab labels on mobile.
 - Screenshots: docs/process-shots/full-page-1440.png and
   full-page-390.png.
+
+## 2026-09-27: Build phase 4, the final design pass (design frozen)
+
+### What changed
+- Hero loop (A): Design, Test, Roll out. Three beats of 2.6 seconds,
+  about 8 seconds a loop, starting on load with no idle pause. Test
+  names what is tested and how it is judged, draws two labeled lines
+  (A red, B green) and ends on a green "B leads". Roll out: the cursor
+  clicks "Roll out B", "Published. No app release." with a green
+  check, the phone locks to B. Mobile chip cycles the same three beats.
+- Section 3 (B): slider removed. Tab pills; each tab shows Before and
+  With RevenueCat side by side at equal heights (stacked on mobile):
+  tracks for Change, segmented 12-month bars for Learn, one paywall
+  against three platforms for Fit.
+- Section 4 (C): the AI bullet and a platform bullet in the audited
+  wording, SDK fine print, links to the Paywalls page and the product
+  demo video (linked, never embedded).
+- Simulator v4 (D): "Why B wins" table removed; line labels on the
+  chart (a key under it below 64rem). Compact variant cards side by
+  side at every width, both metrics as rows. The modal dialog is gone:
+  "Roll out winner" arms "Confirm: roll out B to 100%"; Escape or blur
+  disarms; the toast stays inline. The one-time demo runs the whole
+  sequence without moving focus. Desktop: sticky phone. Mobile: a
+  "What users see" strip with a thumbnail and the live chip.
+- Charts module (E): headline and sub; line charts with a hover marker
+  (pointer, touch drag, arrow keys with a live region) for Paywall
+  Conversion and Realized LTV per Customer (recent cohorts marked
+  incomplete); Benchmarks bars kept with a 20th to 80th band; the ASA
+  chip on the first two only; the Charts API line plus "Learn more
+  about Charts". Mobile: the chart list becomes a row of pills.
+- Section 6 (F): three web lines in RevenueCat's phrasing, links to
+  Funnels and Web, the journey in two lanes on a shared grid (a tight
+  timeline on mobile), "Fee rules differ by store and region." in the
+  small print.
+- Section 7 (G): "Subscribe once, unlocked everywhere" diagram (store
+  side with Refund Control, the entitlement as the shared key, Pro on
+  iPhone, Android and web for the same account) and "Learn more about
+  infrastructure". Section 7's Charts API line removed: section 5 now
+  carries it, so it would have appeared twice.
+- Quieter tags and eyebrows (I). Section 8 icon tiles and heading
+  weight 500 unchanged.
+- site/assets/oss.jpeg stays tracked (J). It is the author's photo for
+  the process doc page, committed on purpose. No history rewrite.
+
+### Claim audit (2026-09-27)
+| # | Claim, label or URL | Verdict | Outcome |
+|---|---|---|---|
+| 1a | "Start from a template, a Figma design or a prompt, and let the AI Editor draft it" | FAIL as worded | The AI Editor drafts from a prompt or a screenshot; Figma import is the Figma plugin. Now "Start from a template, import a Figma design, or let the AI Editor draft it from a prompt or a screenshot" |
+| 1b | Section 3: "Start from a template, a Figma design or a prompt" | PASS conditional | Four documented starts: scratch, template, AI, Figma. Kept |
+| 1c | AI Editor status | Conflict | Docs say beta, changelog says generally available. No label on the page |
+| 2 | "One paywall across iOS, Android, React Native, Flutter and web" | PASS conditional | Minimum SDK versions apply; web through a Web Purchase Link or the Web SDK. Now "One paywall for your iOS, Android, React Native and Flutter apps, and the web" with fine print |
+| 3a | Lower platform fees | PASS conditional | Funnels heading "Lower platform fees". "Lower platform fees on web purchases", fee note in the small print. Every other fee line on the linked pages fails (percentages or universal claims) |
+| 3b | Price points and promos | PASS conditional | Funnels heading "Flexible pricing & promos". "Flexible pricing and promos on the web" |
+| 3c | Earning before launch | PASS conditional (blog, Floga) | Not on the Funnels or Web pages. Follows the blog title "How to pre-sell app subscriptions on the web before launch"; Floga proves it |
+| 4a | "Paywall Conversion" over time, per paywall | PASS | Cohorted by first paywall impression date |
+| 4b | "Realized LTV per Customer" by cohort month | PASS conditional | Name confirmed; recent periods marked incomplete, as RevenueCat does |
+| 4c | Benchmarks | PASS conditional | Names unchanged. RevenueCat's middle band is 20th to 80th: legend changed from 25th to 75th, median tick removed |
+| 5 | Paywalls, Charts, Funnels, Web, Infrastructure pages; demo video | PASS | Video "RevenueCat Paywalls Overview" on RevenueCat's channel. Checked separately: the Paywalls page embeds the same ID (mPzCTxIlMXE). It predates Figma import and the AI Editor, so it is never placed as proof of either |
+
+### Links (H)
+Every outbound link returned 200 on 2026-09-27: /feature/paywalls,
+/feature/charts, /feature/funnels, /feature/web,
+/feature/infrastructure, the Pixelcut, Floga and OpenAI case studies,
+/talk-to-sales, app.revenuecat.com login and signup, the YouTube demo.
+(The fonts.googleapis.com and fonts.gstatic.com roots are preconnect
+hints, not links.) Not used: /docs/web/web-billing/overview returns 404.
+
+### Verification
+- Headless Chrome at 390px and 1440px (the preview pane could not
+  render: no window was open). No console errors, no horizontal
+  overflow, no missing images.
+- Keyboard: tab order runs nav, hero CTAs, section 3 tabs, links,
+  simulator radios, the rollout button, Charts tabs, the focusable
+  plot, links, CTAs; every stop has a visible ring. Section 3 and
+  Charts tabs move with arrows; Enter arms and confirms the rollout,
+  Escape disarms, focus lands on "Reset demo", and Reset returns focus
+  to the button; arrow keys on a chart plot announce each month.
+- Reduced motion: hero on the Roll out state, done; simulator on the
+  LTV view with the line labels, no cursor, no split alternation;
+  journey fully lit.
+- Hero trace: 2.6-second beats, loop about 7.8 seconds, no pause.
+
+Section heights, before (phase 3B) and after, px:
+| Section | 390 | 1440 |
+|---|---|---|
+| 3 The shift | 685 to 766 | 829 to 711 |
+| 4 Change | 1,299 to 1,543 | 968 to 968 |
+| 5 Learn (simulator and Charts) | 3,725 to 2,916 | 2,581 to 2,451 |
+| 6 Fit | 1,543 to 1,705 | 1,344 to 1,338 |
+| 7 Teams | 1,383 to 1,503 | 977 to 1,004 |
+
+Section visuals at 1440 (the limit is about 1.2 screens, 1,080px on a
+900px viewport): tabs and pair 311, editor 704, simulator 989, charts
+360, journey 411, unlock diagram 519. None over; the simulator is the
+tallest, at 1.1 screens. At 390: 478, 704, 1,210, 548, 615, 563.
+Simulator on mobile: 2,167 to 1,210 (56%, target about half).
+
+Screenshots: docs/process-shots/phase4-full-page-390.png and
+phase4-full-page-1440.png (the 3B full-page shots are kept).
+
+### Did not fit, or needs a decision
+- Mobile section 4 and 6 grew (new bullets, fine print, links, web
+  lines), even though section 6's visual shrank.
+- Section 4 now says "template" twice ("Visual editor and pre-built
+  templates", then "Start from a template..."). Left as specified.
+- The simulator's mobile height is 56% of before, not 50%.

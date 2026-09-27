@@ -1,24 +1,32 @@
-/* Section 5: Charts module, styled like RevenueCat's Charts page. A
-   sidebar list (vertical tabs) and a chart panel. Illustrative data. */
+/* Section 5: Charts module, styled like RevenueCat Charts. A sidebar
+   list (vertical tabs) and a chart panel: two line charts with a hover
+   marker, and Benchmarks as percentile bars. Illustrative data.
+   Lines: ink (15.61:1) and red (3.39:1), both past the 3:1 bar. */
+
+.charts-intro { display: grid; gap: 0.5rem; max-width: 40rem; margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
 
 .charts {
   display: grid;
   gap: 1rem;
   margin-top: 1.5rem;
 }
-.charts-side { padding: 0.75rem; align-self: start; }
+.charts-side { padding: 0.375rem; align-self: start; min-width: 0; }
 .charts-side-title {
-  padding: 0.25rem 0.625rem 0.625rem;
+  display: none;
+  padding: 0.25rem 0.625rem 0.5rem;
   color: var(--rc-body);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.charts-list { display: grid; gap: 0.25rem; }
+.charts-list { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+.charts-list::-webkit-scrollbar { display: none; }
 .charts-tab {
   display: flex;
+  flex: none;
   align-items: center;
+  white-space: nowrap;
   min-height: 2.75rem;
   padding: 0.5rem 0.75rem;
   border: 0;
@@ -35,17 +43,19 @@
 .charts-tab[aria-selected="true"] {
   background: var(--rc-offwhite);
   color: var(--rc-blue-text); /* selection: blue, 5.24:1 on off-white */
-  box-shadow: inset 3px 0 0 var(--rc-blue);
+  box-shadow: inset 0 -3px 0 var(--rc-blue);
 }
 
-.charts-main { display: grid; gap: 1rem; align-content: start; padding: 1.25rem; min-width: 0; }
-.charts-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
-.charts-title { margin-right: auto; color: var(--rc-ink); font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 600; }
+.charts-main { display: grid; align-content: start; padding: clamp(1rem, 0.75rem + 1vw, 1.5rem); min-width: 0; }
+.charts-panel { display: grid; gap: 0.875rem; min-width: 0; }
+.charts-panel-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+.charts-title { color: var(--rc-ink); font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; }
 .filter-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   min-height: 2rem;
+  max-width: 100%;
   padding: 0.25rem 0.75rem;
   border: 1px solid var(--rc-outline);
   border-radius: var(--radius-pill);
@@ -53,42 +63,139 @@
   color: var(--rc-ink);
   font-size: 0.8125rem;
   font-weight: 600;
-  white-space: nowrap;
 }
 .filter-chip svg { width: 0.875rem; height: 0.875rem; flex: none; }
-
-.charts-panel { display: grid; gap: 0.75rem; min-width: 0; }
 .charts-note { color: var(--rc-body); font-size: 0.8125rem; }
 
-/* Data tables */
-.charts-table-wrap { overflow-x: auto; }
-.charts-table {
-  width: 100%;
-  min-width: 26rem;
-  border-collapse: collapse;
-  font-size: 0.8125rem;
-  font-variant-numeric: tabular-nums;
+/* ---------- Line chart ---------- */
+.lc { position: relative; display: grid; gap: 0.5rem; }
+.lc-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.lc-legend li { display: inline-flex; align-items: center; gap: 0.375rem; color: var(--rc-ink); font-size: 0.8125rem; font-weight: 600; }
+.lc-legend i,
+.lc-tip-row i { display: inline-block; flex: none; width: 0.75rem; height: 0.1875rem; border-radius: 2px; }
+.tone-ink > i { background: var(--rc-ink); }
+.tone-red > i { background: var(--rc-red); }
+
+.lc-plot {
+  position: relative;
+  height: 9rem;
+  margin: 0.5rem 0.75rem 1.5rem 2.5rem;
+  outline-offset: 0.5rem;
+  touch-action: pan-y; /* a sideways drag moves the marker */
+  cursor: crosshair;
 }
-.charts-table th,
-.charts-table td { padding: 0.5rem 0.5rem; border-bottom: 1px solid var(--rc-line); text-align: right; white-space: nowrap; }
-.charts-table thead th { color: var(--rc-body); font-weight: 600; }
-.charts-table tbody th { color: var(--rc-ink); font-weight: 600; text-align: left; }
-.charts-table td { color: var(--rc-ink); }
-.charts-table th:first-child,
-.charts-table td:first-child { padding-left: 0; text-align: left; }
-.charts-panel-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
-.bar-cell { display: inline-flex; align-items: center; gap: 0.5rem; }
-.bar-cell i { display: inline-block; height: 0.375rem; border-radius: var(--radius-pill); background: var(--rc-ink); opacity: 0.8; }
+.lc-grid { position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid var(--rc-line); }
+.lc-grid > span {
+  position: absolute;
+  right: calc(100% + 0.5rem);
+  top: 0;
+  transform: translateY(-50%);
+  color: var(--rc-body);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.lc-xtick {
+  position: absolute;
+  top: calc(100% + 0.375rem);
+  transform: translateX(-50%);
+  color: var(--rc-body);
+  font-size: 0.75rem;
+}
+.lc-incomplete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(135deg, var(--rc-offwhite) 0 6px, var(--rc-white) 6px 12px);
+}
+.lc-incomplete > span {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  color: var(--rc-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.lc-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lc-svg path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.lc-svg .tone-ink { stroke: var(--rc-ink); }
+.lc-svg .tone-red { stroke: var(--rc-red); }
+.lc-svg .is-dashed { stroke-dasharray: 5 5; }
 
-/* Cohort table: predicted cells tinted, as RevenueCat styles them */
-.charts-table td.is-predicted { background: var(--rc-wash-lavender); font-style: italic; }
-.charts-legend { display: flex; flex-wrap: wrap; gap: 0.375rem 1rem; color: var(--rc-body); font-size: 0.75rem; }
-.charts-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
-.charts-legend i { width: 0.875rem; height: 0.625rem; border: 1px solid var(--rc-line); border-radius: 2px; background: var(--rc-white); }
-.charts-legend i.is-predicted { background: var(--rc-wash-lavender); }
+.lc-rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed var(--rc-outline);
+  pointer-events: none;
+}
+.lc-dot {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid var(--rc-white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.lc-dot.tone-ink { background: var(--rc-ink); box-shadow: 0 0 0 1px var(--rc-ink); }
+.lc-dot.tone-red { background: var(--rc-red); box-shadow: 0 0 0 1px var(--rc-red); }
 
-.charts-api { margin-top: 1rem; color: var(--rc-ink); font-size: var(--fs-small); }
+/* Tooltip. Mobile: a readout row above the plot. Desktop: floats beside
+   the marker. */
+.lc-tip {
+  display: grid;
+  gap: 0.125rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rc-line);
+  border-radius: var(--radius-sm);
+  background: var(--rc-white);
+  box-shadow: var(--rc-shadow);
+  pointer-events: none;
+}
+.lc-tip-date { color: var(--rc-body); font-size: 0.75rem; font-weight: 600; }
+.lc-tip-row { display: flex; align-items: center; gap: 0.375rem; color: var(--rc-ink); font-size: 0.8125rem; white-space: nowrap; }
+.lc-tip-row b { margin-left: auto; padding-left: 0.75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.lc-axis { color: var(--rc-body); font-size: 0.8125rem; text-align: center; }
+
+/* ---------- Benchmarks ---------- */
+.bench { display: grid; gap: 0.75rem; }
+
+/* ---------- Below the module ---------- */
+.charts-api { display: grid; justify-items: start; gap: 0.25rem; margin-top: 1rem; }
+.charts-api p { color: var(--rc-ink); font-size: var(--fs-small); }
 
 @media (min-width: 48rem) {
   .charts { grid-template-columns: 14rem minmax(0, 1fr); }
+  .charts-side { padding: 0.5rem; }
+  .charts-side-title { display: block; }
+  .charts-list { display: grid; overflow: visible; }
+  .charts-tab { white-space: normal; }
+  .charts-tab[aria-selected="true"] { box-shadow: inset 3px 0 0 var(--rc-blue); }
+  .lc-plot { height: 11rem; margin-right: 1rem; }
+  .lc-tip {
+    position: absolute;
+    top: 3rem;
+    left: var(--x, 50%);
+    z-index: 1;
+    min-width: 13rem;
+    transform: translateX(1rem);
+    opacity: 0;
+    transition: opacity var(--dur-fast) var(--ease);
+  }
+  /* Desktop: the tooltip shows while the pointer or focus is on the plot */
+  .lc.is-active .lc-tip { opacity: 1; }
+  .lc-tip.is-flipped { transform: translateX(calc(-100% - 1rem)); }
 }
+@media (min-width: 48rem) { .charts-main { min-height: 22.5rem; } }

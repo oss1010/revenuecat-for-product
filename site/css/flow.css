@@ -1,54 +1,71 @@
-/* Section 6: web-to-app funnel. Small cards light up in order, once,
-   when the flow scrolls into view. Completed steps get a green check
-   (ink on --rc-green, 8.01:1). Reduced motion: final state. */
+/* Section 6: the web-to-app journey in two lanes, "On the web" and "In
+   the app". Desktop: two compact rows of cards joined by chevrons, on a
+   shared four-column grid. Mobile: a tight vertical list. Steps light
+   up in order, once, when the journey scrolls into view; completed
+   steps get a green check (ink on --rc-green, 8.01:1). Reduced motion:
+   final state. */
 
-.flow { display: grid; gap: 1rem; max-width: 30rem; }
-.flow > .tag { justify-self: start; }
-.flow-steps { display: grid; gap: 0; counter-reset: none; }
-.flow-step {
-  position: relative;
+.fit-head { display: grid; gap: 1.5rem; }
+.fit-intro { display: grid; gap: 1rem; justify-items: start; }
+.fit-web { display: grid; gap: 1rem; align-content: end; justify-items: start; }
+
+.flow {
   display: grid;
-  grid-template-columns: 1.75rem minmax(0, 1fr);
-  gap: 0.75rem;
-  padding-bottom: 0.75rem;
+  gap: 1rem;
+  margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  padding: clamp(1rem, 0.75rem + 1vw, 1.5rem);
 }
-/* Connector line between steps */
-.flow-step::before {
+.flow > .tag { justify-self: start; }
+.flow-lane { display: grid; gap: 0.5rem; }
+.flow-lane-label {
+  color: var(--rc-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.flow-steps { display: grid; gap: 0.625rem; }
+.flow-step { position: relative; display: grid; }
+/* Mobile connector: the rail from one check to the next */
+.flow-step:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 1.75rem;
-  bottom: 0;
-  left: 0.8125rem;
+  top: 1.375rem;
+  bottom: -0.5rem;
+  left: calc(0.625rem - 1px);
   width: 2px;
   background: var(--rc-line);
 }
-.flow-step:last-child { padding-bottom: 0; }
-.flow-step:last-child::before { display: none; }
+/* Mobile: a tight timeline. Checks on a rail, details indented. */
+.flow-card {
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.flow-card > :not(.flow-title) { margin-left: 1.75rem; }
+.flow-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--rc-ink);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  line-height: 1.3;
+}
 .flow-check {
-  position: relative;
-  z-index: 1;
   display: grid;
   place-items: center;
-  width: 1.75rem;
-  height: 1.75rem;
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
   border: 2px solid var(--rc-outline);
   border-radius: 50%;
   background: var(--rc-white);
   color: transparent;
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
-.flow-check svg { width: 0.875rem; height: 0.875rem; }
-.flow-card {
-  display: grid;
-  gap: 0.375rem;
-  padding: 0.625rem 0.875rem;
-  border: 1px solid var(--rc-line);
-  border-radius: var(--radius);
-  background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-.flow-title { color: var(--rc-ink); font-size: var(--fs-small); font-weight: 700; }
+.flow-check svg { width: 0.75rem; height: 0.75rem; }
 .flow-sub { color: var(--rc-body); font-size: 0.8125rem; }
 .flow-row { display: flex; flex-wrap: wrap; gap: 0.375rem; }
 .flow-pill {
@@ -92,24 +109,61 @@
 .flow-step.is-lit .flow-check { border-color: var(--rc-green); background: var(--rc-green); color: var(--rc-ink); } /* green fill, ink check 8.01:1 */
 .flow.is-playing .flow-step:not(.is-lit) .flow-card { opacity: 0.45; transform: translateY(0.25rem); }
 
+/* A tiny ad, desktop only */
+.flow-ad { display: none; }
+.flow-ad-icon { width: 1.5rem; height: 1.5rem; border-radius: 0.375rem; background: var(--rc-ink); box-shadow: inset 0 -0.5rem 0 -0.25rem var(--rc-red); }
+.flow-ad-text { display: grid; line-height: 1.2; }
+.flow-ad-text b { color: var(--rc-ink); font-size: 0.75rem; }
+.flow-ad-text small { color: var(--rc-body); font-size: 0.6875rem; }
+.flow-ad-cta { margin-left: auto; padding: 0.125rem 0.625rem; border-radius: var(--radius-pill); background: var(--rc-offwhite); color: var(--rc-ink); font-size: 0.75rem; font-weight: 700; }
+
 /* Targeting chips */
-.flow-targets { display: grid; gap: 0.5rem; }
+.flow-targets { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; padding-top: 0.25rem; }
 .flow-targets p { color: var(--rc-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .flow-targets ul { display: flex; flex-wrap: wrap; gap: 0.375rem; }
 .flow-targets li {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.1875rem 0.625rem;
   border: 1px solid var(--rc-line);
   border-radius: var(--radius-pill);
   background: var(--rc-white);
-  box-shadow: var(--rc-shadow);
   color: var(--rc-ink);
   font-size: 0.8125rem;
   font-weight: 600;
 }
 .flow-targets li svg { width: 0.875rem; height: 0.875rem; color: var(--rc-body); }
+
+@media (min-width: 48rem) {
+  .fit-head { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: end; }
+  /* Both lanes share one four-column grid, so the cards line up */
+  .flow-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+  .flow-card {
+    height: 100%;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--rc-line);
+    border-radius: var(--radius-sm);
+    background: var(--rc-white);
+    box-shadow: var(--rc-shadow);
+  }
+  .flow-card > :not(.flow-title) { margin-left: 0; }
+  .flow-ad { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem; padding: 0.375rem; border: 1px solid var(--rc-line); border-radius: 0.5rem; }
+  /* Chevron in the gap between cards */
+  .flow-step:not(:last-child)::after {
+    left: calc(100% + 0.5rem);
+    top: 50%;
+    bottom: auto;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 2px solid var(--rc-outline);
+    border-right: 2px solid var(--rc-outline);
+    background: none;
+    bottom: auto;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .flow-check,

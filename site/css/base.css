@@ -24,6 +24,7 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 
 [hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* Keeps compounds like "12-month" from breaking at the hyphen */
 .nowrap { white-space: nowrap; }
@@ -60,27 +61,27 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .body { font-size: var(--fs-body); max-width: 38em; text-wrap: pretty; }
 .small { font-size: var(--fs-small); }
 
-.eyebrow {
+.eyebrow { /* quieter, as on RevenueCat's feature pages (about 13px, regular) */
   display: inline-block;
-  padding: 0.25rem 0.875rem;
+  padding: 0.25rem 0.75rem;
   border: 1px solid var(--rc-line);
   border-radius: var(--radius-pill);
   background: var(--rc-white);
   box-shadow: var(--rc-shadow);
   color: var(--rc-ink);
-  font-size: var(--fs-small);
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 500;
 }
 
-.tag {
+.tag { /* "Illustrative": present but quiet. Body text 10.39:1 */
   display: inline-block;
-  padding: 0.125rem 0.625rem;
-  border: 1px solid var(--rc-outline);
+  padding: 0.0625rem 0.5rem;
+  border: 1px solid var(--rc-line);
   border-radius: var(--radius-pill);
   background: var(--rc-white);
-  color: var(--rc-ink);
-  font-size: var(--fs-small);
-  font-weight: 600;
+  color: var(--rc-body);
+  font-size: 0.75rem;
+  font-weight: 500;
   line-height: 1.5;
 }
 
@@ -156,6 +157,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .link-chevron:hover svg { transform: translateX(2px); }
 
 .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+.link-row { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
 
 .tertiary { font-size: var(--fs-small); }
 .tertiary a { color: var(--rc-ink); text-underline-offset: 0.2em; }
@@ -446,7 +448,6 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .bench-row .bench-track { grid-column: 1 / -1; }
 .bench-track { position: relative; height: 0.75rem; border-radius: var(--radius-pill); background: var(--rc-offwhite); box-shadow: inset 0 0 0 1px var(--rc-line); }
 .bench-band { position: absolute; top: 0; bottom: 0; left: var(--from); right: calc(100% - var(--to)); border-radius: var(--radius-pill); background: var(--rc-dot); }
-.bench-median { position: absolute; top: -0.1875rem; bottom: -0.1875rem; left: var(--at); width: 2px; background: var(--rc-outline); }
 .bench-you {
   position: absolute;
   top: 50%;
@@ -467,6 +468,7 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 /* 6. Fit */
 .flow-placeholder { min-height: 16rem; }
 .small-print { margin-top: 1.5rem; font-size: var(--fs-small); }
+.fine-print { margin-top: -0.25rem; color: var(--rc-body); font-size: 0.875rem; }
 
 /* 7. Teams */
 .teams-body { display: grid; gap: 1rem; }
@@ -484,7 +486,6 @@ html[data-variant="b2"] .v-b2 { display: inline; }
 .teams-visual { display: grid; gap: 1rem; }
 .teams-visual .badges { margin-bottom: 0; }
 .diagram-placeholder { min-height: 12rem; }
-.charts-line { margin-top: 1.5rem; color: var(--rc-ink); }
 
 /* 8. Two ways to start */
 .plans { display: grid; gap: 1.5rem; }

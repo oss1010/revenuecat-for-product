@@ -1,11 +1,13 @@
-/* Hero loop: Design, Test, Keep (about 10.5 seconds).
-   1. Design: the cursor changes the featured plan; the phone updates.
-   2. Test: the cursor starts a test; the "A/B test running" chip
-      appears, the phone alternates A and B, a forecast line draws in.
-   3. Keep: the cursor clicks "Roll out"; the phone locks to B and the
-      toast reads "Published. No app release."
+/* Hero loop: Design, Test, Roll out. About 8 seconds, each beat about
+   2.5 seconds, starting on load and looping with no idle gap.
+   1. Design: the cursor changes "Featured plan" to Monthly; the phone
+      updates.
+   2. Test: the cursor starts the test; two labeled lines draw in (A
+      red, B green), the phone alternates A and B, then "B leads".
+   3. Roll out: the cursor clicks "Roll out B"; the card shows
+      "Published. No app release." and the phone locks to B.
    Pauses off-screen, on hover and in background tabs. Under
-   prefers-reduced-motion the markup's static Keep state stays. */
+   prefers-reduced-motion the markup's static Roll out state stays. */
 (function () {
   var stage = document.querySelector('[data-hero-loop]');
   if (!stage) return;
@@ -16,17 +18,18 @@
   var cards = {};
   stage.querySelectorAll('.hl-card').forEach(function (c) { cards[c.getAttribute('data-card')] = c; });
   var designValue = stage.querySelector('[data-design-value]');
-  var startBtn = stage.querySelector('[data-hl-start]');
+  var chart = stage.querySelector('[data-hl-chart]');
   var rollBtn = stage.querySelector('[data-hl-roll]');
   var sparkClip = stage.querySelector('.hl-spark-clip');
+  var lineLabels = stage.querySelectorAll('.hl-line-lbl');
   var chips = stage.querySelectorAll('.hl-chip [data-step]');
   var cursor = stage.querySelector('.hl-cursor');
-  var toast = stage.querySelector('.hl-toast');
 
-  var LOOP_MS = 10500;
+  var BEAT = 2600;
+  var LOOP_MS = BEAT * 3; /* about 8 seconds */
   var timers = [];
   var running = false;
-  var visible = false;
+  var visible = true; /* start immediately; the observer corrects this */
   var hovered = false;
   var sparkFrame = null;
 
@@ -40,8 +43,8 @@
 
   function activate(name) {
     Object.keys(cards).forEach(function (k) { cards[k].classList.toggle('is-active', k === name); });
-    loop.setAttribute('data-step', name || 'base');
-    if (name) chips.forEach(function (c) { c.hidden = c.getAttribute('data-step') !== name; });
+    loop.setAttribute('data-step', name);
+    chips.forEach(function (c) { c.hidden = c.getAttribute('data-step') !== name; });
   }
 
   function drawSpark(ms) {
@@ -54,6 +57,7 @@
     }
     sparkFrame = window.requestAnimationFrame(frame);
   }
+  function showLineLabels(on) { lineLabels.forEach(function (l) { l.style.opacity = on ? '1' : '0'; }); }
 
   function pointAt(el) {
     var box = loop.getBoundingClientRect();
@@ -61,9 +65,10 @@
     cursor.style.transform = 'translate(' + (r.left - box.left + r.width * 0.5) + 'px, ' + (r.top - box.top + r.height * 0.6) + 'px)';
   }
 
+  /* Move the cursor to el, press, then run fn at time `at` (ms into the cycle). */
   function click(el, at, fn) {
     var withCursor = cursor && cursor.offsetParent !== null && el.offsetParent !== null;
-    if (withCursor) later(function () { cursor.classList.add('is-on'); pointAt(el); }, at - 800);
+    if (withCursor) later(function () { cursor.classList.add('is-on'); pointAt(el); }, Math.max(0, at - 750));
     later(function () {
       if (withCursor) { cursor.classList.add('is-clicking'); el.classList.add('is-pressed'); }
     }, at - 100);
@@ -74,39 +79,39 @@
   }
 
   function reset() {
-    activate(null);
     setPaywall('a');
     designValue.textContent = designValue.getAttribute('data-before');
     sparkClip.setAttribute('width', '0');
-    toast.classList.remove('is-visible');
+    showLineLabels(false);
+    cards.test.classList.remove('is-leading');
+    cards.rollout.classList.remove('is-done');
   }
 
   function cycle() {
     clear();
     reset();
-    /* 1. Design */
-    click(designValue, 900, function () {
+    activate('design');
+    /* 1. Design, 0 to 2.6s */
+    click(designValue, 800, function () {
       designValue.textContent = designValue.getAttribute('data-after');
-      activate('design');
       setPaywall('b');
     });
-    /* 2. Test */
-    click(startBtn, 3800, function () {
-      activate('test');
-      drawSpark(900);
+    /* 2. Test, 2.6 to 5.2s */
+    later(function () { activate('test'); }, BEAT);
+    click(chart, BEAT + 700, function () {
+      drawSpark(800);
+      showLineLabels(true);
+      setPaywall('a');
     });
-    later(function () { setPaywall('a'); }, 4500);
-    later(function () { setPaywall('b'); }, 5200);
-    later(function () { setPaywall('a'); }, 5900);
-    later(function () { setPaywall('b'); }, 6600);
-    /* 3. Keep */
-    click(rollBtn, 7700, function () {
-      activate('keep');
+    later(function () { setPaywall('b'); }, BEAT + 1200);
+    later(function () { setPaywall('a'); }, BEAT + 1650);
+    later(function () { setPaywall('b'); cards.test.classList.add('is-leading'); }, BEAT + 2050);
+    /* 3. Roll out, 5.2 to 7.8s */
+    later(function () { activate('rollout'); }, BEAT * 2);
+    click(rollBtn, BEAT * 2 + 800, function () {
+      cards.rollout.classList.add('is-done');
       setPaywall('b');
-      toast.classList.add('is-visible');
     });
-    later(function () { toast.classList.remove('is-visible'); }, 9900);
-    later(function () { if (cursor) cursor.classList.remove('is-on'); }, 8600);
     later(cycle, LOOP_MS);
   }
 
@@ -115,14 +120,12 @@
     running = true;
     cycle();
   }
-
   function stop() {
     if (!running) return;
     running = false;
     clear();
     if (cursor) cursor.classList.remove('is-on', 'is-clicking');
   }
-
   function update() {
     if (visible && !hovered && !document.hidden) start();
     else stop();
@@ -133,8 +136,6 @@
       visible = entries.some(function (e) { return e.isIntersecting; });
       update();
     }, { threshold: 0.3 }).observe(stage);
-  } else {
-    visible = true;
   }
   stage.addEventListener('pointerenter', function (e) {
     if (e.pointerType === 'mouse') { hovered = true; update(); }

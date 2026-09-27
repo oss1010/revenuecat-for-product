@@ -1,8 +1,27 @@
 # Copy: /for-product refresh
 
-Status: v1.5 LOCKED. Hero B1 by default, B2 as the hero test variant.
+Status: v1.6 LOCKED, design frozen. Hero B1 by default, B2 as the hero test variant.
 Voice: short, direct, a little playful. The headlines carry the
 argument on their own. All mock data is illustrative and labeled.
+
+v1.6 changes (build phase 4, the final design pass, 2026-09-27). Each
+marked [v1.6] below. Claim audit of every new line: 2026-09-27, see
+docs/iteration-log.md.
+- Hero loop: Design, Test, Roll out, about 8 seconds, no idle pause.
+- Section 3: no slider. Each tab shows Before and With RevenueCat side
+  by side.
+- Section 4: two proof points replaced, SDK fine print, two links.
+- Section 5: simulator v4 (no "Why B wins" table, labels on the chart
+  lines, two-step inline rollout, no dialog). Charts module: headline,
+  sub, three charts named as in RevenueCat Charts, the Charts API line
+  with a link.
+- Section 6: three web lines, two links, the two-lane journey, a fee
+  note in the small print.
+- Section 7: "Subscribe once, unlocked everywhere" diagram and a link.
+  The section's Charts API line is removed: section 5 now carries it.
+- Wording changed by the audit (each requested line is kept below):
+  the Figma bullet, the platform bullet, the web lines, and the
+  Benchmarks band (20th to 80th, as RevenueCat draws it).
 
 v1.5 changes (build phase 3B, 2026-09-27). All new microcopy below is
 approved by the user and recorded here; lines marked [v1.5].
@@ -154,18 +173,20 @@ Primary CTA: Start for free
 Secondary CTA: Talk to sales, as a chevron text link [v1.2]
 Tertiary link: Already on RevenueCat? Open Paywalls in your dashboard
 
-Hero loop [v1.4], tagged Illustrative: Design, Test, Keep, about 10.5
-seconds. Replaces the v1.3 Change, Learn, Fit cards.
-- Design: "Featured plan" field changes from "Weekly" to "Monthly";
-  the phone features the monthly plan.
-- Test: "Weekly vs monthly featured", button "Start test". The chip
-  "A/B test running · 50/50" appears, the phone alternates A and B,
-  and a small forecast line draws in.
-- Keep: "B leads on predicted 12-month LTV", button "Roll out". The
-  phone locks to B; toast "Published. No app release."
-Mobile caption chip cycles: "Design: monthly plan featured" / "Test:
-A/B test running · 50/50" / "Keep: B leads on predicted 12-month LTV"
-Static state under reduced motion: Keep.
+Hero loop [v1.6], tagged Illustrative: Design, Test, Roll out. About 8
+seconds (three beats of 2.6 seconds), starts on load, loops with no
+idle pause. Replaces the v1.4 Design, Test, Keep loop.
+- Design: "Featured plan" changes from "Weekly" to "Monthly"; the phone
+  features the monthly plan.
+- Test: "Testing: weekly vs monthly featured" and "Judged on: predicted
+  12-month LTV". A mini chart draws two labeled lines, A (red) and B
+  (green); the phone alternates A and B; then "B leads" (green fill).
+- Roll out: the cursor clicks "Roll out B"; the card shows "Published.
+  No app release." with a green check; the phone locks to B.
+Mobile caption chip cycles [v1.6]: "Design: monthly plan featured" /
+"Test: B leads on predicted 12-month LTV" / "Roll out: B published, no
+app release"
+Static state under reduced motion: Roll out, done.
 
 ## 2. Scale strip
 146K+ apps supported
@@ -183,21 +204,28 @@ revenue", which the homepage labels don't. Audit 2026-09-27.)
 Headline [v1.4]: Change faster. Learn what renews. Fit every user.
 (Was: From ticket to test.)
 Sub [v1.3]: What changes for a product manager, one job at a time.
-Module [v1.3]: three tabs, each with a before/after slider. Slider
-labels: Before | With RevenueCat. Each tab ends with "See how >",
-linking to its section.
-- Tab 1, Change it without a release.
-  Before: File a ticket > Wait for a sprint > Ship an app update >
-  Wait for review
-  Now: Edit it in the dashboard > Publish
-- Tab 2, Learn what users value.
-  Before: Judge it on trial starts
-  Now: See predicted 12-month value > Roll out the winner
+Module [v1.6]: three tab pills, no slider. Each tab shows "Before" and
+"With RevenueCat" side by side at equal height (stacked on mobile) and
+ends with "See how >", linking to its section.
+- Tab 1, Change it without a release. Two tracks.
+  Before: Ticket > Sprint > App update > Review. Caption: "Live after
+  the next release"
+  With RevenueCat: "Start from a template, a Figma design or a prompt"
+  > "Publish". Caption, with a green check: "Live. No app release."
+  (Audit PASS. Figma import goes through RevenueCat's Figma plugin.)
+- Tab 2, Learn what users value. Two segmented 12-month bars, "Week 1"
+  to "Month 12".
+  Before: only week one filled. Caption: "You judge on week one."
+  With RevenueCat: all twelve months, the forecast ones dashed.
+  Caption: "You see the year, predicted."
 - Tab 3, Fit the offer to every user.
-  Before: One paywall for everyone
-  Now: Different paywalls by audience > Offer it on the web, too.
+  Before: one paywall on one phone, three users pointing at it.
+  Caption: "One paywall for everyone"
+  With RevenueCat: iPhone, Android and Web, each with a different
+  offer. Caption: "Different paywalls by audience. Offer it on the web,
+  too."
   (Web is a channel here, never a forecasted experiment.)
-Replaced: the v1.2 before/now lists and the three arrow rows.
+Replaced: the v1.3 slider and the v1.5 mini product UI panels.
 
 ## 4. Change it without a release
 Headline: Your paywall shouldn't wait for a release.
@@ -208,10 +236,28 @@ ElevenLabs testimonial: not added [v1.4]. RevenueCat's own pages credit
 the Infrastructure-page quote to two different people (Jack McDermott
 on the feature page, Marcin Jelenski in the case study). Audit FAIL
 until the speaker is confirmed.
-Proof points:
+Proof points [v1.6]:
 - Visual editor and pre-built templates
-- AI Editor for first drafts, from a prompt or a screenshot
+- Start from a template, import a Figma design, or let the AI Editor
+  draft it from a prompt or a screenshot
+  (Requested: "Start from a template, a Figma design or a prompt, and
+  let the AI Editor draft it". Audit FAIL as worded: the AI Editor does
+  not draft from Figma; Figma goes through the Figma plugin. No beta or
+  GA label: RevenueCat's docs and changelog disagree.)
+- One paywall for your iOS, Android, React Native and Flutter apps, and
+  the web
+  (Requested: "One paywall across iOS, Android, React Native, Flutter
+  and web". Audit PASS with conditions, hence the fine print.)
 - Collaborator roles decide who can change paywalls and offerings [v1.2]
+Fine print [v1.6]: On supported SDK versions. On the web through a Web
+Purchase Link or the Web SDK.
+Links [v1.6]:
+- Learn more about Paywalls > (https://www.revenuecat.com/feature/paywalls)
+- Watch the product demo > (https://www.youtube.com/watch?v=mPzCTxIlMXE).
+  Linked, never embedded. RevenueCat's Paywalls page embeds this same
+  video ID beside "Watch a product demo of RevenueCat Paywalls"
+  (checked 2026-09-27). The video predates Figma import and the AI
+  Editor, so it is never placed as proof of either.
 
 ## 5. Learn what users value
 Headline: Win the year, not just the week.
@@ -232,7 +278,8 @@ Simulator [v3, v1.4]:
     paying, $130.46 predicted 12-month LTV [v1.5].
   - Under the cards [v1.5]: "LTV per paying customer, illustrative
     model."
-  - Both metrics on every card, always. The judged metric is large.
+  - Both metrics on every card, always, as rows [v1.6]. The judged row
+    is bold and larger. Cards stay side by side at every width.
   - Winner pill: Leads.
   - Chart, tagged Illustrative: "Cumulative revenue per 10,000
     customers in the test" [v1.5]. Under it: "10,000 customers per
@@ -243,28 +290,36 @@ Simulator [v3, v1.4]:
     "Predicted". Crossover label: "B overtakes at month 4". End
     labels: A $65.5K, B $96.5K. The conversion view shows only the
     observed month.
-  - "Why B wins" (LTV view) [v1.5]: Conversion to paying 11.0% / 7.4%;
-    Still subscribed at month 3 15% / 46%; Still subscribed at month 12
-    3.5% / 18%; Price per month "$30.29/mo ($6.99 weekly)" /
-    "$29.99/mo". Refund row cut. Caption: "Illustrative model of a
-    hard-paywall app. RevenueCat uses each variant's observed
-    conversion and retention data to model future revenue."
+  - Line labels on the chart (LTV view) [v1.6], replacing the "Why B
+    wins" table: "Weekly: 3.5% still paying at month 12" (A) and
+    "Monthly: 18% still paying at month 12" (B). On narrow screens they
+    sit as a key under the chart.
+  - Line under the chart, RevenueCat's verified wording kept:
+    "Illustrative model of a hard-paywall app. RevenueCat uses each
+    variant's observed conversion and retention data to model future
+    revenue."
   - Status, conversion view: A leads on conversion to paying
   - Status, LTV view: B leads on predicted 12-month LTV, even though A
     converts more.
-  - Button: Roll out winner. Confirm dialog: "Roll out variant [current
-    winner] to all users?" Buttons: Confirm, Cancel.
+  - Button [v1.6], two steps inline, no dialog: "Roll out winner", then
+    "Confirm: roll out B to 100%" (or A, if A leads). Escape or leaving
+    the button cancels step two.
   - Toast [v1.5]: Rolled out. No app release. Inline, beside the
     button on desktop and below it on mobile; no reserved slot.
   - After rollout: a disabled "Rolled out" button and a "Reset demo"
     link.
-- The user's phone, right: the shared Tidelark paywall.
+- What users see [v1.6]: the shared Tidelark paywall. Desktop: the
+  phone stays pinned while the panel scrolls. Mobile: a compact strip,
+  a small paywall thumbnail beside the label "What users see" and the
+  chip.
   - During the test the chip alternates "Variant A · 50%" and
     "Variant B · 50%", and the paywall with it.
   - On rollout a pulse travels from the panel to the phone, which then
     shows "Now live: Variant B · 100%" (or A, if A was the winner) and
     that variant's featured plan.
-- Demo cursor label: You
+- Demo cursor label: You. The one-time demo runs the whole sequence
+  [v1.6]: flip to predicted 12-month LTV, click "Roll out winner",
+  confirm, and the phone goes live. "Reset demo" hands it over.
 - Caption [v1.5]: Illustrative data and model. The 12-month forecast appears once an experiment with
   revenue as its primary metric has enough data. It's a signal, not a
   guarantee.
@@ -275,7 +330,37 @@ Simulator [v3, v1.4]:
   paying at $29.99, still paying: 100, 60, 46, 38, 33, 29, 26, 24, 22,
   20, 19, 18 percent.
 
-Below the simulator, two rows [v1.4]:
+Charts module [v1.6], below "Test up to four variants at once.":
+- Headline: The test ends. The learning doesn't.
+- Sub: Watch every paywall's performance, your cohorts' realized LTV,
+  and how you compare with similar apps.
+- Sidebar "Charts", names as RevenueCat Charts uses them (audit PASS):
+  "Paywall Conversion", "Realized LTV per Customer", "Benchmarks".
+- Paywall Conversion, tagged Illustrative, chip "Apple Search Ads
+  Keyword: morning routine": a line chart, one line per paywall,
+  "Onboarding paywall" and "Streak reminder paywall", Jan to Aug. Axis:
+  "Month of first paywall impression". A hover marker shows each
+  month's values.
+- Realized LTV per Customer, the same tag and chip: one line, "Realized
+  LTV per customer", by cohort month, Jan to Aug. Jul and Aug dashed on
+  a hatched band labeled "Incomplete". Axis: "Cohort month. Recent
+  cohorts are incomplete: they are still earning." (RevenueCat marks
+  recent periods incomplete.)
+- Benchmarks, tagged Illustrative, no chip: the three percentile bars
+  kept from v1.5; legend "Your app" and "Similar apps, 20th to 80th
+  percentile" (was 25th to 75th; RevenueCat's docs draw the middle band
+  at 20th to 80th). The median tick is gone. Note: "Against similar
+  apps in the same store and category. A higher percentile is better,
+  including for churn." (RevenueCat: "For all metrics, being at a
+  higher percentile is better.")
+- Below: "Need the numbers elsewhere? Pull chart data into your own
+  dashboards with the Charts API." and "Learn more about Charts >"
+  (https://www.revenuecat.com/feature/charts).
+- Replaced: the v1.5 tables, "Paywall performance", "Cohort and
+  prediction" and "Prediction Explorer".
+
+Superseded by v1.5 and v1.6, kept for the record. Below the simulator,
+two rows [v1.4]:
 - Row 1: the paywall performance chart card (unchanged, sparkline
   labels Conversion, LTV, Abandonment), and a Benchmarks card, tagged
   Illustrative: "Compare your conversion, churn and LTV with similar
@@ -301,14 +386,36 @@ Headline: Different users. Different offers. App or web.
 Body: Target paywalls by country, platform, app version or your own
 attributes. Build web funnels that route visitors by their answers
 and take payment. One link unlocks their subscription in the app.
-Flow labels (flow tagged Illustrative) [v1.2]: Ad click > Web funnel >
+Web lines [v1.6], checkmarks beside the body:
+- Lower platform fees on web purchases
+- Flexible pricing and promos on the web
+- Pre-sell subscriptions on the web before launch
+(Requested: lower platform fees on web purchases, full control of price
+points and promos, earning before launch. Audit: "Lower platform fees"
+and "Flexible pricing & promos" are RevenueCat's Funnels headings; the
+third follows RevenueCat's blog title "How to pre-sell app
+subscriptions on the web before launch". No fee percentages, never
+"eliminate" or "bypass". "On the web" stays on the pricing line: store
+prices still live in App Store Connect and Play Console.)
+Links [v1.6]: Learn more about Funnels >
+(https://www.revenuecat.com/feature/funnels); Learn more about web
+billing > (https://www.revenuecat.com/feature/web, which covers every
+billing engine).
+Journey [v1.6], tagged Illustrative, in two lanes:
+- "On the web": Ad click (a tiny "Tidelark, Sponsored" ad with "Get",
+  desktop only) > Web funnel > The answer routes to an offer >
+  Checkout
+- "In the app": Get a Redemption Link > Download the app > Tap the
+  link, subscription active
+- "Targeting": Country, Platform, App version, Custom attributes
+Flow labels before v1.6 [v1.2]: Ad click > Web funnel >
 Checkout > Get a Redemption Link > Download the app > Tap the link,
 subscription active
 Step details, kept from v1.1 for the visual (approved 2026-09-27): the funnel step asks
 "What's your goal?" and is tagged "Localized to the visitor's
 country"; checkout shows "Apple Pay or Google Pay, where supported".
-Layout [v1.3]: visual left, text right on desktop; text first on
-mobile.
+Layout [v1.6]: text and web lines side by side, the journey full width
+below; on mobile, a tight timeline.
 Customer story block [v1.2]:
 - Label: Customer story
 - Text: Floga made $120K+ in one day selling lifetime memberships
@@ -318,7 +425,8 @@ Customer story block [v1.2]:
 (Production note: the case study covers Web Billing only. The block
 sits apart from the funnel flow so it doesn't suggest Floga used
 Funnels.)
-Small print: Targeting is included on Pro and Enterprise.
+Small print [v1.6]: Targeting is included on Pro and Enterprise. Fee
+rules differ by store and region.
 
 ## 7. Teams and foundation
 Headline: Decide who can change a live paywall.
@@ -340,8 +448,19 @@ Governance badges, leading the visual:
 - Paywall version history
 - Audit logs
 - SSO with SAML or OIDC, on Enterprise
-Line: Pull your dashboard's chart data into your own tools with the
-Charts API.
+Link [v1.6], under the checklist: Learn more about infrastructure >
+(https://www.revenuecat.com/feature/infrastructure)
+Diagram [v1.6], tagged Illustrative, replacing the v1.5 foundation
+diagram: title "Subscribe once, unlocked everywhere". "Store side":
+"App Store" (bought: "Tidelark Pro, bought once"), "Google Play", "Web";
+a small "Refund Control" node, "Answers store refund requests with
+usage data and your preference. The store makes the final call."
+Middle: "Entitlement: pro", "The shared key". Below: iPhone, Android
+and Web, each showing "Pro" unlocked (green fill). Note: "Pro unlocked
+on every device signed in to the same Tidelark account." (Entitlements
+follow the customer's app user ID, so the same account is required.)
+Removed [v1.6]: "Pull your dashboard's chart data into your own tools
+with the Charts API." Section 5 now carries the Charts API line.
 Proof block, for the enterprise reader [v1.2]:
 - Quote: "With RevenueCat, we never had to slow down."
 - Name and role: Sara Conlon, Head of Financial Engineering, OpenAI

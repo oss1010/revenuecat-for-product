@@ -1,11 +1,12 @@
-/* Section 5: experiment simulator v3.
+/* Section 5: experiment simulator v4.
    Copy and the illustrative model live in index.html (labels, data
    attributes). This file computes the model's outputs (cumulative
-   revenue, crossover, LTV, drivers), draws the chart and moves state:
-   the judge toggle, the forecast reveal, the winner flip, the phone's
-   traffic split, the confirm dialog, the rollout pulse, the toast,
-   "Reset demo" and a one-time cursor demo. Under reduced motion
-   nothing animates and the LTV view is shown statically. */
+   revenue, crossover, LTV), draws the chart and moves state: the judge
+   toggle, the forecast reveal, the winner flip, the phone's traffic
+   split, the two-step "Roll out winner" button, the rollout pulse, the
+   inline toast, "Reset demo" and a one-time cursor demo that runs the
+   whole sequence. Under reduced motion nothing animates and the LTV
+   view is shown statically, ready for the reader to roll out. */
 (function () {
   var root = document.querySelector('[data-sim]');
   if (!root) return;
@@ -23,8 +24,6 @@
   var stateText = q('[data-state-text]');
   var rolloutBtn = q('[data-rollout]');
   var resetBtn = q('[data-reset]');
-  var dialog = q('[data-dialog]');
-  var dialogVariant = q('[data-dialog-variant]');
   var toast = q('[data-toast]');
   var toastText = q('[data-toast-text]');
   var cursor = q('[data-cursor]');
@@ -40,7 +39,6 @@
       enrolled: +el.getAttribute('data-enrolled'),
       paying: +el.getAttribute('data-paying'),
       price: +el.getAttribute('data-price'),
-      priceLabel: el.getAttribute('data-price-label'),
       retention: el.getAttribute('data-retention').split(',').map(Number)
     };
   }
@@ -74,17 +72,17 @@
   function fill(sel, fn) { qa(sel).forEach(function (el) { el.textContent = fn(el.getAttribute('data-k')); }); }
   fill('[data-out="conversion"]', function (k) { return (M[k].paying / M[k].enrolled * 100).toFixed(1) + '%'; });
   fill('[data-out="ltv"]', function (k) { return money(ltv(k), 2); });
-  fill('[data-out="m3"]', function (k) { return M[k].retention[2] + '%'; });
-  fill('[data-out="m12"]', function (k) { return M[k].retention[11] + '%'; });
-  fill('[data-out="price"]', function (k) { return M[k].priceLabel; });
   fill('[data-out="end"]', function (k) { return kilo(C[k][12]); });
 
   /* ---------- Chart ---------- */
-  var area = chart.querySelector('.fc-area');
   var svg = chart.querySelector('.fc-svg');
   var maxY = Math.ceil(Math.max(C.a[12], C.b[12]) / 50000) * 50000;
   function X(month) { return month / 12 * 100; }
   function Y(v) { return 100 - v / maxY * 100; }
+  function at(series, month) { /* value at a fractional month */
+    var i = Math.floor(month);
+    return i >= 12 ? series[12] : series[i] + (series[i + 1] - series[i]) * (month - i);
+  }
   function path(series, from, to) {
     var d = '';
     for (var m = from; m <= to; m++) d += (m === from ? 'M' : 'L') + X(m).toFixed(3) + ' ' + Y(series[m]).toFixed(3) + ' ';
@@ -109,6 +107,7 @@
   qa('[data-xtick]').forEach(function (el) { el.style.left = X(+el.getAttribute('data-xtick')) + '%'; });
 
   function place(el, month, value) {
+    if (!el) return;
     el.style.left = X(month) + '%';
     el.style.top = Y(value) + '%';
   }
@@ -133,6 +132,11 @@
   place(chart.querySelector('.fc-end-b'), 12, C.b[12]);
   place(chart.querySelector('.fc-obs-a'), 1, C.a[1]);
   place(chart.querySelector('.fc-obs-b'), 1, C.b[1]);
+  /* The why, written on the lines. B's label ends at month 7.5, above B,
+     which only falls to the left of it. A's starts at month 5, below A,
+     which only rises to the right of it. */
+  place(chart.querySelector('.fc-why-b'), 7.5, at(C.b, 7.5));
+  place(chart.querySelector('.fc-why-a'), 5, at(C.a, 5));
   chart.querySelector('.fc-region-obs').style.left = X(0.5) + '%';
   chart.querySelector('.fc-region-pred').style.left = X(6.5) + '%';
 
@@ -182,6 +186,7 @@
     reveal(judge === 'ltv');
     var line = keepCompounds(status.getAttribute('data-' + judge));
     if (status.innerHTML !== line) status.innerHTML = line;
+    if (armed) arm(); /* the confirm label follows the current winner */
   }
   function select(value) {
     q('input[name="sim-metric"][value="' + value + '"]').checked = true;
@@ -199,18 +204,14 @@
 
   function showSplit(side) {
     splitSide = side;
-    window.Tidelark && window.Tidelark.set(screen, side);
+    if (window.Tidelark) window.Tidelark.set(screen, side);
     split.textContent = split.getAttribute('data-' + side);
-  }
-  function tickSplit() {
-    showSplit(splitSide === 'a' ? 'b' : 'a');
   }
   function updateSplit() {
     window.clearInterval(splitTimer);
     splitTimer = null;
-    if (live) return;
-    if (reduced() || !phoneVisible || document.hidden) return;
-    splitTimer = window.setInterval(tickSplit, 2000);
+    if (live || reduced() || !phoneVisible || document.hidden) return;
+    splitTimer = window.setInterval(function () { showSplit(splitSide === 'a' ? 'b' : 'a'); }, 2000);
   }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
@@ -224,28 +225,35 @@
 
   /* ---------- Toast ---------- */
   var toastTimer = null;
-  var clearTimer = null;
   function hideToast() {
     toast.classList.remove('is-visible');
-    window.clearTimeout(clearTimer);
-    clearTimer = window.setTimeout(function () { toastText.textContent = ''; }, reduced() ? 0 : 300);
+    toastText.textContent = '';
   }
   function showToast() {
     window.clearTimeout(toastTimer);
-    window.clearTimeout(clearTimer);
-    toast.classList.remove('is-visible');
-    toastText.textContent = '';
+    hideToast();
     void toast.offsetWidth;
     toastText.textContent = toast.getAttribute('data-text');
     toast.classList.add('is-visible');
-    toastTimer = window.setTimeout(hideToast, 5000);
+    toastTimer = window.setTimeout(hideToast, 6000);
   }
 
-  /* ---------- Rollout ---------- */
+  /* ---------- Rollout: "Roll out winner", then "Confirm: roll out B to 100%" ---------- */
+  var armed = false;
+  function arm() {
+    armed = true;
+    rolloutBtn.classList.add('is-armed');
+    rolloutBtn.textContent = rolloutBtn.getAttribute('data-confirm-label').replace('{v}', winner());
+  }
+  function disarm() {
+    if (!armed) return;
+    armed = false;
+    rolloutBtn.classList.remove('is-armed');
+    if (!rolloutBtn.disabled) rolloutBtn.textContent = rolloutBtn.getAttribute('data-label');
+  }
+
   function lockPhone(variant) {
-    live = variant;
-    updateSplit();
-    window.Tidelark && window.Tidelark.set(screen, variant.toLowerCase());
+    if (window.Tidelark) window.Tidelark.set(screen, variant.toLowerCase());
     split.textContent = split.getAttribute('data-live').replace('{v}', variant);
     split.classList.add('is-live');
   }
@@ -280,10 +288,12 @@
     window.setTimeout(land, 900);
   }
 
-  function rollOut(variant) {
+  function rollOut(variant, moveFocus) {
     live = variant; /* the phone stops alternating now */
     window.clearInterval(splitTimer);
     splitTimer = null;
+    armed = false;
+    rolloutBtn.classList.remove('is-armed');
     rolloutBtn.disabled = true;
     rolloutBtn.textContent = rolloutBtn.getAttribute('data-done-label');
     resetBtn.hidden = false;
@@ -291,17 +301,27 @@
     stateEl.classList.remove('is-running');
     showToast();
     travelPulse(function () { lockPhone(variant); });
+    if (moveFocus) resetBtn.focus(); /* the rollout button is now disabled */
   }
+
+  rolloutBtn.addEventListener('click', function () {
+    if (rolloutBtn.disabled) return;
+    if (armed) rollOut(winner(), true);
+    else arm();
+  });
+  rolloutBtn.addEventListener('keydown', function (e) { if (e.key === 'Escape') disarm(); });
+  rolloutBtn.addEventListener('blur', disarm);
 
   var initialJudge = 'conversion';
   function reset() {
     window.clearTimeout(toastTimer);
-    toast.classList.remove('is-visible');
-    toastText.textContent = '';
+    hideToast();
     live = null;
     split.classList.remove('is-live');
     showSplit('a');
     updateSplit();
+    armed = false;
+    rolloutBtn.classList.remove('is-armed');
     select(initialJudge);
     stateText.textContent = stateText.getAttribute('data-running');
     stateEl.classList.add('is-running');
@@ -312,29 +332,10 @@
   }
   resetBtn.addEventListener('click', reset);
 
-  rolloutBtn.addEventListener('click', function () {
-    var lead = winner();
-    dialogVariant.textContent = lead;
-    if (dialog && typeof dialog.showModal === 'function') {
-      dialog.returnValue = '';
-      dialog.showModal();
-    } else if (window.confirm(q('[data-dialog-title]').textContent)) {
-      rollOut(lead);
-      resetBtn.focus();
-    }
-  });
-  if (dialog) {
-    dialog.addEventListener('close', function () {
-      if (dialog.returnValue === 'confirm') {
-        rollOut(winner());
-        resetBtn.focus(); /* the rollout button is now disabled */
-      } else {
-        rolloutBtn.focus();
-      }
-    });
-  }
-
-  /* ---------- One-time cursor demo ---------- */
+  /* ---------- One-time cursor demo: the whole sequence ----------
+     Flip to predicted 12-month LTV, click "Roll out winner", confirm,
+     and the phone goes live. It never moves focus. Any click, key press
+     or focus inside the simulator stops it; "Reset demo" hands over. */
   function demo() {
     if (reduced()) {
       select('ltv');
@@ -342,8 +343,7 @@
       return;
     }
     if (!cursor || !('IntersectionObserver' in window)) return;
-    var target = q('label[for="sim-ltv"]');
-    var toggle = q('.sim-toggle');
+    var toggleLabel = q('label[for="sim-ltv"]');
     var cancelled = false;
     var finished = false;
     var timers = [];
@@ -352,6 +352,7 @@
       cancelled = true;
       timers.forEach(window.clearTimeout);
       cursor.classList.remove('is-on', 'is-clicking');
+      qa('.is-pressed').forEach(function (el) { el.classList.remove('is-pressed'); });
     }
     ['pointerdown', 'keydown', 'focusin'].forEach(function (type) {
       root.addEventListener(type, function (e) { if (!finished && e.isTrusted) stop(); });
@@ -361,28 +362,34 @@
       var r = el.getBoundingClientRect();
       cursor.style.transform = 'translate(' + (r.left - box.left + r.width * 0.5 + dx) + 'px, ' + (r.top - box.top + r.height * 0.5 + dy) + 'px)';
     }
+    function press(el, atMs, fn) {
+      later(function () { cursor.classList.add('is-clicking'); el.classList.add('is-pressed'); }, atMs - 150);
+      later(function () {
+        cursor.classList.remove('is-clicking');
+        el.classList.remove('is-pressed');
+        fn();
+      }, atMs);
+    }
     function run() {
-      if (cancelled || checkedRadio().value === 'ltv') { finished = true; return; }
+      if (cancelled || live) { finished = true; return; }
       cursor.style.transition = 'none';
-      pointAt(target, 40, 140);
+      pointAt(toggleLabel, 40, 140);
       void cursor.offsetWidth;
       cursor.style.transition = '';
       cursor.classList.add('is-on');
-      later(function () { pointAt(target, 0, 0); }, 50);
-      later(function () { cursor.classList.add('is-clicking'); target.classList.add('is-pressed'); }, 1000);
-      later(function () {
-        cursor.classList.remove('is-clicking');
-        target.classList.remove('is-pressed');
-        select('ltv');
-      }, 1150);
-      later(function () { cursor.classList.remove('is-on'); finished = true; }, 3150);
+      later(function () { pointAt(toggleLabel, 0, 0); }, 50);
+      press(toggleLabel, 1100, function () { select('ltv'); });
+      later(function () { pointAt(rolloutBtn, 0, 0); }, 2300);
+      press(rolloutBtn, 3300, arm);
+      press(rolloutBtn, 4500, function () { rollOut(winner(), false); });
+      later(function () { cursor.classList.remove('is-on'); finished = true; }, 5600);
     }
     var observer = new IntersectionObserver(function (entries) {
       if (!entries.some(function (e) { return e.isIntersecting; })) return;
       observer.disconnect();
       later(run, 500);
     }, { threshold: 1, rootMargin: '0px 0px -20% 0px' });
-    observer.observe(toggle);
+    observer.observe(q('.sim-toggle'));
   }
 
   showSplit('a');
