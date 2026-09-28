@@ -1,6 +1,6 @@
 /* Section 5: Charts module.
-   1. A vertical WAI-ARIA tablist (automatic activation): click, arrow
-      keys, Home and End.
+   1. The shared pill tabs (WAI-ARIA tabs, automatic activation):
+      click, arrow keys, Home and End.
    2. Line charts in the style of RevenueCat Charts, drawn from data
       attributes in index.html. A hover marker (vertical rule and a dot
       per line) follows the pointer or a touch drag, and the left and
@@ -23,15 +23,7 @@
     });
     panels.forEach(function (p) { p.hidden = p.id !== tab.getAttribute('aria-controls'); });
     if (focus) tab.focus();
-    if (tab.scrollIntoView && !wide.matches) tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
-
-  /* Pills in a row on mobile, a sidebar list on desktop */
-  var list = root.querySelector('[role="tablist"]');
-  var wide = window.matchMedia('(min-width: 48rem)');
-  function orient() { list.setAttribute('aria-orientation', wide.matches ? 'vertical' : 'horizontal'); }
-  orient();
-  if (wide.addEventListener) wide.addEventListener('change', orient);
 
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () { select(tab, false); });

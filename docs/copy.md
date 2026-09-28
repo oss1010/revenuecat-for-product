@@ -1,8 +1,32 @@
 # Copy: /for-product refresh
 
-Status: v1.8 LOCKED. Design frozen for good (phase 5.1). Hero B1 by default, B2 as the hero test variant.
+Status: v1.9 LOCKED (phase 5.2: three readability fixes after a final read). Hero B1 by default, B2 as the hero test variant.
 Voice: short, direct, a little playful. The headlines carry the
 argument on their own. All mock data is illustrative and labeled.
+
+v1.9 changes (build phase 5.2, readability fixes, 2026-09-27). Claim
+audit of the new labels: 2026-09-27, see docs/iteration-log.md.
+- Section 3, Learn [v1.9]. Same proportions, better units. Before:
+  "Judged on conversion to paying", dots labelled "Paying customers",
+  one dot per 50 paying customers (A 22, B 15), "A wins". With
+  RevenueCat: "Judged on predicted 12-month LTV", one dot per $5K of
+  predicted revenue, all dots filled (A 13, B 19), a ticker reading
+  "Observed revenue, month 1" then "Predicted revenue by month 2" to
+  "...by month 12", "B predicted to win the year". Caption: "Before,
+  each dot is 50 paying customers. With RevenueCat, each dot is $5K of
+  predicted revenue by month 12. Same illustrative test as the
+  simulator below."
+  (Requested: "Judged on conversion", "Judged on predicted 12-month
+  revenue", and "$5K of predicted 12-month revenue" in the caption.
+  Audit: "predicted 12-month revenue" FAIL, RevenueCat's term is
+  "predicted 12-month LTV"; "conversion" alone is ambiguous with
+  initial conversion, so "conversion to paying", the simulator's own
+  name; month 1 is observed on the simulator's chart, so the ticker
+  says so.)
+- Charts module [v1.9]: the sidebar is gone; the same pill tabs as
+  section 3 sit above a full-width chart card. No label changes.
+- Section 6 [v1.9]: layout only (visual left, text right; the journey
+  is a compact vertical visual). No copy changes.
 
 v1.8 changes (build phase 5.1, final fixes, 2026-09-27). Each marked
 [v1.8] below. Claim audit of items 2, 4, 5, 6, 7 and 10: 2026-09-27,

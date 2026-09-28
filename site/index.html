@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/tabs.css">
   <link rel="stylesheet" href="css/phone.css">
   <link rel="stylesheet" href="css/paywall.css">
   <link rel="stylesheet" href="css/hero.css">
@@ -148,10 +149,10 @@
       </div>
 
       <div class="shift" data-shift>
-        <div class="shift-tabs" role="tablist" aria-labelledby="shift-title">
-          <button type="button" class="shift-tab" role="tab" id="tab-change" aria-controls="panel-change" aria-selected="true"><span class="tab-num" aria-hidden="true">1</span><span class="tab-long">Change it without a release</span><span class="tab-short" aria-hidden="true">Change</span></button>
-          <button type="button" class="shift-tab" role="tab" id="tab-learn" aria-controls="panel-learn" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">2</span><span class="tab-long">Learn what users value</span><span class="tab-short" aria-hidden="true">Learn</span></button>
-          <button type="button" class="shift-tab" role="tab" id="tab-fit" aria-controls="panel-fit" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">3</span><span class="tab-long">Fit the offer to every user</span><span class="tab-short" aria-hidden="true">Fit</span></button>
+        <div class="pill-tabs" role="tablist" aria-labelledby="shift-title">
+          <button type="button" class="pill-tab" role="tab" id="tab-change" aria-controls="panel-change" aria-selected="true"><span class="tab-num" aria-hidden="true">1</span><span class="tab-long">Change it without a release</span><span class="tab-short" aria-hidden="true">Change</span></button>
+          <button type="button" class="pill-tab" role="tab" id="tab-learn" aria-controls="panel-learn" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">2</span><span class="tab-long">Learn what users value</span><span class="tab-short" aria-hidden="true">Learn</span></button>
+          <button type="button" class="pill-tab" role="tab" id="tab-fit" aria-controls="panel-fit" aria-selected="false" tabindex="-1"><span class="tab-num" aria-hidden="true">3</span><span class="tab-long">Fit the offer to every user</span><span class="tab-short" aria-hidden="true">Fit</span></button>
         </div>
 
         <div class="shift-panel" role="tabpanel" id="panel-change" aria-labelledby="tab-change">
@@ -188,26 +189,26 @@
           <div class="pair" data-year>
             <div class="pair-card is-before">
               <p class="compare-label">Before</p>
-              <p class="pair-sub">Judged on week one</p>
+              <p class="pair-sub">Judged on conversion to paying</p>
               <div class="dot-field" aria-hidden="true">
-                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a"></span></div>
-                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b"></span></div>
-                <span class="dot-month">Week 1</span>
+                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a" data-unit="paying"></span></div>
+                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b" data-unit="paying"></span></div>
+                <span class="dot-month">Paying customers</span>
               </div>
               <p class="pair-caption"><span class="verdict">A wins</span></p>
             </div>
             <div class="pair-card is-now">
               <p class="compare-label">With RevenueCat</p>
-              <p class="pair-sub">Judged on the year, predicted</p>
+              <p class="pair-sub">Judged on predicted <span class="nowrap">12-month</span> LTV</p>
               <div class="dot-field" aria-hidden="true">
-                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a" data-over-year></span></div>
-                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b" data-over-year></span></div>
-                <span class="dot-month">Month <span data-dot-month>12</span></span>
+                <div class="dot-row a"><span class="dot-key">A</span><span class="dot-set" data-dots="a" data-unit="revenue"></span></div>
+                <div class="dot-row b"><span class="dot-key">B</span><span class="dot-set" data-dots="b" data-unit="revenue"></span></div>
+                <span class="dot-month" data-dot-label data-observed="Observed revenue, month 1" data-predicted="Predicted revenue by month {n}">Predicted revenue by month 12</span>
               </div>
               <p class="pair-caption"><span class="verdict is-win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>B predicted to win the year</span></p>
             </div>
           </div>
-          <p class="pair-note">Each dot is 50 paying customers, from the illustrative model in the simulator below. A features weekly, B monthly.</p>
+          <p class="pair-note">Before, each dot is 50 paying customers. With RevenueCat, each dot is $5K of predicted revenue by month 12. Same illustrative test as the simulator below.</p>
           <a class="link-chevron" href="#learn">See how<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
 
@@ -444,19 +445,16 @@
 
       <p class="sim-caption">Illustrative data and model. In experiments with revenue as the primary metric, RevenueCat predicts each variant's 12-month LTV once there's enough data. It's a forward-looking signal, not a guarantee.</p>
 
-      <div class="charts-intro">
+      <div class="section-head charts-intro">
         <h3 class="h3">The test ends. The learning doesn't.</h3>
         <p class="body">Watch each RevenueCat paywall's performance, your cohorts' realized LTV, and how you compare with similar apps.</p>
       </div>
 
       <div class="charts" data-charts>
-        <div class="charts-side ui-card">
-          <p class="charts-side-title" id="charts-list-title">Charts</p>
-          <div class="charts-list" role="tablist" aria-orientation="vertical" aria-labelledby="charts-list-title">
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-conv" aria-controls="ch-conv" aria-selected="true"><span class="tab-long">Paywall Conversion</span><span class="tab-short" aria-hidden="true">Paywalls</span></button>
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-ltv" aria-controls="ch-ltv" aria-selected="false" tabindex="-1"><span class="tab-long">Realized LTV per Customer</span><span class="tab-short" aria-hidden="true">LTV</span></button>
-            <button type="button" class="charts-tab" role="tab" id="ch-tab-bench" aria-controls="ch-bench" aria-selected="false" tabindex="-1"><span class="tab-long">Benchmarks</span><span class="tab-short" aria-hidden="true">Benchmarks</span></button>
-          </div>
+        <div class="pill-tabs" role="tablist" aria-label="Charts">
+          <button type="button" class="pill-tab" role="tab" id="ch-tab-conv" aria-controls="ch-conv" aria-selected="true"><span class="tab-long">Paywall Conversion</span><span class="tab-short" aria-hidden="true">Paywalls</span></button>
+          <button type="button" class="pill-tab" role="tab" id="ch-tab-ltv" aria-controls="ch-ltv" aria-selected="false" tabindex="-1"><span class="tab-long">Realized LTV per Customer</span><span class="tab-short" aria-hidden="true">LTV</span></button>
+          <button type="button" class="pill-tab" role="tab" id="ch-tab-bench" aria-controls="ch-bench" aria-selected="false" tabindex="-1"><span class="tab-long">Benchmarks</span><span class="tab-short" aria-hidden="true">Benchmarks</span></button>
         </div>
 
         <div class="charts-main ui-card">
@@ -516,13 +514,11 @@
   <!-- 6. Fit the offer to every user: visual left, text right -->
   <section class="section bg-off" id="fit" aria-labelledby="fit-title">
     <div class="container">
-      <div class="fit-head">
-        <div class="fit-intro">
+      <div class="split split--reverse fit-split">
+        <div class="fit-text">
           <p class="eyebrow">Fit the offer to every user</p>
           <h2 class="h2" id="fit-title">Different users. Different offers. App or web.</h2>
           <p class="body">Target paywalls by country, platform, app version or your own attributes. Build web funnels that route visitors by their answers and take payment. One link unlocks their subscription in the app.</p>
-        </div>
-        <div class="fit-web">
           <ul class="checks">
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Lower platform fees on web purchases</span></li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4L16 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Flexible pricing and promos on the web</span></li>
@@ -534,16 +530,15 @@
             <a class="link-chevron" href="https://www.revenuecat.com/feature/web">Learn more about web billing<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
-      </div>
-
-      <div class="flow ui-card" data-flow>
-        <span class="tag">Illustrative</span>
-        <ol class="flow-steps">
-          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ad</p><div class="flow-ad" aria-hidden="true"><span class="flow-ad-icon"></span><span class="flow-ad-text"><b>Tidelark</b><small>Sponsored</small></span><span class="flow-ad-cta">Get</span></div></div></li>
-          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quiz</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div></div></li>
-          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Checkout</p><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Where supported</p></div></li>
-          <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download the app, tap the link, unlocked</p></div></li>
-        </ol>
+        <div class="flow ui-card" data-flow>
+          <span class="tag">Illustrative</span>
+          <ol class="flow-steps">
+            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ad</p><div class="flow-ad" aria-hidden="true"><span class="flow-ad-icon"></span><span class="flow-ad-text"><b>Tidelark</b><small>Sponsored</small></span><span class="flow-ad-cta">Get</span></div></div></li>
+            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Quiz</p><p class="flow-sub">"What's your goal?"</p><div class="flow-row"><span class="flow-pill is-chosen">Start earlier</span><span class="flow-pill">Sleep better</span></div></div></li>
+            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Checkout</p><div class="flow-pay"><span>Apple Pay</span><span>Google Pay</span></div><p class="flow-sub">Where supported</p></div></li>
+            <li class="flow-step is-lit"><div class="flow-card"><p class="flow-title"><span class="flow-check"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download the app, tap the link, unlocked</p></div></li>
+          </ol>
+        </div>
       </div>
 
       <figure class="testimonial">

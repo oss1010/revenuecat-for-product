@@ -2,11 +2,12 @@
    the two small animations that play when a tab opens.
    - Change: a dot travels both tracks at once, slowly Before, quickly
      with RevenueCat, which lands first (CSS, from .is-armed).
-   - Learn: dots for paying customers. Before shows week one, A ahead.
-     With RevenueCat steps through months 1 to 12 of the simulator's
-     illustrative model (read from its data attributes, one dot per 50
-     paying customers): A's dots fade faster than B's, then "B wins the
-     year".
+   - Learn: two units from the simulator's illustrative model (read
+     from its data attributes). Before, judged on conversion: one dot
+     per 50 paying customers, A ahead (22 to 15). With RevenueCat,
+     judged on predicted 12-month LTV: one dot per $5K of revenue, earned
+     month by month (month 1 observed, 2 to 12 predicted), B overtaking in month 4 and ending ahead (19 to 13), all
+     dots filled. Counts are computed here, never typed.
    The markup and CSS default to the end states, so no-JS and reduced
    motion show them. */
 (function () {
@@ -21,38 +22,53 @@
   function clear() { timers.forEach(window.clearTimeout); timers = []; }
 
   /* ---------- Learn: dots from the simulator's model ---------- */
-  var PER_DOT = 50;
+  var PER_PAYING = 50;    /* Before: paying customers per dot */
+  var PER_REVENUE = 5000; /* With RevenueCat: predicted revenue per dot, $ */
   function model(key) {
     var el = document.querySelector('[data-model="' + key + '"]');
     if (!el) return null;
-    return { paying: +el.getAttribute('data-paying'), retention: el.getAttribute('data-retention').split(',').map(Number) };
+    var m = {
+      paying: +el.getAttribute('data-paying'),
+      price: +el.getAttribute('data-price'),
+      retention: el.getAttribute('data-retention').split(',').map(Number)
+    };
+    /* Cumulative revenue by month, as the simulator's chart draws it */
+    var sum = 0;
+    m.revenue = m.retention.map(function (pct) { sum += m.paying * m.price * pct / 100; return sum; });
+    return m;
   }
   var M = { a: model('a'), b: model('b') };
+  function dotsFor(m, unit, month) {
+    return unit === 'revenue' ? Math.round(m.revenue[month - 1] / PER_REVENUE) : Math.round(m.paying / PER_PAYING);
+  }
   var sets = Array.prototype.slice.call(root.querySelectorAll('[data-dots]'));
   sets.forEach(function (set) {
     var m = M[set.getAttribute('data-dots')];
     if (!m) return;
-    var n = Math.round(m.paying / PER_DOT);
+    var n = dotsFor(m, set.getAttribute('data-unit'), 12);
     for (var i = 0; i < n; i++) set.appendChild(document.createElement('i'));
   });
+  /* Revenue dots appear as the months earn them; all filled at month 12 */
+  var revenueSets = sets.filter(function (s) { return s.getAttribute('data-unit') === 'revenue'; });
   function showMonth(set, month) {
     var m = M[set.getAttribute('data-dots')];
     if (!m) return;
-    var dots = set.children;
-    var lit = Math.round(dots.length * m.retention[month - 1] / 100);
-    for (var i = 0; i < dots.length; i++) dots[i].classList.toggle('is-off', i >= lit);
+    var earned = dotsFor(m, 'revenue', month);
+    for (var i = 0; i < set.children.length; i++) set.children[i].classList.toggle('is-pending', i >= earned);
   }
-  var yearSets = sets.filter(function (s) { return s.hasAttribute('data-over-year'); });
-  var monthLabel = root.querySelector('[data-dot-month]');
+  /* Month 1 is observed, months 2 to 12 predicted, as on the simulator's chart */
+  var monthLabel = root.querySelector('[data-dot-label]');
+  function labelMonth(n) {
+    monthLabel.textContent = n === 1 ? monthLabel.getAttribute('data-observed') : monthLabel.getAttribute('data-predicted').replace('{n}', n);
+  }
   var yearVerdict = root.querySelector('[data-year] .is-now .verdict');
-  yearSets.forEach(function (s) { showMonth(s, 12); });
 
   function playYear() {
     var month = 1;
     yearVerdict.classList.add('is-hidden');
     function step() {
-      yearSets.forEach(function (s) { showMonth(s, month); });
-      monthLabel.textContent = String(month);
+      revenueSets.forEach(function (s) { showMonth(s, month); });
+      labelMonth(month);
       if (month === 12) { yearVerdict.classList.remove('is-hidden'); return; }
       month += 1;
       later(step, month === 2 ? 700 : 260);

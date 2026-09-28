@@ -1,7 +1,13 @@
 # Page architecture: /for-product refresh
 
-Status: v1.8, frozen (phase 5.1: final fixes from the ranked list). No
-more design changes. Phase 5.1 in brief: Pixelcut is section 4's
+Status: v1.9 (phase 5.2: three readability fixes after a final read,
+on top of the frozen v1.8). Phase 5.2: section 3's Learn dots change
+unit, not proportions (paying customers before, $5K of predicted
+revenue after, all filled); the Charts module drops its sidebar for
+the shared pill tabs (css/tabs.css, also used by section 3) above a
+full-width card sized to its content; section 6 returns to the zigzag,
+the journey a compact vertical visual on the left.
+Before 5.2: v1.8, frozen (phase 5.1: final fixes from the ranked list). Phase 5.1 in brief: Pixelcut is section 4's
 customer story (its case study has weekly beating monthly, which
 clashed with section 5's simulator); section 5 chips are plain tags
 with a prices line; hero cards keep their last result until their own

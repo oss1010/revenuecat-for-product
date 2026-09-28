@@ -1787,3 +1787,65 @@ Where the content file and the record differed, the record won:
 - PDF: 10 pages. A table that followed the simulator image had been
   chained to it, which pushed all of section 6 onto a new page; that
   one link is released.
+
+## 2026-09-27: Build phase 5.2, three readability fixes after a final read
+
+### What changed
+1. Section 3, Learn tab: a better unit, same proportions. The month-12
+   dots (1 of 22 and 3 of 15 still paying) were accurate but read as
+   empty at a glance.
+   - Before, judged on conversion to paying: one dot per 50 paying
+     customers. A 1,100 / 50 = 22; B 740 / 50 = 14.8, drawn as 15.
+     "A wins".
+   - With RevenueCat, judged on predicted 12-month LTV: one dot per $5K
+     of the simulator model's cumulative revenue, all filled. A
+     1,100 x $30.29 x 1.965 = $65,472, 13 dots; B 740 x $29.99 x 4.35 =
+     $96,538, 19 dots. "B predicted to win the year".
+   - The ticker earns the dots month by month: A 7 8 9 10 11 11 12 12 12
+     13 13 13, B 4 7 9 11 12 14 15 16 17 18 19 19. B passes A in month
+     4, as on the simulator's chart (tied at 9 in month 3 by rounding;
+     the chart has A slightly ahead, $46.6K to $45.7K).
+   - Every count is computed in js/shift.js from the simulator's
+     data-model attributes, never typed. Verified in the browser.
+2. Charts module: the sidebar is replaced by the pill tabs from page
+   section 3, now one shared component (css/tabs.css; section 3's tab
+   rules moved there). The chart card is full width; the intro is a
+   .section-head, so its body runs to 760px like every other section
+   intro (was capped at 640px). The fixed 25rem panel height is gone:
+   at 1440 the line charts are 401px and Benchmarks 293px (was 400px
+   for all three, Benchmarks mostly empty).
+3. Section 6: the zigzag is back. The text column (eyebrow, headline,
+   body, four web lines, both links) sits on the right, the journey on
+   the left as a compact vertical visual (cards on a rail on desktop, a
+   timeline on mobile). Mobile: text first, then the visual. Floga
+   unchanged below.
+4. Process doc (site/process/): the dots anecdote replaced with the new
+   one; the Learn clause before it updated to match the new units
+   ("conversion to paying favoring A, predicted 12-month LTV favoring
+   B"); a 5.2 row in the phases table, checkpoint "Dot counts
+   recomputed from the model". PDF re-exported with headless Chrome
+   (preferCSSPageSize, backgrounds): 10 pages, 16 and 14 internal links
+   on pages 1 and 10 as before; every page rasterized with PDFKit and
+   checked. The gap under section 4's intro on page 4 is unchanged from
+   the committed PDF.
+
+### Claim audit (2026-09-27)
+| # | Label | Verdict | Outcome |
+|---|---|---|---|
+| 1a | "Judged on conversion" | PASS conditional | "Conversion to paying" is RevenueCat's metric and the simulator's toggle; "conversion" alone could mean initial conversion. Now "Judged on conversion to paying" |
+| 1b | "Paying customers", "A wins" | PASS | Illustrative; 1,100 and 740 of 10,000 match the simulator's 11.0% and 7.4% |
+| 2a | "Judged on predicted 12-month revenue" | FAIL on wording | RevenueCat's term is "predicted 12-month LTV" (release note, 2026-02-12). Now "Judged on predicted 12-month LTV"; the dots stay in revenue, which RevenueCat itself uses to state a variant's LTV |
+| 2b | Ticker "Predicted revenue by month N" | PASS conditional | Month 1 is observed on the simulator's chart. Now "Observed revenue, month 1", then "Predicted revenue by month N" |
+| 2c | "B predicted to win the year" | PASS | "a predicted long-term winner"; "a forward-looking signal" |
+| 3 | Caption | PASS conditional | "12-month revenue" dropped: "$5K of predicted revenue by month 12" |
+Math re-checked by the auditor: all correct.
+
+### Verification
+- Headless Chrome at 390 and 1440, main page and /process: no console
+  errors, no horizontal overflow, no missing images.
+- Keyboard: section 3 and Charts tabs by arrows (both now the shared
+  pill tabs, accessible names the full labels); simulator two-step
+  rollout, Escape, reset focus; chart plots announce each month.
+- Reduced motion: Learn shows month 12, 13 of 13 and 19 of 19 dots and
+  the verdict; journey fully lit. With motion, month 1 opens at A 7,
+  B 4 and fills to the end state.
