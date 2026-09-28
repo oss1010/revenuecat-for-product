@@ -14,7 +14,7 @@ actually weighs.
 | **Superwall** | Own the monetization roadmap end to end without a release or an engineering queue. Has a dedicated PM page, which lists web checkout among the things a PM runs alone. Homepage positions it for mobile and web apps | Paywall editor plus campaign experiments | Web checkout, audience targeting, agents that surface the next test, SQL query API | Infrastructure free at any scale; billed only on revenue through a Superwall paywall | $1.6B+ annual subscription revenue, 10,000+ apps (homepage, 2026-09-26) |
 | **Adapty** | Make financial decisions on accurate revenue analytics. No PM page; roles are developers, marketers, app owners | LTV and revenue prediction | Flow and paywall builder, AI generator, Autopilot, refund saver, payout acceleration, Apple Ads manager | ML model predicting LTV and revenue 12 months out | 30,000+ apps, $5B revenue tracked (self-reported, homepage, 2026-09-26) |
 | **Purchasely** | Your conversion problem is not one screen. Owns the whole first session, not just the paywall | Onboarding journeys plus personalized paywalls | Web2app funnels, win-back, Figma import, Pulse Design AI, native rendering | TomTom +85% MRR, Headspace +103% adoption | Enterprise and media: Headspace, Busuu, Le Monde, The Times, Wattpad |
-| **Qonversion** | Transform your product management. Generic PM page | No-code A/B testing | Remote configs, analytics, CRM, Apple Search Ads | $1B+ served revenue, 99.99% uptime | Smallest of the direct set |
+| **Qonversion** | Transform your product management. A general PM page | No-code A/B testing | Remote configs, analytics, CRM, Apple Search Ads | $1B+ served revenue, 99.99% uptime | Smallest of the direct set |
 | **Apphud** | The number one RevenueCat alternative. Explicitly positioned against them | Revenue data accuracy | Visual editor, Flows, rules and push, win-back refunds | 99.9% data accuracy vs App Store Connect | Small |
 | **Build in-house** | Zero vendor fee, full control | Engineering's own roadmap | None | "We already have engineers" | The default |
 | **Apple / Google native** | Free, built in | Custom product pages, store experiments | StoreKit 2 | It's already there | Universal |
@@ -35,18 +35,19 @@ a live objection.
 
 ## The finding that matters
 
-The market's picture of RevenueCat is out of date. Competitors are
-still beating a 2022 version of the product, and the current
-/for-product page describes that same 2022 version.
+The product has outgrown the market's picture of it. Competitors'
+comparison pages still describe an earlier RevenueCat, and the
+current /for-product page describes that earlier product too.
 
 This refresh is not a copy refresh. It is correcting a market
-perception that competitors are actively exploiting.
+perception that competitors use in their comparison pages.
 
 ## The category has converged
 
 Every vendor now makes the same promise to PMs: change the paywall
 without engineering, test it, read the analytics. Superwall says it
-best, Qonversion says it blandly, Adapty adds more analytics on top.
+most directly, Qonversion in general terms, and Adapty adds more
+analytics on top.
 That promise is table stakes and differentiates nobody.
 
 ## What RevenueCat can claim alone

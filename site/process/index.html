@@ -60,7 +60,7 @@
           <li><a href="#architecture"><span class="toc-n">5</span>Architecture and copy</a></li>
           <li><a href="#build"><span class="toc-n">6</span>Build and verification</a></li>
           <li><a href="#next"><span class="toc-n">7</span>What I'd do next</a></li>
-          <li><a href="#appendix"><span class="toc-n" aria-hidden="true"></span>Appendix: tools, assumptions, sources</a></li>
+          <li><a href="#appendix"><span class="toc-n" aria-hidden="true"></span>Appendix: assumptions, sources</a></li>
         </ol>
       </nav>
     </div>
@@ -71,13 +71,11 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">1</span><h2 class="h2" id="summary-title">Summary</h2></div>
 
-      <p><strong>The diagnosis.</strong> The current page was written for a RevenueCat that took monetization off a PM's plate. Its promise was "You ship what matters, we handle monetization." The product has since outgrown that promise. Paywalls, Experiments with predicted <span class="nowrap">12-month</span> LTV, web funnels and web billing now put monetization in the PM's hands. The page still describes the earlier product, and so do competitors' comparison pages: one lists four capabilities as missing from RevenueCat that RevenueCat now ships.</p>
+      <p><strong>The diagnosis.</strong> The current page was written for a RevenueCat that took monetization off a PM's plate: "You ship what matters, we handle monetization." The product outgrew that: Paywalls, Experiments with predicted <span class="nowrap">12-month</span> LTV, web funnels and web billing hand monetization to PMs. The page, like competitors' comparison pages, still describes the earlier product. One comparison lists four shipped capabilities as missing.</p>
 
-      <p><strong>The positioning.</strong> Monetization is a product decision, and RevenueCat lets product managers make it like one. That principle organizes the page but never appears on it. The page is built on three jobs, drawn from the seven pain points PMs face: change it without a release, learn what users value, and fit the offer to every user, on a foundation that handles the rest. Revenue is the outcome, not the PM's job title.</p>
+      <p><strong>The positioning.</strong> Monetization is a product decision, and RevenueCat lets product managers make it like one. The principle organizes the page, unstated. Three jobs carry it: change it without a release, learn what users value, fit the offer to every user, on a foundation that handles the rest. Revenue is the outcome, not the PM's job title.</p>
 
-      <p><strong>The page.</strong> The hero reads "Build a subscription experience worth renewing." Eight section headlines tell the whole argument on their own. Five dynamic modules, including an experiment simulator where judging by conversion and judging by predicted <span class="nowrap">12-month</span> LTV pick different winners.</p>
-
-      <p><strong>How I worked.</strong> Claude as a strategy partner, Claude Code as the builder, five custom review agents, and a public repo where every decision is logged.</p>
+      <p><strong>The page.</strong> Hero: "Build a subscription experience worth renewing." Eight headlines carry the argument; five dynamic modules include an experiment simulator where conversion and predicted <span class="nowrap">12-month</span> LTV pick different winners.</p>
 
       <ul class="stat-tiles wide figure" aria-label="Scoreboard">
         <li class="stat-tile"><span class="num">14</span><span class="label">positioning directions tested, 1 kept</span></li>
@@ -86,24 +84,40 @@
         <li class="stat-tile"><span class="num">56</span><span class="label">claims failed by the audit and fixed</span></li>
       </ul>
 
+      <ol class="timeline wide figure" aria-label="Process at a glance">
+        <li><a href="#research"><span class="tl-n" aria-hidden="true">2</span><span class="tl-stage">Framing and research</span><span class="tl-stat">RevenueCat's site, seven feature pages, five competitors</span></a></li>
+        <li><a href="#positioning"><span class="tl-n" aria-hidden="true">3</span><span class="tl-stage">Positioning</span><span class="tl-stat">14 directions tested, 1 kept</span></a></li>
+        <li><a href="#system"><span class="tl-n" aria-hidden="true">4</span><span class="tl-stage">The system</span><span class="tl-stat">5 agents, 1 context file, 1 <span class="nowrap">pre-commit</span> hook</span></a></li>
+        <li><a href="#architecture"><span class="tl-n" aria-hidden="true">5</span><span class="tl-stage">Architecture and copy</span><span class="tl-stat">8 page sections, 5 dynamic modules, 19 hero lines</span></a></li>
+        <li><a href="#build"><span class="tl-n" aria-hidden="true">6</span><span class="tl-stage">Build and verification</span><span class="tl-stat">8 phases, a red team, a final <span class="nowrap">48-claim</span> sweep</span></a></li>
+      </ol>
+
+      <h3 class="h3">How I worked</h3>
+      <div class="table-card wide">
+        <table class="t-stack">
+          <thead>
+            <tr><th scope="col" style="width: 24%">Tool</th><th scope="col">Role</th></tr>
+          </thead>
+          <tbody>
+            <tr class="is-me"><th scope="row">Me</th><td data-label="Role">Direction and judgment: the diagnosis of the current page, the positioning, 13 directions killed and one kept, the copy, what the page had to prove and what it could leave out, and every final call. The AI widened the options and checked the work. The calls drew on my own product and developer marketing experience, including at Unity.</td></tr>
+            <tr><th scope="row">Claude, in chat</th><td data-label="Role">Strategy partner: positioning, copy, red-teaming its own advice, reviewing agent output, extracting RevenueCat animation frames for the builder's motion study</td></tr>
+            <tr><th scope="row">Claude Code</th><td data-label="Role">The builder: every file, the five agents, git, headless-browser verification</td></tr>
+            <tr><th scope="row">GitHub</th><td data-label="Role">Public repo, with the full decision history</td></tr>
+            <tr><th scope="row">Vercel</th><td data-label="Role">Hosting, redeployed every push</td></tr>
+            <tr><th scope="row">Chrome DevTools and Font Finder</th><td data-label="Role">Sampling RevenueCat's live typography and colors</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Five review agents checked the work: <span class="nowrap">pm-critic</span> reads as three PMs, <span class="nowrap">competitor-watch</span> checks what competitors own, <span class="nowrap">web-copy</span> tightens copy, <span class="nowrap">brand-guard</span> checks RevenueCat's visual grammar, and <span class="nowrap">claim-auditor</span> traces every claim to a public source.</p>
+
       <div class="keep">
-        <p><strong>Three kinds of callout</strong> run through this doc, because the collaboration went in every direction:</p>
+        <p><strong>Three kinds of callout</strong> mark a collaboration running in every direction:</p>
         <ul class="legend" style="margin-top: 1rem">
           <li><span class="pill pill--me"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="5" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.75 14c.6-2.9 2.7-4.5 5.25-4.5s4.65 1.6 5.25 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>I challenged the AI</span><span class="sr-only">:</span> where I overrode a recommendation</li>
           <li><span class="pill pill--ai"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5c.5 3.4 1.9 5.2 5.5 6.5-3.6 1.3-5 3.1-5.5 6.5-.5-3.4-1.9-5.2-5.5-6.5 3.6-1.3 5-3.1 5.5-6.5z" fill="currentColor"/></svg>The AI challenged me</span><span class="sr-only">:</span> where it pushed back and was right</li>
           <li><span class="pill pill--agent"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>An agent caught it</span><span class="sr-only">:</span> where a review agent found what neither of us had</li>
         </ul>
       </div>
-
-      <ol class="timeline wide figure" aria-label="Process at a glance">
-        <li><span class="tl-n" aria-hidden="true">1</span><span class="tl-stage">Research</span><span class="tl-stat">RevenueCat's site, seven feature pages, five competitors</span></li>
-        <li><span class="tl-n" aria-hidden="true">2</span><span class="tl-stage">Positioning</span><span class="tl-stat">14 directions, 1 kept</span></li>
-        <li><span class="tl-n" aria-hidden="true">3</span><span class="tl-stage">System</span><span class="tl-stat">5 agents, 1 context file, 1 <span class="nowrap">pre-commit</span> hook</span></li>
-        <li><span class="tl-n" aria-hidden="true">4</span><span class="tl-stage">Architecture</span><span class="tl-stat">8 sections, 5 dynamic modules</span></li>
-        <li><span class="tl-n" aria-hidden="true">5</span><span class="tl-stage">Copy</span><span class="tl-stat">19 hero lines, 1 kept, 1 test variant</span></li>
-        <li><span class="tl-n" aria-hidden="true">6</span><span class="tl-stage">Build</span><span class="tl-stat">8 phases, static HTML, no framework</span></li>
-        <li><span class="tl-n" aria-hidden="true">7</span><span class="tl-stage">Verification</span><span class="tl-stat">a red team against the current page, a final <span class="nowrap">48-claim</span> sweep, 390px first</span></li>
-      </ol>
     </div>
   </section>
 
@@ -112,7 +126,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">2</span><h2 class="h2" id="research-title">Framing and research</h2></div>
 
-      <p><strong>What I read first.</strong> RevenueCat's homepage, seven feature pages, the changelog and docs for what's actually shipped and when, the pricing page, and the State of Subscription Apps 2026 report for plausibility checks. Then five competitors' pages, plus the two alternatives PMs actually weigh: building in-house and native store tools.</p>
+      <p><strong>What I read first.</strong> RevenueCat's homepage, seven feature pages, pricing, changelog and docs (what shipped when), and the State of Subscription Apps 2026 report (plausibility checks). Then five competitors and two alternatives PMs weigh: building in-house, native store tools.</p>
 
       <h3 class="h3">The competitive scan</h3>
       <div class="table-card wide">
@@ -121,19 +135,19 @@
             <tr><th scope="col"><span class="sr-only">Vendor or alternative</span></th><th scope="col">How it pitches product teams</th><th scope="col">Evidence tier</th><th scope="col">Signature claim</th><th scope="col">Scale</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">Superwall</th><td data-label="How it pitches product teams">A dedicated PM page: own the monetization roadmap end to end, without an app release or an engineering queue</td><td data-label="Evidence tier"><strong>Owned</strong> (dedicated PM page)</td><td data-label="Signature claim">Bills only on revenue through its own paywalls</td><td data-label="Scale">$1.6B+ revenue, 10,000+ apps</td></tr>
+            <tr class="is-rc"><th scope="row">RevenueCat today</th><td data-label="How it pitches product teams">"You ship what matters, we handle monetization"</td><td data-label="Evidence tier"><strong>Owned:</strong> its own PM page, with a message the product has outgrown</td><td data-label="Signature claim">Engineering time saved on in-app purchases</td><td data-label="Scale">146K+ apps, $17B+</td></tr>
+            <tr><th scope="row">Superwall</th><td data-label="How it pitches product teams">Dedicated PM page: own the monetization roadmap end to end, no app release or engineering queue</td><td data-label="Evidence tier"><strong>Owned</strong> (dedicated PM page)</td><td data-label="Signature claim">Bills only on revenue through its own paywalls</td><td data-label="Scale">$1.6B+ revenue, 10,000+ apps</td></tr>
             <tr><th scope="row">Adapty</th><td data-label="How it pitches product teams">Financial decisions on accurate revenue analytics. No PM page</td><td data-label="Evidence tier"><strong>Claimed</strong> (homepage section: testing for revenue, not just conversions)</td><td data-label="Signature claim"><span class="nowrap">12-month</span> LTV and revenue prediction</td><td data-label="Scale">Large, self-reported</td></tr>
             <tr><th scope="row">Purchasely</th><td data-label="How it pitches product teams">The conversion problem is the whole first session, not one screen</td><td data-label="Evidence tier"><strong>Claimed</strong></td><td data-label="Signature claim">Onboarding journeys and personalized paywalls</td><td data-label="Scale">Enterprise and media customers</td></tr>
-            <tr><th scope="row">Qonversion</th><td data-label="How it pitches product teams">A generic PM page</td><td data-label="Evidence tier"><strong>Owned</strong>, weakly</td><td data-label="Signature claim">No-code A/B testing</td><td data-label="Scale">$1B+ served revenue</td></tr>
+            <tr><th scope="row">Qonversion</th><td data-label="How it pitches product teams">A general PM page</td><td data-label="Evidence tier"><strong>Owned</strong>, weakly</td><td data-label="Signature claim">No-code A/B testing</td><td data-label="Scale">$1B+ served revenue</td></tr>
             <tr><th scope="row">Apphud</th><td data-label="How it pitches product teams">Positioned as the RevenueCat alternative</td><td data-label="Evidence tier"><strong>Claimed</strong></td><td data-label="Signature claim">Revenue data accuracy</td><td data-label="Scale">14,000+ apps, $1B+ tracked, self-reported</td></tr>
             <tr><th scope="row">In-house</th><td data-label="How it pitches product teams">No vendor fee, full control</td><td data-label="Evidence tier">n/a</td><td data-label="Signature claim">"We already have engineers"</td><td data-label="Scale">The default</td></tr>
             <tr><th scope="row">Native store tools</th><td data-label="How it pitches product teams">Free and built in</td><td data-label="Evidence tier">n/a</td><td data-label="Signature claim">Store-level experiments</td><td data-label="Scale">Universal</td></tr>
-            <tr><th scope="row">RevenueCat today</th><td data-label="How it pitches product teams">"You ship what matters, we handle monetization"</td><td data-label="Evidence tier">n/a</td><td data-label="Signature claim">n/a</td><td data-label="Scale">146K+ apps, $17B+</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p><strong>What the scan showed.</strong> The category has converged on one promise to PMs: change the paywall without engineering, test it, read the analytics. That promise is now table stakes. RevenueCat's edge is not a unique feature. It is being the category leader with the most complete platform, a <span class="nowrap">12-month</span> forecast inside the experiment, and scale no challenger matches.</p>
+      <p><strong>What the scan showed.</strong> The category converged on one PM promise, now table stakes: change the paywall without engineering, test it, read the analytics. RevenueCat's edge is leadership, not a unique feature: the most complete platform, a <span class="nowrap">12-month</span> forecast inside the experiment, unmatched scale.</p>
 
       <h3 class="h3">The lesson: where a claim lives matters</h3>
       <div class="table-card wide">
@@ -144,14 +158,14 @@
           <tbody>
             <tr><th scope="row">Dedicated persona page or homepage headline</th><td data-label="What it means"><strong>Owned.</strong> They own that message to that audience</td><td data-label="Does it block RevenueCat from claiming it?">Yes. Don't lead with the same frame</td></tr>
             <tr><th scope="row">Homepage section or feature page</th><td data-label="What it means"><strong>Claimed.</strong> Strong but contestable</td><td data-label="Does it block RevenueCat from claiming it?">Only if RevenueCat can't prove it more completely</td></tr>
-            <tr><th scope="row">Docs, changelog, help center</th><td data-label="What it means"><strong>Parity.</strong> The capability exists, it isn't a position</td><td data-label="Does it block RevenueCat from claiming it?">No</td></tr>
+            <tr><th scope="row">Docs, changelog, help center</th><td data-label="What it means"><strong>Parity.</strong> A capability, not a position</td><td data-label="Does it block RevenueCat from claiming it?">No</td></tr>
           </tbody>
         </table>
       </div>
 
       <aside class="callout callout--me" aria-label="I challenged the AI">
         <span class="pill pill--me"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="5" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.75 14c.6-2.9 2.7-4.5 5.25-4.5s4.65 1.6 5.25 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>I challenged the AI</span>
-        <p>When the competitor agent found revenue-based winners buried in two competitors' docs, the AI concluded RevenueCat should retreat to the one claim nobody else could make: "grow revenue on the system that already runs it." I rejected it. A capability in someone's documentation is parity, not positioning, and a category leader shouldn't position like a challenger. We wrote the owned, claimed and parity rule into the agent so it wouldn't make the same mistake twice.</p>
+        <p>When the competitor agent found revenue-based winners in two competitors' docs, the AI advised retreating to a claim nobody else could make: "grow revenue on the system that already runs it." I rejected it: documented capability is parity, not positioning, and leaders shouldn't position like challengers. We wrote the owned, claimed and parity rule into the agent.</p>
       </aside>
     </div>
   </section>
@@ -161,7 +175,7 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">3</span><h2 class="h2" id="positioning-title">Positioning, and every direction I killed</h2></div>
 
-      <p>Positioning took five rounds. Each round killed something for a specific reason, and the reasons are more useful than the directions.</p>
+      <p>Positioning took five rounds, each killing something for a specific reason. The reasons are more useful than the directions.</p>
 
       <div class="table-card wide">
         <table class="t-stack">
@@ -169,30 +183,30 @@
             <tr><th scope="col" class="col-narrow">Round</th><th scope="col">Directions tested</th><th scope="col">What killed them</th><th scope="col">Who killed them</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row" data-label="Round">1</th><td data-label="Directions tested">Monetization as a product surface; "speed is table stakes, knowing what worked isn't"; "your app store isn't your only store"</td><td data-label="What killed them">The AI recommended a hybrid: one as the spine, one as proof, one as a chapter. Three decisions wearing one coat</td><td data-label="Who killed them">I did</td></tr>
-            <tr><th scope="row" data-label="Round">2</th><td data-label="Directions tested">"You own the number, now own the controls"; "change the paywall today, know what it's worth in 12 months"; "conversion is the wrong number"</td><td data-label="What killed them">The first was on Superwall's PM page almost word for word. The second merged Superwall's speed claim with Adapty's forecast claim</td><td data-label="Who killed them">The competitor scan</td></tr>
-            <tr><th scope="row" data-label="Round">3</th><td data-label="Directions tested">"Decide on money inside the experiment"; "grow revenue on the system that already runs it"</td><td data-label="What killed them">Revenue winners inside tests turned out to exist in two competitors' docs. The retreat that followed positioned a leader like a challenger</td><td data-label="Who killed them">The agent, then me</td></tr>
-            <tr><th scope="row" data-label="Round">4</th><td data-label="Directions tested">"Control of every monetization decision, judged on long-term revenue"; "monetization calls a PM can defend"</td><td data-label="What killed them">The first used Superwall's owned language and its reason to believe only worked for existing customers. The second was defensive, and came from one synthetic persona's worry rather than the PM's real pains</td><td data-label="Who killed them">Three agents, then me</td></tr>
-            <tr><th scope="row" data-label="Round">5</th><td data-label="Directions tested">"Monetization that evolves alongside the product"; "make more money" and "long-term revenue"</td><td data-label="What killed them">The first is a pace comparison and a process, not an outcome. The second is the homepage's promise, not the persona's job</td><td data-label="Who killed them">I did</td></tr>
-            <tr class="is-kept"><th scope="row" data-label="Round"><span class="win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Kept</span></th><td data-label="Directions tested"><strong>Monetization is a product decision. RevenueCat lets product managers make it like one</strong></td><td data-label="What killed them">Survived all three agents as structure. Failed as copy, so it stays internal</td><td data-label="Who killed them">Validated by agents</td></tr>
+            <tr class="is-kept"><th scope="row"><span class="win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Kept</span></th><td data-label="Directions tested"><strong>Monetization is a product decision. RevenueCat lets product managers make it like one</strong></td><td data-label="What killed them">Structure survived all three agents; failed as copy, stays internal</td><td data-label="Who killed them">Validated by agents</td></tr>
+            <tr><th scope="row" data-label="Round">1</th><td data-label="Directions tested">Monetization as a product surface; "speed is table stakes, knowing what worked isn't"; "your app store isn't your only store"</td><td data-label="What killed them">The AI recommended a hybrid: spine, proof, chapter. Three decisions wearing one coat</td><td data-label="Who killed them">I did</td></tr>
+            <tr><th scope="row" data-label="Round">2</th><td data-label="Directions tested">"You own the number, now own the controls"; "change the paywall today, know what it's worth in 12 months"; "conversion is the wrong number"</td><td data-label="What killed them">First: near-verbatim on Superwall's PM page. Second: merged Superwall's speed and Adapty's forecast claims</td><td data-label="Who killed them">The competitor scan</td></tr>
+            <tr><th scope="row" data-label="Round">3</th><td data-label="Directions tested">"Decide on money inside the experiment"; "grow revenue on the system that already runs it"</td><td data-label="What killed them">Two competitors' docs already had revenue winners; retreating cast a leader as a challenger</td><td data-label="Who killed them">The agent, then me</td></tr>
+            <tr><th scope="row" data-label="Round">4</th><td data-label="Directions tested">"Control of every monetization decision, judged on long-term revenue"; "monetization calls a PM can defend"</td><td data-label="What killed them">First: Superwall's owned language; its reason to believe suited only existing customers. Second: defensive, from one synthetic persona's worry, not real PM pains</td><td data-label="Who killed them">Three agents, then me</td></tr>
+            <tr><th scope="row" data-label="Round">5</th><td data-label="Directions tested">"Monetization that evolves alongside the product"; "make more money" and "long-term revenue"</td><td data-label="What killed them">First: a pace comparison and process, not an outcome. Second: the homepage's promise, not the persona's job</td><td data-label="Who killed them">I did</td></tr>
           </tbody>
         </table>
       </div>
 
       <aside class="callout callout--ai" aria-label="The AI challenged me">
         <span class="pill pill--ai"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5c.5 3.4 1.9 5.2 5.5 6.5-3.6 1.3-5 3.1-5.5 6.5-.5-3.4-1.9-5.2-5.5-6.5 3.6-1.3 5-3.1 5.5-6.5z" fill="currentColor"/></svg>The AI challenged me</span>
-        <p>I wanted to add "autopilot," the system picking and shipping winners automatically. The AI pushed back on three counts: rollout is human-triggered in the product, Autopilot is a competitor's product name, and it contradicts the control idea. Its reframe was better: the machine recommends, the PM decides.</p>
+        <p>I wanted "autopilot": the system picking and shipping winners itself. The AI objected on three counts: rollout is human-triggered in the product, Autopilot is a competitor's product name, and it contradicts the control idea. Its reframe won: the machine recommends, the PM decides.</p>
       </aside>
 
       <aside class="callout callout--agent" aria-label="An agent caught it">
         <span class="pill pill--agent"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>An agent caught it</span>
-        <p>All three PM personas rejected "monetization is a product decision" as customer-facing language: a truism, a turf claim, and wrong for enterprise. But each one, unprompted, described one of our three jobs in their own words. That validated the structure and killed the phrase as copy. Unowned is not the same as resonant.</p>
+        <p>All three PM personas rejected "monetization is a product decision" as copy: a truism, a turf claim, wrong for enterprise. Yet each, unprompted, described one of our three jobs in their own words. Structure validated, phrase killed: unowned is not the same as resonant.</p>
       </aside>
 
-      <p><strong>An honest note.</strong> The final idea is close to where round one started. What changed is everything underneath it: it now comes from the PM's own job, it's structured by their real pains, and it's differentiated by proof rather than by a clever phrase.</p>
+      <p><strong>An honest note.</strong> The final idea is close to round one's. What changed is underneath: it now comes from the PM's job, is structured by their real pains, and is differentiated by proof, not a clever phrase.</p>
 
       <h3 class="h3">From seven pain points to three jobs</h3>
-      <p>The seven pains a PM feels map onto three jobs and a foundation. Each became a section of the page.</p>
+      <p>Seven PM pains map onto three jobs and a foundation, each a page section.</p>
 
       <div class="table-card wide">
         <table class="t-stack">
@@ -202,7 +216,7 @@
           <tbody>
             <tr><th scope="row">Paywall changes queue behind engineering</th><td data-label="Job"><strong>Change it without a release</strong></td><td data-label="What delivers it">Paywalls, remote configuration, one-action rollout</td><td data-label="Page section">4, 5</td></tr>
             <tr><th scope="row">Not knowing which test result to trust</th><td data-label="Job"><strong>Learn what users value</strong></td><td data-label="What delivers it">Experiments with predicted <span class="nowrap">12-month</span> LTV</td><td data-label="Page section">5</td></tr>
-            <tr><th scope="row">Blind spots between acquisition and revenue</th><td data-label="Job"><strong>Learn what users value</strong></td><td data-label="What delivers it">Campaign tracking in web funnels, Apple Search Ads keyword filters in Charts</td><td data-label="Page section">5, 6</td></tr>
+            <tr><th scope="row">Blind spots between acquisition and revenue</th><td data-label="Job"><strong>Learn what users value</strong></td><td data-label="What delivers it">Web funnel campaign tracking; Apple Search Ads keyword filters in Charts</td><td data-label="Page section">5, 6</td></tr>
             <tr><th scope="row">Monetization problems spotted too late</th><td data-label="Job"><strong>Learn what users value</strong></td><td data-label="What delivers it">Paywall charts, realized LTV per customer, Benchmarks</td><td data-label="Page section">5</td></tr>
             <tr><th scope="row">One offer for every user</th><td data-label="Job"><strong>Fit the offer to every user</strong></td><td data-label="What delivers it">Targeting, funnels that branch</td><td data-label="Page section">6</td></tr>
             <tr><th scope="row">Store commission pressure</th><td data-label="Job"><strong>Fit the offer to every user</strong></td><td data-label="What delivers it">Web billing</td><td data-label="Page section">6</td></tr>
@@ -218,32 +232,30 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">4</span><h2 class="h2" id="system-title">The system: five agents and a context file</h2></div>
 
-      <p>I built the page with a small review system rather than a chain of prompts, so every claim, headline and visual got checked by something that wasn't the thing that wrote it.</p>
+      <p>I built a small review system, not a prompt chain, so every claim, headline and visual was checked by something other than its author.</p>
 
       <div class="table-card wide">
         <table class="t-stack t-nowrap">
           <thead>
-            <tr><th scope="col" class="col-narrow">Agent</th><th scope="col">Its job</th><th scope="col">What it caught</th></tr>
+            <tr><th scope="col" class="col-narrow">Agent</th><th scope="col" style="width: 24%">Its job</th><th scope="col">What it caught</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">pm-critic</th><td data-label="Its job">Reads everything as a solo PM, a growth PM and an enterprise PM</td><td data-label="What it caught">Validated the three-job structure; surfaced the enterprise governance question and a list of product gaps. On the finished page: a clear win over the current one for the solo and growth PM, partial for enterprise</td></tr>
-            <tr><th scope="row">competitor-watch</th><td data-label="Its job">Checks every claim against what competitors own, claim or merely have</td><td data-label="What it caught">Killed a Superwall headline I planted as a calibration test, without being told it was one. Flagged that v0.1's core idea was Superwall's language</td></tr>
-            <tr><th scope="row">web-copy</th><td data-label="Its job">Drafts and tightens landing-page copy, always with a version cut by 30%. Used here for line-level cuts only</td><td data-label="What it caught">Every cut it proposed was applied before the build: 14 cuts, about 85 words (11%)</td></tr>
-            <tr><th scope="row">brand-guard</th><td data-label="Its job">Compares the built page with RevenueCat's visual grammar</td><td data-label="What it caught">Five fixes in phase 3B, all applied: a leftover CSS rule that broke the funnel layout; section 3 tabs that were the largest blue fill on the page; section 7 icon tiles that read as the old feature grid; testimonials reworked into one centered block; and a container narrowed from 1,200px to about 990px, RevenueCat's width. Final verdict on the finished page: reads as a RevenueCat page, with no contrast or color-rule failures</td></tr>
-            <tr><th scope="row">claim-auditor</th><td data-label="Its job">Traces every claim to a public source</td><td data-label="What it caught">56 fails in total, including a final sweep of 48 strings that failed 4. Among them: a product name that doesn't exist publicly, a testimonial with no speaker, "one click" where the product says "one action," Figma designs that come in through a separate plugin, a Benchmarks band drawn at 25th to 75th percentile where RevenueCat uses 20th to 80th, and "win-back," which RevenueCat uses for users who have already left</td></tr>
+            <tr><th scope="row">pm-critic</th><td data-label="Its job">Reads as three PM archetypes</td><td data-label="What it caught">Validated the three-job structure; raised the enterprise governance question and product gaps</td></tr>
+            <tr><th scope="row">competitor-watch</th><td data-label="Its job">Checks what competitors own</td><td data-label="What it caught">Killed a Superwall headline I planted as an unannounced calibration test. Flagged v0.1's core idea as Superwall's language</td></tr>
+            <tr><th scope="row">web-copy</th><td data-label="Its job">Drafts and tightens copy</td><td data-label="What it caught">All 14 proposed cuts applied pre-build: about 85 words (11%)</td></tr>
+            <tr><th scope="row">brand-guard</th><td data-label="Its job">Checks RevenueCat's visual grammar</td><td data-label="What it caught">Five phase 3B fixes, all applied: a leftover CSS rule breaking the funnel layout; page section 3 tabs, the largest blue fill; page section 7 icon tiles reading as the old feature grid; testimonials reworked into one centered block; a container narrowed from 1,200px to about 990px, RevenueCat's width. Verdict: reads as a RevenueCat page</td></tr>
+            <tr><th scope="row">claim-auditor</th><td data-label="Its job">Traces claims to public sources</td><td data-label="What it caught">56 fails in total, 4 in the final <span class="nowrap">48-string</span> sweep. Among them: a nonpublic product name, an unattributed testimonial, "one click" where the product says "one action," Figma designs that arrive via a separate plugin, a Benchmarks band at 25th to 75th percentile where RevenueCat uses 20th to 80th, and "win-back," which RevenueCat uses for users already gone</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p><strong>The context file.</strong> CLAUDE.md holds the audience, the non-negotiables, the design tokens, the contrast rules and the color roles. Every session and every agent reads it first.</p>
+      <p><strong>The context file.</strong> CLAUDE.md holds audience, non-negotiables, design tokens, contrast rules and color roles. Every session and agent reads it first.</p>
 
-      <p><strong>The repo.</strong> Public, with the assignment brief, my notes, and the RevenueCat animations, product images and feature-page captures I studied kept out of it. Every decision is logged in <a href="https://github.com/oss1010/revenuecat-for-product/blob/main/docs/iteration-log.md"><code>docs/iteration-log.md</code></a>.</p>
-
-      <p><strong>Context states intent. Tooling enforces it.</strong> CLAUDE.md was created containing an em dash, breaking its own rule against them. So the rule became a pre-commit hook that blocks the commit. Then the hook was logged as built before it existed, a mistake the AI in chat made and caught itself on a later pass. Now it's real, and it blocks.</p>
+      <p><strong>Context states intent. Tooling enforces it.</strong> CLAUDE.md was created with an em dash, breaking its own rule, so the rule became a <span class="nowrap">pre-commit</span> hook. The AI in chat logged the hook as built before it existed, then caught it. Now it's real, and it blocks.</p>
 
       <aside class="callout callout--me" aria-label="I challenged the AI">
         <span class="pill pill--me"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="5" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.75 14c.6-2.9 2.7-4.5 5.25-4.5s4.65 1.6 5.25 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>I challenged the AI</span>
-        <p>What the agents missed: a page for product managers that never once said "product manager" in its visible copy. Four agents had reviewed it. None was asked to check who the page speaks to. I caught it on a read-through. Agents check what they're told to check.</p>
+        <p>What the agents missed: a page for product managers that never said "product manager" in visible copy. Four agents reviewed it; none was asked who it speaks to. I caught it reading through. Agents check what they're told to check.</p>
       </aside>
     </div>
   </section>
@@ -256,72 +268,72 @@
       <h3 class="h3" style="margin-top: 1.5rem">Architecture decisions</h3>
       <ul class="bullets">
         <li><strong>The hero carries the idea; the sections carry the proof.</strong></li>
-        <li><strong>Half static, half dynamic.</strong> The current page is entirely static imagery, and visual storytelling is the first thing being evaluated.</li>
-        <li><strong>One fictional app across every visual,</strong> Tidelark, a premium AI morning-routine coach, so the page tells one story instead of four unrelated ones.</li>
-        <li><strong>Zigzag layout</strong> for the job sections, like RevenueCat's own feature pages.</li>
-        <li><strong>"Learn more" links to the matching RevenueCat feature pages,</strong> so a PM can go deeper.</li>
+        <li><strong>Half static, half dynamic.</strong> The current page is all static imagery, and visual storytelling is judged first.</li>
+        <li><strong>One fictional app across every visual,</strong> Tidelark, a premium AI morning-routine coach: one story, not four unrelated ones.</li>
+        <li><strong>Zigzag layout</strong> for the job sections, like RevenueCat's feature pages.</li>
+        <li><strong>"Learn more" links to matching RevenueCat feature pages,</strong> so PMs can go deeper.</li>
       </ul>
 
-      <h3 class="h3">The hero: 19 lines considered</h3>
+      <h3 class="h3">The hero: 19 lines considered, 10 shown</h3>
       <div class="table-card wide">
         <table class="t-stack">
           <thead>
             <tr><th scope="col" style="width: 38%">Candidate</th><th scope="col">Verdict</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">"Your paywall shouldn't wait for a release."</th><td data-label="Verdict">The strongest felt pain, but table stakes, and close to Superwall's promise. <strong>Became section 4's headline</strong></td></tr>
-            <tr><th scope="row">"Change the paywall today. See its <span class="nowrap">12-month</span> value."</th><td data-label="Verdict">Two ideas with no link between them, and "change" is an activity, not a capability</td></tr>
+            <tr class="is-kept"><th scope="row">"Build a subscription experience worth renewing."</th><td data-label="Verdict"><span class="win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Kept.</span> A subscription is renewal by definition, so "worth renewing" says user value in two words. Top combined persona score</td></tr>
+            <tr class="is-soft"><th scope="row">"Build the reason they renew."</th><td data-label="Verdict">Cheekiest line; lands best once the argument is made. <strong>Became the closing line and hero test variant</strong></td></tr>
+            <tr><th scope="row">"Your paywall shouldn't wait for a release."</th><td data-label="Verdict">Strongest felt pain, but table stakes and close to Superwall's promise. <strong>Became page section 4's headline</strong></td></tr>
+            <tr><th scope="row">"Change the paywall today. See its <span class="nowrap">12-month</span> value."</th><td data-label="Verdict">Two unlinked ideas, and "change" is an activity, not a capability</td></tr>
             <tr><th scope="row">"Test pricing like you test features."</th><td data-label="Verdict">No outcome, no benefit, no difference</td></tr>
-            <tr><th scope="row">"Ship the paywall that pays, not the one that converts."</th><td data-label="Verdict">A competitor claims revenue over conversion, and "pays" reads as a guarantee</td></tr>
-            <tr><th scope="row">"Own your paywall without waiting on engineering."</th><td data-label="Verdict">Superwall's positioning, planted on purpose to test whether <span class="nowrap">competitor-watch</span> would catch it. It did</td></tr>
-            <tr><th scope="row">"Launch a paywall today. Judge it on the next 12 months."</th><td data-label="Verdict">"Today" isn't true for a first paywall, and the first half sits on Superwall's promise</td></tr>
-            <tr><th scope="row">"Stop shipping paywalls that win the week and lose the year."</th><td data-label="Verdict">The sharpest idea, but it opens by telling the reader they're wrong. <strong>Became section 5: "Win the year, not just the week."</strong></td></tr>
+            <tr><th scope="row">"Ship the paywall that pays, not the one that converts."</th><td data-label="Verdict">A competitor claims revenue over conversion; "pays" reads as a guarantee</td></tr>
+            <tr><th scope="row">"Own your paywall without waiting on engineering."</th><td data-label="Verdict">Superwall's positioning, planted to test <span class="nowrap">competitor-watch</span>. It caught it</td></tr>
+            <tr><th scope="row">"Launch a paywall today. Judge it on the next 12 months."</th><td data-label="Verdict">"Today" isn't true for a first paywall; the first half sits on Superwall's promise</td></tr>
+            <tr><th scope="row">"Stop shipping paywalls that win the week and lose the year."</th><td data-label="Verdict">Sharpest idea, but opens by telling readers they're wrong. <strong>Became page section 5: "Win the year, not just the week."</strong></td></tr>
             <tr><th scope="row">"Build the subscription experience your users stay for."</th><td data-label="Verdict">The right idea. "Paywalls" narrowed it, "subscription experience" widened it</td></tr>
-            <tr class="is-kept"><th scope="row">"Build a subscription experience worth renewing."</th><td data-label="Verdict"><span class="win"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Kept.</span> A subscription is renewal by definition, so "worth renewing" is the user-value idea in two words. Top combined score across the three PM personas</td></tr>
-            <tr><th scope="row">"Build the reason they renew."</th><td data-label="Verdict">The cheekiest line. Lands best once the argument is made. <strong>Became the closing line, and the hero test variant</strong></td></tr>
           </tbody>
         </table>
       </div>
 
       <aside class="callout callout--me" aria-label="I challenged the AI">
         <span class="pill pill--me"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="5" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.75 14c.6-2.9 2.7-4.5 5.25-4.5s4.65 1.6 5.25 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>I challenged the AI</span>
-        <p>The first three hero lines the AI offered were weak, and I said so. They satisfied the rules, short, accurate and unowned, but didn't lead with what the reader gets. The wordplay that won, a subscription being renewal by definition, was mine.</p>
+        <p>The AI's first three hero lines were weak, and I said so. Short, accurate and unowned, they met the rules but didn't lead with what the reader gets. The winning wordplay was mine.</p>
       </aside>
 
+      <h3 class="h3">The skimmer test</h3>
+      <p>The headlines alone should carry the argument; the list doubles as the page map.</p>
+      <ul class="skim wide figure" aria-label="The page's headlines, in order">
+        <li><span class="skim-n">Page section 1</span><span class="skim-h">Build a subscription experience worth renewing.</span></li>
+        <li><span class="skim-n">Page section 2</span><span class="skim-h">Trusted by teams at <span class="skim-note">[logos]</span></span></li>
+        <li><span class="skim-n">Page section 3</span><span class="skim-h">Change faster. Learn what renews. Fit every user.</span></li>
+        <li><span class="skim-n">Page section 4</span><span class="skim-h">Your paywall shouldn't wait for a release.</span></li>
+        <li><span class="skim-n">Page section 5</span><span class="skim-h">Win the year, not just the week.<span class="skim-sub">The test ends. The learning doesn't.</span></span></li>
+        <li><span class="skim-n">Page section 6</span><span class="skim-h">Different users. Different offers. App or web.</span></li>
+        <li><span class="skim-n">Page section 7</span><span class="skim-h">Subscribe once. Unlocked everywhere.</span></li>
+        <li><span class="skim-n">Page section 8</span><span class="skim-h">Two ways to start.</span></li>
+        <li><span class="skim-n">Closing line</span><span class="skim-h">Build the reason they renew.</span></li>
+      </ul>
+
       <h3 class="h3">The hero animation</h3>
-      <p>The first version had a cursor clicking three cards around a phone. The clicks changed nothing. The rebuild follows the hero's own sub, in about eight seconds: <strong>Design</strong> (the featured plan changes on the phone), <strong>Test</strong> (weekly against monthly, with B pulling ahead), <strong>Roll out</strong> (a bar fills to 100%, then "No app release.").</p>
+      <p>The rebuilt loop follows the hero's sub in about eight seconds: <strong>Design</strong> changes the featured plan, <strong>Test</strong> runs weekly against monthly with B pulling ahead, <strong>Roll out</strong> fills a bar to 100%: "No app release."</p>
 
       <aside class="callout callout--me" aria-label="I challenged the AI">
         <span class="pill pill--me"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="5" r="2.75" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2.75 14c.6-2.9 2.7-4.5 5.25-4.5s4.65 1.6 5.25 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>I challenged the AI</span>
-        <p>A cursor clicking cards that change nothing is decoration, not a demo. I also pushed for a paywall that looks like a real, premium app rather than two plan rows. Every click in the new loop visibly changes what the user sees.</p>
+        <p>Version one's cursor clicked three cards that changed nothing: decoration, not a demo. I also pushed for a paywall like a real, premium app's, not two plan rows. Now every click visibly changes what the user sees.</p>
       </aside>
 
-      <h3 class="h3">Section 3, three versions</h3>
-      <p>Three arrow rows linking to the sections below, which was a table of contents pretending to be a section. Then tabs with a before-and-after drag slider. Then side-by-side panels, each built on its own idea. <strong>Change</strong> shows who owns each step: before, Engineering and the App Store own most of the track; with RevenueCat, every step says "You," and it reaches "Live" first. <strong>Learn</strong> shows paying customers as dots: week one favors A, the predicted year favors B. <strong>Fit</strong> contrasts one paywall for everyone, in the app only, with the right offer for each audience, in the app and on the web. The slider went because it only earns its place when what it reveals is strong enough.</p>
-      <p>One detail I like: I asked for B's dots to stay lit. The builder kept them fading too, just far less than A's, because that's what the model says. Honest proportions beat a cleaner picture.</p>
-
-      <h3 class="h3">The skimmer test</h3>
-      <p>A PM who reads only the headlines should get the whole argument.</p>
-      <ul class="skim wide figure" aria-label="The page's headlines, in order">
-        <li><span class="skim-n">1</span><span class="skim-h">Build a subscription experience worth renewing.</span></li>
-        <li><span class="skim-n">2</span><span class="skim-h">Trusted by teams at <span class="skim-note">[logos]</span></span></li>
-        <li><span class="skim-n">3</span><span class="skim-h">Change faster. Learn what renews. Fit every user.</span></li>
-        <li><span class="skim-n">4</span><span class="skim-h">Your paywall shouldn't wait for a release.</span></li>
-        <li><span class="skim-n">5</span><span class="skim-h">Win the year, not just the week.<span class="skim-sub">The test ends. The learning doesn't.</span></span></li>
-        <li><span class="skim-n">6</span><span class="skim-h">Different users. Different offers. App or web.</span></li>
-        <li><span class="skim-n">7</span><span class="skim-h">Subscribe once. Unlocked everywhere.</span></li>
-        <li><span class="skim-n">8</span><span class="skim-h">Two ways to start.</span></li>
-        <li><span class="skim-n">Closing:</span><span class="skim-h">Build the reason they renew.</span></li>
-      </ul>
+      <h3 class="h3">The three-jobs module, three versions</h3>
+      <p>First, three arrow rows: a table of contents posing as a section. Then tabs with a before-and-after slider, cut for a weak reveal. Then side-by-side panels. <strong>Change</strong>: before, Engineering and the App Store own most steps; with RevenueCat, every step says "You" and reaches "Live" first. <strong>Learn</strong>: paying customers as dots, week one favoring A, the predicted year B. <strong>Fit</strong>: one paywall for everyone against the right offer per audience, app and web.</p>
+      <p>I asked for B's dots to stay lit. The builder kept them fading, far less than A's, as the model says. Honest proportions beat a cleaner picture.</p>
     </div>
   </section>
 
   <!-- 6. Build and verification -->
-  <section class="doc-section bg-off pb" id="build" aria-labelledby="build-title">
+  <section class="doc-section bg-off" id="build" aria-labelledby="build-title">
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">6</span><h2 class="h2" id="build-title">Build and verification</h2></div>
 
-      <p><strong>Stack.</strong> Static HTML, CSS and vanilla JavaScript, no framework, deployed on Vercel. One landing page doesn't need a framework, and fewer moving parts meant fewer ways to break the night before the deadline.</p>
+      <p><strong>Stack.</strong> Static HTML, CSS and vanilla JavaScript on Vercel. One landing page needs no framework, and fewer moving parts meant fewer ways to break the night before the deadline.</p>
 
       <div class="table-card wide">
         <table class="t-stack">
@@ -329,67 +341,69 @@
             <tr><th scope="col" class="col-narrow">Phase</th><th scope="col">What got built</th><th scope="col">Checkpoint</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row" data-label="Phase">1</th><td data-label="What got built">Scaffold with locked copy, design tokens, the first simulator</td><td data-label="Checkpoint">Worked on the first attempt</td></tr>
-            <tr><th scope="row" data-label="Phase">1.5</th><td data-label="What got built">RevenueCat's visual grammar, proof points, simulator v2</td><td data-label="Checkpoint">Colors sampled from RevenueCat's own pages</td></tr>
-            <tr><th scope="row" data-label="Phase">2</th><td data-label="What got built">Product-manager copy, the section 3 tabs, the first hero loop, zigzag layout</td><td data-label="Checkpoint">Interactive modules verified by keyboard</td></tr>
-            <tr><th scope="row" data-label="Phase">3A</th><td data-label="What got built">One shared paywall, simulator v3 with a forecast chart, the hero redesigned</td><td data-label="Checkpoint">Every illustrative number refit to published ranges</td></tr>
-            <tr><th scope="row" data-label="Phase">3B</th><td data-label="What got built">The Charts module, visuals for sections 3 to 7, a <span class="nowrap">brand-guard</span> review</td><td data-label="Checkpoint">No placeholders left</td></tr>
-            <tr><th scope="row" data-label="Phase">4</th><td data-label="What got built">A tighter hero, side-by-side section 3, a compact simulator, charts instead of tables, web billing</td><td data-label="Checkpoint">Mobile simulator nearly halved</td></tr>
-            <tr><th scope="row" data-label="Phase">5</th><td data-label="What got built">A red team against the brief and the current page; section 7 rebuilt as the foundation; a final review by all three agents</td><td data-label="Checkpoint">48 claims swept, 4 fixed</td></tr>
+            <tr><th scope="row" data-label="Phase">1</th><td data-label="What got built">Scaffold, locked copy, design tokens, first simulator</td><td data-label="Checkpoint">Worked first time</td></tr>
+            <tr><th scope="row" data-label="Phase">1.5</th><td data-label="What got built">Visual grammar, proof points, simulator v2</td><td data-label="Checkpoint">Colors sampled from RevenueCat's pages</td></tr>
+            <tr><th scope="row" data-label="Phase">2</th><td data-label="What got built">PM copy, three-jobs tabs, first hero loop, zigzag layout</td><td data-label="Checkpoint">Modules verified by keyboard</td></tr>
+            <tr><th scope="row" data-label="Phase">3A</th><td data-label="What got built">Shared paywall, simulator v3 with forecast chart, new hero</td><td data-label="Checkpoint">Every illustrative number refit to published ranges</td></tr>
+            <tr><th scope="row" data-label="Phase">3B</th><td data-label="What got built">Charts module, visuals for page sections 3 to 7, <span class="nowrap">brand-guard</span> review</td><td data-label="Checkpoint">No placeholders left</td></tr>
+            <tr><th scope="row" data-label="Phase">4</th><td data-label="What got built">Tighter hero, side-by-side three-jobs panels, compact simulator, line charts, web billing</td><td data-label="Checkpoint">Mobile simulator nearly halved</td></tr>
+            <tr><th scope="row" data-label="Phase">5</th><td data-label="What got built">Red team; page section 7 rebuilt as the foundation; final three-agent review</td><td data-label="Checkpoint">48 claims swept, 4 fixed</td></tr>
             <tr><th scope="row" data-label="Phase">5.1</th><td data-label="What got built">Final fixes from the agents' ranked list, including moving the Pixelcut quote</td><td data-label="Checkpoint">Design frozen</td></tr>
           </tbody>
         </table>
       </div>
 
       <h3 class="h3">The simulator, four versions</h3>
+      <figure class="shot wide figure">
+        <img src="../assets/simulator-ltv.png" width="992" height="988" alt="The experiment simulator in the predicted 12-month LTV view. Variant A, weekly featured, converts 11.0% with a predicted 12-month LTV of $59.52. Variant B, monthly featured, converts 7.4% with $130.46 and leads. A chart of cumulative revenue per 10,000 customers shows B overtaking A at month 4. A phone shows the Tidelark paywall.">
+        <figcaption>The experiment simulator: judge by conversion or by predicted <span class="nowrap">12-month</span> LTV, and the winner flips.</figcaption>
+      </figure>
       <div class="table-card wide">
         <table class="t-stack">
           <thead>
             <tr><th scope="col" class="col-narrow">Version</th><th scope="col">What it did</th><th scope="col">What was wrong</th><th scope="col">Who caught it</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row" data-label="Version">v1</th><td data-label="What it did">A toggle swapped one metric and the winner flipped</td><td data-label="What was wrong">The tension only existed across two moments in time. The rollout message appeared on the user's phone, where users would never see it</td><td data-label="Who caught it">The AI's review</td></tr>
-            <tr><th scope="row" data-label="Version">v2</th><td data-label="What it did">Both metrics on every card; the PM's panel separated from the user's phone; a real paywall; a one-time cursor demo</td><td data-label="What was wrong">It showed what won, not why. The numbers were too small to feel real, and the decision too obvious</td><td data-label="Who caught it">I did</td></tr>
-            <tr><th scope="row" data-label="Version">v3</th><td data-label="What it did">A forecast chart: the observed month solid, the predicted months dashed. B overtakes at month 4. A "why B wins" panel. A live traffic split on the phone</td><td data-label="What was wrong">LTV averaged across every customer in the test read like a monthly figure, and the module was more than 2,100px tall on mobile</td><td data-label="Who caught it">I did</td></tr>
-            <tr><th scope="row" data-label="Version">v4</th><td data-label="What it did">LTV per paying customer ($59.52 against $130.46) with the math printed under the chart; the "why" moved onto the chart lines; a two-step rollout; the cursor demo runs the whole sequence</td><td data-label="What was wrong">Final. Mobile height down from 2,167px to 1,210px</td><td data-label="Who caught it"></td></tr>
+            <tr><th scope="row" data-label="Version">v1</th><td data-label="What it did">A toggle swapped one metric and the winner flipped</td><td data-label="What was wrong">Tension spanned only two moments. The rollout message sat on the user's phone, where users would never see it</td><td data-label="Who caught it">The AI's review</td></tr>
+            <tr><th scope="row" data-label="Version">v2</th><td data-label="What it did">Both metrics per card; the PM's panel split from the user's phone; a real paywall; a one-time cursor demo</td><td data-label="What was wrong">It showed what won, not why. Numbers too small to feel real; the decision too obvious</td><td data-label="Who caught it">I did</td></tr>
+            <tr><th scope="row" data-label="Version">v3</th><td data-label="What it did">Forecast chart, observed month solid, predicted months dashed; B overtakes at month 4. A "why B wins" panel. Live traffic split on the phone</td><td data-label="What was wrong">LTV averaged across every test customer read like a monthly figure; the module topped 2,100px on mobile</td><td data-label="Who caught it">I did</td></tr>
+            <tr><th scope="row" data-label="Version">v4</th><td data-label="What it did">LTV per paying customer ($59.52 against $130.46), math under the chart; the "why" on the chart lines; two-step rollout; cursor demo runs the whole sequence</td><td data-label="What was wrong">Final. Mobile height down from 2,167px to 1,210px</td><td data-label="Who caught it"></td></tr>
           </tbody>
         </table>
       </div>
 
       <aside class="callout callout--ai" aria-label="The AI challenged me">
         <span class="pill pill--ai"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5c.5 3.4 1.9 5.2 5.5 6.5-3.6 1.3-5 3.1-5.5 6.5-.5-3.4-1.9-5.2-5.5-6.5 3.6-1.3 5-3.1 5.5-6.5z" fill="currentColor"/></svg>The AI challenged me</span>
-        <p>My idea for v3 was a crossover: variant A leads for three months, then B overtakes. With annual versus monthly plans that's impossible, because annual plans are paid upfront, so B would lead from day one. Someone who knows the subscription data would spot it immediately. We switched the test to weekly versus monthly, one of the most debated pricing questions in subscription apps, and the story became true.</p>
+        <p>My v3 idea was a crossover: A leads three months, then B overtakes. Impossible with annual versus monthly: annual plans are paid upfront, so B leads from day one, as anyone who knows subscription data would spot. Switching to weekly versus monthly, one of subscription apps' most debated pricing questions, made the story true.</p>
       </aside>
 
       <aside class="callout callout--agent" aria-label="An agent caught it">
         <span class="pill pill--agent"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>An agent caught it</span>
-        <p>Even then, illustrative numbers still have to be plausible. The audit tested the model against RevenueCat's own published conversion and retention data and refit every input to those ranges, keeping the story: A leads early, B overtakes at month 4 and ends about 47% higher.</p>
+        <p>Even then, illustrative numbers must be plausible. The audit refit every input to RevenueCat's published conversion and retention ranges, and the story held: A leads early, B overtakes at month 4 and ends about 47% higher.</p>
       </aside>
 
       <aside class="callout callout--ai" aria-label="The AI challenged me">
         <span class="pill pill--ai"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.5c.5 3.4 1.9 5.2 5.5 6.5-3.6 1.3-5 3.1-5.5 6.5-.5-3.4-1.9-5.2-5.5-6.5 3.6-1.3 5-3.1 5.5-6.5z" fill="currentColor"/></svg>The AI challenged me</span>
-        <p>I wanted the winner to roll out automatically once the forecast appeared, so visitors wouldn't have to click. Automatic rollout is autopilot, which the product doesn't do and which we had rejected on purpose. Instead, the cursor demo performs the rollout itself, so every visitor sees it happen, and the PM still decides.</p>
+        <p>I wanted the winner to roll out automatically once the forecast appeared, sparing visitors a click. But that's autopilot, which we had rejected. So the cursor demo performs the rollout: every visitor sees it, and the PM still decides.</p>
       </aside>
 
-      <p><strong>Two gaps I pushed to close in the final pass.</strong> The page showed charts as tables, so the Charts module now uses real line charts under RevenueCat's own chart names. And web billing, one of the most important new capabilities, was barely mentioned. It now has its own lines in section 6, in RevenueCat's own public phrasing, with no fee percentages.</p>
-
       <h3 class="h3">Brand: rebuilt, not reused</h3>
-      <p>I studied seven RevenueCat feature pages and two of their product animations, then rebuilt the visual grammar in code rather than reusing their files. The work had to be my own, and the reviewers would recognize their own assets. In production, I'd pull components from the design library and brief the agency for anything new.</p>
+      <p>I studied seven RevenueCat feature pages and two product animations, then rebuilt the visual grammar in code, not their files: the work had to be mine, and RevenueCat would recognize its own assets. Colors and logos came from the press kit, checked against the live site. In production, I'd use the design library and brief the agency for new work.</p>
       <ul class="bullets">
-        <li>Colors sampled pixel by pixel from RevenueCat's pages: off-white #F9F9FB, a lavender and peach hero wash</li>
+        <li>Surface colors sampled pixel by pixel from RevenueCat's pages: off-white #F9F9FB, a lavender and peach hero wash</li>
         <li>Color roles: blue for actions, green for winning and live states, red for emphasis</li>
-        <li>RevenueCat's fonts are commercially licensed, so the page uses Manrope for display and RevenueCat's own declared fallback stack for body text</li>
+        <li>RevenueCat's fonts are commercially licensed, so Manrope sets display and RevenueCat's declared fallback stack sets body</li>
       </ul>
 
       <aside class="callout callout--agent" aria-label="An agent caught it">
         <span class="pill pill--agent"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>An agent caught it</span>
-        <p>Three accessibility failures in the published brand palette: white text on brand red, brand green on white, and brand blue as link text on the off-white. Red moved off buttons, matching the live site, which already uses blue. Green became a fill instead of text. Links moved to a darker blue that passes everywhere.</p>
+        <p>Three accessibility failures in the published brand palette: white on brand red, brand green on white, brand blue as link text on off-white. Buttons went blue, as on the live site. Green became a fill, not text. Links got a darker blue that passes everywhere.</p>
       </aside>
 
-      <p><strong>Verified:</strong> 390px first, then 1440px, in a headless browser whenever the preview wasn't visible. Keyboard operation, screen reader announcements for state changes, focus handling, reduced motion, and every outbound link returning a valid page. Bugs caught and fixed include a style rule that showed both paywall states at once, compound words breaking at their hyphens on mobile, and a toast that covered the status line.</p>
+      <p><strong>Verified:</strong> 390px first, then 1440px, in a headless browser when the preview wasn't visible. Keyboard, screen reader announcements, focus handling, reduced motion, every outbound link. Fixed: both paywall states showing at once, compound words breaking at hyphens on mobile, a toast covering the status line.</p>
 
       <h3 class="h3">The red team: the new page against the current one</h3>
-      <p>Before the last pass, I stepped back and tested the page against the brief and against the current <span class="nowrap">/for-product</span> page, side by side, the way a reviewer would.</p>
+      <p>A red team attacks your own work the way a skeptical reviewer would. Here, that was me and Claude first, then all three review agents.</p>
 
       <div class="table-card wide">
         <table class="t-stack">
@@ -399,9 +413,9 @@
           <tbody>
             <tr><th scope="row">Promise</th><td data-label="The current page">"You ship what matters, we handle monetization." Hand it off</td><td data-label="The new page">"Build a subscription experience worth renewing." Own it</td></tr>
             <tr><th scope="row">The PM's role</th><td data-label="The current page">Bystander: RevenueCat saves engineering time</td><td data-label="The new page">Operator: change it, learn from it, fit it</td></tr>
-            <tr><th scope="row">Structure</th><td data-label="The current page">Seven feature tiles, then SDK setup steps</td><td data-label="The new page">Three jobs drawn from the PM's pains; the headlines alone tell the story</td></tr>
+            <tr><th scope="row">Structure</th><td data-label="The current page">Seven feature tiles, then SDK setup steps</td><td data-label="The new page">Three jobs from the PM's pains; the headlines alone tell the story</td></tr>
             <tr><th scope="row">Proof</th><td data-label="The current page">One CTO quote about engineering time</td><td data-label="The new page">Pixelcut, Floga, OpenAI, and RevenueCat's scale: 146K+ apps, $17B+ processed</td></tr>
-            <tr><th scope="row">Visuals</th><td data-label="The current page">Static screenshots</td><td data-label="The new page">A hero loop, a simulator where the winner flips, live charts, a web-to-app journey</td></tr>
+            <tr><th scope="row">Visuals</th><td data-label="The current page">Static screenshots</td><td data-label="The new page">Hero loop, a simulator where the winner flips, live charts, web-to-app journey</td></tr>
             <tr><th scope="row">New capabilities</th><td data-label="The current page">One A/B testing tile</td><td data-label="The new page">AI Editor, predicted <span class="nowrap">12-month</span> LTV, one-action rollout, Funnels, web billing, Benchmarks</td></tr>
           </tbody>
         </table>
@@ -409,17 +423,17 @@
 
       <p class="keep-next">What it found, and what changed:</p>
       <ul class="bullets">
-        <li><strong>Section 7 broke the story.</strong> "Decide who can change a live paywall" was a governance feature that repeated a section 4 bullet, next to a visual about something else. It became the foundation: "Subscribe once. Unlocked everywhere."</li>
-        <li><strong>Two truths from the current page had gone missing:</strong> Customer Center, and Apple and Google API changes handled for you. For a page promising "worth renewing," losing the retention feature was a real gap. Both came back in section 7.</li>
-        <li><strong>One pain had no home.</strong> Blind spots between acquisition and revenue now map to campaign tracking in web funnels.</li>
-        <li><strong>Density.</strong> The web-to-app journey went from seven steps to four, at half the height, and tabs stopped scrolling sideways on mobile.</li>
+        <li><strong>Page section 7 broke the story.</strong> "Decide who can change a live paywall" was a governance feature repeating a page section 4 bullet beside an unrelated visual. It became the foundation: "Subscribe once. Unlocked everywhere."</li>
+        <li><strong>Two truths from the current page had gone missing:</strong> Customer Center, and Apple and Google API changes handled for you. On a page promising "worth renewing," losing the retention feature was a real gap. Both returned in page section 7.</li>
+        <li><strong>One pain had no home.</strong> Blind spots between acquisition and revenue now map to web funnel campaign tracking.</li>
+        <li><strong>Density.</strong> The web-to-app journey went from seven steps to four at half the height; tabs stopped scrolling sideways on mobile.</li>
       </ul>
 
-      <p>Then all three agents reviewed the finished page. <span class="nowrap">pm-critic</span> called it a clear win over the current page for the solo and growth PM, and a partial one for the enterprise PM, which led to a security and compliance link on the Enterprise card. <span class="nowrap">brand-guard</span> found no contrast or color-rule failures. <span class="nowrap">claim-auditor</span> swept 48 strings, failed 4, and all 4 were fixed.</p>
+      <p>All three agents then reviewed the finished page. <span class="nowrap">pm-critic</span>: a clear win over the current page for solo and growth PMs, partial for enterprise, prompting a security and compliance link on the Enterprise card. <span class="nowrap">brand-guard</span>: no contrast or color-rule failures. <span class="nowrap">claim-auditor</span>: 48 strings, 4 failed, all fixed.</p>
 
       <aside class="callout callout--agent" aria-label="An agent caught it">
         <span class="pill pill--agent"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>An agent caught it</span>
-        <p>Pixelcut's quote sat right beside the simulator, celebrating a 16% increase in subscribers, and its case study credits a weekly plan. So the proof point was praising exactly the kind of early win the simulator argues can mislead, and anyone at RevenueCat who knows that case study would have seen it. The quote moved to section 4, where it proves fast iteration instead of undercutting the forecast.</p>
+        <p>Pixelcut's quote, beside the simulator, celebrated a 16% increase in subscribers; its case study credits a weekly plan. So it praised the early win the simulator warns can mislead, as anyone at RevenueCat who knows the case would spot. Moved to page section 4, it proves fast iteration instead of undercutting the forecast.</p>
       </aside>
     </div>
   </section>
@@ -429,48 +443,20 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">7</span><h2 class="h2" id="next-title">What I'd do next</h2></div>
 
-      <h3 class="h3" style="margin-top: 1.5rem">The first three tests</h3>
-      <div class="table-card wide">
-        <table class="t-stack">
-          <thead>
-            <tr><th scope="col">Test</th><th scope="col">Hypothesis</th><th scope="col">Primary metric</th><th scope="col">Guardrail</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Hero: "worth renewing" against "the reason they renew"</th><td data-label="Hypothesis">The clearer line wins with cold traffic</td><td data-label="Primary metric">Sign-up rate from the page</td><td data-label="Guardrail">Bounce rate</td></tr>
-            <tr><th scope="row">Simulator auto-demo on against off</th><td data-label="Hypothesis">Seeing the winner flip once, unprompted, carries more readers to pricing</td><td data-label="Primary metric">Share reaching section 8</td><td data-label="Guardrail">Time to first interaction</td></tr>
-            <tr><th scope="row">The link for existing customers</th><td data-label="Hypothesis">Many PM visitors already have RevenueCat installed and don't know Paywalls and Experiments are available</td><td data-label="Primary metric">Clicks to the dashboard, then first paywall published</td><td data-label="Guardrail">Sign-up rate</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="h3">Questions I'd bring to Product</h3>
-      <p>These came from pressure-testing the page with synthetic PM personas. They're hypotheses to validate with real customers, not findings.</p>
+      <h3 class="h3" style="margin-top: 1.5rem">With more time</h3>
       <ul class="bullets">
-        <li>An approval step before a change goes live</li>
-        <li>Reverting an offering or an experiment</li>
-        <li>A holdout group after a winner rolls out</li>
-        <li>A confidence range on the <span class="nowrap">12-month</span> forecast, since credible intervals currently cover conversion metrics only</li>
-        <li>Comparing past forecasts with what cohorts actually earned</li>
-        <li>How long "enough data" takes for a low-traffic app</li>
-        <li>Proactive alerts, since revenue anomaly emails are in beta</li>
+        <li><strong>Put it in front of real PMs.</strong> Five PMs from target accounts and existing customers, one task: read only the headlines, then say what RevenueCat does for them. Their words, not synthetic personas, would set the next round of copy.</li>
+        <li><strong>Run the first two tests.</strong> The hero, 'worth renewing' against 'the reason they renew', on sign-up rate from the page. And the link for existing customers, on dashboard clicks, then first paywall published.</li>
+        <li><strong>Build a guided demo.</strong> The simulator is a small version of it: pick your app category, build a paywall from a template, run a simulated test, roll out the winner. Five minutes, no account, no SDK. The current page's demo dashboard link now lands on a login screen; this would replace it. One rule: it answers only from RevenueCat's own data and docs.</li>
       </ul>
 
-      <h3 class="h3">Small fixes I'd queue for the web team</h3>
-      <p>The audit surfaced a few inconsistencies across RevenueCat's own pages. The kind of thing a PMM who owns the site fixes in week one:</p>
+      <h3 class="h3">Three questions I'd bring to Product</h3>
+      <p>All three are about trust in the forecast, the page's central claim.</p>
       <ul class="bullets">
-        <li>The AI Editor is labeled beta in the docs and generally available in the changelog</li>
-        <li>The product demo linked from the Paywalls page predates the Figma import and the AI Editor, so it can't show either</li>
-        <li>A Funnels page sentence reads "full control of price points on promotions," which looks like a typo</li>
-        <li>The current <span class="nowrap">/for-product</span> page's demo dashboard link now lands on a login screen</li>
+        <li>Could there be a public page on how the <span class="nowrap">12-month</span> forecast is made? The audit found none, and it's the first page I'd write.</li>
+        <li>Could the forecast show a confidence range? Credible intervals currently cover conversion metrics only.</li>
+        <li>Could benchmarks sit inside the decision? Showing how a variant compares with similar apps answers 'is my number any good?', a question only RevenueCat's scale can answer.</li>
       </ul>
-
-      <h3 class="h3">With more time: a guided product demo</h3>
-      <p>The simulator is a small version of what I'd build next: a guided demo a PM can play with before signing up. Pick your app category, build a paywall from a template, run a simulated test against benchmarks for similar apps, and roll out the winner. Five minutes, no account, no SDK. The current page's demo dashboard link now lands on a login screen; this would replace it with a guided version, aimed at PMs. It could take voice input, but voice isn't the point. The point is reaching the aha moment before the signup form.</p>
-      <p>One rule: every answer it gives comes from RevenueCat's own data and docs, never free-form AI. A demo that improvises will eventually promise something the product doesn't do.</p>
-      <p>How I'd measure it: demo completion, then signup rate from the demo, then first paywall published within a week.</p>
-
-      <h3 class="h3">A positioning idea for later</h3>
-      <p>RevenueCat's scale lets it answer a question no challenger can: not "did B beat A," but "is my number any good?" Benchmarks shipped in April 2026. Bringing that context into every decision a PM makes is the strongest position I found that the product doesn't yet fully support.</p>
     </div>
   </section>
 
@@ -479,141 +465,53 @@
     <div class="wrap">
       <div class="sec-head"><span class="sec-num" aria-hidden="true">A</span><h2 class="h2" id="appendix-title">Appendix</h2></div>
 
-      <h3 class="h3" style="margin-top: 1.5rem">Tools, and who did what</h3>
-      <div class="table-card wide">
-        <table class="t-stack">
-          <thead>
-            <tr><th scope="col" style="width: 30%">Tool</th><th scope="col">Role</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Claude, in chat</th><td data-label="Role">Strategy partner: positioning, copy, red-teaming its own recommendations, reviewing agent output. Also extracted frames from RevenueCat's animations so the builder could study their motion</td></tr>
-            <tr><th scope="row">Claude Code</th><td data-label="Role">The builder: every file, the five agents, git, and verification in a headless browser</td></tr>
-            <tr><th scope="row">GitHub</th><td data-label="Role">Public repo, with the full decision history</td></tr>
-            <tr><th scope="row">Vercel</th><td data-label="Role">Hosting, redeployed on every push</td></tr>
-            <tr><th scope="row">Chrome DevTools and Font Finder</th><td data-label="Role">Typography and color sampling from RevenueCat's live site</td></tr>
-            <tr><th scope="row">Me</th><td data-label="Role">Every final decision</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="h3">Assumptions</h3>
+      <h3 class="h3" style="margin-top: 1.5rem">Assumptions</h3>
       <ol class="numbered">
-        <li>The page serves prospects and existing customers, and the mix is unknown. It leads for prospects and adds one link for customers.</li>
-        <li>The primary conversion is self-serve sign-up. Sales is secondary.</li>
-        <li>PMs own the product experience and strategy. Who owns the revenue number varies by company size.</li>
-        <li>Only public, shipped capabilities are claimed. Nothing from any roadmap.</li>
+        <li>The page serves prospects and existing customers in an unknown mix. It leads for prospects, with one link for customers.</li>
+        <li>Primary conversion: self-serve sign-up. Sales is secondary.</li>
+        <li>PMs own the product experience and strategy. Revenue-number ownership varies by company size.</li>
+        <li>Only public, shipped capabilities are claimed, none from a roadmap.</li>
         <li>All product data is illustrative and labeled. Tidelark is fictional.</li>
-        <li>RevenueCat's fonts are licensed, so the page substitutes.</li>
+        <li>RevenueCat's fonts are licensed; the page substitutes.</li>
       </ol>
 
       <h3 class="h3">What I couldn't verify</h3>
-      <p>Real traffic, real customer interviews and internal data. The PM personas are synthetic, and their feedback is treated as hypotheses.</p>
+      <p>Real traffic, customer interviews and internal data. The PM personas are synthetic, their feedback treated as hypotheses.</p>
 
-      <h3 class="h3">Sources</h3>
+      <h3 class="h3">Key sources</h3>
       <div class="sources wide">
-        <section aria-labelledby="src-site">
-          <h4 id="src-site">RevenueCat site and feature pages</h4>
+        <section aria-labelledby="src-pages">
+          <h4 id="src-pages">RevenueCat pages</h4>
           <ul>
             <li><a href="https://www.revenuecat.com/">revenuecat.com/</a></li>
-            <li><a href="https://www.revenuecat.com/pricing/">revenuecat.com/pricing/</a></li>
             <li><a href="https://www.revenuecat.com/for-product/">revenuecat.com/for-product/</a></li>
-            <li><a href="https://www.revenuecat.com/why-revenuecat">revenuecat.com/why-revenuecat</a></li>
-            <li><a href="https://www.revenuecat.com/security-and-compliance">revenuecat.com/security-and-compliance</a></li>
-            <li><a href="https://www.revenuecat.com/state-of-subscription-apps">revenuecat.com/state-of-subscription-apps</a></li>
-            <li><a href="https://www.revenuecat.com/feature/alerts-app-health">revenuecat.com/feature/alerts-app-health</a></li>
-            <li><a href="https://www.revenuecat.com/feature/charts">revenuecat.com/feature/charts</a></li>
             <li><a href="https://www.revenuecat.com/feature/experiments">revenuecat.com/feature/experiments</a></li>
-            <li><a href="https://www.revenuecat.com/feature/infrastructure">revenuecat.com/feature/infrastructure</a></li>
-            <li><a href="https://www.revenuecat.com/feature/paywalls">revenuecat.com/feature/paywalls</a></li>
-            <li><a href="https://www.revenuecat.com/feature/refund-control">revenuecat.com/feature/refund-control</a></li>
-            <li><a href="https://www.revenuecat.com/feature/web">revenuecat.com/feature/web</a></li>
-          </ul>
-        </section>
-        <section aria-labelledby="src-customers">
-          <h4 id="src-customers">Customer stories</h4>
-          <ul>
-            <li><a href="https://www.revenuecat.com/customers/floga">revenuecat.com/customers/floga</a></li>
-            <li><a href="https://www.revenuecat.com/customers/how-elevenlabs-hit-1m-arr-in-just-16-days">revenuecat.com/customers/how-elevenlabs-hit-1m-arr-in-just-16-days</a></li>
-            <li><a href="https://www.revenuecat.com/customers/mojo-case">revenuecat.com/customers/mojo-case</a></li>
-            <li><a href="https://www.revenuecat.com/customers/pixelcut">revenuecat.com/customers/pixelcut</a></li>
-            <li><a href="https://www.revenuecat.com/customers/revenuecat-openai">revenuecat.com/customers/revenuecat-openai</a></li>
-          </ul>
-        </section>
-        <section aria-labelledby="src-changelog">
-          <h4 id="src-changelog">Changelog</h4>
-          <ul>
-            <li><a href="https://www.revenuecat.com/changelog/release/audit-logs-2024-07-03">revenuecat.com/changelog/release/audit-logs-2024-07-03</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/handling-refund-requests-consumption-requests-2024-11-13">revenuecat.com/changelog/release/handling-refund-requests-consumption-requests-2024-11-13</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/rc-billing-apple-pay-google-pay-support-2024-11-29">revenuecat.com/changelog/release/rc-billing-apple-pay-google-pay-support-2024-11-29</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/charts-apple-search-ads-keyword-claim-type-2025-03-27">revenuecat.com/changelog/release/charts-apple-search-ads-keyword-claim-type-2025-03-27</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/experiments-multivariate-testing-abcd-2025-04-29">revenuecat.com/changelog/release/experiments-multivariate-testing-abcd-2025-04-29</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/track-paywall-performance-with-new-real-time-charts-2025-11-24">revenuecat.com/changelog/release/track-paywall-performance-with-new-real-time-charts-2025-11-24</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/access-your-revenuecat-chart-data-via-api-2026-02-05">revenuecat.com/changelog/release/access-your-revenuecat-chart-data-via-api-2026-02-05</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06">revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12">revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/see-who-edited-each-paywall-version-and-discard-unsaved-drafts-2026-02-16">revenuecat.com/changelog/release/see-who-edited-each-paywall-version-and-discard-unsaved-drafts-2026-02-16</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13">revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/see-credible-intervals-in-experiment-results-2026-05-06">revenuecat.com/changelog/release/see-credible-intervals-in-experiment-results-2026-05-06</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/build-complete-web-to-app-funnels-with-revenuecat-2026-07-13">revenuecat.com/changelog/release/build-complete-web-to-app-funnels-with-revenuecat-2026-07-13</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/build-and-edit-paywalls-with-ai-2026-07-15">revenuecat.com/changelog/release/build-and-edit-paywalls-with-ai-2026-07-15</a></li>
-            <li><a href="https://www.revenuecat.com/changelog/release/edit-paywall-rules-more-clearly-2026-07-30">revenuecat.com/changelog/release/edit-paywall-rules-more-clearly-2026-07-30</a></li>
-          </ul>
-        </section>
-        <section aria-labelledby="src-blog">
-          <h4 id="src-blog">Blog</h4>
-          <ul>
-            <li><a href="https://www.revenuecat.com/blog/company/funnels-public-beta">revenuecat.com/blog/company/funnels-public-beta</a></li>
-            <li><a href="https://www.revenuecat.com/blog/company/navigating-revenuecats-new-pricing-for-existing-users">revenuecat.com/blog/company/navigating-revenuecats-new-pricing-for-existing-users</a></li>
-            <li><a href="https://www.revenuecat.com/blog/company/paywalls-on-the-web">revenuecat.com/blog/company/paywalls-on-the-web</a></li>
           </ul>
         </section>
         <section aria-labelledby="src-docs">
-          <h4 id="src-docs">Docs</h4>
+          <h4 id="src-docs">Docs and changelog</h4>
           <ul>
-            <li><a href="https://www.revenuecat.com/docs/api-v2/charts-and-metrics">revenuecat.com/docs/api-v2/charts-and-metrics</a></li>
-            <li><a href="https://www.revenuecat.com/docs/customers/identifying-customers">revenuecat.com/docs/customers/identifying-customers</a></li>
-            <li><a href="https://www.revenuecat.com/docs/customers/refund-control">revenuecat.com/docs/customers/refund-control</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/anomaly-detection-notifications">revenuecat.com/docs/dashboard-and-metrics/anomaly-detection-notifications</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/audit-logs">revenuecat.com/docs/dashboard-and-metrics/audit-logs</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/benchmarks">revenuecat.com/docs/dashboard-and-metrics/benchmarks</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/charts">revenuecat.com/docs/dashboard-and-metrics/charts</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/charts/cohort-explorer">revenuecat.com/docs/dashboard-and-metrics/charts/cohort-explorer</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/charts/paywall-conversion-chart">revenuecat.com/docs/dashboard-and-metrics/charts/paywall-conversion-chart</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/charts/paywall-ltv-chart">revenuecat.com/docs/dashboard-and-metrics/charts/paywall-ltv-chart</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer">revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer</a></li>
-            <li><a href="https://www.revenuecat.com/docs/dashboard-and-metrics/reconciling-with-financial-reports">revenuecat.com/docs/dashboard-and-metrics/reconciling-with-financial-reports</a></li>
-            <li><a href="https://www.revenuecat.com/docs/getting-started/entitlements">revenuecat.com/docs/getting-started/entitlements</a></li>
-            <li><a href="https://www.revenuecat.com/docs/offerings/overview">revenuecat.com/docs/offerings/overview</a></li>
-            <li><a href="https://www.revenuecat.com/docs/offerings/products-overview">revenuecat.com/docs/offerings/products-overview</a></li>
-            <li><a href="https://www.revenuecat.com/docs/projects/collaborators">revenuecat.com/docs/projects/collaborators</a></li>
-            <li><a href="https://www.revenuecat.com/docs/projects/sso">revenuecat.com/docs/projects/sso</a></li>
-            <li><a href="https://www.revenuecat.com/docs/revenuecat-support/general-troubleshooting">revenuecat.com/docs/revenuecat-support/general-troubleshooting</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/experiments-v1">revenuecat.com/docs/tools/experiments-v1</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1">revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/experiments-v1/experiments-overview-v1">revenuecat.com/docs/tools/experiments-v1/experiments-overview-v1</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/experiments-v1/experiments-results-v1">revenuecat.com/docs/tools/experiments-v1/experiments-results-v1</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/funnels">revenuecat.com/docs/tools/funnels</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/funnels/configuring-payments">revenuecat.com/docs/tools/funnels/configuring-payments</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/funnels/creating-funnels">revenuecat.com/docs/tools/funnels/creating-funnels</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/funnels/deploying-funnels">revenuecat.com/docs/tools/funnels/deploying-funnels</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/paywalls">revenuecat.com/docs/tools/paywalls</a></li>
-            <li><a href="https://www.revenuecat.com/docs/tools/targeting">revenuecat.com/docs/tools/targeting</a></li>
-            <li><a href="https://www.revenuecat.com/docs/web/overview">revenuecat.com/docs/web/overview</a></li>
-            <li><a href="https://www.revenuecat.com/docs/web/paywalls">revenuecat.com/docs/web/paywalls</a></li>
-            <li><a href="https://www.revenuecat.com/docs/web/redemption-links">revenuecat.com/docs/web/redemption-links</a></li>
-            <li><a href="https://www.revenuecat.com/docs/web/web-billing/localization">revenuecat.com/docs/web/web-billing/localization</a></li>
-            <li><a href="https://www.revenuecat.com/docs/web/web-billing/payment-methods">revenuecat.com/docs/web/web-billing/payment-methods</a></li>
-            <li><a href="https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management">revenuecat.com/docs/welcome/set-up-revenuecat/account-management</a></li>
+            <li><a href="https://www.revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12">revenuecat.com/changelog/release/see-predicted-12-month-ltv-winners-in-experiments-2026-02-12</a></li>
+            <li><a href="https://www.revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06">revenuecat.com/changelog/release/roll-out-an-experiment-winner-in-one-action-2026-02-06</a></li>
+            <li><a href="https://www.revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13">revenuecat.com/changelog/release/compare-subscription-metrics-against-industry-benchmarks-2026-04-13</a></li>
           </ul>
         </section>
-        <section aria-labelledby="src-other">
-          <h4 id="src-other">Other</h4>
+        <section aria-labelledby="src-comp">
+          <h4 id="src-comp">Competitors</h4>
           <ul>
-            <li><a href="https://www.youtube.com/watch?v=mPzCTxIlMXE">youtube.com/watch?v=mPzCTxIlMXE</a></li>
-            <li><a href="https://apps.apple.com/us/app/stridewell/id6760530496">apps.apple.com/us/app/stridewell/id6760530496</a></li>
+            <li><a href="https://superwall.com/solutions/product-managers">superwall.com/solutions/product-managers</a></li>
+            <li><a href="https://adapty.io/">adapty.io/</a></li>
+            <li><a href="https://apphud.com/revenuecat">apphud.com/revenuecat</a></li>
+          </ul>
+        </section>
+        <section aria-labelledby="src-report">
+          <h4 id="src-report">The report</h4>
+          <ul>
+            <li><a href="https://www.revenuecat.com/state-of-subscription-apps">revenuecat.com/state-of-subscription-apps</a></li>
           </ul>
         </section>
       </div>
+      <p class="sources-note">Every source the audits used is in <a href="https://github.com/oss1010/revenuecat-for-product/blob/main/docs/iteration-log.md"><code>docs/iteration-log.md</code></a>.</p>
     </div>
   </section>
 

@@ -1079,8 +1079,8 @@ the proof points.
 
 ### Visual grammar
 - Recreated RevenueCat's visual grammar rather than reusing its files,
-  because the work must be our own and the reviewers would recognize
-  their own assets. In production, a PMM would pull from the design
+  because the work must be our own and RevenueCat would recognize its
+  own assets. In production, a PMM would pull from the design
   library and brief the agency.
 - Source material in docs/reference/inspiration/ (gitignored): two
   animation frame sheets, two product UI images, and full-page
@@ -1748,3 +1748,42 @@ Where the content file and the record differed, the record won:
   break, so no strip of background spills onto the next page.
 - docs/process-shots/process-doc.pdf: 15 pages, every page checked;
   largest gap before the last page is about 19% (page 8).
+
+## 2026-09-27: Public-repo audit and process doc v2
+
+### Repo audit (every tracked file and the full history)
+- None of the listed names, and no email addresses, phone numbers,
+  keys, tokens, .env files or absolute paths, in any commit.
+- docs/brief.md and docs/video-notes.md were never committed.
+- The brief: no passage copied. Six-word overlaps are RevenueCat's own
+  public docs and changelog wording, plus four short pain-point labels
+  in docs/positioning.md that match the brief's labels.
+- Commit authors on GitHub all use the noreply address. Two
+  pre-rewrite commits with a personal address exist only in a local
+  backup ref (refs/original), and GitHub reports no such commits.
+- Everything under site/ is referenced by a page. site/.DS_Store is
+  untracked and ignored.
+- Tone fixed: competitive-scan.md no longer calls the market picture
+  "out of date" or a "2022 version", and no longer says Qonversion says
+  it "blandly" or that competitors are "exploiting" a perception. This
+  log's visual-grammar note no longer mentions reviewers.
+- Added README.md; docs/process-doc-content.md is now ignored.
+
+### Process doc v2
+- Timeline and contents link to their sections, in the page and the
+  PDF (13 internal links). "How I worked" moved to section 1 with my
+  row first; the agents are named before the first callout.
+- RevenueCat leads the competitive scan; the kept direction and the
+  kept hero line lead their tables; the skimmer list is the page map.
+- Section 7 rebuilt around real PMs, two tests, a guided demo and three
+  questions about trust in the forecast. The simulator is shown as a
+  static capture from the live page in the predicted LTV view.
+- web-copy cut 535 words, line by line. Two edits reverted: the agents'
+  jobs stayed in section 1, and the diagnosis kept "written for a
+  RevenueCat that took monetization off a PM's plate".
+- Words: 4,591 to 3,759 (18%), sources list excluded. The 25% goal
+  needed about 300 more, and web-copy found none left that keep every
+  claim.
+- PDF: 10 pages. A table that followed the simulator image had been
+  chained to it, which pushed all of section 6 onto a new page; that
+  one link is released.
