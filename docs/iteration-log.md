@@ -1849,3 +1849,16 @@ Math re-checked by the auditor: all correct.
 - Reduced motion: Learn shows month 12, 13 of 13 and 19 of 19 dots and
   the verdict; journey fully lit. With motion, month 1 opens at A 7,
   B 4 and fills to the end state.
+
+## 2026-09-28: Walkthrough video linked (final step)
+
+- /process: the "link to come" placeholder chip is now a live link,
+  "Walkthrough video", to
+  https://drive.google.com/file/d/10oRkwFzCkffgDtPeWxvfcEA1K8XBQIKQ/view
+  (200, no sign-in redirect). The placeholder styles (.chip--todo,
+  .chip-note) are removed.
+- PDF re-exported: 10 pages, every page rasterized and checked. Page 1
+  prints the full video URL and now carries 17 links (was 16); nothing
+  else moved.
+- /process at 390 and 1440: no overflow, no console errors; all four
+  chips link out.

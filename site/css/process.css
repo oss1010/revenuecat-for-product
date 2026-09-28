@@ -176,9 +176,6 @@ body.doc { line-height: 1.6; }
 .chip svg { flex: none; width: 1rem; height: 1rem; }
 a.chip:hover { border-color: var(--rc-ink); text-decoration: underline; text-underline-offset: 0.2em; }
 .chip-url { display: none; }
-/* Visible placeholder until the video link exists */
-.chip--todo { border-style: dashed; color: var(--rc-body); }
-.chip-note { color: var(--rc-body); font-family: var(--font-body); font-size: 0.8125rem; font-weight: 400; }
 
 /* Contents */
 .toc {
@@ -660,7 +657,6 @@ a.chip:hover { border-color: var(--rc-ink); text-decoration: underline; text-und
     font-size: 9pt;
     overflow-wrap: anywhere;
   }
-  .chip-note { display: none; }
 
   .toc { padding: 10pt 14pt 12pt; box-shadow: none; }
   .toc h2 { font-size: 9.5pt; }
